@@ -198,7 +198,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 60166,NT,1,Tropical and subtropical moist broadleaf forests,Southwest Amazon moist forests,0,100,95,95
 60167,NT,1,Tropical and subtropical moist broadleaf forests,Talamancan montane forests,0,100,95,95
 60168,NT,1,Tropical and subtropical moist broadleaf forests,Tapajós-Xingu moist forests,0,100,95,95
-60169,NT,1,Tropical and subtropical moist broadleaf forests,Tepuis,0,100,95,95
+60169,NT,1,Tropical and subtropical moist broadleaf forests,Tepuis,0,95,60,10
 60170,NT,1,Tropical and subtropical moist broadleaf forests,Tocantins/Pindare moist forests,0,100,95,95
 60171,NT,1,Tropical and subtropical moist broadleaf forests,Trinidad and Tobago moist forests,0,100,95,95
 60172,NT,1,Tropical and subtropical moist broadleaf forests,Trindade-Martin Vaz Islands tropical forests,0,100,95,95
@@ -294,18 +294,18 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 40303,IM,3,Tropical and subtropical coniferous forests,Northeast India-Myanmar pine forests,0,100,95,95
 40304,IM,3,Tropical and subtropical coniferous forests,Sumatran tropical pine forests,0,100,95,95
 50301,NA,3,Tropical and subtropical coniferous forests,Bermuda subtropical conifer forests,0,100,95,95
-50302,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Occidental pine-oak forests,0,100,85,85
-50303,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Oriental pine-oak forests,0,100,85,85
+50302,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Occidental pine-oak forests,0,100,75,75
+50303,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Oriental pine-oak forests,0,100,75,75
 60301,NT,3,Tropical and subtropical coniferous forests,Bahamian pine forests,0,100,85,85
 60302,NT,3,Tropical and subtropical coniferous forests,Belizian pine forests,0,100,85,85
 60303,NT,3,Tropical and subtropical coniferous forests,Central American pine-oak forests,0,100,85,85
 60304,NT,3,Tropical and subtropical coniferous forests,Cuban pine forests,0,100,85,85
 60305,NT,3,Tropical and subtropical coniferous forests,Hispaniolan pine forests,0,100,85,85
 60306,NT,3,Tropical and subtropical coniferous forests,Miskito pine forests,0.3,100,60,60
-60307,NT,3,Tropical and subtropical coniferous forests,Sierra de la Laguna pine-oak forests,0,100,85,85
-60308,NT,3,Tropical and subtropical coniferous forests,Sierra Madre de Oaxaca pine-oak forests,0,100,85,85
-60309,NT,3,Tropical and subtropical coniferous forests,Sierra Madre del Sur pine-oak forests,0,100,85,85
-60310,NT,3,Tropical and subtropical coniferous forests,Trans-Mexican Volcanic Belt pine-oak forests,0,100,85,85
+60307,NT,3,Tropical and subtropical coniferous forests,Sierra de la Laguna pine-oak forests,0,100,75,75
+60308,NT,3,Tropical and subtropical coniferous forests,Sierra Madre de Oaxaca pine-oak forests,0,100,75,75
+60309,NT,3,Tropical and subtropical coniferous forests,Sierra Madre del Sur pine-oak forests,0,100,75,75
+60310,NT,3,Tropical and subtropical coniferous forests,Trans-Mexican Volcanic Belt pine-oak forests,0,100,75,75
 10401,AA,4,Temperate broadleaf and mixed forests,Chatham Island temperate forests,0,100,95,95
 10402,AA,4,Temperate broadleaf and mixed forests,Eastern Australian temperate forests,0,100,95,95
 10403,AA,4,Temperate broadleaf and mixed forests,Fiordland temperate forests,0,100,95,95
@@ -529,7 +529,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 30802,AT,8,"Temperate grasslands, savannas, and shrublands",Amsterdam and Saint-Paul Islands temperate grasslands,0,99,0,0
 30803,AT,8,"Temperate grasslands, savannas, and shrublands",Tristan Da Cunha-Gough Islands shrub and grasslands,0,99,25,0
 50801,NA,8,"Temperate grasslands, savannas, and shrublands",California Central Valley grasslands,0,99,0,0
-50802,NA,8,"Temperate grasslands, savannas, and shrublands",Canadian Aspen forests and parklands,0,99,0,0
+50802,NA,8,"Temperate grasslands, savannas, and shrublands",Canadian Aspen forests and parklands,0,99,25,25
 50803,NA,8,"Temperate grasslands, savannas, and shrublands",Central and Southern mixed grasslands,0,99,0,0
 50804,NA,8,"Temperate grasslands, savannas, and shrublands",Central forest/grasslands transition zone,0,99,0,0
 50805,NA,8,"Temperate grasslands, savannas, and shrublands",Central tall grasslands,0,99,0,0
@@ -598,11 +598,11 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 11003,AA,10,Montane grasslands,South Island montane grasslands,0,99,0,0
 31001,AT,10,Montane grasslands,Angolan montane forest-grassland mosaic,0,99,0,0
 31002,AT,10,Montane grasslands,Angolan scarp savanna and woodlands,0,99,10,10
-31003,AT,10,Montane grasslands,Drakensberg alti-montane grasslands and woodlands,0,99,25,25
-31004,AT,10,Montane grasslands,"Drakensberg montane grasslands, woodlands and forests",0,99,25,25
+31003,AT,10,Montane grasslands,Drakensberg alti-montane grasslands and woodlands,0,99,10,10
+31004,AT,10,Montane grasslands,"Drakensberg montane grasslands, woodlands and forests",0,99,10,10
 31005,AT,10,Montane grasslands,East African montane moorlands,0,99,0,0
 31006,AT,10,Montane grasslands,Eastern Zimbabwe montane forest-grassland mosaic,0,99,0,0
-31007,AT,10,Montane grasslands,Ethiopian montane grasslands and woodlands,0,99,25,25
+31007,AT,10,Montane grasslands,Ethiopian montane grasslands and woodlands,0,99,10,10
 31008,AT,10,Montane grasslands,Ethiopian montane moorlands,0,99,0,0
 31009,AT,10,Montane grasslands,Highveld grasslands,0,99,0,0
 31010,AT,10,Montane grasslands,Jos Plateau forest-grassland mosaic,0,99,0,0
@@ -675,31 +675,31 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 81107,PA,11,Tundra,Northeast Siberian coastal tundra,0,99,10,0
 81108,PA,11,Tundra,Northwest Russian-Novaya Zemlya tundra,0,99,10,0
 81109,PA,11,Tundra,Novosibirsk Islands arctic desert,0,60,10,0
-81110,PA,11,Tundra,Scandinavian Montane Birch forest and grasslands,0,99,10,0
+81110,PA,11,Tundra,Scandinavian Montane Birch forest and grasslands,0,99,10,5
 81111,PA,11,Tundra,Taimyr-Central Siberian tundra,0,99,10,0
 81112,PA,11,Tundra,Trans-Baikal Bald Mountain tundra,0,99,10,0
 81113,PA,11,Tundra,Wrangel Island arctic desert,0,60,10,0
 81114,PA,11,Tundra,Yamal-Gydan tundra,0,99,10,0
-11201,AA,12,Mediterranean scrub,Coolgardie woodlands,0,99,60,25
+11201,AA,12,Mediterranean scrub,Coolgardie woodlands,0,99,75,25
 11202,AA,12,Mediterranean scrub,Esperance mallee,0,99,60,0
 11203,AA,12,Mediterranean scrub,Eyre and York mallee,0,99,60,0
-11204,AA,12,Mediterranean scrub,Jarrah-Karri forest and shrublands,0,99,60,25
+11204,AA,12,Mediterranean scrub,Jarrah-Karri forest and shrublands,0,99,75,25
 11205,AA,12,Mediterranean scrub,Kwongan heathlands,0,99,60,0
-11206,AA,12,Mediterranean scrub,Mount Lofty woodlands,0,99,60,25
-11207,AA,12,Mediterranean scrub,Murray-Darling woodlands and mallee,0,99,60,25
-11208,AA,12,Mediterranean scrub,Naracoorte woodlands,0,99,60,25
+11206,AA,12,Mediterranean scrub,Mount Lofty woodlands,0,99,75,25
+11207,AA,12,Mediterranean scrub,Murray-Darling woodlands and mallee,0,99,75,25
+11208,AA,12,Mediterranean scrub,Naracoorte woodlands,0,99,75,25
 11209,AA,12,Mediterranean scrub,Southwest Australia savanna,0,99,25,10
-11210,AA,12,Mediterranean scrub,Southwest Australia woodlands,0,99,60,25
+11210,AA,12,Mediterranean scrub,Southwest Australia woodlands,0,99,75,25
 31201,AT,12,Mediterranean scrub,Albany thickets,0,99,60,0
 31202,AT,12,Mediterranean scrub,Lowland fynbos and renosterveld,0,99,60,0
 31203,AT,12,Mediterranean scrub,Montane fynbos and renosterveld,0,99,60,0
 51201,NA,12,Mediterranean scrub,California coastal sage and chaparral,0,99,60,0
-51202,NA,12,Mediterranean scrub,California interior chaparral and woodlands,0,99,60,25
-51203,NA,12,Mediterranean scrub,California montane chaparral and woodlands,0,99,60,25
+51202,NA,12,Mediterranean scrub,California interior chaparral and woodlands,0,99,75,25
+51203,NA,12,Mediterranean scrub,California montane chaparral and woodlands,0,99,75,25
 61201,NT,12,Mediterranean scrub,Chilean matorral,0,99,60,0
 81201,PA,12,Mediterranean scrub,Aegean & Western Turkey sclerophyllous and mixed forests,0,99,60,0
 81202,PA,12,Mediterranean scrub,Anatolian conifer and deciduous mixed forests,0,99,60,0
-81203,PA,12,Mediterranean scrub,Canary Islands dry woodlands and forests,0,99,60,25
+81203,PA,12,Mediterranean scrub,Canary Islands dry woodlands and forests,0,99,75,25
 81204,PA,12,Mediterranean scrub,Corsican montane broadleaf and mixed forests,0,99,60,0
 81205,PA,12,Mediterranean scrub,Crete Mediterranean forests,0,99,60,0
 81206,PA,12,Mediterranean scrub,Cyprus Mediterranean forests,0,99,60,0
@@ -708,17 +708,17 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover
 81209,PA,12,Mediterranean scrub,Iberian sclerophyllous and semi-deciduous forests,0,99,60,0
 81210,PA,12,Mediterranean scrub,Illyrian deciduous forests,0,99,60,0
 81211,PA,12,Mediterranean scrub,Italian sclerophyllous and semi-deciduous forests,0,99,60,0
-81212,PA,12,Mediterranean scrub,Mediterranean acacia-argania dry woodlands and succulent thickets,0,99,60,25
-81213,PA,12,Mediterranean scrub,Mediterranean dry woodlands and steppe,0,99,60,25
-81214,PA,12,Mediterranean scrub,Mediterranean woodlands and forests,0,99,60,25
+81212,PA,12,Mediterranean scrub,Mediterranean acacia-argania dry woodlands and succulent thickets,0,99,75,25
+81213,PA,12,Mediterranean scrub,Mediterranean dry woodlands and steppe,0,99,75,25
+81214,PA,12,Mediterranean scrub,Mediterranean woodlands and forests,0,99,75,25
 81215,PA,12,Mediterranean scrub,Northeastern Spain & Southern France Mediterranean forests,0,99,60,0
 81216,PA,12,Mediterranean scrub,Northwest Iberian montane forests,0,99,60,0
 81217,PA,12,Mediterranean scrub,Pindus Mountains mixed forests,0,99,60,0
 81218,PA,12,Mediterranean scrub,South Appenine mixed montane forests,0,99,60,0
-81219,PA,12,Mediterranean scrub,Southeastern Iberian shrubs and woodlands,0,99,60,25
+81219,PA,12,Mediterranean scrub,Southeastern Iberian shrubs and woodlands,0,99,75,25
 81220,PA,12,Mediterranean scrub,Southern Anatolian montane conifer and deciduous forests,0,99,60,0
-81221,PA,12,Mediterranean scrub,Southwest Iberian Mediterranean sclerophyllous and mixed forests,0,99,60,0
-81222,PA,12,Mediterranean scrub,Tyrrhenian-Adriatic Sclerophyllous and mixed forests,0,99,60,0
+81221,PA,12,Mediterranean scrub,Southwest Iberian Mediterranean sclerophyllous and mixed forests,0,99,75,25
+81222,PA,12,Mediterranean scrub,Tyrrhenian-Adriatic Sclerophyllous and mixed forests,0,99,75,25
 11301,AA,13,Deserts and xeric shrublands,Carnarvon xeric shrublands,0,25,25,0
 11302,AA,13,Deserts and xeric shrublands,Central Ranges xeric scrub,0,25,25,0
 11303,AA,13,Deserts and xeric shrublands,Gibson desert,0,25,25,0

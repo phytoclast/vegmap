@@ -15,17 +15,19 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 path = 'nam5k/'
 Tw <- rast(paste0(path, 'Tw.tif'))
-twi1km <- rast(paste0('data/twi1km.tif'))
-#twi5km <- resample(twi1km, Tw)
-#writeRaster(twi5km, 'data/twi5km.tif', overwrite=T)
-#twi5kmmin <- aggregate(twi1km, fact=5, fun="min", na.rm=T)
-#writeRaster(twi5kmmin, 'data/twi5kmmin.tif', overwrite=T)
-river <- aggregate(twi1km, fact=3, fun="max", na.rm=T); names(river) <- 'river'
-river <- project(river, Tw)
-writeRaster(river, paste0(path, 'river.tif'), overwrite=T)
+#Resample SAGA topographic wetness index ----
+# twi1km <- rast(paste0('data/twi1km.tif')) #SAGA topographic wetness index 1 km res.
+# #twi5km <- resample(twi1km, Tw)
+# #writeRaster(twi5km, 'data/twi5km.tif', overwrite=T)
+# #twi5kmmin <- aggregate(twi1km, fact=5, fun="min", na.rm=T)
+# #writeRaster(twi5kmmin, 'data/twi5kmmin.tif', overwrite=T)
+# river <- aggregate(twi1km, fact=3, fun="max", na.rm=T); names(river) <- 'river'
+# river <- project(river, Tw)
+# writeRaster(river, paste0(path, 'river.tif'), overwrite=T)#SAGA topographic wetness index 5 km res.
 
+systime = Sys.time()
 
-
+# Vegetation cover ----
 bps <- rast('data/BPS.tif')
 #bps <- aggregate(bps, fact=5, fun='modal' )
 bpsrat <- foreign::read.dbf('data/BPS.dbf')
@@ -212,14 +214,15 @@ r.df$output <- predictions(predict(rf, data=r.df))
 wetmodel <- rast(cbind(x=r.df$x,y=r.df$y,z=r.df$output), type="xyz", crs=crs(Tw))
 plot(wetmodel)
 names(wetmodel) <- 'wetmodel'
+wetmodel <- extend(wetmodel, Tw); wetmodel <- crop(wetmodel, Tw)
 writeRaster(wetmodel, 'output/wetmodel.tif', overwrite=T)
 #veg model ---- 
 rasters<-c(kuchler.tree, wet,veg,wood,tree,Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
-           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river)
+           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river,wetmodel)
 r.df <- as.data.frame(rasters, xy=TRUE, na.rm=F)
 r.df$tree <- ifelse(r.df$Tg < 4.5 | r.df$elev > 4000, 0, r.df$tree)
 r.df$wood <- ifelse(r.df$Tw <= 1, 0, r.df$wood); r.df$veg <- ifelse(r.df$Tw <= 1, 0, r.df$veg)
-r.df <-  subset(r.df,!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
+r.df <-  subset(r.df,!is.na(wetmodel)&!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
 r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
@@ -227,7 +230,7 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 r.df.s <- subset(r.df, !is.na(veg))
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(veg ~ 
-               Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
              ,
              data=r.df.s, num.trees=25, max.depth = 15, importance = 'impurity', write.forest = TRUE, case.weights = r.df.s$wt)
 
@@ -240,11 +243,11 @@ names(vegmodel) <- 'vegmodel'
 writeRaster(vegmodel, 'output/vegmodel.tif', overwrite=T)
 #wood model ---- 
 rasters<-c(kuchler.tree, wet,veg,wood,tree,Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
-           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river)
+           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river,wetmodel)
 r.df <- as.data.frame(rasters, xy=TRUE, na.rm=F)
 r.df$tree <- ifelse(r.df$Tg < 4.5 | r.df$elev > 4000, 0, r.df$tree)
 r.df$wood <- ifelse(r.df$Tw <= 1, 0, r.df$wood); r.df$veg <- ifelse(r.df$Tw <= 1, 0, r.df$veg)
-r.df <-  subset(r.df,!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
+r.df <-  subset(r.df,!is.na(wetmodel)&!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
 r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
@@ -252,7 +255,7 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 r.df.s <- subset(r.df, !is.na(wood))
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(wood ~ 
-               Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
              ,
              data=r.df.s, num.trees=25, max.depth = 15, importance = 'impurity', write.forest = TRUE, case.weights = r.df.s$wt)
 
@@ -280,19 +283,18 @@ names(treedist) <- 'treedist'
 
 
 rasters<-c(kuchler.tree, wet,veg,wood,tree,Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
-           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river,
-           shadw0,shadw45,shadw90,shadw135,shadw180,shadw225,shadw270,shadw315)
+           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river,wetmodel)
 r.df <- as.data.frame(rasters, xy=TRUE, na.rm=F)
 r.df$tree <- ifelse(r.df$Tg < 4.5 | r.df$elev > 4000, 0, r.df$tree)
 r.df$wood <- ifelse(r.df$Tw <= 1, 0, r.df$wood); r.df$veg <- ifelse(r.df$Tw <= 1, 0, r.df$veg)
-r.df <-  subset(r.df,!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
+r.df <-  subset(r.df,!is.na(wetmodel)&!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
 r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 mean(r.df.s[r.df.s$Tg<4,]$tree)
 
 
 r.df.s <- subset(r.df, !is.na(tree))#& !is.na(kuchler.tree))
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
-rf <- ranger(tree ~ Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
+rf <- ranger(tree ~ Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
              #+shadw0+shadw45+shadw90+shadw135+shadw180+shadw225+shadw270+shadw315
              #m+s+d+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
              ,
@@ -318,3 +320,4 @@ openveg <- shrubby+grassy
 writeRaster(shrubby, 'output/shrubby.tif', overwrite=T)
 writeRaster(grassy, 'output/grassy.tif', overwrite=T)
 writeRaster(openveg, 'output/openveg.tif', overwrite=T)
+Sys.time() - systime

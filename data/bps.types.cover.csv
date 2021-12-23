@@ -2,14 +2,14 @@ BPS_NAME,GROUPNAME,GROUPVEG,wet,vegcover,woodycover,treecover
 Acadian Low-Elevation Spruce-Fir-Hardwood Forest,Red Spruce-Balsam Fir-Yellow Birch-5,Hardwood-Conifer,0,100,95,95
 Acadian-Appalachian Alpine Tundra,Spruce-Bog Blueberry-Crowberry-5,Shrubland,0,99,25,0
 Acadian-Appalachian Montane Spruce-Fir Forest,Red Spruce-Balsam Fir-American Mountain Ash-5,Hardwood-Conifer,0,100,95,95
-Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,Spruce-Bog Blueberry-Crowberry-5,Shrubland,0,99,60,25
-Alabama Ketona Glade and Woodland,Little Bluestem-Rosinweed-Chinquapin Oak-1,Hardwood,0,99,60,60
+Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,Spruce-Bog Blueberry-Crowberry-5,Shrubland,0,99,60,10
+Alabama Ketona Glade and Woodland,Little Bluestem-Rosinweed-Chinquapin Oak-1,Hardwood,0,95,25,10
 Allegheny-Cumberland Dry Oak Forest and Woodland,White Oak-Scarlet Oak-Chestnut-1,Hardwood,0,100,85,85
 Allegheny-Cumberland Dry Oak Forest and Woodland,White Oak-Southern Red Oak-Chestnut-1,Hardwood,0,100,85,85
 Apacherian-Chihuahuan Mesquite Upland Scrub,Mesquite-2,Shrubland,0,25,25,0
 Apacherian-Chihuahuan Semi-Desert Grassland and Steppe,Grama-Creosote-2,Grassland,0,60,0,0
 Appalachian (Hemlock-)Northern Hardwood Forest,Beech-Hemlock-Sugar Maple-5,Hardwood,0,100,95,95
-Appalachian Shale Barrens,Chestnut Oak-Virginia Pine-Rockcress-5,Hardwood,0,99,25,25
+Appalachian Shale Barrens,Chestnut Oak-Virginia Pine-Rockcress-5,Hardwood,0,99,25,10
 Arkansas Valley Prairie and Woodland - Prairie,Little Bluestem-Indiangrass-Switchgrass-2,Grassland,0,99,0,0
 Arkansas Valley Prairie and Woodland - Woodland,Little Bluestem-Indiangrass-1,Grassland,0,99,60,60
 Atlantic Coastal Plain Clay-Based Carolina Bay Wetland,Pond Cypress-1,Riparian,1,99,95,25
@@ -38,13 +38,13 @@ California Coastal Live Oak Woodland and Savanna,Coast Live Oak-California Walnu
 California Coastal Redwood Forest,Redwood-1,Conifer,0,100,95,95
 California Lower Montane Blue Oak-Foothill Pine Woodland and Savanna,Blue Oak-California Foothill Pine-1,Hardwood,0,99,25,25
 California Maritime Chaparral,Woolyleaf Manzanita-Point Reyes Ceanothus-4,Shrubland,0,99,60,0
-California Mesic Chaparral,Chamise-Scrub Oak-4,Shrubland,0,99,60,0
-California Mesic Serpentine Grassland,Serpentine Reedgrass-Sandberg Bluegrass-2,Grassland,0,99,0,0
+California Mesic Chaparral,Chamise-Scrub Oak-4,Shrubland,0,99,75,0
+California Mesic Serpentine Grassland,Serpentine Reedgrass-Sandberg Bluegrass-2,Grassland,0,95,0,0
 California Montane Jeffrey Pine(-Ponderosa Pine) Woodland,Jeffrey Pine-1,Conifer,0,99,60,60
 California Montane Riparian Systems,Black Cottonwood-Arroyo Willow-Madrone-3,Riparian,1,99,95,80
-California Montane Woodland and Chaparral,Greenleaf Manzanita-Whitethorn Ceanothus-3,Shrubland,0,99,60,25
+California Montane Woodland and Chaparral,Greenleaf Manzanita-Whitethorn Ceanothus-3,Shrubland,0,99,75,25
 California Northern Coastal Grassland,Tufted Hair Grass-Coastal Sedge-2,Grassland,0,99,0,0
-California Xeric Serpentine Chaparral,Chamise-Scrub Oak-4,Shrubland,0,99,60,0
+California Xeric Serpentine Chaparral,Chamise-Scrub Oak-4,Shrubland,0,95,60,0
 Caribbean Coastal Wetland Systems,Mangrove-4,Riparian,1,99,95,60
 Caribbean Swamp Systems,Red Bay-Sweetbay Magnolia-5,Riparian,1,99,95,25
 Central and South Texas Coastal Fringe Forest and Woodland,Live Oak-Seacoast Bluestem-3,Hardwood,0,100,85,85
@@ -52,22 +52,22 @@ Central and Southern Appalachian Montane Oak Forest,Red Oak-Chestnut-Black Birch
 Central and Southern Appalachian Spruce-Fir Forest,Red Spruce-Fir-Yellow Birch-5,Conifer,0,100,95,95
 Central and Southern California Mixed Evergreen Woodland,Canyon Live Oak-Coulter Pine-1,Hardwood,0,99,60,60
 Central and Upper Texas Coast Dune and Coastal Grassland,Shore Little Bluestem-Gulf Cordgrass-2,Grassland,1,99,0,0
-Central Appalachian Alkaline Glade and Woodland,Redcedar-Chinquapin Oak-Redbud-2,Savanna,0,99,10,10
-Central Appalachian Dry Oak-Pine Forest,Chestnut Oak-Virginia Pine-White Pine-3,Hardwood-Conifer,0,100,95,95
-Central Appalachian Pine-Oak Rocky Woodland,Red Pine-Pitch Pine-Black Oak-3,Hardwood-Conifer,0,99,60,60
+Central Appalachian Alkaline Glade and Woodland,Redcedar-Chinquapin Oak-Redbud-2,Savanna,0,95,25,10
+Central Appalachian Dry Oak-Pine Forest,Chestnut Oak-Virginia Pine-White Pine-3,Hardwood-Conifer,0,100,85,85
+Central Appalachian Pine-Oak Rocky Woodland,Red Pine-Pitch Pine-Black Oak-3,Hardwood-Conifer,0,95,60,60
 Central Atlantic Coastal Plain Maritime Forest,Live Oak-Wax Myrtle-3,Hardwood,0,100,95,60
 Central Atlantic Coastal Plain Nonriverine Swamp and Wet Hardwood Forest,Atlantic White Cedar-4,Riparian,1,100,95,95
 Central Atlantic Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,Longleaf Pine-Slash Pine-Saw Palmetto-1,Riparian,1,99,80,60
 Central Florida Pine Flatwoods,Longleaf Pine-Slash Pine-Saw Palmetto-1,Riparian,1,99,80,60
-Central Interior and Appalachian Floodplain Systems,American Sycamore-Silver Maple-3,Riparian,1,99,95,95
-Central Interior and Appalachian Floodplain Systems,Pecan-American Sycamore-Schumards Oak-1,Riparian,1,99,95,95
-Central Interior and Appalachian Floodplain Systems,Silver Maple-American Sycamore-Black Willow-3,Riparian,1,99,95,95
+Central Interior and Appalachian Floodplain Systems,American Sycamore-Silver Maple-3,Riparian,1,99,95,85
+Central Interior and Appalachian Floodplain Systems,Pecan-American Sycamore-Schumards Oak-1,Riparian,1,99,95,85
+Central Interior and Appalachian Floodplain Systems,Silver Maple-American Sycamore-Black Willow-3,Riparian,1,99,95,85
 Central Interior and Appalachian Riparian Systems,River Birch-American Sycamore-3,Riparian,1,99,95,95
 Central Interior and Appalachian Riparian Systems,Sugarberry-Bur Oak-Green Ash-1,Riparian,1,99,95,95
 Central Interior and Appalachian Shrub-Herbaceous Wetland Systems,Upright Sedge-Bluejoint Grass-2,Riparian,1,99,0,0
 Central Interior and Appalachian Swamp Systems,Red Maple-Black Ash-Blackgum-5,Riparian,1,99,95,95
-Central Interior Highlands Calcareous Glade and Barrens,Little Bluestem-Big Bluestem-Rosinweed-1,Grassland,0,99,25,25
-Central Interior Highlands Dry Acidic Glade and Barrens,Post Oak-Blackjack Oak-Black Hickory-1,Hardwood,0,99,25,25
+Central Interior Highlands Calcareous Glade and Barrens,Little Bluestem-Big Bluestem-Rosinweed-1,Grassland,0,95,25,10
+Central Interior Highlands Dry Acidic Glade and Barrens,Post Oak-Blackjack Oak-Black Hickory-1,Hardwood,0,95,25,10
 Central Mixedgrass Prairie,Bluebunch Wheatgrass-Big Bluestem-Little Bluestem-2,Grassland,0,99,0,0
 Central Tallgrass Prairie,Big Bluestem-Switchgrass-2,Grassland,0,99,0,0
 Chihuahuan Creosotebush Desert Scrub,Creosote-Tarwort-5,Shrubland,0,25,25,0
@@ -94,16 +94,16 @@ Columbia Plateau Scabland Shrubland,Low Sage-Scabland Sage-5,Shrubland,0,25,25,0
 Columbia Plateau Steppe and Grassland,Indian Ricegrass-Squirreltail-4,Grassland,0,99,0,0
 Columbia Plateau Western Juniper Woodland and Savanna,Western Juniper-Low Sage-3,Conifer,0,99,25,25
 Crosstimbers Oak Forest and Woodland,Post Oak-Blackjack Oak-Big Bluestem-1,Hardwood,0,100,85,85
-East Cascades Mesic Montane Mixed-Conifer Forest and Woodland,Douglas Fir-Grand Fir Mix-3,Conifer,0,100,85,85
+East Cascades Mesic Montane Mixed-Conifer Forest and Woodland,Douglas Fir-Grand Fir Mix-3,Conifer,0,100,95,95
 East Cascades Oak-Ponderosa Pine Forest and Woodland,Ponderosa Pine-Oregon White Oak-1,Conifer,0,100,85,85
 East Gulf Coastal Plain Dune and Coastal Grassland,Sea Oats-5,Grassland,0,99,0,0
 East Gulf Coastal Plain Interior Shortleaf Pine-Oak Forest,Shortleaf Pine-Oaks-1,Hardwood-Conifer,0,100,95,95
 East Gulf Coastal Plain Interior Upland Longleaf Pine Woodland,Longleaf Pine-Pineland Threeawn-Beyrich Threeawn-1,Conifer,0,99,60,60
-East Gulf Coastal Plain Jackson Plain Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,25,25
+East Gulf Coastal Plain Jackson Plain Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,10,10
 East Gulf Coastal Plain Limestone Forest,Post Oak-Chinquapin Oak-Shortleaf Pine-1,Hardwood,0,100,95,95
 East Gulf Coastal Plain Maritime Forest,Slash Pine-Myrtle Oak-Saw Palmetto-1,Hardwood-Conifer,0,100,80,60
 East Gulf Coastal Plain Near-Coast Pine Flatwoods,Longleaf Pine-Slash Pine-Saw Palmetto-1,Riparian,0.5,99,80,60
-East Gulf Coastal Plain Northern Dry Upland Hardwood Forest,White Oak-Post Oak-Hickory-1,Hardwood,0,100,95,95
+East Gulf Coastal Plain Northern Dry Upland Hardwood Forest,White Oak-Post Oak-Hickory-1,Hardwood,0,100,85,85
 East Gulf Coastal Plain Northern Loess Bluff Forest,Beech-White Oak-Cucumber Tree-3,Hardwood,0,100,95,95
 East Gulf Coastal Plain Northern Loess Plain Oak-Hickory Upland,White Oak-Post Oak-Hickory-1,Hardwood,0,99,95,95
 East Gulf Coastal Plain Northern Mesic Hardwood Slope Forest,Beech-Cherrybark Oak-Tulip Tree-3,Hardwood,0,100,95,95
@@ -112,12 +112,12 @@ East Gulf Coastal Plain Southern Loblolly-Hardwood Flatwoods,Loblolly Pine-Willo
 East Gulf Coastal Plain Southern Loess Bluff Forest,Cherrybark Oak-Sweetgum-Beech-3,Hardwood,0,100,95,95
 East-Central Texas Plains Post Oak Savanna and Woodland,Big Bluestem-Little Bluestem-Post Oak-1,Grassland,0,99,25,25
 East-Central Texas Plains Southern Pine Forest and Woodland,Loblolly Pine- Post Oak-Big Bluestem-1,Conifer,0,100,85,85
-Eastern Boreal Floodplain,Black Ash-Balsam Poplar-Balsam Fir-3,Hardwood,0,99,95,95
-Eastern Great Plains Floodplain Systems,Eastern Cottonwood-Green Ash-Ginger-3,Riparian,1,99,95,95
+Eastern Boreal Floodplain,Black Ash-Balsam Poplar-Balsam Fir-3,Hardwood,1,99,95,85
+Eastern Great Plains Floodplain Systems,Eastern Cottonwood-Green Ash-Ginger-3,Riparian,1,99,95,85
 Eastern Great Plains Tallgrass Aspen Parkland,Quaking Aspen-Balsam Poplar-Big Bluestem-1,Hardwood,0,99,95,95
 Eastern Great Plains Wet Meadow-Prairie-Marsh,Big Bluestem-Switchgrass-2,Grassland,1,99,0,0
-Eastern Highland Rim Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,25,25
-Eastern Serpentine Woodland,White Oak-Pine-Serpentine Forbs-1,Hardwood-Conifer,0,99,60,60
+Eastern Highland Rim Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,25,10
+Eastern Serpentine Woodland,White Oak-Pine-Serpentine Forbs-1,Hardwood-Conifer,0,95,60,60
 Edwards Plateau Dry-Mesic Slope Forest and Woodland,Ashes Juniper-Buckley Oak-Texas Ash-1,Hardwood,0,100,85,85
 Edwards Plateau Limestone Savanna and Woodland,Texas Live Oak-Buckleys Oak-Little Bluestem-1,Hardwood,0,99,25,25
 Edwards Plateau Limestone Shrubland,Sandpaper Oak-Pinchots Juniper-1,Conifer,0,99,60,0
@@ -137,8 +137,8 @@ Great Lakes Spruce-Fir,Black Spruce-White Spruce-Balsam Fir-4,Conifer,0,99,95,95
 Great Lakes Wet-Mesic Lakeplain Prairie,Upright Sedge-Little Bluestem-Common Mountain Mint-2,Riparian,1,99,0,0
 Great Lakes Wooded Dune and Swale,Beachgrass-Northern White Cedar-5,Riparian,0.5,99,60,60
 Great Plains Prairie Pothole,Woolyfruit Sedge-Spikebrush-Western Wheatgrass-4,Grassland,0,99,0,0
-Gulf and Atlantic Coastal Plain Floodplain Systems,Water Oak-American Elm-Swampprivet-3,Riparian,1,99,95,80
-Gulf and Atlantic Coastal Plain Floodplain Systems,Willow Oak-Water Oak-American Elm-3,Riparian,1,99,95,95
+Gulf and Atlantic Coastal Plain Floodplain Systems,Water Oak-American Elm-Swampprivet-3,Riparian,1,99,95,85
+Gulf and Atlantic Coastal Plain Floodplain Systems,Willow Oak-Water Oak-American Elm-3,Riparian,1,99,95,85
 Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,American Sycamore-Sugarberry-Pine-3,Riparian,1,99,95,95
 Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Cedar Elm-Hackberry-Green Ash-1,Riparian,1,99,95,95
 Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Loblolly Pine-Southern Magnolia-Cypress-1,Riparian,1,99,95,95
@@ -173,13 +173,13 @@ Inter-Mountain Basins Semi-Desert Shrub-Steppe,Sand Sage-Jointfir-3,Shrubland,0,
 Inter-Mountain Basins Semi-Desert Shrub-Steppe,Spiny Hopsage-Jointfir-5,Shrubland,0,60,10,0
 Inter-Mountain Basins Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,1,0,0
 Inter-Mountain Basins Subalpine Limber-Bristlecone Pine Woodland,Limber Pine-Bristlecone Pine-3,Conifer,0,99,60,60
-Klamath-Siskiyou Lower Montane Serpentine Mixed Conifer Woodland,Douglas Fir-Incense Cedar-1,Conifer,0,99,60,60
-Klamath-Siskiyou Upper Montane Serpentine Mixed Conifer Woodland,Douglas Fir-Incense Cedar-1,Conifer,0,99,60,60
-Klamath-Siskiyou Xeromorphic Serpentine Savanna and Chaparral,Jeffery Pine-Roemers Fescue-Oatgrass-1,Conifer,0,99,60,10
+Klamath-Siskiyou Lower Montane Serpentine Mixed Conifer Woodland,Douglas Fir-Incense Cedar-1,Conifer,0,95,60,60
+Klamath-Siskiyou Upper Montane Serpentine Mixed Conifer Woodland,Douglas Fir-Incense Cedar-1,Conifer,0,95,60,60
+Klamath-Siskiyou Xeromorphic Serpentine Savanna and Chaparral,Jeffery Pine-Roemers Fescue-Oatgrass-1,Conifer,0,95,60,10
 Laurentian Pine-Oak Barrens,White Oak-White Pine-Pennsylvania Sedge-1,Hardwood-Conifer,0,99,25,25
 Laurentian-Acadian Alkaline Conifer-Hardwood Swamp,Northern White Cedar-5,Riparian,1,99,95,95
-Laurentian-Acadian Floodplain Systems,Silver Maple-Green Ash-Black Ash-3,Riparian,1,99,95,95
-Laurentian-Acadian Jack Pine Barrens and Forest,Jack Pine-Pennsylvania Sedge-1,Conifer,0,100,60,60
+Laurentian-Acadian Floodplain Systems,Silver Maple-Green Ash-Black Ash-3,Riparian,1,99,95,85
+Laurentian-Acadian Jack Pine Barrens and Forest,Jack Pine-Pennsylvania Sedge-1,Conifer,0,100,75,60
 Laurentian-Acadian Northern Hardwoods Forest,Sugar Maple-Eastern Hemlock-5,Hardwood,0,100,95,95
 Laurentian-Acadian Northern Hardwoods Forest - Hemlock,Sugar Maple-Eastern Hemlock-5,Hardwood,0,100,95,95
 Laurentian-Acadian Northern Pine Forest,Red Pine-White Pine-Balsam Fir-1,Hardwood-Conifer,0,100,95,95
@@ -188,7 +188,7 @@ Laurentian-Acadian Pine-Hemlock-Hardwood Forest,Eastern Hemlock-White Pine-Yello
 Laurentian-Acadian Shrub-Herbaceous Wetland Systems,Upright Sedge-Bluejoint Grass-2,Riparian,1,99,0,0
 Laurentian-Acadian Shrub-Herbaceous Wetland Systems,Upright Sedge-Bluejoint Grass-5,Riparian,1,99,0,0
 Laurentian-Acadian Swamp Systems,Northern White Cedar-5,Riparian,1,99,95,95
-Llano Uplift Acidic Forest-Woodland-Glade,Live Oak-Post Oak-Little Bluestem-1,Hardwood,0,100,85,85
+Llano Uplift Acidic Forest-Woodland-Glade,Live Oak-Post Oak-Little Bluestem-1,Hardwood,0,95,60,60
 Lower Mississippi Alluvial Plain Grand Prairie,Big Bluestem-Switchgrass-1,Grassland,0,99,0,0
 Lower Mississippi River Dune Woodland and Forest,Post Oak-Sassafras-Pondberry-1,Hardwood,0,100,85,85
 Lower Mississippi River Flatwoods,Willow Oak-Overcup Oak-3,Hardwood,1,99,95,95
@@ -198,12 +198,12 @@ Madrean Lower Montane Pine-Oak Forest and Woodland,Arizona Pine-Emory Oak-1,Coni
 Madrean Oriental Chaparral,Gambel Oak-Serviceberry-3,Shrubland,0,99,60,0
 Madrean Pinyon-Juniper Woodland,Alligator Juniper-Emory Oak-3,Conifer,0,99,60,60
 Madrean Upper Montane Conifer-Oak Forest and Woodland,Douglas Fir-Silverleaf Oak-1,Conifer,0,100,85,85
-Mediterranean California Alpine Dry Tundra,Nearlyblack Sedge-Shorthair-5,Grassland,0,99,0,0
+Mediterranean California Alpine Dry Tundra,Nearlyblack Sedge-Shorthair-5,Grassland,0,95,0,0
 Mediterranean California Alpine Fell-Field,Pink Mountain Heath-Wax Currant-5,Shrubland,0,99,60,0
-Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland,Ponderosa Pine-Incense Cedar-1,Conifer,0,100,85,85
+Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland,Ponderosa Pine-Incense Cedar-1,Conifer,0,100,85,75
 Mediterranean California Lower Montane Black Oak-Conifer Forest and Woodland,Ponderosa Pine-California Black Oak-1,Conifer,0,100,85,85
-Mediterranean California Mesic Mixed Conifer Forest and Woodland,Douglas Fir-White Fir-Sugar Pine-1,Conifer,0,100,85,85
-Mediterranean California Mesic Serpentine Woodland and Chaparral,Sargents Cypress-LeatherOak-3,Shrubland,0,99,60,25
+Mediterranean California Mesic Mixed Conifer Forest and Woodland,Douglas Fir-White Fir-Sugar Pine-1,Conifer,0,100,95,95
+Mediterranean California Mesic Serpentine Woodland and Chaparral,Sargents Cypress-LeatherOak-3,Shrubland,0,95,75,25
 Mediterranean California Mixed Evergreen Forest,Douglas Fir-Tanoak-Pacific Madrone-1,Conifer,0,100,95,95
 Mediterranean California Mixed Oak Woodland,Oregon White Oak-RoemersFescue-Oatgrass-1,Hardwood,0,99,60,60
 Mediterranean California Red Fir Forest,Red Fir-1,Conifer,0,100,95,95
@@ -213,12 +213,12 @@ Mediterranean California Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,
 Mediterranean California Subalpine Meadow,Western Yarrow-Rothrock Sage-2,Grassland,0,99,0,0
 Mediterranean California Subalpine Woodland,Whitebark Pine-3,Conifer,0,99,60,60
 Middle Rocky Mountain Montane Douglas-fir Forest and Woodland,Douglas Fir-Ninebark-3,Conifer,0,100,85,85
-Middle Rocky Mountain Montane Douglas-fir Forest and Woodland - Fire-maintained Savanna,Douglas Fir-Idaho Fescue-1,Conifer,0,100,85,85
+Middle Rocky Mountain Montane Douglas-fir Forest and Woodland - Fire-maintained Savanna,Douglas Fir-Idaho Fescue-1,Conifer,0,100,85,25
 Mississippi Delta Maritime Forest,Slash Pine-Myrtle Oak-Saw Palmetto-1,Hardwood-Conifer,0,100,80,60
 Mississippi River Alluvial Plain Dry-Mesic Loess Slope Forest,Beech-Tuliptree-3,Hardwood,0,100,95,95
 Mogollon Chaparral,Pointleaf Manzanita-Desert Ceanothus-Birchleaf Mountain Mahogany-4,Shrubland,0,99,60,0
 Mojave Mid-Elevation Mixed Desert Scrub,Blackbrush-Jointfir-5,Shrubland,0,25,25,0
-Nashville Basin Limestone Glade and Woodland,Dropseed-Little Bluestem-Post Oak-1,Savanna,0,99,10,10
+Nashville Basin Limestone Glade and Woodland,Dropseed-Little Bluestem-Post Oak-1,Savanna,0,95,25,10
 No Data,No Data,No Data,,,,
 North American Warm Desert Riparian Systems,Alkali Sacaton-Vine Mesquite-5,Riparian,1,99,60,25
 North American Warm Desert Riparian Systems,Cottonwood-Goodings Willow-Mesquite-1,Riparian,1,99,60,25
@@ -235,14 +235,14 @@ North Pacific Hypermaritime Sitka Spruce Forest,Sitka Spruce-Western Hemlock-5,C
 North Pacific Hypermaritime Western Red-cedar-Western Hemlock Forest,Red Cedar-Western Hemlock-5,Conifer,0,100,95,95
 North Pacific Lowland Riparian Forest and Shrubland,Black Cottonwood-Bigleaf Maple-Western Redcedar-5,Riparian,1,100,95,60
 North Pacific Maritime Dry-Mesic Douglas-fir-Western Hemlock Forest,Douglas Fir-Western Hemlock-3,Conifer,0,100,95,95
-North Pacific Maritime Mesic Subalpine Parkland,Mountain Hemlock-Mountain Heath-5,Conifer,0,99,95,95
-North Pacific Maritime Mesic-Wet Douglas-fir-Western Hemlock Forest,Douglas Fir-Western Hemlock-5,Conifer,0,100,95,95
+North Pacific Maritime Mesic Subalpine Parkland,Mountain Hemlock-Mountain Heath-5,Conifer,0,100,60,25
+North Pacific Maritime Mesic-Wet Douglas-fir-Western Hemlock Forest,Douglas Fir-Western Hemlock-5,Conifer,0.5,100,95,95
 North Pacific Mesic Western Hemlock-Silver Fir Forest,Western Hemlock-5,Conifer,0,100,95,95
 North Pacific Montane Grassland,Wildrye-Idaho Fescue-2,Grassland,0,99,0,0
 North Pacific Montane Riparian Woodland and Shrubland - Dry,White Alder-Devils Club-5,Riparian,1,99,60,30
 North Pacific Montane Riparian Woodland and Shrubland - Wet,Red Alder-Bigleaf Maple-Vine Maple-5,Riparian,1,99,60,30
 North Pacific Montane Shrubland,Huckelberry-Beargrass-5,Shrubland,0,99,60,0
-North Pacific Mountain Hemlock Forest - Wet,Mountain Hemlock-Devils Club-5,Conifer,0,100,95,95
+North Pacific Mountain Hemlock Forest - Wet,Mountain Hemlock-Devils Club-5,Conifer,0.5,100,95,95
 North Pacific Mountain Hemlock Forest - Xeric,Mountain Hemlock-Huckleberry-5,Conifer,0,100,95,95
 North Pacific Oak Woodland,Oregon White Oak-RoemersFescue-Oatgrass-1,Hardwood,0,99,60,60
 North Pacific Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,1,0,0
@@ -257,9 +257,9 @@ North-Central Interior Sand and Gravel Tallgrass Prairie,Little Bluestem-Sideoat
 North-Central Interior Wet Flatwoods,Pin Oak-Swamp White Oak-Maple-5,Hardwood,1,99,95,95
 North-Central Oak Barrens,Black Oak-Northern Pin Oak-Little Bluestem-1,Hardwood,0,99,25,25
 Northeastern Interior Dry-Mesic Oak Forest,White Oak-Black Oak-White Pine-1,Hardwood,0,100,95,95
-Northeastern Interior Pine Barrens,Pitch Pine-Scrub Oak-1,Conifer,0,99,25,25
+Northeastern Interior Pine Barrens,Pitch Pine-Scrub Oak-1,Conifer,0,99,60,25
 Northern and Central California Dry-Mesic Chaparral,Chamise-Manzanita-4,Shrubland,0,99,60,0
-Northern Atlantic Coastal Plain Dune and Swale,American Beachgrass-Northern Bayberry-1,Grassland,0.5,99,10,10
+Northern Atlantic Coastal Plain Dune and Swale,American Beachgrass-Northern Bayberry-1,Grassland,0.5,99,10,0
 Northern Atlantic Coastal Plain Dune and Swale,Sea Oats-1,Grassland,0,99,0,0
 Northern Atlantic Coastal Plain Hardwood Forest,White Oak-Black Oak-Little Bluestem-1,Hardwood,0,100,95,95
 Northern Atlantic Coastal Plain Maritime Forest,Scarlet Oak-Black Oak-American Holly-1,Hardwood-Conifer,0,100,95,95
@@ -307,7 +307,7 @@ Ozark-Ouachita Shortleaf Pine-Bluestem Woodland,Shortleaf Pine-Post Oak-Big Blue
 Ozark-Ouachita Shortleaf Pine-Oak Forest and Woodland,Shortleaf Pine-White Oak-Post Oak-1,Conifer,0,100,85,85
 Pacific Coastal Marsh Systems,Cattail-Spikebrush-2,Riparian,1,99,0,0
 Paleozoic Plateau Bluff and Talus,Eastern Redcedar-White Oak-Sideoats Grama-2,Hardwood-Conifer,0,99,95,95
-Pennyroyal Karst Plain Prairie and Barrens,Little Bluestem-Indiangrass-Southern Red Oak-2,Grassland,0,99,25,25
+Pennyroyal Karst Plain Prairie and Barrens,Little Bluestem-Indiangrass-Southern Red Oak-2,Grassland,0,99,25,10
 PerennialIce/Snow,PerennialIce/Snow,PerennialIce/Snow,0,0,0,0
 Piedmont Hardpan Woodland and Forest,Post Oak-White Ash-Little Bluestem Hardpan-1,Hardwood,0,100,85,85
 Rocky Mountain Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0
@@ -331,16 +331,16 @@ Rocky Mountain Poor-Site Lodgepole Pine Forest,Lodgepole Pine-Kinnikinnick-5,Con
 Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-3,Conifer,0,100,85,85
 Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-4,Conifer,0,100,85,85
 Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-5,Conifer,0,100,85,85
-Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-3,Conifer,0,100,85,85
-Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-4,Conifer,0,100,85,85
-Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-5,Conifer,0,100,85,85
+Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-3,Conifer,0.5,100,95,95
+Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-4,Conifer,0.5,100,95,95
+Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spruce-Subalpine Fir-Menziesia-5,Conifer,0.5,100,95,95
 Rocky Mountain Subalpine/Upper Montane Riparian Systems,Black Cottonwood-Narrowleaf Willow-3,Riparian,1,99,95,80
 Rocky Mountain Subalpine-Montane Limber-Bristlecone Pine Woodland,Bristlecone Pine-3,Conifer,0,99,60,60
 Rocky Mountain Subalpine-Montane Mesic Meadow,Fleabane-Lupine-4,Grassland,0,99,0,0
 Sierra Nevada Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0
 Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland,Lodgepole Pine-3,Conifer,0,100,85,85
 Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland - Dry,Lodgepole Pine-Foxtail Pine-1,Conifer,0,100,85,85
-Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland - Wet,Lodgepole Pine-Pinemat Manzanita-3,Conifer,0,100,85,85
+Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland - Wet,Lodgepole Pine-Pinemat Manzanita-3,Conifer,0.5,100,85,85
 Sierran-Intermontane Desert Western White Pine-White Fir Woodland,Western White Pine-White Fir-1,Conifer,0,99,60,60
 Sonora-Mojave Creosotebush-White Bursage Desert Scrub,Creosote-Bursage-5,Shrubland,0,25,25,0
 Sonora-Mojave Mixed Salt Desert Scrub,Shadscale-Winterfat-5,Shrubland,0,25,25,0
@@ -350,13 +350,13 @@ Sonoran Mid-Elevation Desert Scrub,Ocotillo-Buckwheat-5,Shrubland,0,25,25,0
 Sonoran Paloverde-Mixed Cacti Desert Scrub,Saguaro-Palo Verde-5,Shrubland,0,25,25,0
 South Florida Cypress Dome,Pond Cypress-1,Riparian,1,99,95,25
 South Florida Dwarf Cypress Savanna,Pond Cypress-1,Savanna,0,99,10,10
-South Florida Everglades Sawgrass Marsh,Sawgrass-2,Riparian,1,99,0,0
+South Florida Everglades Sawgrass Marsh,Sawgrass-2,Riparian,1,100,0,0
 South Florida Hardwood Hammock,Gumbo-limbo-Poisonwood-5,Hardwood,0,99,95,95
 South Florida Pine Flatwoods,Florida Slash Pine-Saw Palmetto-1,Conifer,0.5,99,80,60
 South Florida Pine Rockland,Florida Slash Pine-Wild Guava-False Tamarind-1,Conifer,0,99,80,60
 South Texas Lomas,Texas Ebony-Berlandiers Fiddlewood-5,Shrubland,0,25,25,0
 South Texas Sand Sheet Grassland,Shore Little Bluestem-Live Oak-2,Grassland,0,99,10,10
-South-Central Interior Large Floodplain,American Sycamore-River Birch-Sugarberry-3,Riparian,1,99,95,95
+South-Central Interior Large Floodplain,American Sycamore-River Birch-Sugarberry-3,Riparian,1,99,95,85
 South-Central Interior Mesophytic Forest,Sugar Maple-Beech-Basswood-3,Hardwood,0,100,95,95
 South-Central Interior/Upper Coastal Plain Flatwoods,Post Oak-Blackjack Oak-Persimmon-1,Hardwood,0.5,99,95,95
 South-Central Interior/Upper Coastal Plain Flatwoods,White Oak-Post Oak-Sweetgum-1,Hardwood,0.5,99,95,95
@@ -379,21 +379,21 @@ Southern California Coastal Scrub,Coastal Sage-Black Sage-4,Shrubland,0,99,60,0
 Southern California Dry-Mesic Chaparral,Chamise-Manzanita-4,Shrubland,0,99,60,0
 Southern California Oak Woodland and Savanna,Coast Live Oak-California Walnut-1,Hardwood,0,99,25,25
 Southern Coastal Plain Blackland Prairie and Woodland,Post Oak-Eastern Redcedar-Little Bluestem-1,Grassland,0,99,10,10
-Southern Coastal Plain Dry Upland Hardwood Forest,Post Oak-Chinquapin Oak-Shortleaf Pine-1,Hardwood,0,100,95,95
+Southern Coastal Plain Dry Upland Hardwood Forest,Post Oak-Chinquapin Oak-Shortleaf Pine-1,Hardwood,0,100,85,85
 Southern Coastal Plain Mesic Slope Forest,Beech-Cherrybark Oak-Tulip Tree-3,Hardwood,0,100,95,95
 Southern Coastal Plain Nonriverine Cypress Dome,Pond Cypress-1,Riparian,1,99,95,25
 Southern Coastal Plain Seepage Swamp and Baygall,Sweetbay-Swamp Tupelo-Swamp Bay-3,Riparian,1,99,95,95
 Southern Colorado Plateau Sand Shrubland,Mormon Tea-Fringed Sage-3,Shrubland,0,25,25,0
 Southern Crowley`s Ridge Mesic Loess Slope Forest,Beech-Tuliptree-3,Hardwood,0,100,95,95
 Southern Interior Low Plateau Dry-Mesic Oak Forest,White Oak-Black Oak-Chestnut Oak-2,Hardwood,0,100,95,95
-Southern Piedmont Dry Oak(-Pine) Forest,White Oak-Southern Red Oak-Shortleaf Pine-1,Hardwood-Conifer,0,100,95,95
+Southern Piedmont Dry Oak(-Pine) Forest,White Oak-Southern Red Oak-Shortleaf Pine-1,Hardwood-Conifer,0,100,85,85
 Southern Piedmont Mesic Forest,Beech-3,Hardwood,0,100,95,95
-Southern Ridge and Valley/Cumberland Dry Calcareous Forest,Post Oak-White Oak-Eastern Redcedar-1,Hardwood,0,100,95,95
+Southern Ridge and Valley/Cumberland Dry Calcareous Forest,Post Oak-White Oak-Eastern Redcedar-1,Hardwood,0,100,85,85
 Southern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest and Woodland,Douglas Fir-White Fir-1,Conifer,0,100,85,85
 Southern Rocky Mountain Juniper Woodland and Savanna,Oneseed Juniper-Pinchots Juniper-3,Conifer,0,99,25,25
 Southern Rocky Mountain Juniper Woodland and Savanna,Two Needle Pinyon-Rocky Mountain Juniper-1,Conifer,0,99,25,25
-Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,Douglas Fir-White Fir-3,Conifer,0,100,85,85
-Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,White Fir-Limber Pine-3,Conifer,0,100,85,85
+Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,Douglas Fir-White Fir-3,Conifer,0,100,95,95
+Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,White Fir-Limber Pine-3,Conifer,0,100,95,95
 Southern Rocky Mountain Montane-Subalpine Grassland,Arizona Fescue-Mountain Muhly-1,Grassland,0,99,0,0
 Southern Rocky Mountain Pinyon-Juniper Woodland,Two Needle Pinyon-Rocky Mountain Juniper-3,Conifer,0,99,60,60
 Southern Rocky Mountain Ponderosa Pine Savanna,Ponderosa Pine-1,Conifer,0,99,95,95
@@ -428,8 +428,8 @@ Western Great Plains Depressional Wetland Systems,Western Wheatgrass-Needle Spik
 Western Great Plains Depressional Wetland Systems - Playa,Buffalo Grass-Blue Grama-2,Riparian,1,99,0,0
 Western Great Plains Depressional Wetland Systems - Saline,Alkali Sacaton-Saltgrass-2,Riparian,1,60,0,0
 Western Great Plains Dry Bur Oak Forest and Woodland,Bur Oak-Chokecherry-1,Hardwood,0,100,85,85
-Western Great Plains Floodplain Systems,American Sycamore-Cedar Elm-Texas Ash-1,Riparian,1,99,95,95
 Western Great Plains Floodplain Systems,Eastern Cottonwood-Sandbar Willow-Green Ash-3,Riparian,1,99,95,80
+Western Great Plains Floodplain Systems,American Sycamore-Cedar Elm-Texas Ash-1,Riparian,1,99,95,80
 Western Great Plains Foothill and Piedmont Grassland,Big Bluestem-Little Bluestem-Mountain Muhly-2,Grassland,0,99,0,0
 Western Great Plains Mesquite Woodland and Shrubland,Mesquite-Little Bluestem-Sideoats Grama-1,Shrubland,0,99,60,25
 Western Great Plains Sand Prairie,Sand Bluestem-Prairie Sandreed-2,Grassland,0,99,0,0
@@ -438,6 +438,6 @@ Western Great Plains Shortgrass Prairie,Blue Grama-Buffalo Grass-2,Grassland,0,9
 Western Great Plains Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,1,0,0
 Western Great Plains Tallgrass Prairie,Bluebunch Wheatgrass-Big Bluestem-Little Bluestem-2,Grassland,0,99,0,0
 Western Great Plains Wooded Draw and Ravine,Snowberry-Skunkbrush-2,Shrubland,0,99,60,10
-Western Highland Rim Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,25,25
+Western Highland Rim Prairie and Barrens,White Oak-Post Oak- Big Bluestem-1,Grassland,0,99,25,10
 Willamette Valley Upland Prairie and Savanna,Oregon White Oak-RoemersFescue-Oatgrass-1,Hardwood,0,99,10,10
 Wyoming Basins Dwarf Sagebrush Shrubland and Steppe,Wyoming Threetip Sage-Low Sage-5,Shrubland,0,60,10,0
