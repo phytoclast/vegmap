@@ -1,0 +1,99 @@
+BIOMENAME1,biome,wet,vegcover,woodycover,treecover
+California Chaparral,chaparral,0,99,60,0
+Chihuahuan Interior Chaparral,chaparral,0,99,60,0
+Southwestern (Arizona) Interior Chaparral,chaparral,0,99,60,0
+Caribbean Cloud and Montane Evergreen Forests,cloud forest,0,99,95,95
+Central American Cloud Forest,cloud forest,0,99,95,95
+Guatemalan Cloud Forest,cloud forest,0,99,95,95
+Veracruz Cloud Forest,cloud forest,0,99,95,95
+Oregonian Coastal Conifer Forest,coastal conifer forest,0,99,95,95
+Sitka Coastal Conifer Forest,coastal conifer forest,0,99,95,95
+California Coastalscrub,coastal scrub,0,99,60,0
+Great Basin Conifer Woodland,conifer woodland,0,99,60,25
+Chihuahuan Desertscrub Cochise-Tranpecos,desertscrub,0,25,25,0
+Chihuahuan Desertscrub Mampimi,desertscrub,0,25,25,0
+Chihuahuan Desertscrub Saldan,desertscrub,0,25,25,0
+Great Basin Desertscrub,desertscrub,0,25,25,0
+Mohave Desertscrub,desertscrub,0,25,25,0
+Sonoran Desertscrub Arizona Uplands,desertscrub,0,25,25,0
+Sonoran Desertscrub Central Gulf Coast,desertscrub,0,25,25,0
+Sonoran Desertscrub Lower Colorado River Valley,desertscrub,0,25,25,0
+Sonoran Desertscrub Plains of Sonora,desertscrub,0,25,25,0
+Sonoran Desertscrub Vizcaino,desertscrub,0,25,25,0
+Central American (Guanacaste) Dry Forest,dry deciduous forest,0,99,90,60
+Guerreran Dry Deciduous Forest,dry deciduous forest,0,99,90,60
+San Lucan Dry Deciduous Forest,dry deciduous forest,0,99,90,60
+Sinaloan Dry Deciduous (Monsoon) Forest,dry deciduous forest,0,99,90,60
+Yucatan Dry Deciduous Forest,dry deciduous forest,0,99,90,60
+Central American Evergreen Rain Forest,evergreen rain forest,0,99,95,95
+Veracruz Evergreen Rain Forest,evergreen rain forest,0,99,95,95
+California Evergreen Forest and Woodland,evergreen woodland,0,99,80,60
+Guatemalan Evergreen Forest and Woodland,evergreen woodland,0,99,80,60
+Guerreran Evergreen Forest and Woodland,evergreen woodland,0,99,80,60
+Madrean Evergreen Forest and Woodland,evergreen woodland,0,99,80,60
+San Lucan Evergreen Forest and Woodland,evergreen woodland,0,99,80,60
+Transvolcanic Evergreen Foreast and Woodland,evergreen woodland,0,99,80,60
+California Valley Grassland,grassland,0,99,0,0
+Gulf Coastal Grassland,grassland,0,99,0,0
+Permanent Ice and Snow,ice,0,0,0,0
+Open Water Lakes,lake,,,,
+"Plains Grassland, Midgrass Communities",midgrass prairie,0,99,0,0
+"Northeastern Deciduous Forest, Conifer & Deciduous",mixed deciduous forest,0,100,95,95
+Oregonian Deciduous and Evergreen Forests,mixed evergreen forest,0,99,60,60
+Southeastern Deciduous and Evergreen Forests,mixed evergreen forest,0,99,60,60
+"Southwestern Deciduous and Evergreen Forests, Balcones Subdi",mixed evergreen forest,0,99,60,60
+Cascade-Sierran Montane Conifer Forest,montane conifer forest,0,99,95,95
+Guatemalan Montane Conifer Forest,montane conifer forest,0,99,95,95
+Madrean Montane Conifer Forest,montane conifer forest,0,99,95,95
+Rocky Mountain Montane Conifer Forest,montane conifer forest,0,99,95,95
+Transvolcanic Montane Conifer Forest,montane conifer forest,0,99,95,95
+Campechian Montane Evergreen Forest,montane evergreen forest,0,99,95,95
+Great Basin Montane Scrub,montane scrub,0,99,60,0
+Central American Paramo,paramo,0,99,0,0
+Caribbean Dry Deciduous and Semi-deciduous Forests,semi-deciduous forest,0,99,90,60
+Tamaulipan Semi-deciduous Forest,semi-deciduous forest,0,99,90,60
+Yucatan Semi-deciduous Forest,semi-deciduous forest,0,99,90,60
+Semidesert Grassland,semidesert grassland,0,60,0,0
+Campechian Semi-evergreen Forest,semi-evergreen forest,0,99,90,60
+Caribbean Lowland Evergreen and Semi-evergreen Forests,semi-evergreen forest,0,99,90,60
+Central American Semi-evergreen Forest,semi-evergreen forest,0,99,90,60
+Floridian Evergreen Forest,semi-evergreen forest,0,99,90,60
+Nayarit Semi-evergreen Forest,semi-evergreen forest,0,99,90,60
+Veracruz Semi-evergreen Forest,semi-evergreen forest,0,99,90,60
+"Plains Grassland, Shortgrass Communities",shortgrass prairie,0,99,0,0
+Great Basin Shrub-Grassland,shrub-grassland,0,60,10,0
+Adirondack-Appalachian Subalpine Conifer Forest,subalpine forest,0,99,95,95
+Cascade-Sierran Subalpine Conifer Forest,subalpine forest,0,99,95,95
+Rocky Mountain Subalpine Conifer Forest,subalpine forest,0,99,95,95
+Alaska-Yukon Subarctic Conifer Conifer Forest,taiga,0,99,95,80
+Canadian Taiga,taiga,0,99,95,80
+"Plains Grassland, Tallgrass Communities",tallgrass prairie,0,99,0,0
+"Northeastern Deciduous Forest, Beech & Maple",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Maple & Basswood",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Mixed Mesophytic",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Oak & Chestnut",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Oak & Hickory",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Oak, Pine & Hickory",temperate deciduous forest,0,99,95,95
+"Northeastern Deciduous Forest, Western Mesophytic",temperate deciduous forest,0,99,95,95
+Undifferentiated Nearctic Wetlands,temperate wetlands,1,99,25,0
+Caribbean Thornscrub,thornscrub,0,60,60,0
+Guerreran Thornscrub,thornscrub,0,60,60,0
+San Lucan Thornscrub,thornscrub,0,60,60,0
+Sinaloan Thornscrub,thornscrub,0,60,60,0
+Tamaulipan Thornscrub,thornscrub,0,60,60,0
+Undifferentiated Neotropical Wetlands,tropical wetlands,1,99,25,0
+Adirondack-Appalachian Alpine Tundra,tundra,0,99,10,0
+Alaskan Tundra,tundra,0,99,10,0
+Alaskan-Alpine Tundra,tundra,0,99,10,0
+Canadian (Low Arctic) Tundra,tundra,0,99,10,0
+Cascade-Sierran Alpine Tundra,tundra,0,99,10,0
+Greenlandian Coastal Tundra,tundra,0,99,10,0
+Polar (High Arctic) Tundra,tundra,0,99,10,0
+Rocky Mountain and Great Basin Alpine Tundra,tundra,0,99,10,0
+Transvolcanic Alpine Tundra,tundra,0,99,10,0
+Campechian and Veracruz Savanna Grassland,warm savanna,0,99,10,10
+Caribbean Savanna Grassland,warm savanna,0,99,10,10
+Central American Savanna Grassland,warm savanna,0,99,10,10
+Guerreran Savanna Grassland,warm savanna,0,99,10,10
+Alaskan Swamp Scrub,warm swamp,1,99,60,0
+Southeastern Swamp and Riparian Forest,warm swamp,1,99,95,95
