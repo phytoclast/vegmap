@@ -42,14 +42,17 @@ bps.wet <-  rast(cbind(x=bps.df$x,y=bps.df$y,bps.wet=bps.df$wet), type="xyz", cr
 bps.veg <-  rast(cbind(x=bps.df$x,y=bps.df$y,bps.veg=bps.df$vegcover), type="xyz", crs=crs(bps))
 bps.wood <-  rast(cbind(x=bps.df$x,y=bps.df$y,bps.wood=bps.df$woodycover), type="xyz", crs=crs(bps))
 bps.tree <-  rast(cbind(x=bps.df$x,y=bps.df$y,bps.tree=bps.df$treecover), type="xyz", crs=crs(bps))
+bps.ever <-  rast(cbind(x=bps.df$x,y=bps.df$y,bps.ever=bps.df$evergreen), type="xyz", crs=crs(bps))
 bps.wet <- aggregate(bps.wet, fact= 3, fun='mean', na.rm=T)
 bps.veg <- aggregate(bps.veg, fact= 3, fun='mean', na.rm=T)
 bps.wood <- aggregate(bps.wood, fact= 3, fun='mean', na.rm=T)
 bps.tree <- aggregate(bps.tree, fact= 3, fun='mean', na.rm=T)
+bps.ever <- aggregate(bps.ever, fact= 3, fun='mean', na.rm=T)
 bps.wet <-  project(bps.wet, Tw)
 bps.veg <-  project(bps.veg, Tw)
 bps.wood <-  project(bps.wood, Tw)
 bps.tree <-  project(bps.tree, Tw)
+bps.ever <-  project(bps.ever, Tw)
 
 
 kuchler <- sf::read_sf('data/kuchler_DD83.shp')
@@ -68,10 +71,12 @@ kuchler.wet <- rast(fasterize(kuchler, raster(Tw), field = 'wet'))
 kuchler.veg <- rast(fasterize(kuchler, raster(Tw), field = 'vegcover'))
 kuchler.wood <- rast(fasterize(kuchler, raster(Tw), field = 'woodycover'))
 kuchler.tree <- rast(fasterize(kuchler, raster(Tw), field = 'treecover'))
+kuchler.ever <- rast(fasterize(kuchler, raster(Tw), field = 'evergreen'))
 names(kuchler.wet) <- 'kuchler.wet'
 names(kuchler.veg) <- 'kuchler.veg'
 names(kuchler.wood) <- 'kuchler.wood'
 names(kuchler.tree) <- 'kuchler.tree'
+names(kuchler.ever) <- 'kuchler.ever'
 writeRaster(kuchler.tree, 'nam5k/kuchler.tree.tif', overwrite=T)
 
 wwfeco <- sf::read_sf('data/ecoregions.shp')
@@ -84,10 +89,12 @@ wwfeco.wet <- rast(fasterize(wwfeco, raster(Tw), field = 'wet'))
 wwfeco.veg <- rast(fasterize(wwfeco, raster(Tw), field = 'vegcover'))
 wwfeco.wood <- rast(fasterize(wwfeco, raster(Tw), field = 'woodycover'))
 wwfeco.tree <- rast(fasterize(wwfeco, raster(Tw), field = 'treecover'))
+wwfeco.ever <- rast(fasterize(wwfeco, raster(Tw), field = 'evergreen'))
 names(wwfeco.wet) <- 'wwfeco.wet'
 names(wwfeco.veg) <- 'wwfeco.veg'
 names(wwfeco.wood) <- 'wwfeco.wood'
 names(wwfeco.tree) <- 'wwfeco.tree'
+names(wwfeco.ever) <- 'wwfeco.ever'
 
 
 brown <- sf::read_sf('data/biotic_comm_la.shp')
@@ -101,11 +108,12 @@ brown.wet <- rast(fasterize(brown, raster(Tw), field = 'wet'))
 brown.veg <- rast(fasterize(brown, raster(Tw), field = 'vegcover'))
 brown.wood <- rast(fasterize(brown, raster(Tw), field = 'woodycover'))
 brown.tree <- rast(fasterize(brown, raster(Tw), field = 'treecover'))
+brown.ever <- rast(fasterize(brown, raster(Tw), field = 'evergreen'))
 names(brown.wet) <- 'brown.wet'
 names(brown.veg) <- 'brown.veg'
 names(brown.wood) <- 'brown.wood'
 names(brown.tree) <- 'brown.tree'
-
+names(brown.ever) <- 'brown.ever'
 
 wet.df <- c(brown.wet, wwfeco.wet, kuchler.wet, bps.wet)
 wet.df <- as.data.frame(wet.df, xy=T, na.rm=F)
@@ -143,6 +151,15 @@ veg.df$veg <- ifelse(!is.na(veg.df$bps.veg), (veg.df$bps.veg*2+veg.df$veg)/3,veg
 veg <- rast(cbind(x=veg.df$x,y=veg.df$y,veg=veg.df$veg), type="xyz", crs=crs(Tw))
 plot(veg)
 writeRaster(veg,'nam5k/veg.tif', overwrite=T)
+ever.df <- c(brown.ever, wwfeco.ever, kuchler.ever, bps.ever)
+ever.df <- as.data.frame(ever.df, xy=T, na.rm=F)
+ever.df <- subset(ever.df, !is.na(brown.ever) |!is.na(wwfeco.ever) |!is.na(kuchler.ever) |!is.na(bps.ever))
+ever.df$ever <- apply(ever.df[,3:6], MARGIN = 1, FUN = 'mean', na.rm=T)
+ever.df$ever <- ifelse(!is.na(ever.df$kuchler.ever), (ever.df$kuchler.ever*2+ever.df$ever)/3,ever.df$ever)
+ever.df$ever <- ifelse(!is.na(ever.df$bps.ever), (ever.df$bps.ever*2+ever.df$ever)/3,ever.df$ever)
+ever <- rast(cbind(x=ever.df$x,y=ever.df$y,ever=ever.df$ever), type="xyz", crs=crs(Tw))
+plot(ever)
+writeRaster(ever,'nam5k/ever.tif', overwrite=T)
 # bps2 <- project(bps, twi1km, method='near')
 # bps <- aggregate(bps2, fact=5, )
 
@@ -215,6 +232,7 @@ wetmodel <- rast(cbind(x=r.df$x,y=r.df$y,z=r.df$output), type="xyz", crs=crs(Tw)
 plot(wetmodel)
 names(wetmodel) <- 'wetmodel'
 wetmodel <- extend(wetmodel, Tw); wetmodel <- crop(wetmodel, Tw)
+
 writeRaster(wetmodel, 'output/wetmodel.tif', overwrite=T)
 #veg model ---- 
 rasters<-c(kuchler.tree, wet,veg,wood,tree,Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
@@ -266,6 +284,7 @@ woodmodel <- rast(cbind(x=r.df$x,y=r.df$y,z=r.df$output), type="xyz", crs=crs(Tw
 plot(woodmodel)
 names(woodmodel) <- 'woodmodel'
 writeRaster(woodmodel, 'output/woodmodel.tif', overwrite=T)
+
 #tree model ---- 
 treenull <- aggregate(tree, fact=5, fun='max', na.rm=T)
 
@@ -310,6 +329,42 @@ treemodel <- pred.raster*treedist
 plot(treemodel)
 names(treemodel) <- 'treemodel'
 writeRaster(treemodel, 'output/treemodel.tif', overwrite=T)
+
+#evergreen model ---- 
+ever <- extend(ever, Tw); ever <- crop(ever, Tw)
+vegmodel <- extend(vegmodel, Tw); vegmodel <- crop(vegmodel, Tw)
+woodmodel <- extend(woodmodel, Tw); woodmodel <- crop(woodmodel, Tw)
+treemodel <- extend(treemodel, Tw); treemodel <- crop(treemodel, Tw)
+rasters<-c(kuchler.tree, ever, Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
+           sand,SoilpH,hydric,salids,shore,sealevel,elev,bedrock,clay,river,
+           wetmodel,vegmodel,woodmodel,treemodel
+        )
+r.df <- as.data.frame(rasters, xy=TRUE, na.rm=F)
+r.df$tree <- ifelse(r.df$Tg < 4.5 | r.df$elev > 4000, 0, r.df$tree)
+r.df$wood <- ifelse(r.df$Tw <= 1, 0, r.df$wood); r.df$veg <- ifelse(r.df$Tw <= 1, 0, r.df$veg)
+r.df <-  subset(r.df,!is.na(wetmodel)&!is.na(treemodel)&!is.na(sealevel) & !is.na(salids) & !is.na(Tg) & !is.na(Tc) & !is.na(river) &!is.na(elev) & !is.na(slope)  & !is.na(SoilpH) & !is.na(m) & !is.na(sand) & !is.na(clay))
+r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
+
+
+
+r.df.s <- subset(r.df, !is.na(ever))
+#Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
+rf <- ranger(ever ~ 
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
+             +wetmodel+vegmodel+woodmodel+treemodel
+             ,
+             data=r.df.s, num.trees=25, max.depth = 15, importance = 'impurity', write.forest = TRUE, case.weights = r.df.s$wt)
+
+r.df$output <- predictions(predict(rf, data=r.df))
+
+
+evermodel <- rast(cbind(x=r.df$x,y=r.df$y,z=r.df$output), type="xyz", crs=crs(Tw))
+plot(evermodel)
+names(evermodel) <- 'evermodel'
+writeRaster(evermodel, 'output/evermodel.tif', overwrite=T)
+
+#derivatives ----
+
 woodmodel <- min(woodmodel, vegmodel)
 treemodel <- min(treemodel, woodmodel)
 writeRaster(woodmodel, 'output/woodmodel.tif', overwrite=T)
