@@ -56,6 +56,9 @@ bps.ever <-  project(bps.ever, Tw)
 
 
 kuchler <- sf::read_sf('data/kuchler_DD83.shp')
+kuchler[kuchler$KUCHLER_ %in% 1040,]$KUCHLER_ID <- 88 #fix map error
+kuchler[kuchler$KUCHLER_ %in% 1040,]$CODE <- 88 #fix map error
+kuchler[kuchler$KUCHLER_ %in% 1040,]$TYPE <- 'Southeastn spruce-fir forest' #fix map error
 kuchler[kuchler$KUCHLER_ %in% 286,]$KUCHLER_ID <- 97 #fix map error
 kuchler[kuchler$KUCHLER_ %in% 286,]$CODE <- 97 #fix map error
 kuchler[kuchler$KUCHLER_ %in% 286,]$TYPE <- 'Northern hardwoods' #fix map error
@@ -115,6 +118,54 @@ names(brown.wood) <- 'brown.wood'
 names(brown.tree) <- 'brown.tree'
 names(brown.ever) <- 'brown.ever'
 
+
+#TN Barrens ----
+tn1 <- read_sf('data/southerngrass/Grasslands_MidSouth_shapefiles/Grasslands_MidSouth_polys.shp')
+tn2 <- read_sf('data/southerngrass/SGI_Southern_Blue_Ridge_balds/SGI_Southern_Blue_Ridge_balds.shp')
+tn3 <- read_sf('data/southerngrass/OKNP_Central_Interior_Off_v2/OKNP_Central_Interior_Off_v2.shp')
+tn4 <- read_sf('data/southerngrass/OKNP_Pennyroyal_Karst_Off_v2/OKNP_Pennyroyal_Karst_Off_v2.shp')
+st_crs(tn4) <- st_crs(tn3)
+
+tn1 <- st_transform(tn1, st_crs(Tw))
+tn2 <- st_transform(tn2, st_crs(Tw))
+tn3 <- st_transform(tn3, st_crs(Tw))
+tn4 <- st_transform(tn4, st_crs(Tw))
+
+xmin=min(c(ext(tn1)[1],ext(tn2)[1],ext(tn3)[1],ext(tn3)[1]))
+xmax=max(c(ext(tn1)[2],ext(tn2)[2],ext(tn3)[2],ext(tn3)[2]))
+ymin=min(c(ext(tn1)[3],ext(tn2)[3],ext(tn3)[3],ext(tn3)[3]))
+ymax=max(c(ext(tn1)[4],ext(tn2)[4],ext(tn3)[4],ext(tn3)[4]))
+grid.ncol = floor((xmax-xmin)/500+1)
+grid.nrow = floor((ymax-ymin)/500+1)
+unique(tn1$Grassland_)
+x <- rast(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax,crs=crs(tn1), ncol=grid.ncol, nrow=grid.nrow)
+tn1$woodcover <- ifelse(tn1$Grassland_ %in% 'Prairies', 0,
+                        ifelse(tn1$Grassland_ %in% 'Savannas', 10,25))
+tn1$treecover <- ifelse(tn1$Grassland_ %in% 'Prairies', 0,
+                        ifelse(tn1$Grassland_ %in% 'Savannas', 10,25))
+tn1.wood <- rast(fasterize(tn1, raster(x), field = 'woodcover', fun = "min"))
+tn1.tree <- rast(fasterize(tn1, raster(x), field = 'treecover', fun = "min"))
+tn2$woodcover <- 25;tn3$woodcover <- 25;tn4$woodcover <- 25
+tn2$treecover <- 10;tn3$treecover <- 10;tn4$treecover <- 10
+tnx <- rbind(tn2[,c('woodcover','treecover','geometry')],
+             tn3[,c('woodcover','treecover','geometry')],
+             tn4[,c('woodcover','treecover','geometry')])
+tn2.wood <- rast(fasterize(tnx, raster(x), field = 'woodcover', fun = "min"))
+tn2.tree <- rast(fasterize(tnx, raster(x), field = 'treecover', fun = "min"))
+tnx.wood <- min(tn1.wood, tn2.wood, na.rm=T)
+tnx.tree <- min(tn1.tree, tn2.tree, na.rm=T)
+tnx.wood[is.na(tnx.wood)]=95;tnx.tree[is.na(tnx.tree)]=95
+tn.wood <- project(tnx.wood, Tw); tn.tree <- project(tnx.tree, Tw)
+
+
+# tnbarrens <- rast('data/tnbarrens_modified.tif')
+# tnbarrens <- tnbarrens$tnb_1
+# tnbarrens[tnbarrens==0] <- 0;tnbarrens[tnbarrens>200]  <- 0;tnbarrens[tnbarrens >0]  <- 1
+# tnbarrens <- project(tnbarrens, Tw); names(tnbarrens)<-'tnbarrens'
+# writeRaster(tnbarrens, 'data/tnbarrensrepro.tif', overwrite=T)
+# plot(tnbarrens)
+
+#compile ----
 wet.df <- c(brown.wet, wwfeco.wet, kuchler.wet, bps.wet)
 wet.df <- as.data.frame(wet.df, xy=T, na.rm=F)
 wet.df <- subset(wet.df, !is.na(brown.wet) |!is.na(wwfeco.wet) |!is.na(kuchler.wet) |!is.na(bps.wet))
@@ -130,7 +181,11 @@ tree.df <- subset(tree.df, !is.na(brown.tree) |!is.na(wwfeco.tree) |!is.na(kuchl
 tree.df$tree <- apply(tree.df[,3:6], MARGIN = 1, FUN = 'mean', na.rm=T)
 tree.df$tree <- ifelse(!is.na(tree.df$kuchler.tree), (tree.df$kuchler.tree*2+tree.df$tree)/3,tree.df$tree)
 tree.df$tree <- ifelse(!is.na(tree.df$bps.tree), (tree.df$bps.tree*2+tree.df$tree)/3,tree.df$tree)
+# #75% reduction in treecover in TN barrens
+# tree.df$tree <- ifelse(!is.na(tree.df$tnbarrens), tree.df$tree - tree.df$tnbarrens*0.75*tree.df$tree,tree.df$tree)
 tree <- rast(cbind(x=tree.df$x,y=tree.df$y,tree=tree.df$tree), type="xyz", crs=crs(Tw))
+tree <- extend(tree, Tw); tree <- crop(tree, Tw)
+tree <- min(tree, tn.tree, na.rm = T)
 plot(tree)
 writeRaster(tree,'nam5k/tree.tif', overwrite=T)
 wood.df <- c(brown.wood, wwfeco.wood, kuchler.wood, bps.wood)
@@ -139,7 +194,11 @@ wood.df <- subset(wood.df, !is.na(brown.wood) |!is.na(wwfeco.wood) |!is.na(kuchl
 wood.df$wood <- apply(wood.df[,3:6], MARGIN = 1, FUN = 'mean', na.rm=T)
 wood.df$wood <- ifelse(!is.na(wood.df$kuchler.wood), (wood.df$kuchler.wood*2+wood.df$wood)/3,wood.df$wood)
 wood.df$wood <- ifelse(!is.na(wood.df$bps.wood), (wood.df$bps.wood*2+wood.df$wood)/3,wood.df$wood)
+# #60% reduction in woodcover in TN barrens
+# wood.df$wood <- ifelse(!is.na(wood.df$tnbarrens), wood.df$wood - wood.df$tnbarrens*0.60*wood.df$wood,wood.df$wood)
 wood <- rast(cbind(x=wood.df$x,y=wood.df$y,wood=wood.df$wood), type="xyz", crs=crs(Tw))
+wood <- extend(wood, Tw); wood <- crop(wood, Tw)
+wood <- min(wood, tn.wood, na.rm = T)
 plot(wood)
 writeRaster(wood,'nam5k/wood.tif', overwrite=T)
 veg.df <- c(brown.veg, wwfeco.veg, kuchler.veg, bps.veg)
@@ -364,6 +423,12 @@ names(evermodel) <- 'evermodel'
 writeRaster(evermodel, 'output/evermodel.tif', overwrite=T)
 
 #derivatives ----
+path = 'nam5k/'
+Tw <- rast(paste0(path, 'Tw.tif')); names(Tw)<-'Tw'
+woodmodel <- rast('output/woodmodel.tif');woodmodel <- crop(woodmodel,Tw);woodmodel <- extend(woodmodel,Tw)
+vegmodel <- rast('output/vegmodel.tif');vegmodel <- crop(vegmodel,Tw);vegmodel <- extend(vegmodel,Tw)
+treemodel <- rast('output/treemodel.tif');treemodel <- crop(treemodel,Tw);treemodel <- extend(treemodel,Tw)
+evermodel <- rast('output/evermodel.tif');evermodel <- crop(evermodel,Tw);evermodel <- extend(evermodel,Tw)
 
 woodmodel <- min(woodmodel, vegmodel)
 treemodel <- min(treemodel, woodmodel)
@@ -372,7 +437,11 @@ writeRaster(treemodel, 'output/treemodel.tif', overwrite=T)
 shrubby <- woodmodel-treemodel
 grassy <- vegmodel - woodmodel
 openveg <- shrubby+grassy
+everveg <- evermodel*woodmodel
+deciveg <- (evermodel*-1+1)*woodmodel
 writeRaster(shrubby, 'output/shrubby.tif', overwrite=T)
 writeRaster(grassy, 'output/grassy.tif', overwrite=T)
 writeRaster(openveg, 'output/openveg.tif', overwrite=T)
+writeRaster(everveg, 'output/everveg.tif', overwrite=T)
+writeRaster(deciveg, 'output/deciveg.tif', overwrite=T)
 Sys.time() - systime
