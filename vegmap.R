@@ -287,7 +287,8 @@ wood <- mean(brown.wood, wwfeco.wood, na.rm=T)
 wood <- mean(wood, kuchler.wood, na.rm=T)
 wood <- mean(wood, bps.wood,bps.wood,bps.wood,  na.rm=T)
 wood <- mean(wood, michigan.wood,michigan.wood,michigan.wood,ohio.wood,ohio.wood,  na.rm=T)
-wood <- min(wood, tn.wood,  na.rm=T)
+tn.wood <- min(wood, tn.wood,  na.rm=T)
+wood <- mean(wood, tn.wood,tn.wood,tn.wood,  na.rm=T)
 # wet.herb <- focal(land.wet, fun='min')
 # wet.herb <- (wet.herb*-0.75+1)*100
 # wood <- min(tree, wet.herb,  na.rm=T)
@@ -303,7 +304,9 @@ tree <- mean(brown.tree, wwfeco.tree, na.rm=T)
 tree <- mean(tree, kuchler.tree, na.rm=T)
 tree <- mean(tree, bps.tree,bps.tree,bps.tree,  na.rm=T)
 tree <- mean(tree, michigan.tree,michigan.tree,michigan.tree,ohio.tree,ohio.tree,  na.rm=T)
-tree <- min(tree, tn.tree,  na.rm=T)
+tn.tree <- min(tree, tn.tree,  na.rm=T)
+tree <- mean(tree, tn.tree,tn.tree,tn.tree,  na.rm=T)
+
 # tree <- min(tree, wet.herb,  na.rm=T)
 
 Tg <- rast(paste0(path, 'Tg.tif')); Tg.7 <- (Tg >= 7)*tree
@@ -362,6 +365,17 @@ tree <- rast('data/training/tree.tif')
 ever <- rast('data/training/ever.tif')
 
 kuchler.tree<-rast(paste0(path, 'kuchler.tree.tif')); kuchler.tree <- extend(kuchler.tree, Tw)
+#load null area ----
+# nodata <- read_sf('data/nodata.shp')
+# nodata <- st_transform(nodata, crs(Tw))
+# nodata <- rast(fasterize(nodata, raster(Tw)))
+# nodata[is.na(nodata)] <- 0;nodata[nodata == 1] <- NA
+# wet <- wet+nodata
+# veg <- veg+nodata
+# wood <- wood+nodata
+# tree <- tree+nodata
+# ever <- ever+nodata
+
 
 #wet model ---- 
 rasters<-c(kuchler.tree, wet,veg,wood,tree,Tw,Twh,Tg,Tc,Tclx,m,s,d,p3AET,slope,
@@ -402,6 +416,7 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
 r.df.s <- subset(r.df, !is.na(veg))
+
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(veg ~ 
                Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
@@ -427,6 +442,8 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
 r.df.s <- subset(r.df, !is.na(wood))
+
+
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(wood ~ 
                Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
@@ -443,7 +460,8 @@ writeRaster(woodmodel, 'output/woodmodel.tif', overwrite=T)
 
 #tree model ---- 
 wetmodel<-rast('output/wetmodel.tif')
-treenull <- aggregate(tree, fact=5, fun='max', na.rm=T)
+tree2 <- rast('data/training/tree.tif')
+treenull <- aggregate(tree2, fact=5, fun='max', na.rm=T)
 
 treenull[treenull <=0] <- NA
 plot(treenull)
@@ -471,6 +489,8 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
 r.df.s <- subset(r.df, !is.na(tree))#& !is.na(kuchler.tree))
+
+
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(tree ~ Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river+wetmodel
              #+shadw0+shadw45+shadw90+shadw135+shadw180+shadw225+shadw270+shadw315
@@ -515,6 +535,8 @@ r.df$wt <- ifelse(is.na(r.df$kuchler.tree), 1,100)
 
 
 r.df.s <- subset(r.df, !is.na(ever))
+
+
 #Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
 rf <- ranger(ever ~ 
                Tw+Twh+Tg+Tc+Tclx+m+s+d+p3AET+slope+sand+SoilpH+hydric+salids+shore+sealevel+elev+bedrock+clay+river
