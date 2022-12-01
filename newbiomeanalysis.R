@@ -85,17 +85,25 @@ tnbarrens <- rast('data/tnbarrens_modified.tif')
 
 plot(tnbarrens)
 
-'brown.types.cover2.csv'
-'kuchler.types.cover2.csv'
-'wwfeco.types.cover2.csv'
+brownalt <- read.csv('data/brown.types.cover2.csv')
+kuchleralt <- read.csv('data/kuchler.types.cover2.csv')
+ecoalt <- read.csv('data/wwfeco.types.cover2.csv')
+bpsalt <- read.csv('data/bps.types.cover2.csv')
+bpsrat <- foreign::read.dbf('data/BPS.dbf')
+bpsrat <- bpsrat %>% left_join(bpsalt)
+colnames(bpsrat)
 
 
-BPS.pts <- BPS %>% as.data.frame(xy=T) %>% subset(!BPS %in% -9999)
+# BPS ----
+
+BPS.pts <- BPS %>% as.data.frame(xy=T) %>% subset(!BPS %in% c(-9999, 11, 12, 31))
 BPS.pts.s <- BPS.pts %>% group_by(BPS) %>% sample_n(size=3, replace = TRUE)
 BPS.pts.s2 <- BPS.pts[sample(rownames(BPS.pts),size=5000),]
 BPS.pts.s <- rbind(BPS.pts.s,BPS.pts.s2)
 BPS.pts.sf <- BPS.pts.s %>% st_as_sf(coords = c('x', 'y'), crs=crs(BPS))
-plot(BPS.pts.sf)
+BPS.pts <- BPS.pts.sf %>% left_join(bpsrat[,
+                      c("VALUE","wet","vegcover","woodycover","treecover" ,"NE","BE","DD","CD" )], by=c("BPS"="VALUE"))
+BPS.pts.repro <- BPS.pts %>% sf::st_transform(crs = crs(Tw))
 
 
 tnbarrens.1 <-   ifel(tnbarrens$tnbarrens_modified_2 ==0, 1, 0)
@@ -103,10 +111,25 @@ newext <- ext(tnbarrens)+c(-20000,-10000,-10000,-100000)
 tnbarrens.1 <- crop(tnbarrens.1, newext) %>% project(Tw)
 plot(tnbarrens.1)
 
+# kuchler ----
 
+kuchlerids <- kuchler$TYPE %>% unique()
+for(i in 1:length(kucids)){#i=326
+  kuchler0 <- kuchler %>% subset(TYPE %in% kuchlerids[i]) %>% vect()
+  kuchlerpts0 <- spatSample(kuchler0, size=5, "random", strata=NULL)
+  while(nrow(kuchlerpts0) == 0){kuchlerpts0 <- spatSample(kuchler0, size=5, "random", strata=NULL)}
+  if(i==1){kuchlerpts <- kuchlerpts0}else{
+    kuchlerpts <- rbind(kuchlerpts, kuchlerpts0)} 
+}
+kuchlerpts0 <- terra::spatSample(vect(kuchler), size=2500, "random", strata=NULL)
+kuchlerpts <- rbind(kuchlerpts,kuchlerpts0)
+kuchlerpts.repro <- kuchlerpts %>% project(eco)
+kuchlerpts.repro <- kuchlerpts.repro %>% st_as_sf() %>%  left_join(kuchleralt)
+
+# wwf ----
 # eco1 <- eco %>% group_by(ECO_ID) %>% summarise()
 eco <- eco %>% subset(!BIOME %in% c(98))
-ecoalt <- read.csv('data/wwfeco.types.cover2.csv')
+
 ecoids <- eco$ECO_ID %>% unique()
 for(i in 1:length(ecoids)){#i=326
   eco0 <- eco %>% subset(ECO_ID %in% ecoids[i]) %>% vect()
@@ -117,16 +140,48 @@ for(i in 1:length(ecoids)){#i=326
 }
 ecopts0 <- terra::spatSample(vect(eco), size=10000, "random", strata=NULL)
 ecopts <- rbind(ecopts,ecopts0)
+ecopts.repro <- ecopts %>% project(Tw)
+ecopts.repro <- ecopts.repro %>% st_as_sf() %>%  left_join(ecoalt)
 
-# ecopts1 <- st_as_sf(ecopts)
 
-ecopts1 <- rastbrick %>% extract(ecopts)
-ecopts2 <- terra::as.data.frame(ecopts, xy=TRUE)
+# brown ----
+
+# (brown$BIOMENAME1) %>% unique()
+brown <- brown %>% subset(!BIOMENAME1 %in% c("Permanent Ice and Snow","Open Water Lakes"))
+brownids <- brown$BIOMENAME1 %>% unique()
+for(i in 1:length(brownids)){#i=326
+  brown0 <- brown %>% subset(BIOMENAME1 %in% brownids[i]) %>% vect()
+  brownpts0 <- spatSample(brown0, size=5, "random", strata=NULL)
+  while(nrow(brownpts0) == 0){brownpts0 <- spatSample(brown0, size=10, "random", strata=NULL)}
+  if(i==1){brownpts <- brownpts0}else{
+    brownpts <- rbind(brownpts, brownpts0)} 
+}
+brownpts0 <- terra::spatSample(vect(brown), size=5000, "random", strata=NULL)
+brownpts <- rbind(brownpts,brownpts0)
+brownpts.repro <- brownpts %>% project(Tw)
+brownpts.repro <- brownpts.repro %>% st_as_sf() %>%  left_join(brownalt)
+
+#process layer sampling ----
+commoncols <- c("wet","vegcover","woodycover","treecover" ,"NE","BE","DD","CD" )
+
+ecopts.all <- ecopts.repro[,commoncols] %>% dplyr::bind_rows(BPS.pts.repro[,commoncols])%>% 
+dplyr::bind_rows(kuchlerpts.repro[,commoncols])%>% 
+dplyr::bind_rows(brownpts.repro[,commoncols])
+ 
+ plot(vect(ecopts.all))
+ 
+
+
+
+
+
+ecopts1 <- rastbrick %>% extract(ecopts.all)
+ecopts2 <- ecopts.all
 ecopts3 <- cbind(ecopts2, ecopts1)
-ecopts3 <- ecopts3[,-26]
-ecopts3 <- ecopts3 %>% left_join(ecoalt[,c('ECO_ID','altbiome','altbiome2')])
+# ecopts3 <- ecopts3[,-26]
+# ecopts3 <- ecopts3 %>% left_join(ecoalt[,c('ECO_ID','altbiome','altbiome2')])
 ecopts3 <- subset(ecopts3,!is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
-
+ecopts3 <- plot(vect(ecopts3))
 ecopts3 <- ecopts3 %>% 
   mutate(Tcc = pmin(Tc, Tclx+15), s050 = s - pmin(d,050),s100 = s - pmin(d,100),s150 = s - pmin(d,150),s150 = s - pmin(d,150), 
          s200 = s - pmin(d,200), s250 = s - pmin(d,250),s300 = s - pmin(d,300),
