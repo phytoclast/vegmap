@@ -4,6 +4,7 @@ library(ranger)
 library(rpart)
 library(rpart.plot)
 library(dplyr)
+
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 path = 'C:/workspace2/processclimategrids/output/'
 Tw <- rast(paste0(path, 'Tw.tif')); names(Tw)<-'Tw'
@@ -20,6 +21,7 @@ s <- rast(paste0(path, 'surplus.tif')); names(s)<-'s'
 pAET <- rast(paste0(path, 'pAET.tif')); names(pAET)<-'pAET'
 p3AET <- rast(paste0(path, 'p3AET.tif')); names(p3AET)<-'p3AET'
 Elev5km = rast(paste0(path, 'Elev5km.tif'))
+elev = rast(paste0(path, 'Elev5km.tif')) %>% project(Tw); names(elev)<-'elev'
 Elev1km = rast(paste0(path, 'Elev1km.tif'))
 # hydric1km <-  rast('C:/a/geo/global/hydric.tif'); names(hydric1km)<-'hydric'
 # hydric <-  hydric1km %>% aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/hydric5km.tif", overwrite=TRUE)
@@ -71,10 +73,32 @@ sea <- rast('output/sea.tif'); names(sea)<-'sea'
 # slope1km <- Elev1km %>% terrain(v="slope", neighbors=8, unit="degrees", filename = 'output/slope1km.tif')
 # slope5km <- slope1km %>% aggregate(fact=2, fun="mean", na.rm=TRUE, filename="output/slope5km.tif", overwrite=TRUE)
 # slope5km <- slope5km %>% project(Tw,filename="output/slope5km.tif", overwrite=TRUE)
-
-
 slope <- rast("output/slope5km.tif"); names(slope)<-'slope'
-rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, sealevel,clay, sand,marine,soilpH,bedrock)
+rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+
+iucnpath <- 'C:/a/geo/iucn/lvl1_frac_1km_ver004'
+
+iucn.forest <- rast(paste0(iucnpath,
+'/iucn_habitatclassification_fraction_lvl1__100_Forest__ver004.tif'))
+names(iucn.forest) <- 'iucn.forest'
+iucn.desert <- rast(paste0(iucnpath, 
+'/iucn_habitatclassification_fraction_lvl1__800_Desert__ver004.tif'))
+names(iucn.desert) <- 'iucn.desert'
+iucn.rocky <- rast(paste0(iucnpath, 
+'/iucn_habitatclassification_fraction_lvl1__600_Rocky Areas__ver004.tif'))
+names(iucn.rocky) <- 'iucn.rocky'
+iucn.wetlands <- rast(paste0(iucnpath, 
+'/iucn_habitatclassification_fraction_lvl1__500_Wetlands inland__ver004.tif'))
+names(iucn.wetlands) <- 'iucn.wetlands'
+iucn.artificial <- rast(paste0(iucnpath, 
+'/iucn_habitatclassification_fraction_lvl1__1400_Artificial - Terrestrial__ver004.tif'))
+names(iucn.artificial) <- 'iucn.artificial'
+
+iucn.brick <- c(iucn.forest, iucn.desert, iucn.rocky, iucn.wetlands,iucn.artificial)
+
+
+
 eco <- st_read('data/ecoregions.shp')
 brown <- st_read('data/biotic_comm_la.shp')
 kuchler <- st_read('data/kuchler_DD83.shp')
@@ -83,7 +107,7 @@ tnbarrens <- rast('data/tnbarrens_modified.tif')
 
 
 
-plot(tnbarrens)
+
 
 brownalt <- read.csv('data/brown.types.cover2.csv')
 kuchleralt <- read.csv('data/kuchler.types.cover2.csv')
@@ -96,7 +120,7 @@ colnames(bpsrat)
 
 # BPS ----
 
-BPS.pts <- BPS %>% as.data.frame(xy=T) %>% subset(!BPS %in% c(-9999, 11, 12, 31))
+BPS.pts <- BPS %>% as.data.frame(xy=T) %>% subset(!BPS %in% c(-9999, 11))
 BPS.pts.s <- BPS.pts %>% group_by(BPS) %>% sample_n(size=3, replace = TRUE)
 BPS.pts.s2 <- BPS.pts[sample(rownames(BPS.pts),size=5000),]
 BPS.pts.s <- rbind(BPS.pts.s,BPS.pts.s2)
@@ -106,15 +130,15 @@ BPS.pts <- BPS.pts.sf %>% left_join(bpsrat[,
 BPS.pts.repro <- BPS.pts %>% sf::st_transform(crs = crs(Tw))
 
 
-tnbarrens.1 <-   ifel(tnbarrens$tnbarrens_modified_2 ==0, 1, 0)
-newext <- ext(tnbarrens)+c(-20000,-10000,-10000,-100000)
-tnbarrens.1 <- crop(tnbarrens.1, newext) %>% project(Tw)
-plot(tnbarrens.1)
+# tnbarrens.1 <-   ifel(tnbarrens$tnbarrens_modified_2 ==0, 1, 0)
+# newext <- ext(tnbarrens)+c(-20000,-10000,-10000,-100000)
+# tnbarrens.1 <- crop(tnbarrens.1, newext) %>% project(Tw)
+# plot(tnbarrens.1)
 
 # kuchler ----
 
 kuchlerids <- kuchler$TYPE %>% unique()
-for(i in 1:length(kucids)){#i=326
+for(i in 1:length(kuchlerids)){#i=326
   kuchler0 <- kuchler %>% subset(TYPE %in% kuchlerids[i]) %>% vect()
   kuchlerpts0 <- spatSample(kuchler0, size=5, "random", strata=NULL)
   while(nrow(kuchlerpts0) == 0){kuchlerpts0 <- spatSample(kuchler0, size=5, "random", strata=NULL)}
@@ -168,7 +192,7 @@ ecopts.all <- ecopts.repro[,commoncols] %>% dplyr::bind_rows(BPS.pts.repro[,comm
 dplyr::bind_rows(kuchlerpts.repro[,commoncols])%>% 
 dplyr::bind_rows(brownpts.repro[,commoncols])
  
- plot(vect(ecopts.all))
+ # plot(vect(ecopts.all))
  
 
 
@@ -176,12 +200,184 @@ dplyr::bind_rows(brownpts.repro[,commoncols])
 
 
 ecopts1 <- rastbrick %>% extract(ecopts.all)
-ecopts2 <- ecopts.all
-ecopts3 <- cbind(ecopts2, ecopts1)
+ecopts1a <- iucn.brick %>% extract(ecopts.all)
+ecopts2 <- ecopts.all %>% st_drop_geometry()
+ecopts3 <- cbind(ecopts2, ecopts1, ecopts1a)
 # ecopts3 <- ecopts3[,-26]
 # ecopts3 <- ecopts3 %>% left_join(ecoalt[,c('ECO_ID','altbiome','altbiome2')])
 ecopts3 <- subset(ecopts3,!is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
-ecopts3 <- plot(vect(ecopts3))
+
+ecopts3 <- ecopts3 %>% mutate(
+  barren = ifelse(is.na(iucn.desert),0,iucn.desert)+ifelse(is.na(iucn.rocky),0,iucn.rocky),
+  wet = ifelse(is.na(iucn.wetlands), wet, pmin(1,wet+iucn.wetlands/1000)),
+  iucn.forest = ifelse(is.na(iucn.forest), 0, iucn.forest),
+  iucn.artificial = ifelse(is.na(iucn.artificial), 0, iucn.artificial),
+  iucn.forest2 = iucn.forest/(1001-iucn.artificial),
+  vegcover = vegcover*((barren/1000)*-1+1),
+  woodycover = woodycover*((barren/1000)*-1+1),
+  treecover = treecover*((barren/1000)*-1+1),
+  treecover = ifelse(Tg < 9,treecover*iucn.forest2, treecover)
+)
+
+
+
+# wet 29463*.002 ----
+ecopts3.wet <- subset(ecopts3,!is.na(wet))
+rf <- ranger(wet ~ 
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               elev+slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.wet, num.trees=50, sample.fraction = 0.2, max.depth = 12, importance = 'impurity', write.forest = TRUE)
+
+wetmodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+wetmodel <- wetmodel$predictions
+plot(wetmodel)
+names(wetmodel) <- 'wet'
+wetmodel <- extend(wetmodel, Tw); wetmodel <- crop(wetmodel, Tw)
+
+writeRaster(wetmodel, 'output/global/wetmodel.tif', overwrite=T)
+rastbrick <- c(wetmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+# veg 29463*.2 1118803*0.02 ----
+ecopts3.veg <- subset(ecopts3,!is.na(vegcover))
+# ecopts3.veg <- ecopts3.veg %>% mutate(vegcover = ifelse(Tg < 1.5, 0, vegcover))
+
+
+rf <- ranger(vegcover ~ #wet+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.veg, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+vegmodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+vegmodel <- vegmodel$predictions
+plot(vegmodel)
+names(vegmodel) <- 'vegcover'
+vegmodel <- extend(vegmodel, Tw); vegmodel <- crop(vegmodel, Tw)
+
+writeRaster(vegmodel, 'output/global/vegmodel.tif', overwrite=T)
+
+rastbrick <- c(wetmodel,vegmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+# wood ----
+ecopts3.wood <- subset(ecopts3,!is.na(wet)&!is.na(woodycover))
+# ecopts3.wood <- ecopts3.wood %>% mutate(woodycover = ifelse(Tg < 4.5, 0, woodycover))
+
+rf <- ranger(woodycover ~ #wet+vegcover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.wood, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+woodmodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+woodmodel <- woodmodel$predictions
+plot(woodmodel)
+names(woodmodel) <- 'woodycover'
+woodmodel <- extend(woodmodel, Tw); woodmodel <- crop(woodmodel, Tw)
+
+writeRaster(woodmodel, 'output/global/woodmodel.tif', overwrite=T)
+
+
+rastbrick <- c(wetmodel,vegmodel,woodmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+# tree ----
+ecopts3.tree <- subset(ecopts3,!is.na(wet)&!is.na(treecover))
+# ecopts3.tree <- ecopts3.tree %>% mutate(treecover = ifelse(Tg < 4.5, 0, treecover))
+
+rf <- ranger(treecover ~ #wet+vegcover+woodycover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.tree, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+treemodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+treemodel <- treemodel$predictions
+plot(treemodel)
+names(treemodel) <- 'treecover'
+treemodel <- extend(treemodel, Tw); treemodel <- crop(treemodel, Tw)
+
+writeRaster(treemodel, 'output/global/treemodel.tif', overwrite=T)
+
+rastbrick <- c(wetmodel,vegmodel,woodmodel, treemodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+# NE ----
+ecopts3.NE <- subset(ecopts3,!is.na(NE)&Tg>=3)
+
+rf <- ranger(NE ~ #wet+vegcover+woodycover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.NE, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+NEver <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+NEver <- NEver$predictions
+plot(NEver)
+names(NEver) <- 'NE'
+NEver <- extend(NEver, Tw); NEver <- crop(NEver, Tw)
+
+writeRaster(NEver, 'output/global/NEver.tif', overwrite=T)
+# BE ----
+ecopts3.BE <- subset(ecopts3,!is.na(BE)&Tg>=3)
+
+rf <- ranger(BE ~ #wet+vegcover+woodycover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.BE, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+BEver <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+BEver <- BEver$predictions
+plot(BEver)
+names(BEver) <- 'BE'
+BEver <- extend(BEver, Tw); BEver <- crop(BEver, Tw)
+
+writeRaster(BEver, 'output/global/BEver.tif', overwrite=T)
+# DD ----
+ecopts3.DD <- subset(ecopts3,!is.na(DD)&Tg>=3)
+
+rf <- ranger(DD ~ #wet+vegcover+woodycover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.DD, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+DDeci <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+DDeci <- DDeci$predictions
+plot(DDeci)
+names(DDeci) <- 'DD'
+DDeci <- extend(DDeci, Tw); DDeci <- crop(DDeci, Tw)
+
+writeRaster(DDeci, 'output/global/DDeci.tif', overwrite=T)
+
+# CD ----
+ecopts3.CD <- subset(ecopts3,!is.na(CD)&Tg>=3)
+
+rf <- ranger(CD ~ #wet+vegcover+woodycover+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.CD, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
+
+CDeci <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+CDeci <- CDeci$predictions
+plot(CDeci)
+names(CDeci) <- 'CD'
+CDeci <- extend(CDeci, Tw); CDeci <- crop(CDeci, Tw)
+
+writeRaster(CDeci, 'output/global/CDeci.tif', overwrite=T)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ecopts3 <- ecopts3 %>% 
   mutate(Tcc = pmin(Tc, Tclx+15), s050 = s - pmin(d,050),s100 = s - pmin(d,100),s150 = s - pmin(d,150),s150 = s - pmin(d,150), 
          s200 = s - pmin(d,200), s250 = s - pmin(d,250),s300 = s - pmin(d,300),
