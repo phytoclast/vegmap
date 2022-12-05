@@ -509,16 +509,16 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,evergre
 30726,AT,7,"Tropical and subtropical grasslands, savannas, and",Zambezian Baikiaea woodlands,0,99,25,25,0
 40701,IM,7,"Tropical and subtropical grasslands, savannas, and",Terai-Duar savanna and grasslands,0,99,10,10,0
 50701,NA,7,"Tropical and subtropical grasslands, savannas, and",Western Gulf coastal grasslands,0.5,99,0,0,0
-60701,NT,7,"Tropical and subtropical grasslands, savannas, and",Arid Chaco,0,99,10,10,0
-60702,NT,7,"Tropical and subtropical grasslands, savannas, and",Beni savanna,0.5,99,10,10,0
-60703,NT,7,"Tropical and subtropical grasslands, savannas, and",Campos Rupestres montane savanna,0,99,10,10,0
-60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,10,10,0
-60705,NT,7,"Tropical and subtropical grasslands, savannas, and",clipperton Island Scrub and Grassland,0,99,25,0,0
-60706,NT,7,"Tropical and subtropical grasslands, savannas, and",Córdoba montane savanna,0,99,10,10,0
-60707,NT,7,"Tropical and subtropical grasslands, savannas, and",Guyanan savanna,0,99,10,10,0
-60708,NT,7,"Tropical and subtropical grasslands, savannas, and",Humid Chaco,0,99,10,10,0
-60709,NT,7,"Tropical and subtropical grasslands, savannas, and",Llanos,0,99,10,10,0
-60710,NT,7,"Tropical and subtropical grasslands, savannas, and",Uruguayan savanna,0,99,10,10,0
+60701,NT,7,"Tropical and subtropical grasslands, savannas, and",Arid Chaco,0,99,10,10,
+60702,NT,7,"Tropical and subtropical grasslands, savannas, and",Beni savanna,0.5,99,10,10,
+60703,NT,7,"Tropical and subtropical grasslands, savannas, and",Campos Rupestres montane savanna,0,99,10,10,
+60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,10,10,
+60705,NT,7,"Tropical and subtropical grasslands, savannas, and",clipperton Island Scrub and Grassland,0,99,25,0,
+60706,NT,7,"Tropical and subtropical grasslands, savannas, and",Córdoba montane savanna,0,99,10,10,
+60707,NT,7,"Tropical and subtropical grasslands, savannas, and",Guyanan savanna,0,99,10,10,
+60708,NT,7,"Tropical and subtropical grasslands, savannas, and",Humid Chaco,0,99,10,10,
+60709,NT,7,"Tropical and subtropical grasslands, savannas, and",Llanos,0.3,99,10,10,
+60710,NT,7,"Tropical and subtropical grasslands, savannas, and",Uruguayan savanna,0,99,10,10,
 70701,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical high shrublands,0,99,60,10,1
 70702,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical low shrublands,0,99,60,10,1
 70703,OC,7,"Tropical and subtropical grasslands, savannas, and",Northwestern Hawaii scrub,0,99,25,0,1
