@@ -1,1 +1,107 @@
-TYPE,CODE,wet,vegcover,woodycover,treecover,evergreen,needleevergreen,colddeciduous,NE,BE,DD,CD,NE0,BE0,DD0,CD0Spruce-cedar-hemlock forest,1,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Cedar-hemlock-Douglas fir forest,2,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Silver fir-Douglas fir forest,3,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Fir-hemlock forest,4,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Mixed conifer forest,5,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Redwood forest,6,0,100,95,95,1,0.7,,1,0.428571429,0,0,0.7,0.3,0,0Red fir forest,7,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Lodgepole pine-subalpine forest,8,0,100,85,85,1,1,,1,0,0,0,1,0,0,0Pine-cypress forest,9,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Western ponderosa forest,10,0,100,85,85,1,1,,1,0,0,0,1,0,0,0Douglas fir forest,11,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Ceder-hemlock-pine forest,12,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Grand fir-Douglas fir forest,13,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Western spruce-fir forest,14,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Eastern ponderosa forest,15,0,100,85,85,1,1,,1,0,0,0,1,0,0,0Black Hills pine forest,16,0,100,85,85,1,1,,1,0,0,0,1,0,0,0Pine-Douglas fir forest,17,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Arizona pine forest,18,0,100,85,85,1,1,,1,0,0,0,1,0,0,0Spruce-fir-Douglas fir forest,19,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Southwestern-spruce-fir forest,20,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Juniper-pinyon woodland,21,0,99,60,25,1,1,,1,0,0,0,1,0,0,0Oregon oakwoods,22,0,99,60,60,0,,1,0,0,0,1,0,0,0,1Mesquite bosques,23,0,99,60,0,0,,1,0,0,0,1,0,0,0,1Mosaic of numbers 2 and 22,24,0,99,80,80,0.5,1,1,1,0,0,1,0.5,0,0,0.5California mixed evergreen forest,25,0,100,95,95,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0California oakwoods,26,0,99,60,60,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0Oak-juniper woodland,27,0,99,60,60,1,0.5,,1,1,0,0,0.5,0.5,0,0Transition between 27 and 31,28,0,99,60,25,0.5,0.5,1,0.5,0.5,0,1,0.25,0.25,0,0.5Chaparral,29,0,99,60,0,1,0,,0,1,0,0,0,1,0,0Coastal sagebrush,30,0,99,60,0,0.5,0,1,0,1,0,1,0,0.5,0,0.5Mountain mahogany-oak scrub,31,0,99,60,0,0,,1,0,0,0,1,0,0,0,1Great Basin sagebrush,32,0,25,25,0,,,,,,,,,,,Blackbrush,33,0,25,25,0,,,,,,,,,,,Saltbush-greasewood,34,0,25,25,0,,,,,,,,,,,Creosote bush,35,0,25,25,0,,,,,,,,,,,Creosote bush-bur sage,36,0,25,25,0,,,,,,,,,,,Palo verde-cactus shrub,37,0,25,25,0,,,,,,,,,,,Ceniza shrub,38,0,25,25,0,,,,,,,,,,,Desert  vegetation largely absent,39,0,0,0,0,,,,,,,,,,,Fescue-oatgrass,40,0,99,0,0,,,,,,,,,,,California steppe,41,0,99,0,0,,,,,,,,,,,Tule marshes,42,1,99,0,0,,,,,,,,,,,Fescue-wheatgrass,43,0,99,0,0,,,,,,,,,,,Wheatgrass-bluegrass,44,0,99,0,0,,,,,,,,,,,Alpine meadows and barren,45,0,85,0,0,,,,,,,,,,,Fescue-mountain muhly prairie,46,0,99,0,0,,,,,,,,,,,Grama-galleta steppe,47,0,99,0,0,,,,,,,,,,,Grama-tobosa prairie,48,0,99,0,0,,,,,,,,,,,Sagebrush steppe,49,0,60,10,0,,,,,,,,,,,Wheatgrass-needlegrass shrubsteppe,50,0,95,10,0,,,,,,,,,,,Galleta-three awn shrubsteppe,51,0,95,10,0,,,,,,,,,,,Grama-tobosa shrubsteppe,52,0,95,10,0,,,,,,,,,,,Trans-Pecos shrub savanna,53,0,95,10,0,,,,,,,,,,,Mesquite-acacia-savanna,54,0,95,10,0,0,,1,0,0,0,1,0,0,0,1Mesquite-live oak savanna,55,0,99,10,5,0.5,0,1,0,1,0,1,0,0.5,0,0.5Foothills prairie,56,0,99,0,0,,,,,,,,,,,Grama-needlegrass-wheatgrass,57,0,99,0,0,,,,,,,,,,,Grama-buffalo grass,58,0,99,0,0,,,,,,,,,,,Wheatgrass-needlegrass,59,0,99,0,0,,,,,,,,,,,Wheatgrass-bluestem-needlegrass,60,0,99,0,0,,,,,,,,,,,Wheatgrass-grama-buffalo grass,61,0,99,0,0,,,,,,,,,,,Bluestem-grama prairie,62,0,99,0,0,,,,,,,,,,,Sandsage-bluestem prairie,63,0,99,0,0,,,,,,,,,,,Shinnery,64,0,99,25,0,0,,1,0,0,0,1,0,0,0,1Northern cordgrass prairie,65,1,99,0,0,,,,,,,,,,,Bluestem prairie,66,0,99,0,0,,,,,,,,,,,Sandhills prairie,67,0,95,0,0,,,,,,,,,,,Blackland prairie,68,0,99,0,0,,,,,,,,,,,Bluestem-sacahuista prairie,69,0,99,0,0,,,,,,,,,,,Southern cordgrass prairie,70,1,99,0,0,,,,,,,,,,,Palmetto prairie,71,0,99,10,0,1,0,,0,1,0,0,0,1,0,0Oak savanna,72,0,99,60,60,0,,1,0,0,0,1,0,0,0,1Mosaic of numbers 66 and 91,73,0,99,10,10,0,,1,0,0,0,1,0,0,0,1Cedar glades,74,0,99,60,25,1,1,,1,0,0,0,1,0,0,0Cross timbers,75,0,99,80,80,0,,1,0,0,0,1,0,0,0,1Mesquite-buffalo grass,76,0,99,25,0,0,,1,0,0,0,1,0,0,0,1Juniper-oak savanna,77,0,99,10,10,1,0.5,,1,1,0,0,0.5,0.5,0,0Mesquite-oak savanna,78,0,99,10,5,0.5,0,1,0,1,0,1,0,0.5,0,0.5Fayette prairie,79,0,99,0,0,,,,,,,,,,,Blackbelt,80,0,99,10,10,,,,,,,,,,,Live oak-sea oats,81,0,99,60,25,1,0,,0,1,0,0,0,1,0,0Cypress savanna,82,1,99,10,10,1,1,,1,0,0,0,1,0,0,0Everglades,83,1,99,0,0,,,,,,,,,,,Great Lakes spruce-fir forest,84,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Conifer bog,85,1,100,95,60,1,1,,1,0,0,0,1,0,0,0Great Lakes pine forest,86,0,100,60,60,1,1,,1,0,0,0,1,0,0,0Northeastern spruce-fir forest,87,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Southeastn spruce-fir forest,88,0,100,95,95,1,1,,1,0,0,0,1,0,0,0Northern floodplain forest,89,1,100,95,95,0,,1,0,0,0,1,0,0,0,1Maple-basswood forest,90,0,100,95,95,0,,1,0,0,0,1,0,0,0,1Oak-hickory forest,91,0,100,85,85,0,,1,0,0,0,1,0,0,0,1Elm-ash forest,92,1,100,95,95,0,,1,0,0,0,1,0,0,0,1Beech-maple forest,93,0,100,95,95,0,,1,0,0,0,1,0,0,0,1Mixed mesophytic forest,94,0,100,95,95,0.1,1,1,0.111111111,0,0,1,0.1,0,0,0.9Appalachian oak forest,95,0,100,95,95,0,,1,0,0,0,1,0,0,0,1Mangrove,96,0,99,60,10,1,0,,0,1,0,0,0,1,0,0Northern hardwoods,97,0,100,95,95,0.3,1,1,0.428571429,0,0,1,0.3,0,0,0.7Northern hardwoods-fir forest,98,0,100,95,95,0.5,1,1,1,0,0,1,0.5,0,0,0.5Northern hardwods-spruce forest,99,0,100,95,95,0.5,1,1,1,0,0,1,0.5,0,0,0.5Northeastern oak-pine forest,100,0,100,95,95,0.5,1,1,1,0,0,1,0.5,0,0,0.5Oak-hickory-pine forest,101,0,100,85,85,0.5,1,1,1,0,0,1,0.5,0,0,0.5Southern mixed forest,102,0,99,60,60,1,0.7,,1,0.428571429,0,0,0.7,0.3,0,0Southern floodplain forest,103,1,100,95,95,0,,1,0,0,0,1,0,0,0,1Pocosin,104,1,100,95,10,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0Sand pine scrub,105,0,95,60,10,1,0.5,,1,1,0,0,0.5,0.5,0,0Sub-tropical pine forest,106,0,99,60,60,1,0.5,,1,1,0,0,0.5,0.5,0,0
+TYPE,CODE,wet,vegcover,woodycover,treecover,ht,evergreen,needleevergreen,colddeciduous,NE,BE,DD,CD,NE0,BE0,DD0,CD0
+Spruce-cedar-hemlock forest,1,0,100,95,95,60,1,1,,1,0,0,0,1,0,0,0
+Cedar-hemlock-Douglas fir forest,2,0,100,95,95,60,1,1,,1,0,0,0,1,0,0,0
+Silver fir-Douglas fir forest,3,0,100,95,95,60,1,1,,1,0,0,0,1,0,0,0
+Fir-hemlock forest,4,0,100,95,95,40,1,1,,1,0,0,0,1,0,0,0
+Mixed conifer forest,5,0,100,95,95,60,1,1,,1,0,0,0,1,0,0,0
+Redwood forest,6,0,100,95,95,90,1,0.7,,1,0.428571429,0,0,0.7,0.3,0,0
+Red fir forest,7,0,100,95,95,40,1,1,,1,0,0,0,1,0,0,0
+Lodgepole pine-subalpine forest,8,0,100,85,85,20,1,1,,1,0,0,0,1,0,0,0
+Pine-cypress forest,9,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Western ponderosa forest,10,0,100,85,85,20,1,1,,1,0,0,0,1,0,0,0
+Douglas fir forest,11,0,100,95,95,25,1,1,,1,0,0,0,1,0,0,0
+Ceder-hemlock-pine forest,12,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Grand fir-Douglas fir forest,13,0,100,95,95,30,1,1,,1,0,0,0,1,0,0,0
+Western spruce-fir forest,14,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Eastern ponderosa forest,15,0,100,85,85,20,1,1,,1,0,0,0,1,0,0,0
+Black Hills pine forest,16,0,100,85,85,20,1,1,,1,0,0,0,1,0,0,0
+Pine-Douglas fir forest,17,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Arizona pine forest,18,0,100,85,85,20,1,1,,1,0,0,0,1,0,0,0
+Spruce-fir-Douglas fir forest,19,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Southwestern-spruce-fir forest,20,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Juniper-pinyon woodland,21,0,99,60,25,15,1,1,,1,0,0,0,1,0,0,0
+Oregon oakwoods,22,0,99,60,60,30,0,,1,0,0,0,1,0,0,0,1
+Mesquite bosques,23,0,99,60,0,15,0,,1,0,0,0,1,0,0,0,1
+Mosaic of numbers 2 and 22,24,0,99,80,80,30,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+California mixed evergreen forest,25,0,100,95,95,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0
+California oakwoods,26,0,99,60,60,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0
+Oak-juniper woodland,27,0,99,60,60,15,1,0.5,,1,1,0,0,0.5,0.5,0,0
+Transition between 27 and 31,28,0,99,60,25,15,0.5,0.5,1,0.5,0.5,0,1,0.25,0.25,0,0.5
+Chaparral,29,0,99,60,0,,1,0,,0,1,0,0,0,1,0,0
+Coastal sagebrush,30,0,99,60,0,,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Mountain mahogany-oak scrub,31,0,99,60,0,3,0,,1,0,0,0,1,0,0,0,1
+Great Basin sagebrush,32,0,25,25,0,3,,,,,,,,,,,
+Blackbrush,33,0,25,25,0,1,,,,,,,,,,,
+Saltbush-greasewood,34,0,25,25,0,1,,,,,,,,,,,
+Creosote bush,35,0,25,25,0,1,,,,,,,,,,,
+Creosote bush-bur sage,36,0,25,25,0,1,,,,,,,,,,,
+Palo verde-cactus shrub,37,0,25,25,0,3,,,,,,,,,,,
+Ceniza shrub,38,0,25,25,0,1,,,,,,,,,,,
+Desert  vegetation largely absent,39,0,0,0,0,0,,,,,,,,,,,
+Fescue-oatgrass,40,0,99,0,0,,,,,,,,,,,,
+California steppe,41,0,99,0,0,,,,,,,,,,,,
+Tule marshes,42,1,99,0,0,,,,,,,,,,,,
+Fescue-wheatgrass,43,0,99,0,0,,,,,,,,,,,,
+Wheatgrass-bluegrass,44,0,99,0,0,,,,,,,,,,,,
+Alpine meadows and barren,45,0,85,0,0,1,,,,,,,,,,,
+Fescue-mountain muhly prairie,46,0,99,0,0,,,,,,,,,,,,
+Grama-galleta steppe,47,0,99,0,0,,,,,,,,,,,,
+Grama-tobosa prairie,48,0,99,0,0,,,,,,,,,,,,
+Sagebrush steppe,49,0,60,10,0,,,,,,,,,,,,
+Wheatgrass-needlegrass shrubsteppe,50,0,95,10,0,,,,,,,,,,,,
+Galleta-three awn shrubsteppe,51,0,95,10,0,,,,,,,,,,,,
+Grama-tobosa shrubsteppe,52,0,95,10,0,,,,,,,,,,,,
+Trans-Pecos shrub savanna,53,0,95,10,0,,,,,,,,,,,,
+Mesquite-acacia-savanna,54,0,95,10,0,3,0,,1,0,0,0,1,0,0,0,1
+Mesquite-live oak savanna,55,0,99,10,5,12,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Foothills prairie,56,0,99,0,0,,,,,,,,,,,,
+Grama-needlegrass-wheatgrass,57,0,99,0,0,,,,,,,,,,,,
+Grama-buffalo grass,58,0,99,0,0,,,,,,,,,,,,
+Wheatgrass-needlegrass,59,0,99,0,0,,,,,,,,,,,,
+Wheatgrass-bluestem-needlegrass,60,0,99,0,0,,,,,,,,,,,,
+Wheatgrass-grama-buffalo grass,61,0,99,0,0,,,,,,,,,,,,
+Bluestem-grama prairie,62,0,99,0,0,,,,,,,,,,,,
+Sandsage-bluestem prairie,63,0,99,0,0,,,,,,,,,,,,
+Shinnery,64,0,99,25,0,,0,,1,0,0,0,1,0,0,0,1
+Northern cordgrass prairie,65,1,99,0,0,,,,,,,,,,,,
+Bluestem prairie,66,0,99,0,0,,,,,,,,,,,,
+Sandhills prairie,67,0,95,0,0,,,,,,,,,,,,
+Blackland prairie,68,0,99,0,0,,,,,,,,,,,,
+Bluestem-sacahuista prairie,69,0,99,0,0,,,,,,,,,,,,
+Southern cordgrass prairie,70,1,99,0,0,,,,,,,,,,,,
+Palmetto prairie,71,0,99,10,0,,1,0,,0,1,0,0,0,1,0,0
+Oak savanna,72,0,99,60,60,25,0,,1,0,0,0,1,0,0,0,1
+Mosaic of numbers 66 and 91,73,0,99,10,10,25,0,,1,0,0,0,1,0,0,0,1
+Cedar glades,74,0,99,60,25,20,1,1,,1,0,0,0,1,0,0,0
+Cross timbers,75,0,99,80,80,20,0,,1,0,0,0,1,0,0,0,1
+Mesquite-buffalo grass,76,0,99,25,0,,0,,1,0,0,0,1,0,0,0,1
+Juniper-oak savanna,77,0,99,10,10,20,1,0.5,,1,1,0,0,0.5,0.5,0,0
+Mesquite-oak savanna,78,0,99,10,5,20,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Fayette prairie,79,0,99,0,0,,,,,,,,,,,,
+Blackbelt,80,0,99,10,10,,,,,,,,,,,,
+Live oak-sea oats,81,0,99,60,25,25,1,0,,0,1,0,0,0,1,0,0
+Cypress savanna,82,1,99,10,10,,1,1,,1,0,0,0,1,0,0,0
+Everglades,83,1,99,0,0,25,,,,,,,,,,,
+Great Lakes spruce-fir forest,84,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Conifer bog,85,1,100,95,60,15,1,1,,1,0,0,0,1,0,0,0
+Great Lakes pine forest,86,0,100,60,60,20,1,1,,1,0,0,0,1,0,0,0
+Northeastern spruce-fir forest,87,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Southeastn spruce-fir forest,88,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
+Northern floodplain forest,89,1,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
+Maple-basswood forest,90,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
+Oak-hickory forest,91,0,100,85,85,25,0,,1,0,0,0,1,0,0,0,1
+Elm-ash forest,92,1,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
+Beech-maple forest,93,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
+Mixed mesophytic forest,94,0,100,95,95,40,0.1,1,1,0.111111111,0,0,1,0.1,0,0,0.9
+Appalachian oak forest,95,0,100,95,95,40,0,,1,0,0,0,1,0,0,0,1
+Mangrove,96,0,99,60,10,8,1,0,,0,1,0,0,0,1,0,0
+Northern hardwoods,97,0,100,95,95,30,0.3,1,1,0.428571429,0,0,1,0.3,0,0,0.7
+Northern hardwoods-fir forest,98,0,100,95,95,25,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+Northern hardwods-spruce forest,99,0,100,95,95,25,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+Northeastern oak-pine forest,100,0,100,95,95,30,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+Oak-hickory-pine forest,101,0,100,85,85,30,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+Southern mixed forest,102,0,99,60,60,30,1,0.7,,1,0.428571429,0,0,0.7,0.3,0,0
+Southern floodplain forest,103,1,100,95,95,40,0,,1,0,0,0,1,0,0,0,1
+Pocosin,104,1,100,95,10,15,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0
+Sand pine scrub,105,0,95,60,10,25,1,0.5,,1,1,0,0,0.5,0.5,0,0
+Sub-tropical pine forest,106,0,99,60,60,25,1,0.5,,1,1,0,0,0.5,0.5,0,0
