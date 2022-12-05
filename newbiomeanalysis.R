@@ -79,23 +79,56 @@ rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,cla
 
 iucnpath <- 'C:/a/geo/iucn/lvl1_frac_1km_ver004'
 
-iucn.forest <- rast(paste0(iucnpath,
-'/iucn_habitatclassification_fraction_lvl1__100_Forest__ver004.tif'))
-names(iucn.forest) <- 'iucn.forest'
-iucn.desert <- rast(paste0(iucnpath, 
-'/iucn_habitatclassification_fraction_lvl1__800_Desert__ver004.tif'))
-names(iucn.desert) <- 'iucn.desert'
-iucn.rocky <- rast(paste0(iucnpath, 
-'/iucn_habitatclassification_fraction_lvl1__600_Rocky Areas__ver004.tif'))
-names(iucn.rocky) <- 'iucn.rocky'
-iucn.wetlands <- rast(paste0(iucnpath, 
-'/iucn_habitatclassification_fraction_lvl1__500_Wetlands inland__ver004.tif'))
-names(iucn.wetlands) <- 'iucn.wetlands'
-iucn.artificial <- rast(paste0(iucnpath, 
-'/iucn_habitatclassification_fraction_lvl1__1400_Artificial - Terrestrial__ver004.tif'))
-names(iucn.artificial) <- 'iucn.artificial'
+# iucn.forest <- rast(paste0(iucnpath,
+# '/iucn_habitatclassification_fraction_lvl1__100_Forest__ver004.tif'))
+# names(iucn.forest) <- 'iucn.forest'
+# iucn.forest <- ifel(is.na(iucn.forest), 0,iucn.forest) %>% 
+#   aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/iucn.forest.tif", overwrite=TRUE)
+iucn.forest <- rast("output/iucn.forest.tif")
 
-iucn.brick <- c(iucn.forest, iucn.desert, iucn.rocky, iucn.wetlands,iucn.artificial)
+# iucn.desert <- rast(paste0(iucnpath, 
+# '/iucn_habitatclassification_fraction_lvl1__800_Desert__ver004.tif'))
+# names(iucn.desert) <- 'iucn.desert'
+# iucn.desert <- ifel(is.na(iucn.desert), 0,iucn.desert) %>%
+#   aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/iucn.desert.tif", overwrite=TRUE)
+iucn.desert <- rast("output/iucn.desert.tif")
+
+# iucn.rocky <- rast(paste0(iucnpath, 
+# '/iucn_habitatclassification_fraction_lvl1__600_Rocky Areas__ver004.tif'))
+# names(iucn.rocky) <- 'iucn.rocky'
+# iucn.rocky <- ifel(is.na(iucn.rocky), 0,iucn.rocky) %>%
+#   aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/iucn.rocky.tif", overwrite=TRUE)
+iucn.rocky <- rast("output/iucn.rocky.tif")
+
+# iucn.wetlands <- rast(paste0(iucnpath, 
+# '/iucn_habitatclassification_fraction_lvl1__500_Wetlands inland__ver004.tif'))
+# names(iucn.wetlands) <- 'iucn.wetlands'
+# iucn.wetlands <- ifel(is.na(iucn.wetlands), 0,iucn.wetlands) %>% 
+#   aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/iucn.wetlands.tif", overwrite=TRUE)
+iucn.wetlands <- rast("output/iucn.wetlands.tif")
+
+# iucn.artificial <- rast(paste0(iucnpath, 
+# '/iucn_habitatclassification_fraction_lvl1__1400_Artificial - Terrestrial__ver004.tif'))
+# names(iucn.artificial) <- 'iucn.artificial'
+# iucn.artificial <- ifel(is.na(iucn.artificial), 0,iucn.artificial) %>%
+#   aggregate(fact=3, na.rm=T) %>% project(Tw, filename="output/iucn.artificial.tif", overwrite=TRUE)
+iucn.artificial <- rast("output/iucn.artificial.tif")
+# iucn.forest.max <- iucn.forest / (1001 - (iucn.artificial+iucn.wetlands))
+# iucn.forest.max <- focal(iucn.forest.max, w=5, fun='max')
+# names(iucn.forest.max) <- 'iucn.forest.max'
+# writeRaster(iucn.forest.max, 'output/iucn.forest.max.tif', overwrite=TRUE)
+iucn.forest.max <- rast("output/iucn.forest.max.tif")
+
+
+tnbarrens <- rast('data/tnbarrens_modified.tif')
+tnbarrens.1 <-   ifel(tnbarrens$tnbarrens_modified_2 ==0, 1, 0)
+newext <- ext(tnbarrens)+c(-20000,-10000,-10000,-100000)
+tnbarrens.1 <- crop(tnbarrens.1, newext) %>% project(Tw)
+names(tnbarrens.1) <- 'tnbarrens'
+
+
+
+iucn.brick <- c(tnbarrens.1, iucn.forest, iucn.forest.max, iucn.desert, iucn.rocky, iucn.wetlands,iucn.artificial)
 
 
 
@@ -103,12 +136,13 @@ eco <- st_read('data/ecoregions.shp')
 brown <- st_read('data/biotic_comm_la.shp')
 kuchler <- st_read('data/kuchler_DD83.shp')
 BPS <- rast('data/BPS.tif') #%>% project(Tw, method='near')
-tnbarrens <- rast('data/tnbarrens_modified.tif')
+michigan <- sf::read_sf('data/michiganohio/MichLP_1800veg.shp')
+ohio <- sf::read_sf('data/michiganohio/vege_orig_a_OH.shp')
 
 
 
-
-
+MIalt <- read.csv('data/michiganohio/michiganlist.cover2.csv')
+OHalt <- read.csv('data/michiganohio/ohiolist.cover2.csv')
 brownalt <- read.csv('data/brown.types.cover2.csv')
 kuchleralt <- read.csv('data/kuchler.types.cover2.csv')
 ecoalt <- read.csv('data/wwfeco.types.cover2.csv')
@@ -118,6 +152,41 @@ bpsrat <- bpsrat %>% left_join(bpsalt)
 colnames(bpsrat)
 
 
+
+# Michigan ----
+
+michigan <- michigan %>% subset(!is.na(COVERTYPE))
+
+miids <- michigan$COVERTYPE %>% unique()
+for(i in 1:length(miids)){#i=326
+  michigan0 <- michigan %>% subset(COVERTYPE %in% miids[i]) %>% vect()
+  michiganpts0 <- spatSample(michigan0, size=5, "random", strata=NULL)
+  while(nrow(michiganpts0) == 0){michiganpts0 <- spatSample(michigan0, size=5, "random", strata=NULL)}
+  if(i==1){michiganpts <- michiganpts0}else{
+    michiganpts <- rbind(michiganpts, michiganpts0)} 
+}
+michiganpts0 <- terra::spatSample(vect(michigan), size=2500, "random", strata=NULL)
+michiganpts <- rbind(michiganpts,michiganpts0)
+michiganpts.repro <- michiganpts %>% project(Tw)
+michiganpts.repro <- michiganpts.repro %>% st_as_sf() %>%  left_join(MIalt)
+
+# Ohio ----
+
+ohio <- ohio %>% subset(!is.na(NAME))
+
+ohids <- ohio$NAME %>% unique()
+for(i in 1:length(ohids)){#i=326
+  ohio0 <- ohio %>% subset(NAME %in% ohids[i]) %>% vect()
+  ohiopts0 <- spatSample(ohio0, size=5, "random", strata=NULL)
+  while(nrow(ohiopts0) == 0){ohiopts0 <- spatSample(ohio0, size=5, "random", strata=NULL)}
+  if(i==1){ohiopts <- ohiopts0}else{
+    ohiopts <- rbind(ohiopts, ohiopts0)} 
+}
+ohiopts0 <- terra::spatSample(vect(ohio), size=2500, "random", strata=NULL)
+ohiopts <- rbind(ohiopts,ohiopts0)
+ohiopts.repro <- ohiopts %>% project(Tw)
+ohiopts.repro <- ohiopts.repro %>% st_as_sf() %>%  left_join(OHalt)
+
 # BPS ----
 
 BPS.pts <- BPS %>% as.data.frame(xy=T) %>% subset(!BPS %in% c(-9999, 11))
@@ -126,14 +195,9 @@ BPS.pts.s2 <- BPS.pts[sample(rownames(BPS.pts),size=5000),]
 BPS.pts.s <- rbind(BPS.pts.s,BPS.pts.s2)
 BPS.pts.sf <- BPS.pts.s %>% st_as_sf(coords = c('x', 'y'), crs=crs(BPS))
 BPS.pts <- BPS.pts.sf %>% left_join(bpsrat[,
-                      c("VALUE","wet","vegcover","woodycover","treecover" ,"NE","BE","DD","CD" )], by=c("BPS"="VALUE"))
+                                           c("VALUE","wet","vegcover","woodycover","treecover","ht" ,"NE","BE","DD","CD" )], by=c("BPS"="VALUE"))
 BPS.pts.repro <- BPS.pts %>% sf::st_transform(crs = crs(Tw))
 
-
-# tnbarrens.1 <-   ifel(tnbarrens$tnbarrens_modified_2 ==0, 1, 0)
-# newext <- ext(tnbarrens)+c(-20000,-10000,-10000,-100000)
-# tnbarrens.1 <- crop(tnbarrens.1, newext) %>% project(Tw)
-# plot(tnbarrens.1)
 
 # kuchler ----
 
@@ -162,7 +226,7 @@ for(i in 1:length(ecoids)){#i=326
   if(i==1){ecopts <- ecopts0}else{
     ecopts <- rbind(ecopts, ecopts0)} 
 }
-ecopts0 <- terra::spatSample(vect(eco), size=10000, "random", strata=NULL)
+ecopts0 <- terra::spatSample(vect(eco), size=20000, "random", strata=NULL)
 ecopts <- rbind(ecopts,ecopts0)
 ecopts.repro <- ecopts %>% project(Tw)
 ecopts.repro <- ecopts.repro %>% st_as_sf() %>%  left_join(ecoalt)
@@ -186,12 +250,14 @@ brownpts.repro <- brownpts %>% project(Tw)
 brownpts.repro <- brownpts.repro %>% st_as_sf() %>%  left_join(brownalt)
 
 #process layer sampling ----
-commoncols <- c("wet","vegcover","woodycover","treecover" ,"NE","BE","DD","CD" )
+commoncols <- c("wet","vegcover","woodycover","treecover","ht","NE","BE","DD","CD" )
 
 ecopts.all <- ecopts.repro[,commoncols] %>% dplyr::bind_rows(BPS.pts.repro[,commoncols])%>% 
-dplyr::bind_rows(kuchlerpts.repro[,commoncols])%>% 
-dplyr::bind_rows(brownpts.repro[,commoncols])
- 
+  dplyr::bind_rows(kuchlerpts.repro[,commoncols])%>% 
+  dplyr::bind_rows(brownpts.repro[,commoncols])%>% 
+dplyr::bind_rows(michiganpts.repro[,commoncols])%>% 
+  dplyr::bind_rows(ohiopts.repro[,commoncols])
+
  # plot(vect(ecopts.all))
  
 
@@ -205,24 +271,26 @@ ecopts2 <- ecopts.all %>% st_drop_geometry()
 ecopts3 <- cbind(ecopts2, ecopts1, ecopts1a)
 # ecopts3 <- ecopts3[,-26]
 # ecopts3 <- ecopts3 %>% left_join(ecoalt[,c('ECO_ID','altbiome','altbiome2')])
-ecopts3 <- subset(ecopts3,!is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
+ecopts3 <- subset(ecopts3)
+
 
 ecopts3 <- ecopts3 %>% mutate(
-  barren = ifelse(is.na(iucn.desert),0,iucn.desert)+ifelse(is.na(iucn.rocky),0,iucn.rocky),
-  wet = ifelse(is.na(iucn.wetlands), wet, pmin(1,wet+iucn.wetlands/1000)),
-  iucn.forest = ifelse(is.na(iucn.forest), 0, iucn.forest),
-  iucn.artificial = ifelse(is.na(iucn.artificial), 0, iucn.artificial),
-  iucn.forest2 = iucn.forest/(1001-iucn.artificial),
+  barren = iucn.desert+iucn.rocky,
+  wet = pmin(1,wet+iucn.wetlands/1000),
   vegcover = vegcover*((barren/1000)*-1+1),
   woodycover = woodycover*((barren/1000)*-1+1),
   treecover = treecover*((barren/1000)*-1+1),
-  treecover = ifelse(Tg < 9,treecover*iucn.forest2, treecover)
+  vegcover = ifelse(is.na(tnbarrens),vegcover,  vegcover*(1-tnbarrens*0.05)),
+  woodycover = ifelse(is.na(tnbarrens),woodycover,  woodycover*(1-tnbarrens*0.75)),
+  treecover = ifelse(is.na(tnbarrens),treecover,  treecover*(1-tnbarrens*0.75)),
+  treecover = ifelse(Tg < 9,treecover*iucn.forest.max, treecover)
 )
 
 
 
 # wet 29463*.002 ----
-ecopts3.wet <- subset(ecopts3,!is.na(wet))
+ecopts3.wet <- subset(ecopts3,!is.na(wet) & 
+                        !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 rf <- ranger(wet ~ 
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                elev+slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
@@ -232,18 +300,45 @@ rf <- ranger(wet ~
 wetmodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
 wetmodel <- wetmodel$predictions
 plot(wetmodel)
-names(wetmodel) <- 'wet'
+names(wetmodel) <- 'wetmodel'
 wetmodel <- extend(wetmodel, Tw); wetmodel <- crop(wetmodel, Tw)
 
 writeRaster(wetmodel, 'output/global/wetmodel.tif', overwrite=T)
-rastbrick <- c(wetmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
 
-# veg 29463*.2 1118803*0.02 ----
-ecopts3.veg <- subset(ecopts3,!is.na(vegcover))
+
+rastbrick <- c(wetmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+wetmodel <- rast('output/global/wetmodel.tif')
+ecopts1b <- wetmodel %>% extract(ecopts.all)
+ecopts4 <- cbind(ecopts3, ecopts1b)
+
+
+
+
+# canopy height ----
+ecopts3.ht <- subset(ecopts4,!is.na(ht)& 
+                        !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 # ecopts3.veg <- ecopts3.veg %>% mutate(vegcover = ifelse(Tg < 1.5, 0, vegcover))
 
+rf <- ranger(ht ~ wetmodel+
+               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
+               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+             ,
+             data=ecopts3.ht, num.trees=100, sample.fraction = 0.1, max.depth = 18, importance = 'impurity', write.forest = TRUE)
 
-rf <- ranger(vegcover ~ #wet+
+htmodel <- predict(object=rastbrick,  model=rf, na.rm=TRUE)
+htmodel <- htmodel$predictions
+plot(htmodel)
+names(htmodel) <- 'htmodel'
+htmodel <- extend(htmodel, Tw); htmodel <- crop(htmodel, Tw)
+
+writeRaster(htmodel, 'output/global/htmodel.tif', overwrite=T)
+
+# veg 29463*.2 1118803*0.02 ----
+ecopts3.veg <- subset(ecopts4,!is.na(vegcover)& 
+                        !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
+# ecopts3.veg <- ecopts3.veg %>% mutate(vegcover = ifelse(Tg < 1.5, 0, vegcover))
+
+rf <- ranger(vegcover ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -257,13 +352,14 @@ vegmodel <- extend(vegmodel, Tw); vegmodel <- crop(vegmodel, Tw)
 
 writeRaster(vegmodel, 'output/global/vegmodel.tif', overwrite=T)
 
-rastbrick <- c(wetmodel,vegmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+# rastbrick <- c(wetmodel,vegmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
 
 # wood ----
-ecopts3.wood <- subset(ecopts3,!is.na(wet)&!is.na(woodycover))
+ecopts3.wood <- subset(ecopts4,!is.na(wet)&!is.na(woodycover)& 
+                         !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 # ecopts3.wood <- ecopts3.wood %>% mutate(woodycover = ifelse(Tg < 4.5, 0, woodycover))
 
-rf <- ranger(woodycover ~ #wet+vegcover+
+rf <- ranger(woodycover ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -278,13 +374,14 @@ woodmodel <- extend(woodmodel, Tw); woodmodel <- crop(woodmodel, Tw)
 writeRaster(woodmodel, 'output/global/woodmodel.tif', overwrite=T)
 
 
-rastbrick <- c(wetmodel,vegmodel,woodmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+# rastbrick <- c(wetmodel,vegmodel,woodmodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
 
 # tree ----
-ecopts3.tree <- subset(ecopts3,!is.na(wet)&!is.na(treecover))
+ecopts3.tree <- subset(ecopts4,!is.na(wet)&!is.na(treecover)&
+                         !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 # ecopts3.tree <- ecopts3.tree %>% mutate(treecover = ifelse(Tg < 4.5, 0, treecover))
 
-rf <- ranger(treecover ~ #wet+vegcover+woodycover+
+rf <- ranger(treecover ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -298,12 +395,13 @@ treemodel <- extend(treemodel, Tw); treemodel <- crop(treemodel, Tw)
 
 writeRaster(treemodel, 'output/global/treemodel.tif', overwrite=T)
 
-rastbrick <- c(wetmodel,vegmodel,woodmodel, treemodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+# rastbrick <- c(wetmodel,vegmodel,woodmodel, treemodel,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
 
 # NE ----
-ecopts3.NE <- subset(ecopts3,!is.na(NE)&Tg>=3)
+ecopts3.NE <- subset(ecopts4,!is.na(NE)&Tg>=3 & 
+                       !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 
-rf <- ranger(NE ~ #wet+vegcover+woodycover+
+rf <- ranger(NE ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -317,9 +415,10 @@ NEver <- extend(NEver, Tw); NEver <- crop(NEver, Tw)
 
 writeRaster(NEver, 'output/global/NEver.tif', overwrite=T)
 # BE ----
-ecopts3.BE <- subset(ecopts3,!is.na(BE)&Tg>=3)
+ecopts3.BE <- subset(ecopts4,!is.na(BE)&Tg>=3 & 
+                       !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 
-rf <- ranger(BE ~ #wet+vegcover+woodycover+
+rf <- ranger(BE ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -333,9 +432,10 @@ BEver <- extend(BEver, Tw); BEver <- crop(BEver, Tw)
 
 writeRaster(BEver, 'output/global/BEver.tif', overwrite=T)
 # DD ----
-ecopts3.DD <- subset(ecopts3,!is.na(DD)&Tg>=3)
+ecopts3.DD <- subset(ecopts4,!is.na(DD)&Tg>=3 & 
+                       !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 
-rf <- ranger(DD ~ #wet+vegcover+woodycover+
+rf <- ranger(DD ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
@@ -350,9 +450,10 @@ DDeci <- extend(DDeci, Tw); DDeci <- crop(DDeci, Tw)
 writeRaster(DDeci, 'output/global/DDeci.tif', overwrite=T)
 
 # CD ----
-ecopts3.CD <- subset(ecopts3,!is.na(CD)&Tg>=3)
+ecopts3.CD <- subset(ecopts4,!is.na(CD)&Tg>=3 & 
+                       !is.na(Tg) &  !is.na(Tc) &  !is.na(slope) &  !is.na(hydric) & !is.na(sand) & !is.na(m))
 
-rf <- ranger(CD ~ #wet+vegcover+woodycover+
+rf <- ranger(CD ~ wetmodel+
                Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
                slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
              ,
