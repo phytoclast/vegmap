@@ -30,10 +30,10 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 10126,AA,1,Tropical and subtropical moist broadleaf forests,Vanuatu rain forests,0,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,111,111
 10127,AA,1,Tropical and subtropical moist broadleaf forests,Vogelkop montane rain forests,0,100,95,95,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,112,112
 10128,AA,1,Tropical and subtropical moist broadleaf forests,Vogelkop-Aru lowland rain forests,0,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,111,111
-10201,AA,2,Tropical and subtropical dry broadleaf forests,Lesser Sundas deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-10202,AA,2,Tropical and subtropical dry broadleaf forests,New Caledonia dry forests,0,99,90,25,12,1,,0,0,1,0,0,0,1,0,0,310,310
-10203,AA,2,Tropical and subtropical dry broadleaf forests,Sumba deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-10204,AA,2,Tropical and subtropical dry broadleaf forests,Timor and Wetar deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
+10201,AA,2,Tropical and subtropical dry broadleaf forests,Lesser Sundas deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+10202,AA,2,Tropical and subtropical dry broadleaf forests,New Caledonia dry forests,0,99,80,60,12,1,,0,0,1,0,0,0,1,0,0,310,310
+10203,AA,2,Tropical and subtropical dry broadleaf forests,Sumba deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+10204,AA,2,Tropical and subtropical dry broadleaf forests,Timor and Wetar deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
 10401,AA,4,Temperate broadleaf and mixed forests,Chatham Island temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
 10402,AA,4,Temperate broadleaf and mixed forests,Eastern Australian temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,120
 10403,AA,4,Temperate broadleaf and mixed forests,Fiordland temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
@@ -44,9 +44,9 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 10408,AA,4,Temperate broadleaf and mixed forests,Richmond temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
 10409,AA,4,Temperate broadleaf and mixed forests,Southeast Australia temperate forests,0,100,95,95,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,120
 10410,AA,4,Temperate broadleaf and mixed forests,South Island temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
-10411,AA,4,Temperate broadleaf and mixed forests,Tasmanian Central Highland forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
+10411,AA,4,Temperate broadleaf and mixed forests,Tasmanian Central Highland forests,0,100,95,95,30,0.9,0.1,1,0.111111111,1,0,0.12345679,0.09,0.81,0,0.1,120,133
 10412,AA,4,Temperate broadleaf and mixed forests,Tasmanian temperate forests,0,100,95,95,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
-10413,AA,4,Temperate broadleaf and mixed forests,Tasmanian temperate rain forests,0,100,95,95,60,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
+10413,AA,4,Temperate broadleaf and mixed forests,Tasmanian temperate rain forests,0,100,95,95,90,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
 10414,AA,4,Temperate broadleaf and mixed forests,Westland temperate forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,133
 10701,AA,7,"Tropical and subtropical grasslands, savannas, and",Arnhem Land tropical savanna,0,99,10,10,12,1,0,,0,1,0,0,0,1,0,0,410,410
 10702,AA,7,"Tropical and subtropical grasslands, savannas, and",Brigalow tropical savanna,0,99,10,10,12,1,0,,0,1,0,0,0,1,0,0,410,410
@@ -119,9 +119,9 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 30128,AT,1,Tropical and subtropical moist broadleaf forests,Southern Zanzibar-Inhambane coastal forest mosaic,0,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,111,111
 30129,AT,1,Tropical and subtropical moist broadleaf forests,Western Congolian swamp forests,1,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,1111,1111
 30130,AT,1,Tropical and subtropical moist broadleaf forests,Western Guinean lowland forests,0,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,111,111
-30201,AT,2,Tropical and subtropical dry broadleaf forests,Cape Verde Islands dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-30202,AT,2,Tropical and subtropical dry broadleaf forests,Madagascar dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-30203,AT,2,Tropical and subtropical dry broadleaf forests,Zambezian Cryptosepalum dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
+30201,AT,2,Tropical and subtropical dry broadleaf forests,Cape Verde Islands dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+30202,AT,2,Tropical and subtropical dry broadleaf forests,Madagascar dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+30203,AT,2,Tropical and subtropical dry broadleaf forests,Zambezian Cryptosepalum dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
 30701,AT,7,"Tropical and subtropical grasslands, savannas, and",Angolan Miombo woodlands,0,99,25,25,10,0,,0,0,0,1,0,0,0,1,0,210,410
 30702,AT,7,"Tropical and subtropical grasslands, savannas, and",Angolan Mopane woodlands,0,99,25,25,10,0,,0,0,0,1,0,0,0,1,0,210,410
 30703,AT,7,"Tropical and subtropical grasslands, savannas, and",Ascension scrub and grasslands,0,99,25,0,,0,,0,0,0,1,0,0,0,1,0,410,410
@@ -276,18 +276,18 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 40170,IM,1,Tropical and subtropical moist broadleaf forests,Nansei Islands subtropical evergreen forests,0,100,95,95,30,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0,120,111
 40171,IM,1,Tropical and subtropical moist broadleaf forests,South Taiwan monsoon rain forests,0,100,95,95,30,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,111,111
 40172,IM,1,Tropical and subtropical moist broadleaf forests,Taiwan subtropical evergreen forests,0,100,95,95,40,0.9,0.25,1,0.333333333,1,0,0.148148148,0.225,0.675,0,0.1,120,111
-40201,IM,2,Tropical and subtropical dry broadleaf forests,Central Deccan Plateau dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40202,IM,2,Tropical and subtropical dry broadleaf forests,Central Indochina dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40203,IM,2,Tropical and subtropical dry broadleaf forests,Chhota-Nagpur dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40204,IM,2,Tropical and subtropical dry broadleaf forests,East Deccan dry-evergreen forests,0,99,90,75,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
-40205,IM,2,Tropical and subtropical dry broadleaf forests,Irrawaddy dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40206,IM,2,Tropical and subtropical dry broadleaf forests,Khathiar-Gir dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40207,IM,2,Tropical and subtropical dry broadleaf forests,Narmada Valley dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40208,IM,2,Tropical and subtropical dry broadleaf forests,Northern dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40209,IM,2,Tropical and subtropical dry broadleaf forests,South Deccan Plateau dry deciduous forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40210,IM,2,Tropical and subtropical dry broadleaf forests,Southeastern Indochina dry evergreen forests,0,99,90,75,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
-40211,IM,2,Tropical and subtropical dry broadleaf forests,Southern Vietnam lowland dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-40212,IM,2,Tropical and subtropical dry broadleaf forests,Sri Lanka dry-zone dry evergreen forests,0,99,90,75,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
+40201,IM,2,Tropical and subtropical dry broadleaf forests,Central Deccan Plateau dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40202,IM,2,Tropical and subtropical dry broadleaf forests,Central Indochina dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40203,IM,2,Tropical and subtropical dry broadleaf forests,Chhota-Nagpur dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40204,IM,2,Tropical and subtropical dry broadleaf forests,East Deccan dry-evergreen forests,0,99,80,60,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
+40205,IM,2,Tropical and subtropical dry broadleaf forests,Irrawaddy dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40206,IM,2,Tropical and subtropical dry broadleaf forests,Khathiar-Gir dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40207,IM,2,Tropical and subtropical dry broadleaf forests,Narmada Valley dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40208,IM,2,Tropical and subtropical dry broadleaf forests,Northern dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40209,IM,2,Tropical and subtropical dry broadleaf forests,South Deccan Plateau dry deciduous forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40210,IM,2,Tropical and subtropical dry broadleaf forests,Southeastern Indochina dry evergreen forests,0,99,80,60,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
+40211,IM,2,Tropical and subtropical dry broadleaf forests,Southern Vietnam lowland dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+40212,IM,2,Tropical and subtropical dry broadleaf forests,Sri Lanka dry-zone dry evergreen forests,0,99,80,60,12,0.9,0,0,0,1,0.111111111,0,0,0.9,0.1,0,113,113
 40301,IM,3,Tropical and subtropical coniferous forests,Himalayan subtropical pine forests,0,100,95,95,40,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
 40302,IM,3,Tropical and subtropical coniferous forests,Luzon tropical pine forests,0,100,95,95,40,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
 40303,IM,3,Tropical and subtropical coniferous forests,Northeast India-Myanmar pine forests,0,100,95,95,30,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
@@ -310,7 +310,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 41404,IM,14,Mangroves,Myanamar Coast mangroves,1,99,95,60,10,1,0,,0,1,0,0,0,1,0,0,1112,1112
 41405,IM,14,Mangroves,Sunda Shelf mangroves,1,99,95,60,10,1,0,,0,1,0,0,0,1,0,0,1112,1112
 41406,IM,14,Mangroves,Sundarbans mangroves,1,99,95,60,10,1,0,,0,1,0,0,0,1,0,0,1112,1112
-50201,NA,2,Tropical and subtropical dry broadleaf forests,Sonoran-Sinaloan transition subtropical dry forest,0,99,90,75,12,0,,1,0,0,0,1,0,0,0,1,120,220
+50201,NA,2,Tropical and subtropical dry broadleaf forests,Sonoran-Sinaloan transition subtropical dry forest,0,99,80,60,12,0,,1,0,0,0,1,0,0,0,1,120,220
 50301,NA,3,Tropical and subtropical coniferous forests,Bermuda subtropical conifer forests,0,100,95,95,12,1,0.5,,1,1,0,0,0.5,0.5,0,0,210,210
 50302,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Occidental pine-oak forests,0,100,85,85,30,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
 50303,NA,3,Tropical and subtropical coniferous forests,Sierra Madre Oriental pine-oak forests,0,100,75,75,20,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
@@ -328,8 +328,8 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 50412,NA,4,Temperate broadleaf and mixed forests,Ozark Mountain forests,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1,131,131
 50413,NA,4,Temperate broadleaf and mixed forests,Southeastern mixed forests,0,100,95,95,30,0.4,0.9,1,0.6,0.066666667,0,1,0.36,0.04,0,0.6,134,131
 50414,NA,4,Temperate broadleaf and mixed forests,Southern Great Lakes forests,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1,131,131
-50415,NA,4,Temperate broadleaf and mixed forests,Upper Midwest Forest/Savanna transition zone,0,100,60,60,25,0,,1,0,0,0,1,0,0,0,1,131,131
 50415,NA,4,Temperate broadleaf and mixed forests,Western Great Lakes forests,0,100,95,95,30,0.4,1,1,0.666666667,0,0,1,0.4,0,0,0.6,131,131
+50415,NA,4,Temperate broadleaf and mixed forests,Upper Midwest Forest/Savanna transition zone,0,100,60,60,25,0,,1,0,0,0,1,0,0,0,1,131,131
 50416,NA,4,Temperate broadleaf and mixed forests,Western Great Lakes forests,0,100,95,95,30,0.4,1,1,0.666666667,0,0,1,0.4,0,0,0.6,131,131
 50417,NA,4,Temperate broadleaf and mixed forests,Willamette Valley forests,0,100,60,60,25,0.5,0.9,1,0.9,0.1,0,1,0.45,0.05,0,0.5,131,133
 50501,NA,5,Temperate coniferous forests,Alberta Mountain forests,0,100,95,95,20,0.9,1,1,1,0,0,0.111111111,0.9,0,0,0.1,140,140
@@ -511,41 +511,41 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 60179,NT,1,Tropical and subtropical moist broadleaf forests,Windward Islands moist forests,0,100,95,95,30,1,0,,0,1,0,0,0,1,0,0,111,111
 60180,NT,1,Tropical and subtropical moist broadleaf forests,Xingu-Tocantins-Araguaia moist forests,0,100,95,95,40,1,0,,0,1,0,0,0,1,0,0,111,111
 60181,NT,1,Tropical and subtropical moist broadleaf forests,Yucatán moist forests,0,100,95,95,25,1,0,,0,1,0,0,0,1,0,0,111,111
-60201,NT,2,Tropical and subtropical dry broadleaf forests,Apure-Villavicencio dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60202,NT,2,Tropical and subtropical dry broadleaf forests,Atlantic dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60203,NT,2,Tropical and subtropical dry broadleaf forests,Bahamian dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60204,NT,2,Tropical and subtropical dry broadleaf forests,Bajío dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60205,NT,2,Tropical and subtropical dry broadleaf forests,Balsas dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60206,NT,2,Tropical and subtropical dry broadleaf forests,Bolivian montane dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60207,NT,2,Tropical and subtropical dry broadleaf forests,Cauca Valley dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60208,NT,2,Tropical and subtropical dry broadleaf forests,Cayman  Islands dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60209,NT,2,Tropical and subtropical dry broadleaf forests,Central American dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60210,NT,2,Tropical and subtropical dry broadleaf forests,Chaco,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60211,NT,2,Tropical and subtropical dry broadleaf forests,Chiapas Depression dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60212,NT,2,Tropical and subtropical dry broadleaf forests,Chiquitano dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60213,NT,2,Tropical and subtropical dry broadleaf forests,Cuban dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60214,NT,2,Tropical and subtropical dry broadleaf forests,Ecuadorian dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60215,NT,2,Tropical and subtropical dry broadleaf forests,Hispaniolan dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60216,NT,2,Tropical and subtropical dry broadleaf forests,Islas Revillagigedo dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60217,NT,2,Tropical and subtropical dry broadleaf forests,Jalisco dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60218,NT,2,Tropical and subtropical dry broadleaf forests,Jamaican dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60219,NT,2,Tropical and subtropical dry broadleaf forests,Lara-Falcón dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60220,NT,2,Tropical and subtropical dry broadleaf forests,Leeward Islands dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60221,NT,2,Tropical and subtropical dry broadleaf forests,Magdalena Valley dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60222,NT,2,Tropical and subtropical dry broadleaf forests,Maracaibo dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60223,NT,2,Tropical and subtropical dry broadleaf forests,Marañón dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60224,NT,2,Tropical and subtropical dry broadleaf forests,Panamanian dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60225,NT,2,Tropical and subtropical dry broadleaf forests,Patia Valley dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60226,NT,2,Tropical and subtropical dry broadleaf forests,Puerto Rican dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60227,NT,2,Tropical and subtropical dry broadleaf forests,Sierra de la Laguna dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60228,NT,2,Tropical and subtropical dry broadleaf forests,Sinaloan dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60229,NT,2,Tropical and subtropical dry broadleaf forests,Sinú Valley dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60230,NT,2,Tropical and subtropical dry broadleaf forests,Southern Pacific dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60231,NT,2,Tropical and subtropical dry broadleaf forests,Trinidad and Tobago dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60232,NT,2,Tropical and subtropical dry broadleaf forests,Tumbes-Piura dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60233,NT,2,Tropical and subtropical dry broadleaf forests,Veracruz dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60234,NT,2,Tropical and subtropical dry broadleaf forests,Windward Islands dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
-60235,NT,2,Tropical and subtropical dry broadleaf forests,Yucatán dry forests,0,99,90,75,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60201,NT,2,Tropical and subtropical dry broadleaf forests,Apure-Villavicencio dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60202,NT,2,Tropical and subtropical dry broadleaf forests,Atlantic dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60203,NT,2,Tropical and subtropical dry broadleaf forests,Bahamian dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60204,NT,2,Tropical and subtropical dry broadleaf forests,Bajío dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60205,NT,2,Tropical and subtropical dry broadleaf forests,Balsas dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60206,NT,2,Tropical and subtropical dry broadleaf forests,Bolivian montane dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60207,NT,2,Tropical and subtropical dry broadleaf forests,Cauca Valley dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60208,NT,2,Tropical and subtropical dry broadleaf forests,Cayman  Islands dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60209,NT,2,Tropical and subtropical dry broadleaf forests,Central American dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60210,NT,2,Tropical and subtropical dry broadleaf forests,Chaco,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60211,NT,2,Tropical and subtropical dry broadleaf forests,Chiapas Depression dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60212,NT,2,Tropical and subtropical dry broadleaf forests,Chiquitano dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60213,NT,2,Tropical and subtropical dry broadleaf forests,Cuban dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60214,NT,2,Tropical and subtropical dry broadleaf forests,Ecuadorian dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60215,NT,2,Tropical and subtropical dry broadleaf forests,Hispaniolan dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60216,NT,2,Tropical and subtropical dry broadleaf forests,Islas Revillagigedo dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60217,NT,2,Tropical and subtropical dry broadleaf forests,Jalisco dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60218,NT,2,Tropical and subtropical dry broadleaf forests,Jamaican dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60219,NT,2,Tropical and subtropical dry broadleaf forests,Lara-Falcón dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60220,NT,2,Tropical and subtropical dry broadleaf forests,Leeward Islands dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60221,NT,2,Tropical and subtropical dry broadleaf forests,Magdalena Valley dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60222,NT,2,Tropical and subtropical dry broadleaf forests,Maracaibo dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60223,NT,2,Tropical and subtropical dry broadleaf forests,Marañón dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60224,NT,2,Tropical and subtropical dry broadleaf forests,Panamanian dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60225,NT,2,Tropical and subtropical dry broadleaf forests,Patia Valley dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60226,NT,2,Tropical and subtropical dry broadleaf forests,Puerto Rican dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60227,NT,2,Tropical and subtropical dry broadleaf forests,Sierra de la Laguna dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60228,NT,2,Tropical and subtropical dry broadleaf forests,Sinaloan dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60229,NT,2,Tropical and subtropical dry broadleaf forests,Sinú Valley dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60230,NT,2,Tropical and subtropical dry broadleaf forests,Southern Pacific dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60231,NT,2,Tropical and subtropical dry broadleaf forests,Trinidad and Tobago dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60232,NT,2,Tropical and subtropical dry broadleaf forests,Tumbes-Piura dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60233,NT,2,Tropical and subtropical dry broadleaf forests,Veracruz dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60234,NT,2,Tropical and subtropical dry broadleaf forests,Windward Islands dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
+60235,NT,2,Tropical and subtropical dry broadleaf forests,Yucatán dry forests,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0,114,114
 60301,NT,3,Tropical and subtropical coniferous forests,Bahamian pine forests,0,100,85,85,25,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,210
 60302,NT,3,Tropical and subtropical coniferous forests,Belizian pine forests,0,100,85,85,25,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,210
 60303,NT,3,Tropical and subtropical coniferous forests,Central American pine-oak forests,0,100,85,85,30,1,0.5,,1,1,0,0,0.5,0.5,0,0,210,410
@@ -557,13 +557,13 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 60309,NT,3,Tropical and subtropical coniferous forests,Sierra Madre del Sur pine-oak forests,0,100,85,85,30,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
 60310,NT,3,Tropical and subtropical coniferous forests,Trans-Mexican Volcanic Belt pine-oak forests,0,100,85,85,30,1,0.5,,1,1,0,0,0.5,0.5,0,0,120,220
 60401,NT,4,Temperate broadleaf and mixed forests,Juan Fernandez Islands temperate forests,0,100,95,95,30,1,,1,0,1,0,0,0,1,0,0,120,133
-60402,NT,4,Temperate broadleaf and mixed forests,Magellanic subpolar forests,0,100,95,95,40,0.6,0.1,1,0.111111111,1,0,0.740740741,0.06,0.54,0,0.4,120,133
+60402,NT,4,Temperate broadleaf and mixed forests,Magellanic subpolar forests,0,100,95,95,15,0.6,0.1,1,0.111111111,1,0,0.740740741,0.06,0.54,0,0.4,120,133
 60403,NT,4,Temperate broadleaf and mixed forests,San Felix-San Ambrosio Islands temperate forests,0,100,95,95,30,1,,1,0,1,0,0,0,1,0,0,120,120
 60404,NT,4,Temperate broadleaf and mixed forests,Valdivian temperate forests,0,100,95,95,40,0.9,0.4,1,0.666666667,1,0,0.185185185,0.36,0.54,0,0.1,120,133
 60701,NT,7,"Tropical and subtropical grasslands, savannas, and",Arid Chaco,0,99,10,10,10,,,,,,,,,,,,410,410
 60702,NT,7,"Tropical and subtropical grasslands, savannas, and",Beni savanna,0.5,99,10,10,10,,,,,,,,,,,,410,410
 60703,NT,7,"Tropical and subtropical grasslands, savannas, and",Campos Rupestres montane savanna,0,99,10,10,10,,,,,,,,,,,,410,410
-60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,10,10,10,,,,,,,,,,,,410,410
+60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,10,10,10,1,0,0,0,1,0,0,0,1,0,0,410,410
 60705,NT,7,"Tropical and subtropical grasslands, savannas, and",clipperton Island Scrub and Grassland,0,99,25,0,,,,,,,,,,,,,410,410
 60706,NT,7,"Tropical and subtropical grasslands, savannas, and",Córdoba montane savanna,0,99,10,10,10,,,,,,,,,,,,410,410
 60707,NT,7,"Tropical and subtropical grasslands, savannas, and",Guyanan savanna,0,99,10,10,10,,,,,,,,,,,,410,410
@@ -598,7 +598,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 61301,NT,13,Deserts and xeric shrublands,Araya and Paria xeric scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61302,NT,13,Deserts and xeric shrublands,Aruba-Curacao-Bonaire cactus scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61303,NT,13,Deserts and xeric shrublands,Atacama desert,0,25,25,0,,,,,,,,,,,,,520,520
-61304,NT,13,Deserts and xeric shrublands,Caatinga,0,25,25,0,,,,,,,,,,,,,510,510
+61304,NT,13,Deserts and xeric shrublands,Caatinga,0,25,25,0,,0,0,0,0,0,1,0,0,0,1,0,510,510
 61306,NT,13,Deserts and xeric shrublands,Cuban cactus scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61307,NT,13,Deserts and xeric shrublands,Galapagos Islands xeric scrub,0,25,25,0,,,,,,,,,,,,,520,520
 61308,NT,13,Deserts and xeric shrublands,Guajira-Barranquilla xeric scrub,0,25,25,0,,,,,,,,,,,,,510,510
@@ -666,10 +666,10 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 70115,OC,1,Tropical and subtropical moist broadleaf forests,Tuamotu tropical moist forests,0,100,95,95,30,1,0,,0,1,0,0,0,1,0,0,111,111
 70116,OC,1,Tropical and subtropical moist broadleaf forests,Tubuai tropical moist forests,0,100,95,95,30,1,0,,0,1,0,0,0,1,0,0,111,111
 70117,OC,1,Tropical and subtropical moist broadleaf forests,Western Polynesian tropical moist forests,0,100,95,95,30,1,0,,0,1,0,0,0,1,0,0,111,111
-70201,OC,2,Tropical and subtropical dry broadleaf forests,Fiji tropical dry forests,0,99,90,75,12,1,0.1,0,0.111111111,1,0,0,0.1,0.9,0,0,114,114
-70202,OC,2,Tropical and subtropical dry broadleaf forests,Hawaii tropical dry forests,0,99,90,75,12,1,0,,0,1,0,0,0,1,0,0,114,114
-70203,OC,2,Tropical and subtropical dry broadleaf forests,Marianas tropical dry forests,0,99,90,75,12,1,0,0,0,1,0,0,0,1,0,0,114,114
-70204,OC,2,Tropical and subtropical dry broadleaf forests,Yap tropical dry forests,0,99,90,75,12,1,0,0,0,1,0,0,0,1,0,0,114,114
+70201,OC,2,Tropical and subtropical dry broadleaf forests,Fiji tropical dry forests,0,99,80,60,12,1,0.1,0,0.111111111,1,0,0,0.1,0.9,0,0,114,114
+70202,OC,2,Tropical and subtropical dry broadleaf forests,Hawaii tropical dry forests,0,99,80,60,12,1,0,,0,1,0,0,0,1,0,0,114,114
+70203,OC,2,Tropical and subtropical dry broadleaf forests,Marianas tropical dry forests,0,99,80,60,12,1,0,0,0,1,0,0,0,1,0,0,114,114
+70204,OC,2,Tropical and subtropical dry broadleaf forests,Yap tropical dry forests,0,99,80,60,12,1,0,0,0,1,0,0,0,1,0,0,114,114
 70701,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical high shrublands,0,90,25,0,1,,,,,,,,,,,,610,610
 70702,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical low shrublands,0,99,60,10,10,1,0,,0,1,0,0,0,1,0,0,610,610
 70703,OC,7,"Tropical and subtropical grasslands, savannas, and",Northwestern Hawaii scrub,0,99,25,0,3,1,0,,0,1,0,0,0,1,0,0,410,310

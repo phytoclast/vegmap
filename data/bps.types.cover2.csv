@@ -79,7 +79,7 @@ Chihuahuan Mixed Desert Shrubland,Acacia-Creosote-5,Shrubland,0,25,25,0,3,,,,,,,
 Chihuahuan Mixed Salt Desert Scrub,Fourwing Saltbrush-Horsebrush-5,Shrubland,0,25,25,0,1,,,,,,,,,,,
 Chihuahuan Sandy Plains Semi-Desert Grassland,Indian Ricegrass-Black Grama-5,Grassland,0,60,0,0,,,,,,,,,,,,
 Chihuahuan Stabilized Coppice Dune and Sand Flat Scrub,Mesquite-Fourwing Saltbush-5,Shrubland,0,25,25,0,,,,,,,,,,,,
-Chihuahuan Succulent Desert Scrub,Ocotillo-Cactus-4,Shrubland,0,25,25,0,3,0.5,,0,0,1,1,0,0,0.5,0.5,0
+Chihuahuan Succulent Desert Scrub,Ocotillo-Cactus-4,Shrubland,0,25,25,0,3,,,,,,,,,,,
 Chihuahuan-Sonoran Desert Bottomland and Swale Grassland,Tobosagrass-Alkali Sacaton-2,Grassland,0,60,0,0,,,,,,,,,,,,
 Chihuahuan-Sonoran Desert Bottomland and Swale Grassland - Alkali Sacaton,AlkaliSacaton-Tobosa-2,Grassland,0,60,0,0,,,,,,,,,,,,
 Chihuahuan-Sonoran Desert Bottomland and Swale Grassland - Tobosa Grassland,Tobosagrass-Tree Cholla-2,Grassland,0,60,0,0,,,,,,,,,,,,
@@ -139,9 +139,9 @@ Great Lakes Wooded Dune and Swale,Beachgrass-Northern White Cedar-5,Riparian,0.5
 Great Plains Prairie Pothole,Woolyfruit Sedge-Spikebrush-Western Wheatgrass-4,Grassland,0,99,0,0,,,,,,,,,,,,
 Gulf and Atlantic Coastal Plain Floodplain Systems,Water Oak-American Elm-Swampprivet-3,Riparian,1,99,85,85,30,0,,1,0,0,0,1,0,0,0,1
 Gulf and Atlantic Coastal Plain Floodplain Systems,Willow Oak-Water Oak-American Elm-3,Riparian,1,99,85,85,30,0,,1,0,0,0,1,0,0,0,1
+Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Loblolly Pine-Southern Magnolia-Cypress-1,Riparian,1,99,95,95,40,0.5,0.5,1,0.5,0.5,0,1,0.25,0.25,0,0.5
 Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,American Sycamore-Sugarberry-Pine-3,Riparian,1,99,95,95,40,0,,1,0,0,0,1,0,0,0,1
 Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Cedar Elm-Hackberry-Green Ash-1,Riparian,1,99,95,95,30,0,,1,0,0,0,1,0,0,0,1
-Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Loblolly Pine-Southern Magnolia-Cypress-1,Riparian,1,99,95,95,40,0.5,0.5,1,0.5,0.5,0,1,0.25,0.25,0,0.5
 Gulf and Atlantic Coastal Plain Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,1,0,0,,,,,,,,,,,,
 Gulf and Atlantic Coastal Plain Swamp Systems,Bald Cypress-Atlantic White Cedar-Red Maple-5,Riparian,1,99,85,85,30,0.5,1,1,1,0,0,1,0.5,0,0,0.5
 Gulf and Atlantic Coastal Plain Tidal Marsh Systems,Saltmeadow Cordgrass-Saltgrass-Gulf Cordgrass-2,Grassland,1,99,0,0,,,,,,,,,,,,
@@ -157,7 +157,7 @@ Inter-Mountain Basins Big Sagebrush Shrubland - Basin Big Sagebrush,Basin Big Sa
 Inter-Mountain Basins Big Sagebrush Shrubland - Wyoming Big Sagebrush,Wyoming Big Sage-Indian Ricegrass-4,Shrubland,0,25,25,0,3,,,,,,,,,,,
 Inter-Mountain Basins Big Sagebrush Steppe,Wyoming Big Sage-Wheatgrass-3,Shrubland,0,60,10,0,3,,,,,,,,,,,
 Inter-Mountain Basins Big Sagebrush Steppe,Wyoming Big Sage-Wheatgrass-4,Shrubland,0,60,10,0,3,,,,,,,,,,,
-Inter-Mountain Basins Curl-leaf Mountain Mahogany Woodland and Shrubland,Curlleaf Mountain Mahogany-Mountain Big Sagebrush-3,Shrubland,0,99,60,25,10,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Inter-Mountain Basins Curl-leaf Mountain Mahogany Woodland and Shrubland,Curlleaf Mountain Mahogany-Mountain Big Sagebrush-3,Shrubland,0,99,60,25,10,,,,,,,,,,,
 Inter-Mountain Basins Greasewood Flat,Greasewood-Shadscale-5,Shrubland,0,25,25,0,,,,,,,,,,,,
 Inter-Mountain Basins Juniper Savanna,Western Juniper-Utah Juniper-3,Conifer,0,99,25,25,15,1,1,,1,0,0,0,1,0,0,0
 Inter-Mountain Basins Mat Saltbush Shrubland,Mat Saltbush-5,Shrubland,0,25,25,0,1,,,,,,,,,,,
@@ -264,7 +264,7 @@ Northern Atlantic Coastal Plain Dune and Swale,Sea Oats-1,Grassland,0,99,0,0,,,,
 Northern Atlantic Coastal Plain Hardwood Forest,White Oak-Black Oak-Little Bluestem-1,Hardwood,0,100,95,95,25,0,,1,0,0,0,1,0,0,0,1
 Northern Atlantic Coastal Plain Maritime Forest,Scarlet Oak-Black Oak-American Holly-1,Hardwood-Conifer,0,100,95,95,25,0.5,0,1,0,1,0,1,0,0.5,0,0.5
 Northern Atlantic Coastal Plain Pitch Pine Barrens,Pitch Pine-Scrub Oak-1,Conifer,0,99,60,25,,0.5,1,1,1,0,0,1,0.5,0,0,0.5
-Northern California Coastal Scrub,Coyote Brush-Lupine-4,Shrubland,0,99,60,0,,1,0,,0,1,0,0,0,1,0,0
+Northern California Coastal Scrub,Coyote Brush-Lupine-4,Shrubland,0,99,60,0,,,,,,,,,,,,
 Northern California Mesic Subalpine Woodland,Mountain Hemlock-Lodgepole Pine-5,Conifer,0,99,60,60,,1,1,,1,0,0,0,1,0,0,0
 Northern Crowley`s Ridge Sand Forest,Shortleaf Pine-Post Oak-Big Bluestem-1,Hardwood-Conifer,0,100,95,95,25,0.5,1,1,1,0,0,1,0.5,0,0,0.5
 Northern Rocky Mountain Conifer Swamp,Engelmann Spruce-Ladyfern-5,Conifer,0,99,95,95,25,1,1,,1,0,0,0,1,0,0,0
@@ -299,8 +299,8 @@ Northwestern Great Plains-Black Hills Ponderosa Pine Woodland and Savanna,Ponder
 Northwestern Great Plains-Black Hills Ponderosa Pine Woodland and Savanna - Low Elevation Woodland,Ponderosa Pine-Bur Oak-1,Conifer,0,99,25,25,20,0.5,1,1,1,0,0,1,0.5,0,0,0.5
 Northwestern Great Plains-Black Hills Ponderosa Pine Woodland and Savanna - Savanna,Ponderosa Pine-Fragrant Sumac-1,Conifer,0,99,25,25,20,1,1,,1,0,0,0,1,0,0,0
 Open Water,Open Water,Open Water,,,,,,,,,,,,,,,,
-Ouachita Montane Oak Forest,Post Oak-Blackjack Oak-Farkleberry-1,Hardwood,0,100,95,95,25,0.5,0,1,0,1,0,1,0,0.5,0,0.5
-Ozark-Ouachita Dry Oak Woodland,Post Oak-Blackjack Oak-Farkleberry-1,Hardwood,0,99,60,60,25,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Ouachita Montane Oak Forest,Post Oak-Blackjack Oak-Farkleberry-1,Hardwood,0,100,95,95,25,0.1,0,1,0,0.111111111,0,1,0,0.1,0,0.9
+Ozark-Ouachita Dry Oak Woodland,Post Oak-Blackjack Oak-Farkleberry-1,Hardwood,0,99,60,60,25,0.1,0,1,0,0.111111111,0,1,0,0.1,0,0.9
 Ozark-Ouachita Dry-Mesic Oak Forest,White Oak-Red Oak-Sugar Maple-1,Hardwood,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
 Ozark-Ouachita Mesic Hardwood Forest,White Oak-Sugar Maple-Cucumber Tree-1,Hardwood,0,100,95,95,30,0,,1,0,0,0,1,0,0,0,1
 Ozark-Ouachita Shortleaf Pine-Bluestem Woodland,Shortleaf Pine-Post Oak-Big Bluestem-1,Hardwood-Conifer,0,99,60,60,25,0.5,1,1,1,0,0,1,0.5,0,0,0.5
@@ -310,7 +310,7 @@ Paleozoic Plateau Bluff and Talus,Eastern Redcedar-White Oak-Sideoats Grama-2,Ha
 Pennyroyal Karst Plain Prairie and Barrens,Little Bluestem-Indiangrass-Southern Red Oak-2,Grassland,0,99,25,10,,0,,1,0,0,0,1,0,0,0,1
 PerennialIce/Snow,PerennialIce/Snow,PerennialIce/Snow,0,0,0,0,,,,,,,,,,,,
 Piedmont Hardpan Woodland and Forest,Post Oak-White Ash-Little Bluestem Hardpan-1,Hardwood,0,100,85,85,20,0,,1,0,0,0,1,0,0,0,1
-Rocky Mountain Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0,1,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Rocky Mountain Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0,1,,,,,,,,,,,
 Rocky Mountain Alpine Fell-Field,Dwarf Clover-Dwarf Phlox-5,Grassland,0,99,0,0,,,,,,,,,,,,
 Rocky Mountain Alpine Turf,Spike Sedge-Cushion Phlox-5,Grassland,0,99,0,0,,,,,,,,,,,,
 Rocky Mountain Alpine/Montane Sparsely Vegetated Systems,Sparsely Vegetated,Sparse,0,1,0,0,,,,,,,,,,,,
@@ -337,7 +337,7 @@ Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Engelmann Spru
 Rocky Mountain Subalpine/Upper Montane Riparian Systems,Black Cottonwood-Narrowleaf Willow-3,Riparian,1,99,95,80,25,0,,1,0,0,0,1,0,0,0,1
 Rocky Mountain Subalpine-Montane Limber-Bristlecone Pine Woodland,Bristlecone Pine-3,Conifer,0,99,60,60,15,1,1,,1,0,0,0,1,0,0,0
 Rocky Mountain Subalpine-Montane Mesic Meadow,Fleabane-Lupine-4,Grassland,0,99,0,0,,,,,,,,,,,,
-Sierra Nevada Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0,1,0.5,0,1,0,1,0,1,0,0.5,0,0.5
+Sierra Nevada Alpine Dwarf-Shrubland,Heather Moss-Arctic Willow-5,Shrubland,0,99,60,0,1,,,,,,,,,,,
 Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland,Lodgepole Pine-3,Conifer,0,100,85,85,30,1,1,,1,0,0,0,1,0,0,0
 Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland - Dry,Lodgepole Pine-Foxtail Pine-1,Conifer,0,100,85,85,30,1,1,,1,0,0,0,1,0,0,0
 Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland - Wet,Lodgepole Pine-Pinemat Manzanita-3,Conifer,0.1,100,85,85,30,1,0.5,,1,1,0,0,0.5,0.5,0,0
@@ -375,7 +375,7 @@ Southern Atlantic Coastal Plain Dune and Maritime Grassland,Sea Oats-Saltmeadow 
 Southern Atlantic Coastal Plain Maritime Forest,Longleaf Pine-Honduras Pine-Sand Live Oak-1,Hardwood-Conifer,0,100,60,25,25,1,0.5,,1,1,0,0,0.5,0.5,0,0
 Southern Atlantic Coastal Plain Wet Pine Savanna and Flatwoods,Longleaf Pine-Slash Pine-Saw Palmetto-1,Riparian,1,99,80,60,30,1,0.5,,1,1,0,0,0.5,0.5,0,0
 Southern Blackland Tallgrass Prairie,Little Bluestem-Indiangrass--2,Grassland,0,99,0,0,,,,,,,,,,,,
-Southern California Coastal Scrub,Coastal Sage-Black Sage-4,Shrubland,0,99,60,0,,0,,0,0,0,1,0,0,0,1,0
+Southern California Coastal Scrub,Coastal Sage-Black Sage-4,Shrubland,0,99,60,0,,,,,,,,,,,,
 Southern California Dry-Mesic Chaparral,Chamise-Manzanita-4,Shrubland,0,99,60,0,,1,0,,0,1,0,0,0,1,0,0
 Southern California Oak Woodland and Savanna,Coast Live Oak-California Walnut-1,Hardwood,0,99,25,25,25,0.5,0,1,0,1,0,1,0,0.5,0,0.5
 Southern Coastal Plain Blackland Prairie and Woodland,Post Oak-Eastern Redcedar-Little Bluestem-1,Grassland,0,99,10,10,,0.5,1,1,1,0,0,1,0.5,0,0,0.5
@@ -405,7 +405,7 @@ Southern Rocky Mountain Ponderosa Pine Woodland,Ponderosa Pine-3,Conifer,0,99,60
 Southern Rocky Mountain Ponderosa Pine Woodland - North,Ponderosa Pine-3,Conifer,0,99,60,60,20,1,1,,1,0,0,0,1,0,0,0
 Southern Rocky Mountain Ponderosa Pine Woodland - South,Ponderosa Pine-1,Conifer,0,99,60,60,20,1,1,,1,0,0,0,1,0,0,0
 Southwest Florida Coastal Strand and Maritime Hammock,Live Oak-Palmetto-Sea Grape-1,Hardwood,0,99,95,60,20,1,0,,0,1,0,0,0,1,0,0
-Tamaulipan Calcareous Thornscrub,Texas Barometer Bush-Guajillo-5,Shrubland,0,60,60,0,5,0.5,0,0,0,1,1,0,0,0.5,0.5,0
+Tamaulipan Calcareous Thornscrub,Texas Barometer Bush-Guajillo-5,Shrubland,0,60,60,0,5,,,,,,,,,,,
 Tamaulipan Clay Grassland,Little Bluestem-Multiflower False Rhodes Grass-2,Grassland,0,99,0,0,,,,,,,,,,,,
 Tamaulipan Floodplain,Sugarberry-Lollipop Mimosa-1,Riparian,1,99,95,25,25,0,,1,0,0,0,1,0,0,0,1
 Tamaulipan Mixed Deciduous Thornscrub,Mesquite-Lime Pricklyash-2,Shrubland,0,60,60,0,5,0.5,0,0,0,1,1,0,0,0.5,0.5,0

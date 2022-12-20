@@ -21,19 +21,19 @@ Sonoran Desertscrub Central Gulf Coast,desertscrub,0,25,25,0,,,,,,,,,,,,
 Sonoran Desertscrub Lower Colorado River Valley,desertscrub,0,25,25,0,,,,,,,,,,,,
 Sonoran Desertscrub Plains of Sonora,desertscrub,0,25,25,0,,,,,,,,,,,,
 Sonoran Desertscrub Vizcaino,desertscrub,0,25,25,0,,,,,,,,,,,,
-Central American (Guanacaste) Dry Forest,dry deciduous forest,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0
-Guerreran Dry Deciduous Forest,dry deciduous forest,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0
-San Lucan Dry Deciduous Forest,dry deciduous forest,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0
-Sinaloan Dry Deciduous (Monsoon) Forest,dry deciduous forest,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0
-Yucatan Dry Deciduous Forest,dry deciduous forest,0,99,90,60,12,0,,0,0,0,1,0,0,0,1,0
+Central American (Guanacaste) Dry Forest,dry deciduous forest,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0
+Guerreran Dry Deciduous Forest,dry deciduous forest,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0
+San Lucan Dry Deciduous Forest,dry deciduous forest,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0
+Sinaloan Dry Deciduous (Monsoon) Forest,dry deciduous forest,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0
+Yucatan Dry Deciduous Forest,dry deciduous forest,0,99,80,60,12,0,,0,0,0,1,0,0,0,1,0
 Central American Evergreen Rain Forest,evergreen rain forest,0,99,95,95,40,1,0,,0,1,0,0,0,1,0,0
 Veracruz Evergreen Rain Forest,evergreen rain forest,0,99,95,95,40,1,0,,0,1,0,0,0,1,0,0
 California Evergreen Forest and Woodland,evergreen woodland,0,99,80,60,40,1,0.5,,1,1,0,0,0.5,0.5,0,0
-Guatemalan Evergreen Forest and Woodland,evergreen woodland,0,99,80,60,30,1,,,0,1,0,0,0,1,0,0
-Guerreran Evergreen Forest and Woodland,evergreen woodland,0,99,80,60,30,1,,,0,1,0,0,0,1,0,0
-Madrean Evergreen Forest and Woodland,evergreen woodland,0,99,80,60,30,1,,,0,1,0,0,0,1,0,0
-San Lucan Evergreen Forest and Woodland,evergreen woodland,0,99,80,60,25,1,,,0,1,0,0,0,1,0,0
-Transvolcanic Evergreen Foreast and Woodland,evergreen woodland,0,99,80,60,30,1,,,0,1,0,0,0,1,0,0
+Guatemalan Evergreen Forest and Woodland,evergreen woodland,0,99,80,70,30,1,,,0,1,0,0,0,1,0,0
+Guerreran Evergreen Forest and Woodland,evergreen woodland,0,99,80,70,30,1,,,0,1,0,0,0,1,0,0
+Madrean Evergreen Forest and Woodland,evergreen woodland,0,99,80,70,30,1,,,0,1,0,0,0,1,0,0
+San Lucan Evergreen Forest and Woodland,evergreen woodland,0,99,80,70,25,1,,,0,1,0,0,0,1,0,0
+Transvolcanic Evergreen Foreast and Woodland,evergreen woodland,0,99,80,70,30,1,,,0,1,0,0,0,1,0,0
 California Valley Grassland,grassland,0,99,0,0,,,,,,,,,,,,
 Gulf Coastal Grassland,grassland,0,99,0,0,,,,,,,,,,,,
 Permanent Ice and Snow,ice,0,0,0,0,,,,,,,,,,,,
