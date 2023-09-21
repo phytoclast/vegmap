@@ -563,7 +563,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 60701,NT,7,"Tropical and subtropical grasslands, savannas, and",Arid Chaco,0,99,10,10,10,,,,,,,,,,,,410,410
 60702,NT,7,"Tropical and subtropical grasslands, savannas, and",Beni savanna,0.5,99,10,10,10,,,,,,,,,,,,410,410
 60703,NT,7,"Tropical and subtropical grasslands, savannas, and",Campos Rupestres montane savanna,0,99,10,10,10,,,,,,,,,,,,410,410
-60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,10,10,10,1,0,0,0,1,0,0,0,1,0,0,410,410
+60704,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,0,99,35,10,10,1,0,0,0,1,0,0,0,1,0,0,410,410
 60705,NT,7,"Tropical and subtropical grasslands, savannas, and",clipperton Island Scrub and Grassland,0,99,25,0,,,,,,,,,,,,,410,410
 60706,NT,7,"Tropical and subtropical grasslands, savannas, and",Córdoba montane savanna,0,99,10,10,10,,,,,,,,,,,,410,410
 60707,NT,7,"Tropical and subtropical grasslands, savannas, and",Guyanan savanna,0,99,10,10,10,,,,,,,,,,,,410,410
@@ -598,7 +598,7 @@ ECO_ID,REALM,BIOME,BIOME_NAME,ECO_NAME,wet,vegcover,woodycover,treecover,ht,ever
 61301,NT,13,Deserts and xeric shrublands,Araya and Paria xeric scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61302,NT,13,Deserts and xeric shrublands,Aruba-Curacao-Bonaire cactus scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61303,NT,13,Deserts and xeric shrublands,Atacama desert,0,25,25,0,,,,,,,,,,,,,520,520
-61304,NT,13,Deserts and xeric shrublands,Caatinga,0,25,25,0,,0,0,0,0,0,1,0,0,0,1,0,510,510
+61304,NT,13,Deserts and xeric shrublands,Caatinga,0,60,25,0,,0,0,0,0,0,1,0,0,0,1,0,510,510
 61306,NT,13,Deserts and xeric shrublands,Cuban cactus scrub,0,25,25,0,,,,,,,,,,,,,510,510
 61307,NT,13,Deserts and xeric shrublands,Galapagos Islands xeric scrub,0,25,25,0,,,,,,,,,,,,,520,520
 61308,NT,13,Deserts and xeric shrublands,Guajira-Barranquilla xeric scrub,0,25,25,0,,,,,,,,,,,,,510,510

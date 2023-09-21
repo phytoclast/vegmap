@@ -22,7 +22,7 @@ Southwestern-spruce-fir forest,20,0,100,95,95,20,1,1,,1,0,0,0,1,0,0,0
 Juniper-pinyon woodland,21,0,99,60,25,15,1,1,,1,0,0,0,1,0,0,0
 Oregon oakwoods,22,0,99,60,60,30,0,,1,0,0,0,1,0,0,0,1
 Mesquite bosques,23,0,99,60,0,15,0,,1,0,0,0,1,0,0,0,1
-Mosaic of numbers 2 and 22,24,0,99,80,80,30,0.5,1,1,1,0,0,1,0.5,0,0,0.5
+Mosaic of numbers 2 and 22,24,0,99,80,80,30,0.7,1,1,1,0,0,1,0.5,0,0,0.5
 California mixed evergreen forest,25,0,100,95,95,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0
 California oakwoods,26,0,99,60,60,40,1,0.1,,0.111111111,1,0,0,0.1,0.9,0,0
 Oak-juniper woodland,27,0,99,60,60,15,1,0.5,,1,1,0,0,0.5,0.5,0,0
@@ -70,8 +70,8 @@ Blackland prairie,68,0,99,0,0,,,,,,,,,,,,
 Bluestem-sacahuista prairie,69,0,99,0,0,,,,,,,,,,,,
 Southern cordgrass prairie,70,1,99,0,0,,,,,,,,,,,,
 Palmetto prairie,71,0,99,10,0,,1,0,,0,1,0,0,0,1,0,0
-Oak savanna,72,0,99,60,60,25,0,,1,0,0,0,1,0,0,0,1
-Mosaic of numbers 66 and 91,73,0,99,10,10,25,0,,1,0,0,0,1,0,0,0,1
+Oak savanna,72,0,99,25,25,25,0,,1,0,0,0,1,0,0,0,1
+Mosaic of numbers 66 and 91,73,0,99,5,5,25,0,,1,0,0,0,1,0,0,0,1
 Cedar glades,74,0,99,60,25,20,1,1,,1,0,0,0,1,0,0,0
 Cross timbers,75,0,99,80,80,20,0,,1,0,0,0,1,0,0,0,1
 Mesquite-buffalo grass,76,0,99,25,0,,0,,1,0,0,0,1,0,0,0,1
