@@ -1,0 +1,838 @@
+ECO_ID,m,p3AET,Tg,Tcc,REALM,BIOME,BIOME_NAME,ECO_NAME,altbiom2023,wet,vegcover,woodycover,treecover,evergreen,altbiome
+-9999,4.812539101,41.83,0.330656439,-27.81809235,,99,"Snow, ice, glaciers, and rock",Rock and ice,,0,0,0,0,,0
+-9998,0.714965105,138.30,15.26086426,-22.28281498,,98,Water,Lake,,,,,,,
+-9998,0.714965105,138.30,15.26086426,-22.28281498,AT,98,Water,Lake,,,,,,,
+10101,3.037848353,308.44,26.80708981,26.57250309,AA,1,Tropical and subtropical moist broadleaf forests,Admiralty Islands lowland rain forests,9,0,100,95,95,1,111
+10102,1.740337789,282.76,27.13492298,24.89042282,AA,1,Tropical and subtropical moist broadleaf forests,Banda Sea Islands moist deciduous forests,9,0,100,95,95,0,113
+10103,2.583970785,287.67,25.56314659,24.96680355,AA,1,Tropical and subtropical moist broadleaf forests,Biak-Numfoor rain forests,9,0,100,95,95,1,111
+10104,2.218165159,276.21,24.30513573,22.01280022,AA,1,Tropical and subtropical moist broadleaf forests,Buru rain forests,9,0,100,95,95,1,111
+10105,3.253360271,265.45,18.76538849,17.06176376,AA,1,Tropical and subtropical moist broadleaf forests,Central Range montane rain forests,4.3,0,100,95,95,1,112
+10106,1.854322314,295.87,26.75199318,26.17878056,AA,1,Tropical and subtropical moist broadleaf forests,Halmahera rain forests,9,0,100,95,95,1,111
+10107,2.227946997,297.62,24.97092628,23.71089363,AA,1,Tropical and subtropical moist broadleaf forests,Huon Peninsula montane rain forests,4.3,0,100,95,95,1,112
+10108,2.708868742,296.75,26.48780823,25.84593582,AA,1,Tropical and subtropical moist broadleaf forests,Japen rain forests,9,0,100,95,95,1,111
+10110,2.815940976,306.50,26.4942894,24.9855547,AA,1,Tropical and subtropical moist broadleaf forests,Louisiade Archipelago rain forests,9,0,100,95,95,1,111
+10111,3.128703117,295.15,25.65511131,24.76298523,AA,1,Tropical and subtropical moist broadleaf forests,New Britain-New Ireland lowland rain forests,9,0,100,95,95,1,111
+10112,3.753978968,270.31,23.26874638,21.82894135,AA,1,Tropical and subtropical moist broadleaf forests,New Britain-New Ireland montane rain forests,4.3,0,100,95,95,1,112
+10113,1.90388751,293.01,23.82523823,19.01659966,AA,1,Tropical and subtropical moist broadleaf forests,New Caledonia rain forests,9,0,100,95,95,1,111
+10114,1.954490304,240.73,20.4192524,15.37606239,AA,1,Tropical and subtropical moist broadleaf forests,Norfolk Island subtropical forests,9,0,100,95,95,1,120
+10115,2.51312685,309.52,26.77515411,26.10014343,AA,1,Tropical and subtropical moist broadleaf forests,Northern New Guinea lowland rain and freshwater swamp forests,9,1,100,95,95,1,1111
+10116,2.382935166,296.72,24.42905617,23.61963558,AA,1,Tropical and subtropical moist broadleaf forests,Northern New Guinea montane rain forests,4.3,0,100,95,95,1,112
+10117,1.630380452,323.69,25.81186199,16.91585827,AA,1,Tropical and subtropical moist broadleaf forests,Queensland tropical rain forests,9,0,100,95,95,1,111
+10118,2.949681878,289.81,26.39874554,24.42187214,AA,1,Tropical and subtropical moist broadleaf forests,Seram rain forests,9,0,100,95,95,1,111
+10119,3.316293478,290.54,26.39084435,25.50612259,AA,1,Tropical and subtropical moist broadleaf forests,Solomon Islands rain forests,9,0,100,95,95,1,111
+10120,2.187743545,306.50,22.73555756,21.37330246,AA,1,Tropical and subtropical moist broadleaf forests,Southeastern Papuan rain forests,9,0,100,95,95,1,111
+10121,2.708891749,326.30,27.47199917,25.16225338,AA,1,Tropical and subtropical moist broadleaf forests,Southern New Guinea freshwater swamp forests,9,1,100,95,95,1,1111
+10122,3.649414301,325.96,27.08116531,25.12872505,AA,1,Tropical and subtropical moist broadleaf forests,Southern New Guinea lowland rain forests,9,0,100,95,95,1,111
+10123,1.81088835,311.49,26.84182644,26.19787693,AA,1,Tropical and subtropical moist broadleaf forests,Sulawesi lowland rain forests,9,0,100,95,95,1,111
+10124,2.259119749,276.32,22.92695618,21.56994057,AA,1,Tropical and subtropical moist broadleaf forests,Sulawesi montane rain forests,4.3,0,100,95,95,1,112
+10125,3.581434965,307.55,26.60451889,24.71422482,AA,1,Tropical and subtropical moist broadleaf forests,Trobriand Islands rain forests,9,0,100,95,95,1,111
+10126,3.117035627,290.29,26.43806648,24.08727264,AA,1,Tropical and subtropical moist broadleaf forests,Vanuatu rain forests,9,0,100,95,95,1,111
+10127,3.785401583,225.33,19.07019234,17.69336128,AA,1,Tropical and subtropical moist broadleaf forests,Vogelkop montane rain forests,4.3,0,100,95,95,1,112
+10128,2.505412817,303.67,27.1323204,25.83547783,AA,1,Tropical and subtropical moist broadleaf forests,Vogelkop-Aru lowland rain forests,9,0,100,95,95,1,111
+10201,1.381120563,293.80,23.7639246,22.26777172,AA,2,Tropical and subtropical dry broadleaf forests,Lesser Sundas deciduous forests,8.2,0,99,90,60,0,114
+10202,1.828057766,301.96,25.00725555,19.72468185,AA,2,Tropical and subtropical dry broadleaf forests,New Caledonia dry forests,8.2,0,99,90,60,0,310
+10203,1.108207822,336.58,26.37045097,24.67848015,AA,2,Tropical and subtropical dry broadleaf forests,Sumba deciduous forests,8.2,0,99,90,60,0,114
+10204,1.12438637,284.07,25.45509243,23.18672371,AA,2,Tropical and subtropical dry broadleaf forests,Timor and Wetar deciduous forests,8.2,0,99,90,60,0,114
+10401,2.106679261,201.84,13.37554216,7.416404009,AA,4,Temperate broadleaf and mixed forests,Chatham Island temperate forests,4.1,0,100,95,95,1,120
+10402,0.962148547,282.31,19.43887138,9.509963036,AA,4,Temperate broadleaf and mixed forests,Eastern Australian temperate forests,4.1,0,100,95,95,1,120
+10403,5.050572157,215.27,11.24835587,2.974124074,AA,4,Temperate broadleaf and mixed forests,Fiordland temperate forests,4.1,0,100,95,95,1,120
+10404,6.367732048,209.27,11.56063747,2.520513773,AA,4,Temperate broadleaf and mixed forests,Nelson Coast temperate forests,4.1,0,100,95,95,1,120
+10405,2.643122435,244.02,14.56985521,5.718624115,AA,4,Temperate broadleaf and mixed forests,North Island temperate forests,4.1,0,100,95,95,1,120
+10406,2.288758874,250.13,16.44461823,9.122389317,AA,4,Temperate broadleaf and mixed forests,Northland temperate kauri forests,4.1,0,100,95,95,1,120
+10407,3.144025087,205.68,10.74719477,5.924017906,AA,4,Temperate broadleaf and mixed forests,Rakiura Island temperate forests,4.1,0,100,95,95,1,120
+10408,2.988930225,228.99,13.30335617,5.102674007,AA,4,Temperate broadleaf and mixed forests,Richmond temperate forests,4.1,0,100,95,95,1,120
+10409,0.95364055,186.89,18.47281456,6.709857941,AA,4,Temperate broadleaf and mixed forests,Southeast Australia temperate forests,4.1,0,100,95,95,1,120
+10410,1.933253646,231.18,12.63834286,4.878892422,AA,4,Temperate broadleaf and mixed forests,South Island temperate forests,4.1,0,100,95,95,1,120
+10411,2.073123455,179.69,11.86538601,4.745603085,AA,4,Temperate broadleaf and mixed forests,Tasmanian Central Highland forests,4.1,0,100,95,95,1,120
+10412,1.323024631,182.40,15.69544697,8.371846199,AA,4,Temperate broadleaf and mixed forests,Tasmanian temperate forests,4.1,0,100,95,95,1,120
+10413,2.751493931,219.75,14.07459688,7.749614,AA,4,Temperate broadleaf and mixed forests,Tasmanian temperate rain forests,4.1,0,100,95,95,1,120
+10414,5.68270874,220.39,14.22623539,6.457795143,AA,4,Temperate broadleaf and mixed forests,Westland temperate forests,4.1,0,100,95,95,1,120
+10701,0.908460855,348.20,28.50381851,23.33660316,AA,7,"Tropical and subtropical grasslands, savannas, and",Arnhem Land tropical savanna,8.2,0,99,10,10,1,410
+10702,0.490142778,255.45,25.31212425,12.52691936,AA,7,"Tropical and subtropical grasslands, savannas, and",Brigalow tropical savanna,8.2,0,99,10,10,1,410
+10703,1.000768214,337.13,27.72358131,22.35482025,AA,7,"Tropical and subtropical grasslands, savannas, and",Cape York tropical savanna,8.2,0,99,10,10,1,410
+10704,0.530382574,385.77,29.47311783,21.76384544,AA,7,"Tropical and subtropical grasslands, savannas, and",Carpentaria tropical savanna,8.2,0,99,10,10,1,410
+10705,0.544789135,346.85,26.18691921,18.11714458,AA,7,"Tropical and subtropical grasslands, savannas, and",Einasleigh upland savanna,8.2,0,99,10,10,1,410
+10706,0.547827482,367.76,29.27776527,22.23088741,AA,7,"Tropical and subtropical grasslands, savannas, and",Kimberly tropical savanna,8.2,0,99,10,10,1,410
+10707,0.269437879,209.45,28.9348917,15.68821754,AA,7,"Tropical and subtropical grasslands, savannas, and",Mitchell grass downs,8.1,0,99,10,10,1,410
+10708,1.288562655,313.63,27.43718338,24.96034241,AA,7,"Tropical and subtropical grasslands, savannas, and",Trans Fly savanna and grasslands,8.2,0,99,10,10,1,410
+10709,0.360660627,366.66,29.674613,19.72429848,AA,7,"Tropical and subtropical grasslands, savannas, and",Victoria Plains tropical savanna,8.1,0,99,10,10,1,410
+10801,1.532054722,207.05,13.42438602,2.960148454,AA,8,"Temperate grasslands, savannas, and shrublands",Cantebury-Otago tussock grasslands,6.1,0,99,0,0,,432
+10802,0.236828297,125.00,26.16670132,12.05247545,AA,8,"Temperate grasslands, savannas, and shrublands",Eastern Australia mulga shrublands,7.2,0,99,25,0,1,432
+10803,0.473730043,177.30,23.97264004,10.45302725,AA,8,"Temperate grasslands, savannas, and shrublands",Southeast Australia temperate savanna,7.2,0,99,10,10,1,222
+11001,2.03772068,228.46,12.14593315,1.04020977,AA,10,Montane grasslands,Australian Alps montane grasslands,1.2,0,99,0,0,,640
+11002,9.028896809,125.27,7.043680668,5.511636496,AA,10,Montane grasslands,Central Range sub-alpine grasslands,1.3,0,99,0,0,,610
+11003,8.353513718,200.70,9.876592636,0.684229255,AA,10,Montane grasslands,South Island montane grasslands,1.2,0,99,0,0,,640
+11201,0.209644683,88.16,23.46410561,10.88921881,AA,12,Mediterranean scrub,Coolgardie woodlands,5.1,0,99,75,25,1,221
+11202,0.312908143,116.59,20.4864254,10.08938599,AA,12,Mediterranean scrub,Esperance mallee,5.1,0,99,60,0,1,320
+11203,0.332921132,112.56,20.81197357,10.87692833,AA,12,Mediterranean scrub,Eyre and York mallee,5.1,0,99,60,0,1,320
+11204,1.363810897,176.09,18.77754784,11.84022141,AA,12,Mediterranean scrub,Jarrah-Karri forest and shrublands,5.1,0,99,75,25,1,221
+11205,0.589645207,142.37,22.5096283,12.41718388,AA,12,Mediterranean scrub,Kwongan heathlands,5.1,0,99,60,0,1,320
+11206,0.405419499,125.27,20.14765549,9.02925396,AA,12,Mediterranean scrub,Mount Lofty woodlands,5.1,0,99,75,25,1,221
+11207,0.262561485,85.80,22.73588181,10.16028595,AA,12,Mediterranean scrub,Murray-Darling woodlands and mallee,5.1,0,99,75,25,1,221
+11208,0.591576636,136.69,18.29856682,10.45183468,AA,12,Mediterranean scrub,Naracoorte woodlands,5.1,0,99,75,25,1,221
+11209,0.254487008,120.87,23.85315704,11.25719547,AA,12,Mediterranean scrub,Southwest Australia savanna,5.1,0,99,25,10,1,221
+11210,0.727819383,155.89,20.01663113,10.41712236,AA,12,Mediterranean scrub,Southwest Australia woodlands,5.1,0,99,75,25,1,221
+11301,0.19158031,143.97,28.38302708,16.97501945,AA,13,Deserts and xeric shrublands,Carnarvon xeric shrublands,7.3,0,25,25,0,,520
+11302,0.194566518,125.90,26.18686295,11.87147999,AA,13,Deserts and xeric shrublands,Central Ranges xeric scrub,7.2,0,25,25,0,,520
+11303,0.15585199,137.10,30.18478203,15.69505882,AA,13,Deserts and xeric shrublands,Gibson desert,7.3,0,25,25,0,,520
+11304,0.198504709,190.15,29.89638519,16.75223541,AA,13,Deserts and xeric shrublands,Great Sandy-Tanami desert,7.3,0,25,25,0,,520
+11305,0.15174827,67.90,25.33833885,11.67327213,AA,13,Deserts and xeric shrublands,Great Victoria desert,7.2,0,25,25,0,,520
+11306,0.142065629,55.90,22.81606865,11.68741703,AA,13,Deserts and xeric shrublands,Nullarbor Plains xeric shrublands,7.2,0,25,25,0,,520
+11307,0.176789835,181.80,30.98624992,18.05072689,AA,13,Deserts and xeric shrublands,Pilbara shrublands,7.3,0,25,25,0,,520
+11308,0.119628653,69.35,27.85577869,12.92548084,AA,13,Deserts and xeric shrublands,Simpson desert,7.3,0,25,25,0,,520
+11309,0.150120333,60.15,25.78055573,11.95233393,AA,13,Deserts and xeric shrublands,Tirari-Sturt stony desert,7.3,0,25,25,0,,520
+11310,0.1583381,93.40,27.98081493,12.75906181,AA,13,Deserts and xeric shrublands,Western Australian Mulga shrublands,7.3,0,25,25,0,,520
+11401,2.522207975,321.75,26.82982635,25.50014687,AA,14,Mangroves,New Guinea mangroves,,1,99,95,60,1,1112
+21104,4.060896397,107.64,4.929532528,0.450680822,AN,11,Tundra,Southern Indian Ocean Island tundra,1.1,0,99,10,0,0.5,640
+30101,1.556477368,244.16,17.9562664,17.00072289,AT,1,Tropical and subtropical moist broadleaf forests,Albertine Rift montane forests,4.3,0,100,95,95,1,112
+30102,1.487377644,312.68,25.46706009,22.38250732,AT,1,Tropical and subtropical moist broadleaf forests,Atlantic Equatorial coastal forests,9,0,100,95,95,1,111
+30103,1.813384593,307.38,23.83810806,21.23739052,AT,1,Tropical and subtropical moist broadleaf forests,Cameroonian Highlands forests,9,0,100,95,95,1,111
+30104,1.626633167,321.02,25.02602959,23.76083565,AT,1,Tropical and subtropical moist broadleaf forests,Central Congolian lowland forests,9,0,100,95,95,1,111
+30105,2.398533225,287.82,25.42940617,22.66662025,AT,1,Tropical and subtropical moist broadleaf forests,Comoros forests,9,0,100,95,95,1,111
+30106,1.743738294,329.84,27.08044624,25.04593086,AT,1,Tropical and subtropical moist broadleaf forests,Cross-Niger transition forests,9,0,100,95,95,1,111
+30107,2.222726822,303.91,24.54654312,22.75358009,AT,1,Tropical and subtropical moist broadleaf forests,Cross-Sanaga-Bioko coastal forests,9,0,100,95,95,1,111
+30108,1.126647592,267.65,17.36777401,15.4731946,AT,1,Tropical and subtropical moist broadleaf forests,East African montane forests,4.3,0,100,95,95,1,112
+30109,1.070917249,253.30,18.89900208,14.77140427,AT,1,Tropical and subtropical moist broadleaf forests,Eastern Arc forests,4.3,0,100,95,95,1,111
+30110,1.64538908,321.12,25.31012726,24.12155724,AT,1,Tropical and subtropical moist broadleaf forests,Eastern Congolian swamp forests,9,1,100,95,95,1,1111
+30111,1.224971056,338.72,27.22225952,24.64672661,AT,1,Tropical and subtropical moist broadleaf forests,Eastern Guinean forests,9,0,100,95,95,1,111
+30112,0.66316855,267.03,21.6978302,19.80835152,AT,1,Tropical and subtropical moist broadleaf forests,Ethiopian montane forests,4.3,0,100,95,95,1,112
+30113,2.872479916,230.03,22.91236496,21.04220963,AT,1,Tropical and subtropical moist broadleaf forests,Granitic Seychelles forests,9,0,100,95,95,1,111
+30114,1.485090733,321.33,23.07764816,21.4076519,AT,1,Tropical and subtropical moist broadleaf forests,Guinean montane forests,4.3,0,100,95,95,1,112
+30115,0.638434649,214.95,20.2462616,12.37247276,AT,1,Tropical and subtropical moist broadleaf forests,Knysna-Amatole montane forests,4.3,0,100,95,95,1,112
+30116,1.081747174,286.83,22.41710186,17.13480663,AT,1,Tropical and subtropical moist broadleaf forests,KwaZulu-Cape coastal forest mosaic,9,0,100,95,95,1,111
+30117,2.050983667,313.73,22.97010422,18.07315826,AT,1,Tropical and subtropical moist broadleaf forests,Madagascar lowland forests,9,0,100,95,95,1,111
+30118,1.404132605,335.18,23.16358566,17.25016212,AT,1,Tropical and subtropical moist broadleaf forests,Madagascar subhumid forests,9,0,100,95,95,1,111
+30119,0.755107105,326.76,24.7362175,18.18524265,AT,1,Tropical and subtropical moist broadleaf forests,Maputaland coastal forest mosaic,8.2,0,100,95,95,1,111
+30120,2.071405649,273.97,23.18664551,17.99110603,AT,1,Tropical and subtropical moist broadleaf forests,Mascarene forests,9,0,100,95,95,1,111
+30121,3.1881423,251.29,20.42034912,17.84949112,AT,1,Tropical and subtropical moist broadleaf forests,Mount Cameroon and Bioko montane forests,4.3,0,100,95,95,1,112
+30122,2.410590172,322.88,26.99647903,25.09531212,AT,1,Tropical and subtropical moist broadleaf forests,Niger Delta swamp forests,9,1,100,95,95,1,1111
+30123,1.147661328,318.98,27.16731548,24.26668644,AT,1,Tropical and subtropical moist broadleaf forests,Nigerian lowland forests,9,0,100,95,95,1,111
+30124,1.463802814,317.89,24.40338421,23.37688828,AT,1,Tropical and subtropical moist broadleaf forests,Northeastern Congolian lowland forests,9,0,100,95,95,1,111
+30125,0.766806662,299.29,27.37432861,24.52650642,AT,1,Tropical and subtropical moist broadleaf forests,Northern Zanzibar-Inhambane coastal forest mosaic,8.2,0,100,95,95,1,111
+30126,1.392484903,316.14,24.44265461,22.62681103,AT,1,Tropical and subtropical moist broadleaf forests,Northwestern Congolian lowland forests,9,0,100,95,95,1,111
+30127,2.351800919,266.31,24.30421829,21.97332001,AT,1,Tropical and subtropical moist broadleaf forests,Sao Tome and Principe moist lowland forests,9,0,100,95,95,1,111
+30128,0.789699823,335.60,25.83078861,21.17219067,AT,1,Tropical and subtropical moist broadleaf forests,Southern Zanzibar-Inhambane coastal forest mosaic,8.2,0,100,95,95,1,111
+30129,1.420365512,331.30,25.25819206,24.16300678,AT,1,Tropical and subtropical moist broadleaf forests,Western Congolian swamp forests,9,1,100,95,95,1,1111
+30130,1.846369505,351.64,25.89757919,24.135005,AT,1,Tropical and subtropical moist broadleaf forests,Western Guinean lowland forests,9,0,100,95,95,1,111
+30201,0.331102103,214.43,24.56571198,21.1216507,AT,2,Tropical and subtropical dry broadleaf forests,Cape Verde Islands dry forests,8.1,0,99,90,60,0,114
+30202,0.959647834,365.17,26.76613617,21.74705315,AT,2,Tropical and subtropical dry broadleaf forests,Madagascar dry deciduous forests,8.2,0,99,90,60,0,114
+30203,0.754345566,312.95,21.53680229,13.76523954,AT,2,Tropical and subtropical dry broadleaf forests,Zambezian Cryptosepalum dry forests,8.2,0,99,90,60,0,114
+30701,0.942257404,301.77,21.29872131,15.48585796,AT,7,"Tropical and subtropical grasslands, savannas, and",Angolan Miombo woodlands,8.2,0,99,25,25,0,210
+30702,0.379315346,303.70,24.03834534,16.34535408,AT,7,"Tropical and subtropical grasslands, savannas, and",Angolan Mopane woodlands,8.1,0,99,25,25,0,210
+30703,0.331516236,88.70,12.17551994,8.845919609,AT,7,"Tropical and subtropical grasslands, savannas, and",Ascension scrub and grasslands,8.1,0,99,25,0,0,410
+30704,0.977602154,292.22,21.58630276,17.82785416,AT,7,"Tropical and subtropical grasslands, savannas, and",Central Zambezian Miombo woodlands,8.2,0,99,25,25,0,210
+30705,0.558721125,334.67,27.66990852,24.49496031,AT,7,"Tropical and subtropical grasslands, savannas, and",East Sudanian savanna,8.2,0,99,10,10,0,410
+30706,0.821960628,322.39,25.79833603,21.58571243,AT,7,"Tropical and subtropical grasslands, savannas, and",Eastern Miombo woodlands,8.2,0,99,25,25,0,210
+30707,0.899296761,328.44,27.25191116,24.29667473,AT,7,"Tropical and subtropical grasslands, savannas, and",Guinean forest-savanna mosaic,8.2,0,99,10,10,0,410
+30708,0.518184066,292.90,22.42411613,18.86743164,AT,7,"Tropical and subtropical grasslands, savannas, and",Itigi-Sumbu thicket,8.2,0,99,10,10,0,410
+30709,0.286416858,227.20,24.21652222,15.47997379,AT,7,"Tropical and subtropical grasslands, savannas, and",Kalahari Acacia-Baikiaea woodlands,8.1,0,99,25,25,0,210
+30710,0.631487608,301.76,25.09375763,22.52023125,AT,7,"Tropical and subtropical grasslands, savannas, and",Mandara Plateau mosaic,8.2,0,99,10,10,0,410
+30711,0.442091957,250.02,23.15339756,20.960886,AT,7,"Tropical and subtropical grasslands, savannas, and",Northern Acacia-Commiphora bushlands and thickets,8.2,0,99,10,10,0,410
+30712,1.197093487,324.74,24.97361469,22.99919891,AT,7,"Tropical and subtropical grasslands, savannas, and",Northern Congolian forest-savanna mosaic,8.2,0,99,10,10,0,410
+30713,0.139743254,208.65,30.14122295,21.76207399,AT,7,"Tropical and subtropical grasslands, savannas, and",Sahelian Acacia savanna,8.1,0,99,10,10,0,410
+30714,0.39579317,239.49,24.81050682,19.9192791,AT,7,"Tropical and subtropical grasslands, savannas, and",Serengeti volcanic grasslands,8.1,0,99,10,10,0,410
+30715,0.218790397,176.90,27.24900913,24.38631344,AT,7,"Tropical and subtropical grasslands, savannas, and",Somali Acacia-Commiphora bushlands and thickets,8.1,0,99,10,10,0,410
+30716,0.635500401,302.71,23.09079933,20.67052269,AT,7,"Tropical and subtropical grasslands, savannas, and",Southern Acacia-Commiphora bushlands and thickets,8.2,0,99,10,10,0,410
+30717,0.454594478,304.93,23.41967773,14.0462532,AT,7,"Tropical and subtropical grasslands, savannas, and",Southern Africa bushveld,8.2,0,99,10,10,0,410
+30718,1.25024575,313.14,24.21359062,23.31519508,AT,7,"Tropical and subtropical grasslands, savannas, and",Southern Congolian forest-savanna mosaic,8.2,0,99,10,10,0,410
+30719,0.668322504,295.24,22.35720444,16.3386097,AT,7,"Tropical and subtropical grasslands, savannas, and",Southern Miombo woodlands,8.2,0,99,25,25,0,210
+30721,1.016661167,311.23,23.60481453,21.89898491,AT,7,"Tropical and subtropical grasslands, savannas, and",Victoria Basin forest-savanna mosaic,8.2,0,99,10,10,0,410
+30722,0.547186613,329.91,27.58067703,23.02711201,AT,7,"Tropical and subtropical grasslands, savannas, and",West Sudanian savanna,8.2,0,99,10,10,0,410
+30723,1.110411048,301.74,24.52622032,21.58822441,AT,7,"Tropical and subtropical grasslands, savannas, and",Western Congolian forest-savanna mosaic,8.2,0,99,10,10,0,410
+30724,0.739374936,356.29,22.00531578,13.55307746,AT,7,"Tropical and subtropical grasslands, savannas, and",Western Zambezian grasslands,8.2,0,99,10,10,0,410
+30725,0.434445322,305.39,25.39634609,18.50417519,AT,7,"Tropical and subtropical grasslands, savannas, and",Zambezian and Mopane woodlands,8.2,0,99,25,25,0,210
+30726,0.453046948,331.13,23.75147057,15.4131766,AT,7,"Tropical and subtropical grasslands, savannas, and",Zambezian Baikiaea woodlands,8.2,0,99,25,25,0,210
+30801,0.124665074,92.00,31.35786438,17.84620667,AT,8,"Temperate grasslands, savannas, and shrublands",Al Hajar montane woodlands,7.3,0,99,25,25,,230
+30803,11.56560707,97.41,4.558527946,0.046099454,AT,8,"Temperate grasslands, savannas, and shrublands",Tristan Da Cunha-Gough Islands shrub and grasslands,1.2,0,99,25,0,,432
+30901,0.299744666,211.68,26.61927986,24.63332176,AT,9,Flooded grasslands,East African halophytics,,1,99,0,0,,1000
+30902,0.261575282,276.90,24.85688686,15.59496564,AT,9,Flooded grasslands,Etosha Pan halophytics,,1,99,0,0,,1000
+30903,0.15563868,234.00,30.12116528,21.95047474,AT,9,Flooded grasslands,Inner Niger Delta flooded savanna,,1,99,10,10,,1000
+30904,0.210972801,278.59,29.11344719,21.89031982,AT,9,Flooded grasslands,Lake Chad flooded savanna,,1,99,10,10,,1000
+30905,0.543592095,333.68,28.47499847,25.5,AT,9,Flooded grasslands,Saharan flooded grasslands,,1,99,0,0,,1000
+30906,0.819323182,359.90,26.859972,21.4985981,AT,9,Flooded grasslands,Zambezian coastal flooded savanna,,1,99,10,10,,1000
+30907,0.633846521,307.66,23.67754555,16.96119118,AT,9,Flooded grasslands,Zambezian flooded grasslands,,1,99,0,0,,1000
+30908,0.243687943,223.90,26.23317337,17.52490902,AT,9,Flooded grasslands,Zambezian halophytics,,1,99,0,0,,1000
+31001,1.210999191,264.81,19.66784477,16.56227779,AT,10,Montane grasslands,Angolan montane forest-grassland mosaic,8.2,0,99,0,0,,222
+31002,0.625990093,291.57,26.57308006,21.33958244,AT,10,Montane grasslands,Angolan scarp savanna and woodlands,8.2,0,99,10,10,,640
+31003,1.12540555,260.00,12.51932907,3.341403246,AT,10,Montane grasslands,Drakensberg alti-montane grasslands and woodlands,8.2,0,99,10,10,,640
+31004,0.851592392,276.02,18.2266016,10.9342351,AT,10,Montane grasslands,"Drakensberg montane grasslands, woodlands and forests",8.2,0,99,10,10,,222
+31005,2.246741533,209.70,10.59493923,8.957596779,AT,10,Montane grasslands,East African montane moorlands,1.3,0,99,0,0,,610
+31006,1.137663722,246.98,17.68454552,11.36513805,AT,10,Montane grasslands,Eastern Zimbabwe montane forest-grassland mosaic,8.2,0,99,0,0,,222
+31007,0.942125291,261.28,18.50007629,16.26005745,AT,10,Montane grasslands,Ethiopian montane grasslands and woodlands,8.2,0,99,10,10,,610
+31008,1.33554101,224.74,12.87102795,11.37470531,AT,10,Montane grasslands,Ethiopian montane moorlands,1.3,0,99,0,0,,610
+31009,0.618999243,284.82,19.40985203,7.370290756,AT,10,Montane grasslands,Highveld grasslands,8.2,0,99,0,0,,640
+31010,1.106966078,283.08,22.45018959,20.22478867,AT,10,Montane grasslands,Jos Plateau forest-grassland mosaic,8.2,0,99,0,0,,222
+31011,1.768573046,247.74,15.21513271,9.940286636,AT,10,Montane grasslands,Madagascar ericoid thickets,8.2,0,99,0,0,,640
+31012,0.94680053,286.95,20.19464493,12.56664944,AT,10,Montane grasslands,Maputaland-Pondoland bushland and thickets,8.2,0,99,0,0,,640
+31013,2.203541756,199.69,10.96488762,10.74792767,AT,10,Montane grasslands,Ruwenzori-Virunga montane moorlands,1.3,0,99,0,0,,610
+31014,0.963458359,292.37,23.40951157,18.49590874,AT,10,Montane grasslands,South Malawi montane forest-grassland mosaic,8.2,0,99,0,0,,222
+31015,1.246863186,239.39,16.37677193,12.53703022,AT,10,Montane grasslands,Southern Rift montane forest-grassland mosaic,8.2,0,99,0,0,,222
+31201,0.395716995,137.00,19.25264931,11.34203625,AT,12,Mediterranean scrub,Albany thickets,5.1,0,99,60,0,1,320
+31202,0.389761031,138.77,21.26456451,12.78344631,AT,12,Mediterranean scrub,Lowland fynbos and renosterveld,5.1,0,99,60,0,1,320
+31203,0.391181722,131.78,19.27912331,10.52191639,AT,12,Mediterranean scrub,Montane fynbos and renosterveld,5.1,0,99,60,0,1,320
+31302,0.085788354,63.50,30.8885107,22.82605362,AT,13,Deserts and xeric shrublands,Arabian Peninsula coastal fog desert,7.3,0,25,25,0,,520
+31303,0.066390432,91.70,27.28499794,14.37058353,AT,13,Deserts and xeric shrublands,East Saharan montane xeric woodlands,7.3,0,25,25,10,,520
+31304,0.030266814,20.70,33.29558182,26.13542938,AT,13,Deserts and xeric shrublands,Eritrean coastal desert,7.3,0,25,25,0,,520
+31305,0.118202865,96.20,31.29405212,24.42216873,AT,13,Deserts and xeric shrublands,Ethiopian xeric grasslands and shrublands,7.3,0,60,25,0,,520
+31306,0.080790877,76.30,32.03772736,19.52228355,AT,13,Deserts and xeric shrublands,Gulf of Oman desert and semi-desert,7.3,0,25,25,0,,520
+31307,0.326316148,203.00,26.31152153,24.42536354,AT,13,Deserts and xeric shrublands,Hobyo grasslands and shrublands,8.1,0,60,25,0,,520
+31309,0.236185566,183.50,24.13209152,11.91199005,AT,13,Deserts and xeric shrublands,Kalahari xeric savanna,7.2,0,60,10,0,,520
+31310,0.116826139,108.10,25.16517258,19.92863655,AT,13,Deserts and xeric shrublands,Kaokoveld desert,7.3,0,25,25,0,,520
+31311,0.419368058,333.34,26.44603539,19.4170742,AT,13,Deserts and xeric shrublands,Madagascar spiny thickets,8.1,0,25,25,0,,510
+31312,0.593268543,374.15,25.72859001,19.06563759,AT,13,Deserts and xeric shrublands,Madagascar succulent woodlands,8.1,0,25,25,10,,510
+31313,0.192187622,150.60,27.15048218,25.6998024,AT,13,Deserts and xeric shrublands,Masai xeric grasslands and shrublands,7.3,0,60,25,0,,520
+31314,0.153449044,95.30,23.85628891,10.94374752,AT,13,Deserts and xeric shrublands,Nama Karoo,7.2,0,25,25,0,,520
+31315,0.059720922,60.00,23.05738831,17.89934921,AT,13,Deserts and xeric shrublands,Namib desert,7.3,0,25,25,0,,520
+31316,0.16961132,162.40,23.60497284,16.12387466,AT,13,Deserts and xeric shrublands,Namibian savanna woodlands,7.3,0,60,10,10,,520
+31317,0.013202518,17.30,29.07799339,19.1113987,PA,13,Deserts and xeric shrublands,Red Sea coastal desert,7.3,0,25,25,0,,520
+31318,0.107498068,57.00,24.24270248,22.22408962,AT,13,Deserts and xeric shrublands,Socotra Island xeric shrublands,7.3,0,25,25,0,,520
+31319,0.050143912,38.00,27.25980949,22.84681892,AT,13,Deserts and xeric shrublands,Somali montane xeric woodlands,7.3,0,25,25,10,,520
+31320,0.094880424,62.15,27.51512337,19.43036079,AT,13,Deserts and xeric shrublands,Southwestern Arabian foothills savanna,7.3,0,60,10,0,,520
+31321,0.149440482,114.00,25.04092407,16.84210587,AT,13,Deserts and xeric shrublands,Southwestern Arabian montane woodlands,7.3,0,25,25,10,,520
+31322,0.150138378,78.25,19.63909912,13.022192,AT,13,Deserts and xeric shrublands,Succulent Karoo,7.3,0,25,25,0,,520
+31401,2.696092486,315.28,26.93727398,24.9630003,AT,14,Mangroves,Central African mangroves,,1,99,95,60,1,1112
+31402,0.89773494,284.26,27.6088829,24.6504879,AT,14,Mangroves,East African mangroves,,1,99,95,60,1,1112
+31403,1.618056655,319.69,27.8838129,25.4820919,AT,14,Mangroves,Guinean mangroves,,1,99,95,60,1,1112
+31404,1.334016323,335.04,27.19288635,23.72538948,AT,14,Mangroves,Madagascar mangroves,,1,99,95,60,1,1112
+31405,0.767860025,307.05,24.26050091,18.48035526,AT,14,Mangroves,Southern Africa mangroves,,1,99,95,60,1,1112
+40101,2.556601286,280.29,26.80751705,25.71079159,IM,1,Tropical and subtropical moist broadleaf forests,Andaman Islands rain forests,9,0,100,95,95,1,111
+40102,2.458631992,321.03,26.90854168,26.235466,IM,1,Tropical and subtropical moist broadleaf forests,Borneo lowland rain forests,9,0,100,95,95,1,111
+40103,3.223667026,274.50,24.73349285,23.80862999,IM,1,Tropical and subtropical moist broadleaf forests,Borneo montane rain forests,4.3,0,100,95,95,1,112
+40104,2.407257438,325.94,27.07827568,26.44900036,IM,1,Tropical and subtropical moist broadleaf forests,Borneo peat swamp forests,9,1,100,95,95,1,1111
+40105,1.985485673,328.18,27.49655724,17.41541481,IM,1,Tropical and subtropical moist broadleaf forests,Brahmaputra Valley semi-evergreen forests,9,0,100,95,95,0.7,111
+40106,1.942095399,308.69,26.65285683,23.91584206,IM,1,Tropical and subtropical moist broadleaf forests,Cardamom Mountains rain forests,9,0,100,95,95,1,111
+40107,0.762424588,353.00,28.36089516,24.70453262,IM,1,Tropical and subtropical moist broadleaf forests,Chao Phraya freshwater swamp forests,8.2,1,100,95,95,1,1111
+40108,0.909030527,307.91,28.11650562,25.22946835,IM,1,Tropical and subtropical moist broadleaf forests,Chao Phraya lowland moist deciduous forests,8.2,0,100,95,95,0,113
+40109,2.147324562,273.40,22.84548759,16.52913737,IM,1,Tropical and subtropical moist broadleaf forests,Chin Hills-Arakan Yoma montane forests,4.3,0,100,95,95,1,112
+40111,0.959794819,341.76,28.18506622,18.80164695,IM,1,Tropical and subtropical moist broadleaf forests,Eastern highlands moist deciduous forests,8.2,0,100,95,95,0,113
+40112,2.469238162,298.54,22.20753288,21.13188267,IM,1,Tropical and subtropical moist broadleaf forests,Eastern Java-Bali montane rain forests,4.3,0,100,95,95,1,112
+40113,1.393521249,317.77,25.870121,25.02811337,IM,1,Tropical and subtropical moist broadleaf forests,Eastern Java-Bali rain forests,9,0,100,95,95,1,111
+40114,1.969080508,318.06,26.54313374,24.84431267,IM,1,Tropical and subtropical moist broadleaf forests,Greater Negros-Panay rain forests,9,0,100,95,95,1,111
+40115,1.770272255,327.90,26.00657272,15.08566475,IM,1,Tropical and subtropical moist broadleaf forests,Himalayan subtropical broadleaf forests,9,0,100,95,95,1,120
+40116,1.834157526,310.60,27.63547993,23.9569006,IM,1,Tropical and subtropical moist broadleaf forests,Irrawaddy freshwater swamp forests,9,1,100,95,95,1,1111
+40117,0.832174063,359.37,27.75982094,20.71564674,IM,1,Tropical and subtropical moist broadleaf forests,Irrawaddy moist deciduous forests,8.2,0,100,95,95,0,113
+40118,1.691720843,316.41,24.44842911,6.718035221,IM,1,Tropical and subtropical moist broadleaf forests,Jian Nan subtropical evergreen forests,4.1,0,100,95,95,1,120
+40119,1.225173771,318.75,26.21214485,20.64032507,IM,1,Tropical and subtropical moist broadleaf forests,Kayah-Karen montane rain forests,4.3,0,100,95,95,1,112
+40120,1.505469322,341.22,28.38457108,17.45373821,IM,1,Tropical and subtropical moist broadleaf forests,Lower Gangetic Plains moist deciduous forests,9,0,100,95,95,0,113
+40121,1.04782486,348.05,26.68059444,19.2868185,IM,1,Tropical and subtropical moist broadleaf forests,Luang Prabang montane rain forests,4.3,0,100,95,95,1,112
+40122,2.414200783,297.01,23.96760559,19.67012787,IM,1,Tropical and subtropical moist broadleaf forests,Luzon montane rain forests,4.3,0,100,95,95,1,112
+40123,1.930639505,338.89,27.55691719,24.96928596,IM,1,Tropical and subtropical moist broadleaf forests,Luzon rain forests,9,0,100,95,95,1,111
+40124,2.631724358,286.77,27.3822403,25.41392517,IM,1,Tropical and subtropical moist broadleaf forests,Malabar Coast moist forests,9,0,100,95,95,1,111
+40125,1.771341085,320.37,26.98353195,25.37480164,IM,1,Tropical and subtropical moist broadleaf forests,Maldives-Lakshadweep-Chagos Archipelago tropical moist forests,9,0,100,95,95,1,111
+40125,1.771341085,320.37,26.98353195,25.37480164,IM,1,Tropical and subtropical moist broadleaf forests,Maldives-Lakshadweep-Chagos Archipelago Tropical Moist Forest,9,0,100,95,95,1,111
+40126,2.854607582,286.07,23.9431181,13.60743594,IM,1,Tropical and subtropical moist broadleaf forests,Meghalaya subtropical forests,9,0,100,95,95,1,120
+40127,2.974078417,308.59,25.95859814,25.38232422,IM,1,Tropical and subtropical moist broadleaf forests,Mentawai Islands rain forests,9,0,100,95,95,1,111
+40128,2.353023052,326.17,25.71526909,22.49921227,IM,1,Tropical and subtropical moist broadleaf forests,Mindanao montane rain forests,4.3,0,100,95,95,1,112
+40129,1.559167385,334.05,26.37845421,25.06650734,IM,1,Tropical and subtropical moist broadleaf forests,Mindanao-Eastern Visayas rain forests,9,0,100,95,95,1,111
+40130,2.448757768,306.49,26.24902248,24.29376507,IM,1,Tropical and subtropical moist broadleaf forests,Mindoro rain forests,9,0,100,95,95,1,111
+40131,2.261655569,312.82,25.71313286,15.67246556,IM,1,Tropical and subtropical moist broadleaf forests,Mizoram-Manipur-Kachin rain forests,9,0,100,95,95,1,111
+40132,3.799600244,303.24,27.13146877,23.00343037,IM,1,Tropical and subtropical moist broadleaf forests,Myanmar coastal rain forests,9,0,100,95,95,1,111
+40133,2.462237954,284.39,27.15189362,26.43128109,IM,1,Tropical and subtropical moist broadleaf forests,Nicobar Islands rain forests,9,0,100,95,95,1,111
+40134,1.970765471,254.50,24.27583313,20.89215851,IM,1,Tropical and subtropical moist broadleaf forests,North Western Ghats moist deciduous forests,9,0,100,95,95,0,113
+40135,3.268188,278.81,25.96043587,24.28682518,IM,1,Tropical and subtropical moist broadleaf forests,North Western Ghats montane rain forests,4.3,0,100,95,95,1,112
+40136,2.313776493,320.94,26.02243423,18.35773659,IM,1,Tropical and subtropical moist broadleaf forests,Northern Annamites rain forests,9,0,100,95,95,1,111
+40137,1.431757808,300.50,23.57333279,13.1290921,IM,1,Tropical and subtropical moist broadleaf forests,Northern Indochina subtropical forests,9,0,100,95,95,1,120
+40138,1.224021912,339.71,27.37314224,21.0157547,IM,1,Tropical and subtropical moist broadleaf forests,Northern Khorat Plateau moist deciduous forests,9,0,100,95,95,0,113
+40139,0.823672771,342.41,26.20419693,19.67159224,IM,1,Tropical and subtropical moist broadleaf forests,Northern Thailand-Laos moist deciduous forests,8.2,0,100,95,95,0,113
+40140,2.26878345,295.69,24.95060158,12.66926467,IM,1,Tropical and subtropical moist broadleaf forests,Northern Triangle subtropical forests,9,0,100,95,95,1,120
+40141,1.93432802,342.44,27.51086426,18.06663418,IM,1,Tropical and subtropical moist broadleaf forests,Northern Vietnam lowland rain forests,9,0,100,95,95,1,111
+40142,1.170052648,320.87,28.90281296,21.17683411,IM,1,Tropical and subtropical moist broadleaf forests,Orissa semi-evergreen forests,9,0,100,95,95,0.7,111
+40143,1.811758518,320.71,27.43911743,26.29354668,IM,1,Tropical and subtropical moist broadleaf forests,Palawan rain forests,9,0,100,95,95,1,111
+40144,2.464345694,307.55,24.52469444,22.94965172,IM,1,Tropical and subtropical moist broadleaf forests,Peninsular Malaysian montane rain forests,4.3,0,100,95,95,1,112
+40145,2.167776823,331.32,26.71543312,25.45471573,IM,1,Tropical and subtropical moist broadleaf forests,Peninsular Malaysian peat swamp forests,9,1,100,95,95,1,1111
+40146,2.063694477,325.97,26.42419815,25.05262184,IM,1,Tropical and subtropical moist broadleaf forests,Peninsular Malaysian rain forests,9,0,100,95,95,1,111
+40147,1.640030026,336.93,27.56502724,16.29859161,IM,1,Tropical and subtropical moist broadleaf forests,Red River freshwater swamp forests,9,1,100,95,95,1,1111
+40149,1.62664175,323.49,26.58883381,12.17272139,IM,1,Tropical and subtropical moist broadleaf forests,South China-Vietnam subtropical evergreen forests,9,0,100,95,95,1,120
+40150,0.572289765,257.86,26.7614975,24.10066986,IM,1,Tropical and subtropical moist broadleaf forests,South Western Ghats moist deciduous forests,8.2,0,100,95,95,0,113
+40151,2.125951529,281.45,22.65211201,20.8924017,IM,1,Tropical and subtropical moist broadleaf forests,South Western Ghats montane rain forests,4.3,0,100,95,95,1,112
+40152,1.857517004,298.95,22.31306458,18.1497879,IM,1,Tropical and subtropical moist broadleaf forests,Southern Annamites montane rain forests,4.3,0,100,95,95,1,112
+40153,2.02000165,323.80,27.28609085,26.70593452,IM,1,Tropical and subtropical moist broadleaf forests,Southwest Borneo freshwater swamp forests,9,1,100,95,95,1,1111
+40154,3.616848946,314.83,26.1203804,25.56758499,IM,1,Tropical and subtropical moist broadleaf forests,Sri Lanka lowland rain forests,9,0,100,95,95,1,111
+40155,2.208119154,283.14,21.37253761,19.49890137,IM,1,Tropical and subtropical moist broadleaf forests,Sri Lanka montane rain forests,4.3,0,100,95,95,1,112
+40156,1.358514667,326.39,26.88470459,26.18638611,IM,1,Tropical and subtropical moist broadleaf forests,Sulu Archipelago rain forests,9,0,100,95,95,1,111
+40157,1.936188936,336.38,26.81280613,26.30236626,IM,1,Tropical and subtropical moist broadleaf forests,Sumatran freshwater swamp forests,9,1,100,95,95,1,1111
+40158,2.217891455,325.51,26.53919411,25.90947437,IM,1,Tropical and subtropical moist broadleaf forests,Sumatran lowland rain forests,9,0,100,95,95,1,111
+40159,2.485858917,273.87,20.82822227,20.30451012,IM,1,Tropical and subtropical moist broadleaf forests,Sumatran montane rain forests,4.3,0,100,95,95,1,112
+40160,2.080569744,328.33,26.75279808,25.95262146,IM,1,Tropical and subtropical moist broadleaf forests,Sumatran peat swamp forests,9,1,100,95,95,1,1111
+40161,2.041109085,312.00,27.67372322,27.11585617,IM,1,Tropical and subtropical moist broadleaf forests,Sundaland heath forests,9,0,100,95,95,1,111
+40162,1.596083164,346.61,28.72859001,18.90357971,IM,1,Tropical and subtropical moist broadleaf forests,Sundarbans freshwater swamp forests,9,1,100,95,95,1,1111
+40163,2.037335396,317.25,27.0097084,25.83748245,IM,1,Tropical and subtropical moist broadleaf forests,Tenasserim-South Thailand semi-evergreen rain forests,9,0,100,95,95,0.7,111
+40164,1.095138192,335.11,27.73294067,25.25312805,IM,1,Tropical and subtropical moist broadleaf forests,Tonle Sap freshwater swamp forests,9,1,100,95,95,1,1111
+40165,1.415330887,308.03,27.65115929,25.75306892,IM,1,Tropical and subtropical moist broadleaf forests,Tonle Sap-Mekong peat swamp forests,9,1,100,95,95,1,1111
+40166,0.729796648,334.68,30.00443077,14.37014723,IM,1,Tropical and subtropical moist broadleaf forests,Upper Gangetic Plains moist deciduous forests,8.2,0,100,95,95,0,113
+40167,2.474654794,297.73,23.67283916,22.97219658,IM,1,Tropical and subtropical moist broadleaf forests,Western Java montane rain forests,4.3,0,100,95,95,1,112
+40168,2.282120824,318.40,26.20570755,25.20998764,IM,1,Tropical and subtropical moist broadleaf forests,Western Java rain forests,9,0,100,95,95,1,111
+40169,1.450427175,325.55,27.06220627,18.05573273,IM,1,Tropical and subtropical moist broadleaf forests,Hainan Island monsoon rain forests,9,0,100,95,95,1,111
+40170,2.869891167,290.01,25.11637974,14.33480978,IM,1,Tropical and subtropical moist broadleaf forests,Nansei Islands subtropical evergreen forests,9,0,100,95,95,1,120
+40171,3.131206751,314.59,26.61941719,17.94240379,IM,1,Tropical and subtropical moist broadleaf forests,South Taiwan monsoon rain forests,9,0,100,95,95,1,111
+40172,2.562284708,288.41,23.81429291,14.93334675,IM,1,Tropical and subtropical moist broadleaf forests,Taiwan subtropical evergreen forests,9,0,100,95,95,1,120
+40201,0.679168761,349.25,29.31041908,21.54498863,IM,2,Tropical and subtropical dry broadleaf forests,Central Deccan Plateau dry deciduous forests,8.2,0,99,90,60,0,114
+40202,0.93792665,359.72,27.53315735,23.89364338,IM,2,Tropical and subtropical dry broadleaf forests,Central Indochina dry forests,8.2,0,99,90,60,0,114
+40203,0.953985095,338.39,28.48803139,17.43890572,IM,2,Tropical and subtropical dry broadleaf forests,Chhota-Nagpur dry deciduous forests,8.2,0,99,90,60,0,114
+40204,0.815454602,345.14,30.12135887,24.53269005,IM,2,Tropical and subtropical dry broadleaf forests,East Deccan dry-evergreen forests,8.2,0,99,90,60,1,113
+40205,0.550007641,334.10,28.25770187,21.63302708,IM,2,Tropical and subtropical dry broadleaf forests,Irrawaddy dry forests,8.1,0,99,90,60,0,114
+40206,0.614468217,317.15,29.23229218,17.86731148,IM,2,Tropical and subtropical dry broadleaf forests,Khathiar-Gir dry deciduous forests,8.2,0,99,90,60,0,114
+40207,0.762097061,318.58,28.88934326,19.08230925,IM,2,Tropical and subtropical dry broadleaf forests,Narmada Valley dry deciduous forests,8.2,0,99,90,60,0,114
+40208,1.083618402,333.34,29.07223701,20.26853752,IM,2,Tropical and subtropical dry broadleaf forests,Northern dry deciduous forests,8.2,0,99,90,60,0,114
+40209,0.55282408,266.28,24.9932785,22.48632622,IM,2,Tropical and subtropical dry broadleaf forests,South Deccan Plateau dry deciduous forests,8.1,0,99,90,60,0,114
+40210,1.648547173,319.03,26.60911369,23.74232101,IM,2,Tropical and subtropical dry broadleaf forests,Southeastern Indochina dry evergreen forests,8.2,0,99,90,60,1,113
+40211,1.487580478,307.57,27.47949409,22.00408554,IM,2,Tropical and subtropical dry broadleaf forests,Southern Vietnam lowland dry forests,8.2,0,99,90,60,0,114
+40212,1.422892034,300.75,28.05914688,24.50727463,IM,2,Tropical and subtropical dry broadleaf forests,Sri Lanka dry-zone dry evergreen forests,8.2,0,99,90,60,1,113
+40301,1.752337635,296.89,23.01685524,9.849767923,IM,3,Tropical and subtropical coniferous forests,Himalayan subtropical pine forests,4.3,0,100,95,95,1,120
+40302,2.35234189,276.04,22.05385399,18.46683121,IM,3,Tropical and subtropical coniferous forests,Luzon tropical pine forests,4.3,0,100,95,95,1,120
+40303,2.117414713,286.94,22.53213692,13.40339756,IM,3,Tropical and subtropical coniferous forests,Northeast India-Myanmar pine forests,4.3,0,100,95,95,1,120
+40304,2.075768471,255.63,18.87414932,18.37498093,IM,3,Tropical and subtropical coniferous forests,Sumatran tropical pine forests,4.3,0,100,95,95,1,120
+40401,2.478116274,266.52,19.30198479,9.277664185,IM,4,Temperate broadleaf and mixed forests,Eastern Himalayan broadleaf forests,3.1,0,100,95,95,0,120
+40402,3.486864805,227.09,15.0944519,1.145733833,IM,4,Temperate broadleaf and mixed forests,Northern Triangle temperate forests,3.1,0,100,95,95,0,120
+40403,1.792519748,230.14,20.36631012,4.837605476,IM,4,Temperate broadleaf and mixed forests,Western Himalayan broadleaf forests,3.1,0,100,95,95,0,120
+40501,2.152676821,200.90,9.25103569,-7.392669678,IM,5,Temperate coniferous forests,Eastern Himalayan subalpine conifer forests,2.2,0,100,95,95,1,140
+40502,1.665820956,237.48,15.84915447,1.281816006,IM,5,Temperate coniferous forests,Western Himalayan subalpine conifer forests,2.2,0,100,95,95,1,140
+40701,1.451164365,349.78,27.96873474,15.79306662,IM,7,"Tropical and subtropical grasslands, savannas, and",Terai-Duar savanna and grasslands,8.2,0,99,10,10,0,410
+40901,0.240367681,299.59,29.27544689,17.18977523,IM,9,Flooded grasslands,Rann of Kutch seasonal salt marsh,,1,99,0,0,,1000
+41001,2.119533062,265.69,23.26804543,21.88251114,IM,10,Montane grasslands,Kinabalu montane alpine meadows,1.3,0,99,0,0,,610
+41301,0.448750421,272.15,26.27554035,22.59059906,IM,13,Deserts and xeric shrublands,Deccan thorn scrub forests,8.1,0,60,60,25,,510
+41302,0.116659623,112.25,32.35176086,9.096739769,IM,13,Deserts and xeric shrublands,Indus Valley desert,7.2,0,25,25,0,,520
+41303,0.243233256,273.44,30.44589615,11.44958389,IM,13,Deserts and xeric shrublands,Northwestern thorn scrub forests,7.2,0,60,60,25,,510
+41304,0.150831051,187.65,31.89748764,12.45318258,IM,13,Deserts and xeric shrublands,Thar desert,7.3,0,25,25,0,,520
+41401,0.711333871,312.21,29.83707237,24.45920753,IM,14,Mangroves,Goadavari-Krishna mangroves,,1,99,95,60,1,1112
+41402,1.723782837,305.53,27.62927151,25.97495365,IM,14,Mangroves,Indochina mangroves,,1,99,95,60,1,1112
+41403,0.533340991,301.74,28.88145447,20.84210777,IM,14,Mangroves,Indus River Delta-Arabian Sea mangroves,,1,99,95,60,1,1112
+41404,2.425443411,301.67,27.53202629,24.9981842,IM,14,Mangroves,Myanamar Coast mangroves,,1,99,95,60,1,1112
+41405,1.801350713,317.20,27.06363869,26.56298637,IM,14,Mangroves,Sunda Shelf mangroves,,1,99,95,60,1,1112
+41406,2.506690979,323.83,28.39139748,19.29976177,IM,14,Mangroves,Sundarbans mangroves,,1,99,95,60,1,1112
+50201,0.401031852,350.30,27.76660919,12.51246738,,2,Tropical and subtropical dry broadleaf forests,Sonoran-Sinaloan transition subtropical dry forest,8.1,0,99,90,60,0,120
+50302,0.619606674,278.71,17.44369888,6.182598114,,3,Tropical and subtropical coniferous forests,Sierra Madre Occidental pine-oak forests,4.3,0,100,75,75,1,120
+50303,0.445714772,220.30,21.37147522,8.160824299,,3,Tropical and subtropical coniferous forests,Sierra Madre Oriental pine-oak forests,4.3,0,100,75,75,1,120
+50401,1.817243457,280.44,15.68573666,-9.630243301,,4,Temperate broadleaf and mixed forests,Allegheny Highlands forests,3.1,0,100,95,95,0.3,131
+50402,1.61847198,307.03,18.58552742,-6.318984985,,4,Temperate broadleaf and mixed forests,Appalachian mixed mesophytic forests,3.1,0,100,95,95,0.3,132
+50403,1.618153095,320.20,19.93105984,-2.446101189,,4,Temperate broadleaf and mixed forests,Appalachian/Blue Ridge forests,3.1,0,100,95,95,0.3,131
+50404,1.455274522,290.24,21.18747234,-4.042150497,,4,Temperate broadleaf and mixed forests,Central U.S. hardwood forests,3.1,0,100,95,95,0,131
+50405,0.938319504,291.06,25.1293869,5.537011147,,4,Temperate broadleaf and mixed forests,East Central Texas forests,3.1,0,100,95,95,0,131
+50406,2.170491576,244.15,13.45014095,-19.05060387,,4,Temperate broadleaf and mixed forests,Eastern forest/boreal transition,3.1,0,100,95,95,0.5,131
+50407,1.939045548,250.45,14.7519908,-15.64811897,,4,Temperate broadleaf and mixed forests,Eastern Great Lakes lowland forests,3.1,0,100,95,95,0,131
+50408,2.438007832,268.33,13.61065197,-14.86957359,,4,Temperate broadleaf and mixed forests,Gulf of St. Lawrence lowland forests,3.1,0,100,95,95,0,131
+50409,1.460810363,312.06,24.1259203,4.198683739,,4,Temperate broadleaf and mixed forests,Mississippi lowland forests,3.1,1,100,95,95,0,1120
+50410,2.460375905,262.50,13.08209515,-15.32539558,,4,Temperate broadleaf and mixed forests,New England/Acadian forests,3.1,0,100,95,95,0.5,131
+50411,1.852246165,280.99,17.355896,-6.19115448,,4,Temperate broadleaf and mixed forests,Northeastern coastal forests,3.1,0,100,95,95,0.5,131
+50412,1.427442014,296.56,22.57361221,-0.469125748,,4,Temperate broadleaf and mixed forests,Ozark Mountain forests,3.1,0,100,95,95,0,131
+50413,1.435263991,332.45,23.39674187,3.342768669,,4,Temperate broadleaf and mixed forests,Southeastern mixed forests,3.1,0,100,95,95,0.5,134
+50414,1.456925631,270.70,17.65232658,-8.608533859,,4,Temperate broadleaf and mixed forests,Southern Great Lakes forests,3.1,0,100,95,95,0,131
+50415,1.368028522,278.17,16.66359901,-13.60882759,,4,Temperate broadleaf and mixed forests,Upper Midwest Forest/Savanna transition zone,3.1,0,100,60,60,0,131
+50415,1.368028522,278.17,16.66359901,-13.60882759,,4,Temperate broadleaf and mixed forests,Western Great Lakes forests,3.1,0,100,95,95,0.5,131
+50416,1.515517354,261.94,14.13491631,-18.06639099,,4,Temperate broadleaf and mixed forests,Western Great Lakes forests,3.1,0,100,95,95,0.5,131
+50417,1.904478431,165.85,15.95598316,4.377629757,,4,Temperate broadleaf and mixed forests,Willamette Valley forests,3.1,0,100,60,60,0,131
+50501,2.547581911,190.40,5.68761158,-17.68354797,,5,Temperate coniferous forests,Alberta Mountain forests,2.2,0,100,95,95,1,140
+50502,1.36984694,233.00,10.42433357,-20.02958298,,5,Temperate coniferous forests,Alberta/British Columbia foothills forests,2.2,0,100,85,85,1,140
+50503,0.528836384,220.80,17.54032135,-1.470748425,,5,Temperate coniferous forests,Arizona Mountains forests,2.2,0,100,85,85,1,134
+50504,1.609429657,291.03,19.32155037,-2.30989933,,5,Temperate coniferous forests,Atlantic coastal pine barrens,3.1,0,100,60,25,1,133
+50505,0.743159354,101.00,13.75379181,-8.574335098,,5,Temperate coniferous forests,Blue Mountains forests,2.2,0,100,85,85,1,134
+50506,6.930255651,163.06,9.669290543,-5.100730896,,5,Temperate coniferous forests,British Columbia mainland coastal forests,2.2,0,100,95,95,1,133
+50507,1.333910584,116.60,9.137515068,-9.913024902,,5,Temperate coniferous forests,Cascade Mountains leeward forests,2.2,0,100,95,95,1,134
+50508,2.832725286,127.94,12.19846201,0.150014937,,5,Temperate coniferous forests,Central and Southern Cascades forests,4.2,0,100,95,95,1,133
+50509,1.926788747,197.70,8.473220825,-18.09201241,,5,Temperate coniferous forests,Central British Columbia Mountain forests,2.2,0,100,95,95,1,140
+50510,4.074884892,175.53,13.58568764,4.990649223,,5,Temperate coniferous forests,Central Pacific coastal forests,4.2,0,100,95,95,1,133
+50511,1.202409863,176.70,8.620108604,-15.13485146,,5,Temperate coniferous forests,Colorado Rockies forests,2.2,0,100,95,95,1,140
+50512,0.653751552,92.76,12.67527962,-4.686133385,,5,Temperate coniferous forests,Eastern Cascades forests,2.2,0,100,85,85,1,134
+50513,1.139211893,361.69,26.11696243,13.6537478,,5,Temperate coniferous forests,Florida sand pine scrub,4.1,0,100,60,10,1,320
+50514,1.418180346,142.20,9.892455101,-15.90638161,,5,Temperate coniferous forests,Fraser Plateau and Basin complex,2.2,0,100,95,95,1,140
+50515,0.486579984,79.50,12.43681526,-6.596103668,,5,Temperate coniferous forests,Great Basin montane forests,2.2,0,100,85,85,1,134
+50516,1.703876257,114.64,14.19439411,3.133712769,,5,Temperate coniferous forests,Klamath-Siskiyou forests,2.2,0,100,95,95,1,134
+50517,1.336333752,356.85,23.59744835,5.421033859,,5,Temperate coniferous forests,Middle Atlantic coastal forests,4.1,0,100,85,85,1,134
+50518,2.660101533,181.14,9.515645027,-14.4510603,,5,Temperate coniferous forests,North Central Rockies forests,2.2,0,100,95,95,1,140
+50519,1.080474854,146.27,16.17300224,8.484790802,,5,Temperate coniferous forests,Northern California coastal forests,4.2,0,100,95,95,1,120
+50520,8.378652573,206.43,10.4523468,-5.180023193,,5,Temperate coniferous forests,Northern Pacific coastal forests,4.2,0,100,95,95,1,133
+50521,3.36886704,167.24,6.499979734,-15.44733334,,5,Temperate coniferous forests,Northern transitional alpine forests,2.2,0,100,95,95,1,140
+50522,1.003668785,129.05,11.39323139,-10.23187065,,5,Temperate coniferous forests,Okanogan dry forests,2.2,0,100,85,85,1,134
+50523,1.213081598,313.69,24.32765198,4.932641029,,5,Temperate coniferous forests,Piney Woods forests,4.1,0,100,60,60,1,134
+50524,2.13608408,162.43,14.54946327,3.500267267,,5,Temperate coniferous forests,Puget lowland forests,4.2,0,100,95,95,1,133
+50525,9.963634968,185.48,10.25164461,2.123518229,,5,Temperate coniferous forests,Queen Charlotte Islands,4.2,0,100,95,95,1,133
+50526,0.411610544,98.31,16.15613174,5.921107292,,5,Temperate coniferous forests,Sierra Juarez & San Pedro Martir pine-oak forests,4.2,0,100,85,85,1,134
+50527,1.405883074,87.35,13.53805542,1.498528957,,5,Temperate coniferous forests,Sierra Nevada forests,2.2,0,100,95,95,1,134
+50528,0.942984641,136.41,10.17105007,-16.54916763,,5,Temperate coniferous forests,South Central Rockies forests,2.2,0,100,85,85,1,140
+50529,1.326140344,375.51,25.1096468,8.739844441,,5,Temperate coniferous forests,Southeastern conifer forests,4.1,0,100,60,60,1,222
+50530,0.707912803,113.30,12.10271358,-9.283367157,,5,Temperate coniferous forests,Wasatch and Uinta montane forests,2.2,0,100,95,95,1,140
+50601,4.153608084,168.03,7.862653732,-5.735188484,,6,Boreal forest/taigas,Alaska Peninsula montane taiga,2.1,0,100,95,75,1,140
+50602,1.978166938,242.99,10.34080172,-28.16739082,,6,Boreal forest/taigas,Central Canadian Shield forests,2.1,0.1,100,95,95,1,140
+50603,2.38471055,162.34,9.049958229,-12.89077568,,6,Boreal forest/taigas,Cook Inlet taiga,2.1,0,100,95,75,1,140
+50604,1.175459623,150.20,6.925354481,-27.03738022,,6,Boreal forest/taigas,Copper Plateau taiga,2.1,0,100,95,75,1,140
+50605,3.612833381,219.55,9.992458344,-19.67687798,,6,Boreal forest/taigas,Eastern Canadian forests,2.1,0.1,100,95,95,1,140
+50606,2.821385384,202.83,6.974768639,-32.78995514,,6,Boreal forest/taigas,Eastern Canadian Shield taiga,2.1,0.1,100,95,75,1,140
+50607,1.347963274,144.85,8.545211315,-25.54443932,,6,Boreal forest/taigas,Interior Alaska/Yukon lowland taiga,2.1,0.1,100,95,75,1,140
+50608,1.242261291,214.70,11.05911732,-30.80201721,,6,Boreal forest/taigas,Mid-Continental Canadian forests,2.1,0.1,100,95,95,1,140
+50609,1.473729968,218.70,10.62705898,-33.23112106,,6,Boreal forest/taigas,Midwestern Canadian Shield forests,2.1,0.1,100,95,95,1,140
+50610,1.150832176,176.40,9.833370209,-33.16179657,,6,Boreal forest/taigas,Muskwa/Slave Lake forests,2.1,0.1,100,95,95,1,140
+50611,5.201236725,203.90,10.36005592,-10.82280731,,6,Boreal forest/taigas,Newfoundland Highland forests,2.1,0,100,95,95,1,140
+50612,1.259234786,132.90,7.788863182,-41.42429352,,6,Boreal forest/taigas,Northern Canadian Shield taiga,2.1,0.1,100,95,75,1,140
+50613,1.904944599,179.70,6.640357018,-25.78866768,,6,Boreal forest/taigas,Northern Cordillera forests,2.1,0.1,100,95,95,1,140
+50614,1.088265181,131.70,8.287514687,-35.95965576,,6,Boreal forest/taigas,Northwest Territories taiga,2.1,0.1,100,95,75,1,140
+50615,4.40051198,196.86,10.85965824,-4.845780373,,6,Boreal forest/taigas,South Avalon-Burin oceanic barrens,2.1,0,100,60,25,1,140
+50616,1.846354306,229.50,9.299590588,-33.91671562,,6,Boreal forest/taigas,Southern Hudson Bay taiga,2.1,0.1,100,95,75,1,140
+50617,0.867218614,136.15,7.683597565,-32.21214676,,6,Boreal forest/taigas,Yukon Interior dry forests,2.1,0,100,95,95,1,140
+50701,0.666083395,235.60,27.03333282,12.57470822,,7,"Tropical and subtropical grasslands, savannas, and",Western Gulf coastal grasslands,8.2,0.5,99,0,0,0,410
+50801,0.17610991,92.36,23.18023872,7.080984354,,8,"Temperate grasslands, savannas, and shrublands",California Central Valley grasslands,5.1,0,99,0,0,,432
+50802,1.041232049,217.91,12.06324005,-25.54024124,,8,"Temperate grasslands, savannas, and shrublands",Canadian Aspen forests and parklands,6.1,0,99,25,25,0,432
+50803,0.748215139,266.50,22.69390869,-4.50122261,,8,"Temperate grasslands, savannas, and shrublands",Central and Southern mixed grasslands,6.1,0,99,0,0,,431
+50804,1.318092704,304.24,20.29893494,-9.407485962,,8,"Temperate grasslands, savannas, and shrublands",Central forest/grasslands transition zone,6.1,0,99,0,0,0,431
+50805,1.188871205,296.60,18.0033617,-14.14857769,,8,"Temperate grasslands, savannas, and shrublands",Central tall grasslands,6.1,0,99,0,0,,431
+50806,0.632556081,236.50,24.36393166,4.058526993,,8,"Temperate grasslands, savannas, and shrublands",Edwards Plateau savanna,6.2,0,99,10,10,,222
+50807,1.057120681,290.80,21.41455078,-6.87922287,,8,"Temperate grasslands, savannas, and shrublands",Flint Hills tall grasslands,6.1,0,99,0,0,,431
+50808,0.626961589,145.80,13.11544704,-15.22161102,,8,"Temperate grasslands, savannas, and shrublands",Montana Valley and Foothill grasslands,6.2,0,99,0,0,,432
+50809,0.65970844,230.44,17.55982208,-12.00875854,,8,"Temperate grasslands, savannas, and shrublands",Nebraska Sand Hills mixed grasslands,6.2,0,99,0,0,,432
+50810,0.839634538,216.90,15.06461239,-18.41681671,,8,"Temperate grasslands, savannas, and shrublands",Northern mixed grasslands,6.1,0,99,0,0,,432
+50811,0.642844677,174.35,15.29555798,-17.98070908,,8,"Temperate grasslands, savannas, and shrublands",Northern short grasslands,6.2,0,99,0,0,,432
+50812,1.01781714,231.20,14.58039665,-23.75961304,,8,"Temperate grasslands, savannas, and shrublands",Northern tall grasslands,6.1,0,99,0,0,,431
+50813,0.60809052,92.68,14.69176388,-5.520206451,,8,"Temperate grasslands, savannas, and shrublands",Palouse grasslands,6.2,0,99,0,0,,432
+50814,0.827136636,288.51,25.89259338,7.737149239,,8,"Temperate grasslands, savannas, and shrublands",Texas blackland prairies,6.1,0,99,0,0,,431
+50815,0.484454513,206.40,19.31913948,-5.504125595,,8,"Temperate grasslands, savannas, and shrublands",Western short grasslands,6.2,0,99,0,0,,432
+51101,2.367052794,188.73,6.271784782,-22.67013741,,11,Tundra,Alaska/St. Elias Range tundra,1.1,0,99,10,0,0.5,640
+51102,7.59095335,133.62,6.162919283,-2.63462925,,11,Tundra,Aleutian Islands tundra,1.1,0,99,10,0,0.5,640
+51103,0.974798143,67.50,4.184123039,-36.13877487,,11,Tundra,Arctic coastal tundra,1.1,0.1,99,10,0,0.5,640
+51104,1.056457818,87.69,5.023185015,-30.38311005,,11,Tundra,Arctic foothills tundra,1.1,0,99,10,0,0.5,640
+51105,2.47110033,57.13,1.593812466,-36.95279694,,11,Tundra,Baffin coastal tundra,1.1,0.1,99,10,0,0.5,640
+51106,1.916736484,157.43,8.066924095,-15.25857162,,11,Tundra,Beringia lowland tundra,1.1,0.1,99,10,0,0.5,640
+51107,2.195881128,162.74,7.643362522,-15.31824303,,11,Tundra,Beringia upland tundra,1.1,0,99,10,0,0.5,640
+51108,1.356414437,112.91,4.596596479,-32.61939812,,11,Tundra,Brooks/British Range tundra,1.1,0,99,10,0,0.5,640
+51109,4.770449638,81.25,2.077604532,-33.53023529,,11,Tundra,Davis Highlands tundra,1.1,0,99,10,0,0.5,640
+51110,2.158850431,56.00,1.177567959,-42.95488358,,11,Tundra,High Arctic tundra,1.1,0,99,10,0,0.5,640
+51111,1.062702179,149.95,7.020759583,-33.84988213,,11,Tundra,Interior Yukon/Alaska alpine tundra,1.1,0,99,10,0,0.5,640
+51112,3.433310747,43.10,0.700000048,-39.72774124,,11,Tundra,Kalaallit Nunaat high arctic tundra,1.1,0,99,10,0,0.5,640
+51113,3.333995104,93.57,3.097627759,-19.78186226,,11,Tundra,Kalaallit Nunaat low arctic tundra,1.1,0.1,99,10,0,0.5,640
+51114,1.141902566,89.60,4.474999905,-43.94073105,,11,Tundra,Low Arctic tundra,1.1,0.1,99,10,0,0.5,640
+51115,2.184271097,76.13,2.45293653,-41.34232521,,11,Tundra,Middle Arctic tundra,1.1,0.1,99,10,0,0.5,640
+51116,2.535157204,157.19,3.949009418,-31.83485222,,11,Tundra,Ogilvie/MacKenzie alpine tundra,1.1,0,99,10,0,0.5,640
+51117,5.916348934,176.02,8.802723646,-12.9269495,,11,Tundra,Pacific Coastal Mountain icefields and tundra,1.1,0,99,10,0,0.5,640
+51118,4.267751217,133.80,3.766406059,-33.47722626,,11,Tundra,Torngat Mountain tundra,1.1,0,99,10,0,0.5,640
+51201,0.244047128,97.56,20.37386894,9.542500734,,12,Mediterranean scrub,California coastal sage and chaparral,5.1,0,99,60,0,1,320
+51202,0.600546241,131.63,18.9137516,7.604288101,,12,Mediterranean scrub,California interior chaparral and woodlands,5.1,0,99,75,25,1,320
+51203,0.537792861,115.83,17.39040565,7.48774004,,12,Mediterranean scrub,California montane chaparral and woodlands,5.1,0,99,75,25,1,320
+51301,0.09202376,62.60,24.15139961,14.86141586,,13,Deserts and xeric shrublands,Baja California desert,7.3,0,25,25,0,,520
+51302,0.474108458,278.65,18.07850266,8.398028135,,13,Deserts and xeric shrublands,Central Mexican matorral,8.1,0,60,60,0,,520
+51303,0.270593077,184.00,23.21029663,4.817816734,,13,Deserts and xeric shrublands,Chihuahuan desert,7.2,0,25,25,0,,520
+51304,0.329984188,98.35,19.58893681,-1.996324539,,13,Deserts and xeric shrublands,Colorado Plateau shrublands,5.2,0,25,25,0,,230
+51305,0.296574011,71.05,16.35029888,-5.337210655,,13,Deserts and xeric shrublands,Great Basin shrub steppe,7.1,0,60,10,0,,530
+51306,0.164180063,148.10,25.67340946,14.85443735,,13,Deserts and xeric shrublands,Gulf of California xeric scrub,7.3,0,25,25,0,,520
+51307,0.298404992,212.90,19.53572464,7.125445366,,13,Deserts and xeric shrublands,Meseta Central matorral,8.1,0,60,60,0,,510
+51308,0.115115315,47.70,26.12712288,7.625270605,,13,Deserts and xeric shrublands,Mojave desert,7.2,0,25,25,0,,520
+51309,0.438504547,78.10,14.51495171,-5.625362396,,13,Deserts and xeric shrublands,Snake/Columbia shrub steppe,5.2,0,60,10,0,,530
+51310,0.153526112,114.60,28.30924797,11.94451523,,13,Deserts and xeric shrublands,Sonoran desert,7.3,0,25,25,0,,520
+51311,0.591369569,292.34,27.18676376,13.8664403,,13,Deserts and xeric shrublands,Tamaulipan matorral,8.1,0,60,60,0,,510
+51312,0.459642828,232.16,27.05873299,11.88230562,,13,Deserts and xeric shrublands,Tamaulipan mezquital,8.1,0,25,25,0,,520
+51313,0.546972066,88.90,11.7544589,-14.35103321,,13,Deserts and xeric shrublands,Wyoming Basin shrub steppe,5.2,0,60,10,0,,530
+51401,0.205541596,188.36,26.0243187,15.55458689,,14,Mangroves,Northwest Mexican Coast mangroves,,1,99,95,60,1,1112
+60101,1.685670257,307.51,20.08078384,13.37548542,NT,1,Tropical and subtropical moist broadleaf forests,Araucaria moist forests,9,0,100,95,95,1,111
+60102,1.200777173,308.04,26.80030251,24.05031586,NT,1,Tropical and subtropical moist broadleaf forests,Atlantic Coast restingas,9,0,100,75,60,1,111
+60103,1.152368426,301.97,25.27799988,21.73701286,NT,1,Tropical and subtropical moist broadleaf forests,Bahia coastal forests,9,0,100,95,95,1,111
+60104,1.102365017,300.98,22.00206375,16.44618607,NT,1,Tropical and subtropical moist broadleaf forests,Bahia interior forests,9,0,100,95,95,1,111
+60105,1.688555717,284.22,20.49109268,17.72607803,NT,1,Tropical and subtropical moist broadleaf forests,Bolivian Yungas,4.3,0,100,95,95,1,112
+60106,1.205840588,264.84,21.89622116,20.73700905,NT,1,Tropical and subtropical moist broadleaf forests,Caatinga Enclaves moist forests,9,0,100,95,95,1,111
+60107,2.26889956,315.64,26.40909767,24.73475075,NT,1,Tropical and subtropical moist broadleaf forests,Caqueta moist forests,9,0,100,95,95,1,111
+60108,1.423754096,375.92,28.43750954,27.17960548,NT,1,Tropical and subtropical moist broadleaf forests,Catatumbo moist forests,9,0,100,95,95,1,111
+60109,1.884710729,285.79,20.85286808,20.28628445,NT,1,Tropical and subtropical moist broadleaf forests,Cauca Valley montane forests,4.3,0,100,95,95,1,112
+60111,1.727815866,317.45,25.40333939,23.3710289,NT,1,Tropical and subtropical moist broadleaf forests,Central American Atlantic moist forests,9,0,100,95,95,1,111
+60112,1.864307165,240.53,16.56232834,14.0488472,NT,1,Tropical and subtropical moist broadleaf forests,Central American montane forests,4.3,0,100,95,95,0.5,112
+60113,1.546093345,331.15,22.26509857,18.34864426,NT,1,Tropical and subtropical moist broadleaf forests,Chiapas montane forests,4.3,0,100,95,95,0.5,112
+60114,0.749625504,324.41,23.8304882,19.97649288,NT,1,Tropical and subtropical moist broadleaf forests,Chimalapas montane forests,4.3,0,100,95,95,1,112
+60115,4.193003893,285.96,26.02305317,25.59300709,NT,1,Tropical and subtropical moist broadleaf forests,Chocó-Darién moist forests,9,0,100,95,95,1,111
+60116,2.63510108,285.21,23.01649284,21.56053543,NT,1,Tropical and subtropical moist broadleaf forests,Cocos Island moist forests,9,0,100,95,95,1,111
+60117,0.931151867,292.66,23.23998833,21.50854301,NT,1,Tropical and subtropical moist broadleaf forests,Cordillera La Costa montane forests,4.3,0,100,95,95,1,112
+60118,1.917912364,265.57,21.35403824,20.22063255,NT,1,Tropical and subtropical moist broadleaf forests,Cordillera Oriental montane forests,4.3,0,100,95,95,1,112
+60119,1.802005291,325.31,25.52008343,24.41510868,NT,1,Tropical and subtropical moist broadleaf forests,Costa Rican seasonal moist forests,9,0,100,95,95,0.7,111
+60120,1.21152246,343.78,26.62829113,21.68948078,NT,1,Tropical and subtropical moist broadleaf forests,Cuban moist forests,9,0,100,95,95,1,111
+60121,1.3887254,272.96,20.64919853,19.49969387,NT,1,Tropical and subtropical moist broadleaf forests,Eastern Cordillera real montane forests,4.3,0,100,95,95,1,112
+60122,2.743149281,270.48,22.45152664,21.83247566,NT,1,Tropical and subtropical moist broadleaf forests,Eastern Panamanian montane forests,4.3,0,100,95,95,1,112
+60124,2.041218996,324.84,26.07646561,25.11929893,NT,1,Tropical and subtropical moist broadleaf forests,Guayanan Highlands moist forests,9,0,100,95,95,1,111
+60125,1.759517074,308.21,25.7653389,24.47782135,NT,1,Tropical and subtropical moist broadleaf forests,Guianan moist forests,9,0,100,95,95,1,111
+60126,1.452819943,295.20,26.53213501,25.61153603,NT,1,Tropical and subtropical moist broadleaf forests,Gurupa varzeá,9,1,100,95,95,1,1111
+60127,1.329476058,351.62,26.61822987,23.6354723,NT,1,Tropical and subtropical moist broadleaf forests,Hispaniolan moist forests,9,0,100,95,95,1,111
+60128,1.858466029,337.98,26.01233864,25.57197571,NT,1,Tropical and subtropical moist broadleaf forests,Iquitos varzeá,9,1,100,95,95,1,1111
+60129,2.414767981,301.39,26.31813622,25.46437454,NT,1,Tropical and subtropical moist broadleaf forests,Isthmian-Atlantic moist forests,9,0,100,95,95,1,111
+60130,2.243547559,312.43,26.03925419,24.90953922,NT,1,Tropical and subtropical moist broadleaf forests,Isthmian-Pacific moist forests,9,0,100,95,95,1,111
+60131,2.227050066,267.98,22.08901405,19.54907894,NT,1,Tropical and subtropical moist broadleaf forests,Jamaican moist forests,9,0,100,95,95,1,111
+60132,2.115151405,331.44,26.51365852,25.93138504,NT,1,Tropical and subtropical moist broadleaf forests,Japurá-Solimoes-Negro moist forests,9,0,100,95,95,1,111
+60133,2.09623909,335.21,26.44519806,25.72801399,NT,1,Tropical and subtropical moist broadleaf forests,Juruá-Purus moist forests,9,0,100,95,95,1,111
+60134,1.509301901,292.11,24.72199154,22.06734371,NT,1,Tropical and subtropical moist broadleaf forests,Leeward Islands moist forests,9,0,100,95,95,1,111
+60135,1.674596846,342.32,26.39130688,25.7365284,NT,1,Tropical and subtropical moist broadleaf forests,Madeira-Tapajós moist forests,9,0,100,95,95,1,111
+60136,1.798950434,258.34,19.54806709,19.01491928,NT,1,Tropical and subtropical moist broadleaf forests,Magdalena Valley montane forests,4.3,0,100,95,95,1,112
+60137,1.487197399,343.51,27.80856705,27.30023766,NT,1,Tropical and subtropical moist broadleaf forests,Magdalena-Urabá moist forests,9,0,100,95,95,1,111
+60138,1.995861471,305.99,26.41373634,25.34655285,NT,1,Tropical and subtropical moist broadleaf forests,Marajó Varzeá forests,9,1,100,95,95,1,1111
+60139,1.280464053,310.71,26.77369308,25.89229965,NT,1,Tropical and subtropical moist broadleaf forests,Maranhao Babaçu forests,9,0,100,95,95,1,111
+60140,1.412730813,354.30,25.43726921,24.32733154,NT,1,Tropical and subtropical moist broadleaf forests,Mato Grosso seasonal forests,9,0,100,95,95,0.7,111
+60141,1.865039706,328.16,27.02118874,26.3170681,NT,1,Tropical and subtropical moist broadleaf forests,Monte Alegre varzeá,9,1,100,95,95,1,1111
+60142,2.587617636,315.07,25.47640228,24.06529617,NT,1,Tropical and subtropical moist broadleaf forests,Napo moist forests,9,0,100,95,95,1,111
+60143,2.15219748,334.52,26.85416794,25.76734161,NT,1,Tropical and subtropical moist broadleaf forests,Negro-Branco moist forests,9,0,100,95,95,1,111
+60144,1.363945961,298.03,27.39426804,26.7025795,NT,1,Tropical and subtropical moist broadleaf forests,Northeastern Brazil restingas,9,0,100,75,75,1,111
+60145,2.392039657,277.31,21.65591335,21.13479328,NT,1,Tropical and subtropical moist broadleaf forests,Northwestern Andean montane forests,4.3,0,100,95,95,1,112
+60146,1.97103107,286.43,19.45639229,15.6273613,NT,1,Tropical and subtropical moist broadleaf forests,Oaxacan montane forests,4.3,0,100,95,95,0.5,112
+60147,1.662780762,310.87,26.50947475,25.25573635,NT,1,Tropical and subtropical moist broadleaf forests,Orinoco Delta swamp forests,9,1,100,95,95,1,1111
+60148,1.560962796,385.15,28.22848701,23.24917793,NT,1,Tropical and subtropical moist broadleaf forests,Pantanos de Centla,9,1,100,95,95,1,1111
+60149,1.698260188,313.16,27.03438187,25.79788589,NT,1,Tropical and subtropical moist broadleaf forests,Guianan Freshwater swamp forests,9,1,100,95,95,1,1111
+60150,1.261371255,345.04,24.09072113,16.95068455,NT,1,Tropical and subtropical moist broadleaf forests,Alta Paraná Atlantic forests,9,0,100,95,95,1,111
+60151,1.127402544,271.20,25.07767296,22.20458412,NT,1,Tropical and subtropical moist broadleaf forests,Pernambuco coastal forests,9,0,100,95,95,1,111
+60152,1.081319153,249.32,22.4330349,19.08806896,NT,1,Tropical and subtropical moist broadleaf forests,Pernambuco interior forests,9,0,100,95,95,1,111
+60153,1.371534586,276.54,19.65716457,18.47721481,NT,1,Tropical and subtropical moist broadleaf forests,Peruvian Yungas,4.3,0,100,95,95,1,112
+60154,2.667584419,319.22,25.72996616,22.00048351,NT,1,Tropical and subtropical moist broadleaf forests,Petén-Veracruz moist forests,9,0,100,95,95,1,111
+60155,1.690273404,328.87,24.04848099,21.30629349,NT,1,Tropical and subtropical moist broadleaf forests,Puerto Rican moist forests,9,0,100,95,95,1,111
+60156,2.345214725,330.13,26.61517811,25.79494476,NT,1,Tropical and subtropical moist broadleaf forests,Purus varzeá,9,1,100,95,95,1,1111
+60157,1.721603632,333.98,26.28612137,25.43861198,NT,1,Tropical and subtropical moist broadleaf forests,Purus-Madeira moist forests,9,0,100,95,95,1,111
+60158,1.791004539,335.07,27.01848984,25.98589134,NT,1,Tropical and subtropical moist broadleaf forests,Rio Negro campinarana,9,0.5,100,95,95,1,111
+60159,1.8374933,241.33,16.5413456,14.68741035,NT,1,Tropical and subtropical moist broadleaf forests,Santa Marta montane forests,4.3,0,100,95,95,1,112
+60160,1.537964821,301.63,21.8995409,15.30813169,NT,1,Tropical and subtropical moist broadleaf forests,Serra do Mar coastal forests,9,0,100,95,95,1,111
+60161,1.591204405,351.13,27.41864395,21.63776779,NT,1,Tropical and subtropical moist broadleaf forests,Sierra de los Tuxtlas,9,0,100,95,95,1,111
+60162,2.220614672,354.00,26.18620872,24.58643913,NT,1,Tropical and subtropical moist broadleaf forests,Sierra Madre de Chiapas moist forest,9,0,100,95,95,1,111
+60163,2.403726101,317.10,26.36322784,24.89102364,NT,1,Tropical and subtropical moist broadleaf forests,Solimoes-Japurá moist forest,9,0,100,95,95,1,111
+60164,1.299381912,341.44,26.98818779,18.88357759,NT,1,Tropical and subtropical moist broadleaf forests,South Florida rocklands,9,0,100,95,95,1,111
+60165,0.633018702,304.22,20.68223667,14.86451387,NT,1,Tropical and subtropical moist broadleaf forests,Southern Andean Yungas,4.3,0,100,95,95,1,112
+60166,1.621937156,341.07,26.2055397,24.19020653,NT,1,Tropical and subtropical moist broadleaf forests,Southwest Amazon moist forests,9,0,100,95,95,1,111
+60167,3.319153547,282.79,20.88387108,19.80887222,NT,1,Tropical and subtropical moist broadleaf forests,Talamancan montane forests,4.3,0,100,95,95,1,112
+60168,1.458220661,335.15,25.36534882,24.64590168,NT,1,Tropical and subtropical moist broadleaf forests,Tapajós-Xingu moist forests,9,0,100,95,95,1,111
+60169,2.18583107,316.96,24.50386047,23.72871399,NT,1,Tropical and subtropical moist broadleaf forests,Tepuis,9,0,95,60,10,1,310
+60170,1.769954085,303.40,25.9485054,25.31907845,NT,1,Tropical and subtropical moist broadleaf forests,Tocantins/Pindare moist forests,9,0,100,95,95,1,111
+60171,1.626886487,310.35,26.56546593,25.04073334,NT,1,Tropical and subtropical moist broadleaf forests,Trinidad and Tobago moist forests,9,0,100,95,95,1,111
+60173,1.777301073,311.95,26.31579971,25.26852036,NT,1,Tropical and subtropical moist broadleaf forests,Uatuma-Trombetas moist forests,9,0,100,95,95,1,111
+60174,1.638768852,353.44,26.55390072,25.6493578,NT,1,Tropical and subtropical moist broadleaf forests,Ucayali moist forests,9,0,100,95,95,1,111
+60175,1.187182605,267.35,20.44818306,19.09181786,NT,1,Tropical and subtropical moist broadleaf forests,Venezuelan Andes montane forests,4.3,0,100,95,95,1,112
+60176,1.023121774,369.42,26.81456566,18.00727749,NT,1,Tropical and subtropical moist broadleaf forests,Veracruz moist forests,9,0,100,95,95,1,111
+60177,1.826083481,316.68,21.33755779,14.91464037,NT,1,Tropical and subtropical moist broadleaf forests,Veracruz montane forests,4.3,0,100,95,95,0.5,112
+60178,1.911498606,291.17,24.93863583,23.94735146,NT,1,Tropical and subtropical moist broadleaf forests,Western Ecuador moist forests,9,0,100,95,95,1,111
+60179,1.864652932,303.17,25.57535934,23.50101376,NT,1,Tropical and subtropical moist broadleaf forests,Windward Islands moist forests,9,0,100,95,95,1,111
+60180,1.429792643,328.53,25.85265827,24.63699913,NT,1,Tropical and subtropical moist broadleaf forests,Xingu-Tocantins-Araguaia moist forests,9,0,100,95,95,1,111
+60181,0.959970981,363.76,27.35674095,23.29855728,NT,1,Tropical and subtropical moist broadleaf forests,Yucatán moist forests,9,0,100,95,95,1,111
+60201,1.61167872,321.73,27.2304306,25.31323242,NT,2,Tropical and subtropical dry broadleaf forests,Apure-Villavicencio dry forests,8.2,0,99,90,60,0,114
+60202,0.73764044,333.08,24.37382698,21.99118614,NT,2,Tropical and subtropical dry broadleaf forests,Atlantic dry forests,8.2,0,99,90,60,0,114
+60203,0.893386811,276.15,27.23985672,21.75964165,NT,2,Tropical and subtropical dry broadleaf forests,Bahamian dry forests,8.2,0,99,90,60,0,114
+60204,0.675642967,306.17,19.57460594,11.68392563,NT,2,Tropical and subtropical dry broadleaf forests,Bajío dry forests,8.2,0,99,90,60,0,114
+60205,0.624482453,358.94,24.80414963,21.2144351,NT,2,Tropical and subtropical dry broadleaf forests,Balsas dry forests,8.2,0,99,90,60,0,114
+60206,0.524798155,276.98,21.21461678,15.73731899,NT,2,Tropical and subtropical dry broadleaf forests,Bolivian montane dry forests,8.1,0,99,90,60,0,114
+60207,1.496741056,320.01,23.69782639,22.90363503,NT,2,Tropical and subtropical dry broadleaf forests,Cauca Valley dry forests,8.2,0,99,90,60,0,114
+60209,1.211404443,334.28,25.90578842,24.62473297,NT,2,Tropical and subtropical dry broadleaf forests,Central American dry forests,8.2,0,99,90,60,0,114
+60210,0.464445382,282.80,27.07346344,18.14977074,NT,2,Tropical and subtropical dry broadleaf forests,Chaco,8.1,0,99,90,60,0,114
+60211,1.330154896,348.33,24.18016815,20.81514549,NT,2,Tropical and subtropical dry broadleaf forests,Chiapas Depression dry forests,8.2,0,99,90,60,0,114
+60212,0.884655505,372.33,26.1132822,22.3278389,NT,2,Tropical and subtropical dry broadleaf forests,Chiquitano dry forests,8.2,0,99,90,60,0,114
+60213,1.171329379,354.89,26.74839973,22.22302437,NT,2,Tropical and subtropical dry broadleaf forests,Cuban dry forests,8.2,0,99,90,60,0,114
+60214,0.962651312,286.20,24.91927433,22.78576469,NT,2,Tropical and subtropical dry broadleaf forests,Ecuadorian dry forests,8.2,0,99,90,60,0,114
+60215,0.821168125,339.73,26.77938271,23.72882748,NT,2,Tropical and subtropical dry broadleaf forests,Hispaniolan dry forests,8.2,0,99,90,60,0,114
+60217,0.634483039,355.56,25.84910011,19.72677183,NT,2,Tropical and subtropical dry broadleaf forests,Jalisco dry forests,8.2,0,99,90,60,0,114
+60218,1.345428109,301.14,27.29444885,24.98871231,NT,2,Tropical and subtropical dry broadleaf forests,Jamaican dry forests,8.2,0,99,90,60,0,114
+60219,0.667862296,294.37,25.59363365,23.53612709,NT,2,Tropical and subtropical dry broadleaf forests,Lara-Falcón dry forests,8.2,0,99,90,60,0,114
+60220,1.396887779,317.41,27.44146156,24.79751778,NT,2,Tropical and subtropical dry broadleaf forests,Leeward Islands dry forests,8.2,0,99,90,60,0,114
+60221,1.43342936,352.02,27.22368622,26.26224709,NT,2,Tropical and subtropical dry broadleaf forests,Magdalena Valley dry forests,8.2,0,99,90,60,0,114
+60222,0.957064509,367.56,28.87861824,27.40364265,NT,2,Tropical and subtropical dry broadleaf forests,Maracaibo dry forests,8.2,0,99,90,60,0,114
+60223,0.723244011,259.64,23.7416153,21.95338058,NT,2,Tropical and subtropical dry broadleaf forests,Marañón dry forests,8.2,0,99,90,60,0,114
+60224,1.469221711,324.60,27.39810181,26.20369911,NT,2,Tropical and subtropical dry broadleaf forests,Panamanian dry forests,8.2,0,99,90,60,0,114
+60225,1.363929868,313.18,24.8130722,23.90132141,NT,2,Tropical and subtropical dry broadleaf forests,Patia Valley dry forests,8.2,0,99,90,60,0,114
+60226,0.757000983,340.73,27.14982891,24.26572323,NT,2,Tropical and subtropical dry broadleaf forests,Puerto Rican dry forests,8.2,0,99,90,60,0,114
+60227,0.279500365,252.40,25.13936234,15.15034008,NT,2,Tropical and subtropical dry broadleaf forests,Sierra de la Laguna dry forests,8.1,0,99,90,60,0,114
+60228,0.645870119,359.94,27.88165092,19.20918941,NT,2,Tropical and subtropical dry broadleaf forests,Sinaloan dry forests,8.2,0,99,90,60,0,114
+60229,0.950823367,363.97,28.0775547,26.85778999,NT,2,Tropical and subtropical dry broadleaf forests,Sinú Valley dry forests,8.2,0,99,90,60,0,114
+60230,0.757877707,355.52,25.06076908,21.45374012,NT,2,Tropical and subtropical dry broadleaf forests,Southern Pacific dry forests,8.2,0,99,90,60,0,114
+60231,1.162485898,323.60,27.06498528,25.64769173,NT,2,Tropical and subtropical dry broadleaf forests,Trinidad and Tobago dry forests,8.2,0,99,90,60,0,114
+60232,0.1823406,190.19,25.31676483,21.98706532,NT,2,Tropical and subtropical dry broadleaf forests,Tumbes-Piura dry forests,8.1,0,99,90,60,0,114
+60233,1.020118475,356.17,26.83855057,21.29334641,NT,2,Tropical and subtropical dry broadleaf forests,Veracruz dry forests,8.2,0,99,90,60,0,114
+60234,1.799528241,324.41,27.44210052,25.32968521,NT,2,Tropical and subtropical dry broadleaf forests,Windward Islands dry forests,8.2,0,99,90,60,0,114
+60235,0.785574466,383.77,27.3977499,22.58105278,NT,2,Tropical and subtropical dry broadleaf forests,Yucatán dry forests,8.2,0,99,90,60,0,114
+60301,0.896563917,283.01,27.43541145,22.34457302,NT,3,Tropical and subtropical coniferous forests,Bahamian pine forests,8.2,0,100,85,85,1,120
+60302,1.587668657,327.76,27.45340919,23.26760864,NT,3,Tropical and subtropical coniferous forests,Belizian pine forests,9,0,100,85,85,1,120
+60303,1.621245146,264.74,18.49053383,15.63698101,NT,3,Tropical and subtropical coniferous forests,Central American pine-oak forests,4.3,0,100,85,85,1,210
+60304,1.240655184,339.89,26.68840408,21.71064758,NT,3,Tropical and subtropical coniferous forests,Cuban pine forests,9,0,100,85,85,1,120
+60305,1.358837008,280.49,18.20222855,15.48417568,NT,3,Tropical and subtropical coniferous forests,Hispaniolan pine forests,4.3,0,100,85,85,1,120
+60306,2.448230624,289.43,25.7575922,23.52644157,NT,3,Tropical and subtropical coniferous forests,Miskito pine forests,9,0.3,100,60,60,1,210
+60307,0.45586729,281.51,21.58384705,12.8786273,NT,3,Tropical and subtropical coniferous forests,Sierra de la Laguna pine-oak forests,4.3,0,100,75,75,1,120
+60308,0.954363286,231.45,15.1539402,13.7898922,NT,3,Tropical and subtropical coniferous forests,Sierra Madre de Oaxaca pine-oak forests,4.3,0,100,75,75,1,120
+60309,1.055166364,316.23,21.64087677,16.53025973,NT,3,Tropical and subtropical coniferous forests,Sierra Madre del Sur pine-oak forests,4.3,0,100,75,75,1,120
+60310,0.884462953,253.47,15.23401308,8.07546401,NT,3,Tropical and subtropical coniferous forests,Trans-Mexican Volcanic Belt pine-oak forests,4.3,0,100,75,75,1,120
+60401,1.362321496,152.29,15.26938629,10.74614239,NT,4,Temperate broadleaf and mixed forests,Juan Fernandez Islands temperate forests,4.1,0,100,95,95,1,120
+60402,3.98705554,123.78,5.816735268,-0.31534791,NT,4,Temperate broadleaf and mixed forests,Magellanic subpolar forests,2.2,0,100,95,95,0,120
+60404,2.356747627,163.21,12.10655069,3.744550586,NT,4,Temperate broadleaf and mixed forests,Valdivian temperate forests,4.1,0,100,95,95,0,120
+60701,0.410486534,241.60,24.45105934,12.20125103,NT,7,"Tropical and subtropical grasslands, savannas, and",Arid Chaco,8.1,0,99,10,10,,410
+60702,1.133259892,350.75,26.86603737,23.96294975,NT,7,"Tropical and subtropical grasslands, savannas, and",Beni savanna,8.2,0.5,99,10,10,,410
+60703,0.834513128,294.20,21.4203701,17.9759407,NT,7,"Tropical and subtropical grasslands, savannas, and",Campos Rupestres montane savanna,8.2,0,99,10,10,,410
+60704,1.130743027,335.31,24.33327866,20.93241119,NT,7,"Tropical and subtropical grasslands, savannas, and",Cerrado,8.2,0,99,10,10,,410
+60706,0.542226672,270.50,20.16674805,9.530028343,NT,7,"Tropical and subtropical grasslands, savannas, and",Córdoba montane savanna,8.2,0,99,10,10,,410
+60707,1.41169548,306.68,26.84925842,25.40150261,NT,7,"Tropical and subtropical grasslands, savannas, and",Guyanan savanna,8.2,0,99,10,10,,410
+60708,1.067709446,365.51,25.35082436,16.85472202,NT,7,"Tropical and subtropical grasslands, savannas, and",Humid Chaco,8.2,0,99,10,10,,410
+60709,1.3067168,321.98,27.6153841,26.03674793,NT,7,"Tropical and subtropical grasslands, savannas, and",Llanos,8.2,0.3,99,10,10,,410
+60710,1.422713757,314.06,21.96772671,12.6217947,NT,7,"Tropical and subtropical grasslands, savannas, and",Uruguayan savanna,8.2,0,99,10,10,,410
+60801,0.862822592,355.85,22.96878242,12.48293257,NT,8,"Temperate grasslands, savannas, and shrublands",Argentine Espinal,8.2,0,99,0,0,,432
+60802,0.260277048,100.35,20.23603153,6.965299845,NT,8,"Temperate grasslands, savannas, and shrublands",Argentine Monte,5.3,0,99,0,0,,432
+60803,1.084808946,297.35,20.27443218,9.124021053,NT,8,"Temperate grasslands, savannas, and shrublands",Humid Pampas,4.1,0,99,0,0,,431
+60804,0.712931514,85.20,8.708506584,0.201923549,NT,8,"Temperate grasslands, savannas, and shrublands",Patagonian grasslands,5.3,0,99,0,0,,432
+60805,0.310288876,51.10,13.46307468,1.740543008,NT,8,"Temperate grasslands, savannas, and shrublands",Patagonian steppe,5.3,0,99,0,0,,432
+60806,0.445246845,183.80,20.56704521,7.425623894,NT,8,"Temperate grasslands, savannas, and shrublands",Semi-arid Pampas,5.3,0,99,0,0,,432
+60901,0.926613212,282.17,18.41410637,10.18855,NT,9,Flooded grasslands,Central Mexican wetlands,,1,99,0,0,,1000
+60902,0.998330235,373.13,27.14242077,22.25418758,NT,9,Flooded grasslands,Cuban wetlands,,1,99,0,0,,1000
+60903,0.405832887,228.95,28.11983871,25.20264244,NT,9,Flooded grasslands,Enriquillo wetlands,,1,99,0,0,,1000
+60904,1.119835854,371.40,26.41424656,14.58599758,NT,9,Flooded grasslands,Everglades,,1,99,0,0,,1000
+60905,1.152711034,297.97,25.77661705,23.60059357,NT,9,Flooded grasslands,Guayaquil flooded grasslands,,1,99,0,0,,1000
+60906,1.138145566,328.20,26.81666565,25.40000153,NT,9,Flooded grasslands,Orinoco wetlands,,1,99,0,0,,1000
+60907,0.886538982,374.57,27.16624451,22.2073555,NT,9,Flooded grasslands,Pantanal,,1,99,0,0,,1000
+60908,0.950457036,342.35,23.14473534,13.07387447,NT,9,Flooded grasslands,Paraná flooded savanna,,1,99,10,10,,1000
+60909,1.380831361,349.67,24.12577629,14.335536,NT,9,Flooded grasslands,Southern Cone Mesopotamian savanna,,1,99,10,10,,1000
+61001,0.240924396,117.95,9.180170536,1.756076992,NT,10,Montane grasslands,Central Andean dry puna,1.3,0,99,0,0,,610
+61002,0.609229326,141.49,9.252432823,1.759987831,NT,10,Montane grasslands,Central Andean puna,1.3,0,99,0,0,,610
+61003,1.2943151,204.28,9.261849403,3.19089222,NT,10,Montane grasslands,Central Andean wet puna,1.3,0,99,0,0,,610
+61004,1.576590061,189.49,8.765586853,7.65092802,NT,10,Montane grasslands,Cordillera Central paramo,1.3,0,99,10,0,,610
+61005,1.386648774,191.20,9.876395226,9.043936729,NT,10,Montane grasslands,Cordillera de Merida paramo,1.3,0,99,10,0,,610
+61006,2.524800062,132.66,7.022685051,5.923300266,NT,10,Montane grasslands,Northern Andean paramo,1.3,0,99,10,0,,610
+61007,6.829497814,77.30,3.587542057,1.696953416,NT,10,Montane grasslands,Santa Marta paramo,1.3,0,99,10,0,,610
+61008,0.197966479,55.08,12.0429759,3.437055349,NT,10,Montane grasslands,Southern Andean steppe,1.3,0,99,0,0,,610
+61009,6.063316822,83.28,3.122833252,-0.16916275,NT,10,Montane grasslands,Zacatonal,1.3,0,99,0,0,,610
+61201,0.259537846,100.96,16.89678001,8.315979004,NT,12,Mediterranean scrub,Chilean matorral,5.1,0,99,60,0,1,320
+61301,0.995871007,326.09,27.13664818,25.52781677,NT,13,Deserts and xeric shrublands,Araya and Paria xeric scrub,8.1,0,25,25,0,,520
+61302,0.478815049,223.73,28.57352161,26.41104221,NT,13,Deserts and xeric shrublands,Aruba-Curacao-Bonaire cactus scrub,8.1,0,25,25,0,,510
+61303,0.004158719,4.55,18.67048073,13.10790396,NT,13,Deserts and xeric shrublands,Atacama desert,7.3,0,25,25,0,,520
+61304,0.566911846,296.15,25.72998238,22.72649288,NT,13,Deserts and xeric shrublands,Caatinga,8.1,0,25,25,0,,510
+61306,1.125618219,347.20,26.35819626,23.43059158,NT,13,Deserts and xeric shrublands,Cuban cactus scrub,8.1,0,25,25,0,,510
+61307,0.168833226,113.30,24.72074509,21.62362862,NT,13,Deserts and xeric shrublands,Galapagos Islands xeric scrub,7.3,0,25,25,0,,510
+61308,0.696233809,316.88,28.07489777,26.75744438,NT,13,Deserts and xeric shrublands,Guajira-Barranquilla xeric scrub,8.1,0,25,25,0,,510
+61309,0.788363218,328.88,26.49323845,25.69970703,NT,13,Deserts and xeric shrublands,La Costa xeric shrublands,8.1,0,25,25,0,,510
+61310,1.285770774,325.38,27.28503036,24.76865387,NT,13,Deserts and xeric shrublands,Leeward Islands xeric scrub,8.1,0,25,25,0,,510
+61312,0.724996865,347.66,26.25533485,23.96439552,NT,13,Deserts and xeric shrublands,Motagua Valley thornscrub,8.1,0,60,60,0,,510
+61313,0.649532139,265.47,24.92505264,23.69222069,NT,13,Deserts and xeric shrublands,Paraguana xeric scrub,8.1,0,25,25,0,,510
+61314,0.196759999,173.80,25.79064941,16.86145782,NT,13,Deserts and xeric shrublands,San Lucan xeric scrub,7.3,0,25,25,0,,510
+61315,0.062708773,55.63,19.11237717,14.98186636,NT,13,Deserts and xeric shrublands,Sechura desert,7.3,0,25,25,0,,520
+61316,0.495467812,253.56,17.03504372,9.453519821,NT,13,Deserts and xeric shrublands,Tehuacan Valley matorral,8.1,0,60,60,0,,510
+61317,1.326429367,323.02,27.01877975,25.3119545,NT,13,Deserts and xeric shrublands,Windward Islands xeric scrub,8.1,0,25,25,0,,510
+61401,1.910655856,352.34,27.49317741,21.85126877,NT,14,Mangroves,Alvarado mangroves,,1,99,95,60,1,1112
+61402,2.106835842,285.91,26.93938637,25.41544914,NT,14,Mangroves,Amapa mangroves,,1,99,95,60,1,1112
+61403,1.135157406,324.69,27.16170311,20.87434673,NT,14,Mangroves,Bahamian mangroves,,1,99,95,60,1,1112
+61404,1.087880731,317.25,25.466115,20.91166878,NT,14,Mangroves,Bahia mangroves,,1,99,95,60,1,1112
+61405,2.133757591,319.02,27.19154072,23.50943375,NT,14,Mangroves,Belizean Coast mangroves,,1,99,95,60,1,1112
+61407,2.597310305,312.53,26.20799637,25.35254669,NT,14,Mangroves,Bocas del Toro-San Bastimentos Island-San Blas mangroves,,1,99,95,60,1,1112
+61408,0.997907162,348.78,28.53641033,26.78225803,NT,14,Mangroves,Coastal Venezuelan mangroves,,1,99,95,60,1,1112
+61409,3.589879036,291.60,26.08381844,25.64999962,NT,14,Mangroves,Esmeraldes/Chocó mangroves,,1,99,95,60,1,1112
+61410,0.905480951,321.52,27.12675762,23.42174149,NT,14,Mangroves,Greater Antilles mangroves,,1,99,95,60,1,1112
+61411,1.511565328,310.75,27.18248177,25.97326851,NT,14,Mangroves,Guianan mangroves,,1,99,95,60,1,1112
+61412,1.110333562,379.05,27.74477863,26.7739954,NT,14,Mangroves,Gulf of Fonseca mangroves,,1,99,95,60,1,1112
+61413,0.672532529,312.68,25.64150715,23.48709583,NT,14,Mangroves,Gulf of Guayaquil-Tumbes mangroves,,1,99,95,60,1,1112
+61414,2.858369112,302.30,26.78832626,25.95507813,NT,14,Mangroves,Gulf of Panama mangroves,,1,99,95,60,1,1112
+61415,3.198930979,276.94,23.66232491,18.11526299,NT,14,Mangroves,Ilha Grande mangroves,,1,99,95,60,1,1112
+61417,0.903454483,325.98,27.80362701,27.01156807,NT,14,Mangroves,Magdalena-Santa Marta mangroves,,1,99,95,60,1,1112
+61418,0.457513198,302.18,25.71981621,24.08127594,NT,14,Mangroves,Manabi mangroves,,1,99,95,60,1,1112
+61419,1.805747867,282.55,26.15570831,25.69690132,NT,14,Mangroves,Maranhao mangroves,,1,99,95,60,1,1112
+61420,0.843437999,342.81,27.7914238,21.70171928,NT,14,Mangroves,Marismas Nacionales-San Blas mangroves,,1,99,95,60,1,1112
+61421,1.110046506,351.42,27.53507233,23.59734535,NT,14,Mangroves,Mayan Corridor mangroves,,1,99,95,60,1,1112
+61423,2.168975711,336.26,26.81534767,25.79443073,NT,14,Mangroves,Moist Pacific Coast mangroves,,1,99,95,60,1,1112
+61424,2.668966293,289.22,25.79234695,24.10064507,NT,14,Mangroves,Mosquita-Nicaraguan Caribbean Coast mangroves,,1,99,95,60,1,1112
+61425,1.337621331,346.78,26.19668961,25.12349415,NT,14,Mangroves,Northern Dry Pacific Coast mangroves,,1,99,95,60,1,1112
+61426,1.779231668,345.61,27.44432068,24.35242081,NT,14,Mangroves,Northern Honduras mangroves,,1,99,95,60,1,1112
+61427,2.039949656,299.91,26.20043945,25.55061531,NT,14,Mangroves,Para mangroves,,1,99,95,60,1,1112
+61428,0.691548824,372.12,27.91268635,22.82390785,NT,14,Mangroves,Petenes mangroves,,1,99,95,60,1,1112
+61429,0.011526152,15.80,24.53226852,19.46969414,NT,14,Mangroves,Piura mangroves,,1,99,95,60,1,1112
+61430,0.690324128,357.89,27.15920544,22.45455742,NT,14,Mangroves,Rio Lagartos mangroves,,1,99,95,60,1,1112
+61431,3.47649765,317.74,26.43129158,25.0898838,NT,14,Mangroves,Rio Negro-Rio San Sun mangroves,,1,99,95,60,1,1112
+61432,1.648505807,298.14,26.52188492,24.18171501,NT,14,Mangroves,Rio Piranhas mangroves,,1,99,95,60,1,1112
+61433,1.476976275,269.31,26.51074219,23.38414383,NT,14,Mangroves,Rio Sao Francisco mangroves,,1,99,95,60,1,1112
+61434,1.329483747,352.10,27.07283497,25.99363041,NT,14,Mangroves,Southern Dry Pacific Coast mangroves,,1,99,95,60,1,1112
+61435,1.147380352,378.20,27.70915031,26.46245956,NT,14,Mangroves,Tehuantepec-El Manchon mangroves,,1,99,95,60,1,1112
+61436,1.622905016,313.41,26.89313889,25.54936028,NT,14,Mangroves,Trinidad mangroves,,1,99,95,60,1,1112
+61437,1.005493164,389.34,28.09842682,23.2569294,NT,14,Mangroves,Usumacinta mangroves,,1,99,95,60,1,1112
+70105,2.764946222,302.02,26.41026115,22.959198,OC,1,Tropical and subtropical moist broadleaf forests,Fiji tropical moist forests,9,0,100,95,95,1,111
+70106,2.340361595,272.93,22.68557739,20.49067116,OC,1,Tropical and subtropical moist broadleaf forests,Hawaii tropical moist forests,9,0.1,100,95,95,1,111
+70108,1.742381871,271.22,23.99522972,22.66278076,OC,1,Tropical and subtropical moist broadleaf forests,Marquesas tropical moist forests,9,0,100,95,95,1,111
+70109,1.48385179,283.53,26.85937119,19.65571785,OC,1,Tropical and subtropical moist broadleaf forests,Ogasawara subtropical moist forests,9,0,100,95,95,1,120
+70110,3.112159729,305.29,27.21792793,26.584692,OC,1,Tropical and subtropical moist broadleaf forests,Palau tropical moist forests,9,0,100,95,95,1,111
+70111,1.231748104,235.26,22.54369164,18.28425503,OC,1,Tropical and subtropical moist broadleaf forests,Rapa Nui - Sala-y-Gomez subtropical broadleaf forests,9,0,100,95,95,1,120
+70112,4.53393507,248.33,22.50182915,21.3685894,OC,1,Tropical and subtropical moist broadleaf forests,Samoan tropical moist forests,9,0,100,95,95,1,111
+70113,1.969166577,272.77,25.34949875,23.23773861,OC,1,Tropical and subtropical moist broadleaf forests,Society Islands tropical moist forests,9,0,100,95,95,1,111
+70114,2.246026039,288.45,25.73508644,22.73803711,OC,1,Tropical and subtropical moist broadleaf forests,Tongan tropical moist forests,9,0,100,95,95,1,111
+70201,2.354787469,302.29,26.60242176,23.96436024,OC,2,Tropical and subtropical dry broadleaf forests,Fiji tropical dry forests,8.2,0,99,90,60,0,114
+70202,1.887165368,261.51,20.71139812,18.18373299,OC,2,Tropical and subtropical dry broadleaf forests,Hawaii tropical dry forests,8.2,0,99,90,60,1,114
+70203,2.096702337,306.77,27.64849949,26.30837059,OC,2,Tropical and subtropical dry broadleaf forests,Marianas tropical dry forests,8.2,0,99,90,60,0,114
+70204,2.516919374,303.63,27.10818672,26.76114845,OC,2,Tropical and subtropical dry broadleaf forests,Yap tropical dry forests,8.2,0,99,90,60,0,114
+70701,1.756728053,153.95,9.556855202,7.0170784,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical high shrublands,1.3,0,99,60,10,1,610
+70702,1.058012724,280.24,24.98519707,21.86550713,OC,7,"Tropical and subtropical grasslands, savannas, and",Hawaii tropical low shrublands,8.2,0,99,60,10,1,610
+80101,1.510673761,331.59,23.24417782,5.083715677,PA,1,Tropical and subtropical moist broadleaf forests,Gizhou Plateau broadleaf and mixed forests,4.1,0,100,95,95,1,111
+80102,1.139534116,284.36,20.6700182,8.356645107,PA,1,Tropical and subtropical moist broadleaf forests,Yunnan Plateau subtropical evergreen forests,4.1,0,100,95,95,1,120
+80401,1.795595288,173.17,14.65324879,1.468025178,PA,4,Temperate broadleaf and mixed forests,Appenine deciduous montane forests,3.1,0,100,95,95,0,131
+80402,1.329389691,174.30,14.9522562,3.265035868,PA,4,Temperate broadleaf and mixed forests,Atlantic mixed forests,3.1,0,100,95,95,0.5,132
+80403,2.236748695,178.84,17.45854855,11.44374371,PA,4,Temperate broadleaf and mixed forests,Azores temperate mixed forests,4.1,0,100,95,95,0.5,120
+80404,0.915842712,197.40,17.67563248,-1.288608551,PA,4,Temperate broadleaf and mixed forests,Balkan mixed forests,3.1,0,100,95,95,0.5,132
+80405,1.270504057,192.02,14.09873104,-1.325850964,PA,4,Temperate broadleaf and mixed forests,Baltic mixed forests,3.1,0,100,95,95,0.5,132
+80406,2.226979136,198.93,17.2923069,7.389292479,PA,4,Temperate broadleaf and mixed forests,Cantabrian mixed forests,3.1,0,100,95,95,0.5,132
+80407,0.618219286,143.05,21.1125536,3.372519612,PA,4,Temperate broadleaf and mixed forests,Caspian Hyrcanian mixed forests,3.1,0,100,95,95,0.5,132
+80408,1.206609726,193.80,14.19248009,-6.647983551,PA,4,Temperate broadleaf and mixed forests,Caucasus mixed forests,3.1,0,100,95,95,0.5,132
+80409,2.415075541,199.72,12.83363914,4.215836525,PA,4,Temperate broadleaf and mixed forests,Celtic broadleaf forests,3.1,0,100,95,95,0,131
+80410,0.672576547,134.80,17.53443718,-0.342959404,PA,4,Temperate broadleaf and mixed forests,Central Anatolian steppe and woodlands,3.1,0,100,60,60,0,230
+80411,0.859914273,269.56,17.34402657,-11.80543137,PA,4,Temperate broadleaf and mixed forests,Central China loess plateau mixed forests,3.1,0,100,95,95,0.5,132
+80412,1.272157788,227.20,14.19904709,-5.080095291,PA,4,Temperate broadleaf and mixed forests,Central European mixed forests,3.1,0,100,95,95,0.5,132
+80413,1.944361687,292.83,18.71934509,-7.250629425,PA,4,Temperate broadleaf and mixed forests,Central Korean deciduous forests,3.1,0,100,95,95,0,131
+80414,2.226713896,250.56,12.55795097,-24.81001091,PA,4,Temperate broadleaf and mixed forests,Changbai Mountains mixed forests,3.1,0,100,95,95,0.5,132
+80415,1.589636803,326.45,23.58727074,3.556881666,PA,4,Temperate broadleaf and mixed forests,Changjiang Plain evergreen forests,4.1,0,100,95,95,1,131
+80416,1.46554023,238.32,17.1818924,-0.569266796,PA,4,Temperate broadleaf and mixed forests,Crimean Submediterranean forest complex,3.1,0,100,95,95,0,131
+80417,1.530204654,304.45,21.63470459,1.884063721,PA,4,Temperate broadleaf and mixed forests,Daba Mountains evergreen forests,4.1,0,100,95,95,1,131
+80418,2.386141062,247.32,12.63117981,-3.303268433,PA,4,Temperate broadleaf and mixed forests,Dinaric Mountains mixed forests,3.1,0,100,95,95,0.5,132
+80419,1.1836766,191.80,14.39143181,-13.95992279,PA,4,Temperate broadleaf and mixed forests,East European forest steppe,3.1,0,100,60,60,0,131
+80420,0.739072025,164.70,21.79221535,-1.735038757,PA,4,Temperate broadleaf and mixed forests,Eastern Anatolian deciduous forests,3.1,0,100,95,95,0,131
+80421,1.641943693,160.40,13.7525692,3.645000935,PA,4,Temperate broadleaf and mixed forests,English Lowlands beech forests,3.1,0,100,95,95,0,131
+80422,1.111839175,152.97,15.71664047,1.282456875,PA,4,Temperate broadleaf and mixed forests,Euxine-Colchic broadleaf forests,3.1,0,100,95,95,0,131
+80423,2.453930378,240.86,14.90404034,-11.88649368,PA,4,Temperate broadleaf and mixed forests,Hokkaido deciduous forests,3.1,0,100,95,95,0,131
+80424,0.824022412,294.40,22.1186142,-4.704662323,PA,4,Temperate broadleaf and mixed forests,Huang He Plain mixed forests,3.1,0,100,95,95,0.5,132
+80425,0.935005605,147.94,18.67242908,13.58079672,PA,4,Temperate broadleaf and mixed forests,Madeira evergreen forests,4.1,0,100,95,95,1,131
+80426,1.363329947,274.03,14.26644611,-24.58665276,PA,4,Temperate broadleaf and mixed forests,Manchurian mixed forests,3.1,0,100,95,95,0.5,132
+80427,2.766705275,294.71,20.84647942,2.853109598,PA,4,Temperate broadleaf and mixed forests,Nihonkai evergreen forests,4.1,0,100,95,95,1,131
+80428,2.87458992,278.00,18.08021736,-3.902029037,PA,4,Temperate broadleaf and mixed forests,Nihonkai montane deciduous forests,3.1,0,100,95,95,0,131
+80429,2.905514717,208.87,12.60744095,4.601382256,PA,4,Temperate broadleaf and mixed forests,North Atlantic moist mixed forests,3.1,0,100,95,95,0.5,132
+80430,0.974210769,283.42,18.21613121,-19.78296661,PA,4,Temperate broadleaf and mixed forests,Northeast China Plain deciduous forests,3.1,0,100,95,95,0,131
+80431,1.005252779,206.45,16.63095856,-2.272608757,PA,4,Temperate broadleaf and mixed forests,Pannonian mixed forests,3.1,0,100,95,95,0.5,132
+80432,1.06319797,190.43,19.06071091,1.65144515,PA,4,Temperate broadleaf and mixed forests,Po Basin mixed forests,3.1,0,100,95,95,0.5,132
+80433,3.920704484,202.04,9.314518929,-2.217208862,PA,4,Temperate broadleaf and mixed forests,Pyrenees conifer and mixed forests,3.1,0,100,95,95,0.5,132
+80434,1.114388347,296.16,20.97899628,-3.628547668,PA,4,Temperate broadleaf and mixed forests,Qin Ling Mountains deciduous forests,3.1,0,100,95,95,0,131
+80435,1.246402264,210.58,13.67592001,-2.749071121,PA,4,Temperate broadleaf and mixed forests,Rodope montane mixed forests,3.1,0,100,95,95,0.5,132
+80436,1.563967705,215.67,12.54663801,-11.93686867,PA,4,Temperate broadleaf and mixed forests,Sarmatic mixed forests,3.1,0,100,95,95,0.5,132
+80437,1.520123363,320.81,23.37682343,6.318425655,PA,4,Temperate broadleaf and mixed forests,Sichuan Basin evergreen broadleaf forests,4.1,0,100,95,95,1,131
+80438,5.596156001,144.49,7.681220055,-11.63768482,PA,4,Temperate broadleaf and mixed forests,South Sakhalin-Kurile mixed forests,3.1,0,100,95,95,0.5,132
+80439,2.292920589,277.17,19.51730919,-2.179280281,PA,4,Temperate broadleaf and mixed forests,Southern Korea evergreen forests,4.1,0,100,95,95,1,131
+80440,2.49395299,292.40,20.98244476,2.729093552,PA,4,Temperate broadleaf and mixed forests,Taiheiyo evergreen forests,4.1,0,100,95,95,1,131
+80441,2.805865645,267.60,18.92508793,-1.174377441,PA,4,Temperate broadleaf and mixed forests,Taiheiyo montane deciduous forests,3.1,0,100,95,95,0,131
+80442,0.038183935,23.10,21.9513588,-16.32940292,PA,4,Temperate broadleaf and mixed forests,Tarim Basin deciduous forests and steppe,3.1,0,100,60,60,0,131
+80443,1.589954138,260.35,13.6708498,-29.70842743,PA,4,Temperate broadleaf and mixed forests,Ussuri broadleaf and mixed forests,3.1,0,100,95,95,0.5,132
+80444,1.127074599,198.90,11.68623352,-26.15340042,PA,4,Temperate broadleaf and mixed forests,Western Siberian hemiboreal forests,3.1,0,100,95,95,0,132
+80445,1.528149366,232.66,14.77822208,0.850497365,PA,4,Temperate broadleaf and mixed forests,Western European broadleaf forests,3.1,0,100,95,95,0,131
+80446,0.23631233,129.45,26.27101326,6.071222305,PA,4,Temperate broadleaf and mixed forests,Zagros Mountains forest steppe,3.1,0,100,60,60,0,131
+80501,5.316810608,166.84,6.533744812,-9.29598999,PA,5,Temperate coniferous forests,Alps conifer and mixed forests,2.2,0,100,95,95,1,140
+80502,0.38372159,84.60,8.165844917,-31.49979401,PA,5,Temperate coniferous forests,Altai montane forest and forest steppe,2.2,0,100,60,60,1,140
+80503,6.06332159,186.90,9.694963932,0.72370863,PA,5,Temperate coniferous forests,Caledon conifer forests,2.2,0,100,95,95,1,140
+80504,1.457622647,252.04,13.46298265,-5.490386963,PA,5,Temperate coniferous forests,Carpathian montane forests,2.2,0,100,95,95,1,140
+80505,1.186980963,251.69,11.00899696,-37.93575287,PA,5,Temperate coniferous forests,Da Hinggan-Dzhagdy Mountains conifer forests,2.2,0,100,95,95,1,140
+80506,0.244084924,79.80,20.93901443,-2.14358902,PA,5,Temperate coniferous forests,East Afghan montane conifer forests,2.2,0,100,95,95,1,140
+80507,0.386908665,81.96,14.90984344,-7.444292068,PA,5,Temperate coniferous forests,Elburz Range forest steppe,2.2,0,100,60,60,1,140
+80508,0.271599382,121.50,18.001297,-15.5725441,PA,5,Temperate coniferous forests,Helanshan montane conifer forests,2.2,0,100,95,95,1,133
+80509,1.184702158,238.99,12.92691851,-6.370260239,PA,5,Temperate coniferous forests,Hengduan Mountains subalpine conifer forests,2.2,0,100,95,95,1,140
+80510,2.586340904,231.27,13.92857933,-12.29893303,PA,5,Temperate coniferous forests,Hokkaido montane conifer forests,2.2,0,100,95,95,1,133
+80511,4.640115738,214.38,11.16795826,-10.11798859,PA,5,Temperate coniferous forests,Honshu alpine conifer forests,2.2,0,100,95,95,1,140
+80512,0.814894259,167.50,5.690405846,-36.99747849,PA,5,Temperate coniferous forests,Khangai Mountains conifer forests,2.2,0,100,95,95,1,140
+80513,0.489439636,119.30,17.7359581,0.351791382,PA,5,Temperate coniferous forests,Mediterranean conifer and mixed forests,,0,100,95,95,1,134
+80514,1.682571769,225.30,9.998436928,-8.953590393,PA,5,Temperate coniferous forests,Northeastern Himalayan subalpine conifer forests,2.2,0,100,95,95,1,140
+80515,0.795815766,149.70,15.5549612,-0.639421463,PA,5,Temperate coniferous forests,Northern Anatolian conifer and deciduous forests,2.2,0,100,95,95,0.5,133
+80516,1.645733595,229.81,11.43244457,-7.637000084,PA,5,Temperate coniferous forests,Nujiang Langcang Gorge alpine conifer and mixed forests,2.2,0,100,95,95,1,140
+80517,1.403498769,221.64,9.188781738,-19.79564285,PA,5,Temperate coniferous forests,Qilian Mountains conifer forests,2.2,0,100,95,95,1,140
+80518,1.280763745,269.05,16.51560211,-2.341550827,PA,5,Temperate coniferous forests,Qionglai-Minshan conifer forests,2.2,0,100,95,95,1,140
+80519,1.641915321,220.97,7.006017208,-34.89096832,PA,5,Temperate coniferous forests,Sayan montane conifer forests,2.2,0,100,95,95,1,140
+80520,9.390193939,166.52,8.428531408,-3.716518402,PA,5,Temperate coniferous forests,Scandinavian coastal conifer forests,2.2,0,100,95,95,1,140
+80521,2.285105705,155.40,4.678146839,-22.09030151,PA,5,Temperate coniferous forests,Tian Shan montane conifer forests,2.2,0,100,95,95,1,140
+80601,1.220639706,168.00,7.750801563,-45.20426941,PA,6,Boreal forest/taigas,East Siberian taiga,2.1,0,100,95,75,0,140
+80602,4.573998928,134.08,7.024585247,-1.537651062,PA,6,Boreal forest/taigas,Iceland boreal birch forests and alpine tundra,2.1,0,100,95,25,0,140
+80603,3.42812252,166.25,7.118901253,-21.09614182,PA,6,Boreal forest/taigas,Kamchatka-Kurile meadows and sparse forests,2.1,0,100,95,25,1,140
+80604,2.462986946,155.65,8.242947578,-21.72820663,PA,6,Boreal forest/taigas,Kamchatka-Kurile taiga,2.1,0,100,95,75,1,140
+80605,1.135578752,132.80,5.950077057,-47.51228714,PA,6,Boreal forest/taigas,Northeast Siberian taiga,2.1,0,100,95,75,1,140
+80606,2.171871901,220.82,8.727952957,-33.22245407,PA,6,Boreal forest/taigas,Okhotsk-Manchurian taiga,2.1,0,100,95,75,1,140
+80607,2.176510096,175.94,9.46466589,-28.21389961,PA,6,Boreal forest/taigas,Sakhalin Island taiga,2.1,0,100,95,75,1,140
+80608,1.909883082,191.62,9.781723499,-18.34645271,PA,6,Boreal forest/taigas,Scandinavian and Russian taiga,2.1,0,100,95,75,1,140
+80609,1.049170554,223.31,8.544725895,-34.83103752,PA,6,Boreal forest/taigas,Trans-Baikal conifer forests,2.1,0,100,95,95,1,140
+80610,2.315654874,214.52,8.888674736,-27.55039406,PA,6,Boreal forest/taigas,Ural montane forests and tundra,2.1,0,100,95,25,1,140
+80611,1.82720083,199.51,9.241262436,-32.12718391,PA,6,Boreal forest/taigas,West Siberian taiga,2.1,0,100,95,75,1,140
+80801,0.391403049,135.97,22.76065159,-1.229457855,PA,8,"Temperate grasslands, savannas, and shrublands",Alai-Western Tian Shan steppe,6.2,0,99,0,0,,432
+80802,0.506072044,101.90,15.89285564,-20.04609299,PA,8,"Temperate grasslands, savannas, and shrublands",Altai steppe and semi-desert,5.2,0,80,0,0,,432
+80803,0.582746089,130.00,18.10943794,-0.748166084,PA,8,"Temperate grasslands, savannas, and shrublands",Central Anatolian steppe,6.2,0,99,0,0,,432
+80804,0.73254782,227.91,11.51863194,-37.98294067,PA,8,"Temperate grasslands, savannas, and shrublands",Daurian forest steppe,6.1,0,99,0,0,,432
+80805,0.495309949,141.42,19.93039799,-4.970117569,PA,8,"Temperate grasslands, savannas, and shrublands",Eastern Anatolian montane steppe,6.2,0,99,0,0,,432
+80806,0.35070549,96.50,16.96208668,-18.14764404,PA,8,"Temperate grasslands, savannas, and shrublands",Emin Valley steppe,6.2,0,99,0,0,,432
+80807,12.36647892,140.24,7.938658953,2.633791327,PA,8,"Temperate grasslands, savannas, and shrublands",Faroe Islands boreal grasslands,6.1,0,99,0,0,,432
+80808,0.641265005,131.06,15.64545679,-6.689241409,PA,8,"Temperate grasslands, savannas, and shrublands",Gissaro-Alai open woodlands,6.1,0,99,25,25,,230
+80809,0.890155435,165.20,12.52969646,-25.24562073,PA,8,"Temperate grasslands, savannas, and shrublands",Kazakh forest steppe,6.1,0,99,0,0,,432
+80810,0.595644951,118.10,14.20232391,-23.64338303,PA,8,"Temperate grasslands, savannas, and shrublands",Kazakh steppe,6.2,0,99,0,0,,432
+80811,0.596790791,106.00,12.99028301,-22.86855316,PA,8,"Temperate grasslands, savannas, and shrublands",Kazakh upland,6.2,0,99,0,0,,432
+80812,0.18475391,114.80,26.82913113,5.998932362,PA,8,"Temperate grasslands, savannas, and shrublands",Middle East steppe,5.2,0,99,0,0,,432
+80813,0.58662498,199.40,13.22189999,-31.80340576,PA,8,"Temperate grasslands, savannas, and shrublands",Mongolian-Manchurian grassland,6.2,0,99,0,0,,431
+80814,0.915759534,155.45,16.93493366,-8.581398964,PA,8,"Temperate grasslands, savannas, and shrublands",Pontic steppe,6.1,0,99,0,0,,432
+80815,0.816785574,182.70,7.785434008,-37.54547119,PA,8,"Temperate grasslands, savannas, and shrublands",Sayan Intermontane steppe,6.1,0,99,0,0,,432
+80816,0.738171577,203.15,8.93682766,-30.27492142,PA,8,"Temperate grasslands, savannas, and shrublands",Selenge-Orkhon forest steppe,6.1,0,99,0,0,,432
+80817,0.929538906,210.00,11.15212393,-30.51352501,PA,8,"Temperate grasslands, savannas, and shrublands",South Siberian forest steppe,6.1,0,99,0,0,,432
+80818,0.739236236,154.52,16.43796921,-14.7298069,PA,8,"Temperate grasslands, savannas, and shrublands",Tian Shan foothill arid steppe,6.1,0,99,0,0,,432
+80901,1.201456189,273.38,14.75246239,-29.7829628,PA,9,Flooded grasslands,Amur meadow steppe,,1,99,0,0,,1000
+80902,0.805515349,287.04,21.73367882,-6.036283493,PA,9,Flooded grasslands,Bohai Sea saline meadow,,1,99,0,0,,1000
+80903,0.764156908,258.34,16.63555241,-26.60062408,PA,9,Flooded grasslands,Nenjiang River grassland,,1,99,0,0,,1000
+80904,0.0011087,1.70,27.47216606,10.79314566,PA,9,Flooded grasslands,Nile Delta flooded savanna,,1,99,10,10,,1000
+80905,0.000104577,0.20,34.81747055,15.16908097,PA,9,Flooded grasslands,Saharan halophytics,,1,99,0,0,,1000
+80906,0.125636499,116.46,32.12264442,11.50033426,PA,9,Flooded grasslands,Tigris-Euphrates alluvial salt marsh,,1,99,0,0,,1000
+80907,1.33585608,260.34,15.40065956,-25.10686874,PA,9,Flooded grasslands,Suiphun-Khanka meadows and forest meadows,,1,99,0,0,,1000
+80908,1.403851986,302.07,21.95573425,0.87254715,PA,9,Flooded grasslands,Yellow Sea saline meadow,,1,99,0,0,,1000
+81001,1.399337828,93.10,3.156119108,-32.67622566,PA,10,Montane grasslands,Altai alpine meadow and tundra,1.2,0,99,0,0,,640
+81002,1.053112864,99.81,3.955962181,-25.38284302,PA,10,Montane grasslands,Central Tibetan Plateau alpine steppe,1.2,0,99,0,0,,640
+81003,1.283113956,172.49,7.018083096,-16.07589149,PA,10,Montane grasslands,Eastern Himalayan alpine shrub and meadows,1.2,0,99,25,0,,640
+81004,0.451448053,50.76,12.06871128,-16.12311172,PA,10,Montane grasslands,Ghorat-Hazarajat alpine meadow,1.2,0,99,0,0,,640
+81005,5.715372562,66.00,2.033159256,-21.96335983,PA,10,Montane grasslands,Hindu Kush alpine meadow,1.2,0,99,0,0,,640
+81006,0.46222721,49.85,4.592597127,-23.71900558,PA,10,Montane grasslands,Karakoram-West Tibetan Plateau alpine steppe,1.2,0,99,0,0,,640
+81007,0.839367002,154.83,5.946409941,-36.46935844,PA,10,Montane grasslands,Khangai Mountains alpine meadow,1.2,0,99,0,0,,640
+81008,0.302376777,117.92,22.5340786,-0.246408463,PA,10,Montane grasslands,Kopet Dag woodlands and forest steppe,7.2,0,99,25,25,,222
+81009,0.090824734,59.20,24.04266644,2.293453217,PA,10,Montane grasslands,Kuh Rud and Eastern Iran montane woodlands,7.2,0,99,25,25,,640
+81010,0.841656983,98.30,12.43862438,-7.539897919,PA,10,Montane grasslands,Mediterranean High Atlas juniper steppe,1.2,0,99,10,0,,640
+81011,0.574732095,67.41,2.134567857,-32.82077789,PA,10,Montane grasslands,North Tibetan Plateau-Kunlun Mountains alpine desert,1.2,0,60,0,0,,640
+81012,1.27375865,151.54,7.512623549,-22.79679298,PA,10,Montane grasslands,Northwestern Himalayan alpine shrub and meadows,1.2,0,99,25,0,,640
+81013,0.574331164,221.89,16.70454979,-19.48116684,PA,10,Montane grasslands,Ordos Plateau steppe,1.2,0,99,0,0,,640
+81014,0.75371784,44.84,4.525115728,-21.46532631,PA,10,Montane grasslands,Pamir alpine desert and tundra,1.2,0,60,0,0,,640
+81015,1.889073253,83.65,1.536159813,-33.58294868,PA,10,Montane grasslands,Qilian Mountains subalpine meadow,1.2,0,99,0,0,,640
+81016,1.730363846,162.89,3.942023516,-37.56703568,PA,10,Montane grasslands,Sayan Alpine meadow and tundra,1.2,0,99,0,0,,640
+81017,2.268752813,162.36,4.873334408,-22.9854126,PA,10,Montane grasslands,Southeast Tibet shrublands and meadow,1.2,0,99,25,0,,640
+81018,0.173435181,90.90,22.41868973,1.97105217,PA,10,Montane grasslands,Sulaiman Range alpine meadows,1.2,0,99,0,0,,640
+81019,0.807886064,115.05,7.216792583,-23.63952065,PA,10,Montane grasslands,Tian Shan montane steppe and meadow,1.2,0,99,0,0,,640
+81020,1.382114649,159.02,4.992091179,-23.71604919,PA,10,Montane grasslands,Tibetan Plateau alpine shrublands and meadows,1.2,0,99,25,0,,640
+81021,2.142692089,95.78,3.407548428,-22.42850494,PA,10,Montane grasslands,Western Himalayan alpine shrub and Meadows,1.2,0,99,25,0,,640
+81022,1.055244684,163.44,5.930898666,-15.96753502,PA,10,Montane grasslands,Yarlun Tsangpo arid steppe,1.2,0,99,0,0,,640
+81101,5.318789482,60.88,1.267301768,-27.16436577,PA,11,Tundra,Arctic desert,1.1,0,60,10,0,0.5,640
+81102,2.296242714,138.83,4.867783546,-28.23591995,PA,11,Tundra,Bering tundra,1.1,0,99,10,0,0.5,640
+81103,1.548001647,143.77,4.468213558,-45.67593002,PA,11,Tundra,Cherskii-Kolyma mountain tundra,1.1,0,99,10,0,0.5,640
+81104,1.829349101,113.20,4.180602312,-36.67246628,PA,11,Tundra,Chukchi Peninsula tundra,1.1,0,99,10,0,0.5,640
+81105,4.206832051,154.37,5.837704897,-23.07810974,PA,11,Tundra,Kamchatka Mountain tundra and forest tundra,1.1,0,99,10,0,0.5,640
+81106,2.490619421,160.51,5.770504951,-17.38645554,PA,11,Tundra,Kola Peninsula tundra,1.1,0,99,10,0,0.5,640
+81107,1.174739242,84.83,3.036098719,-44.22432709,PA,11,Tundra,Northeast Siberian coastal tundra,1.1,0,99,10,0,0.5,640
+81108,2.91869545,135.90,5.326811314,-28.33209229,PA,11,Tundra,Northwest Russian-Novaya Zemlya tundra,1.1,0,99,10,0,0.5,640
+81109,2.379920959,48.93,0.541218996,-41.74252701,PA,11,Tundra,Novosibirsk Islands arctic desert,1.1,0,60,10,0,0.5,640
+81110,3.375569582,156.79,6.292636871,-12.1390152,PA,11,Tundra,Scandinavian Montane Birch forest and grasslands,1.1,0,99,10,5,0.5,640
+81111,1.949262142,93.40,3.668597221,-46.44591904,PA,11,Tundra,Taimyr-Central Siberian tundra,1.1,0,99,10,0,0.5,640
+81112,1.512945414,219.08,6.967625618,-42.17476654,PA,11,Tundra,Trans-Baikal Bald Mountain tundra,1.1,0,99,10,0,0.5,640
+81114,2.232916951,114.06,4.828907967,-36.62956429,PA,11,Tundra,Yamal-Gydan tundra,1.1,0,99,10,0,0.5,640
+81201,0.894169569,119.73,19.32015419,5.023757458,PA,12,Mediterranean scrub,Aegean & Western Turkey sclerophyllous and mixed forests,5.1,0,99,60,60,1,221
+81202,0.786523998,129.61,19.70904255,3.405244827,PA,12,Mediterranean scrub,Anatolian conifer and deciduous mixed forests,5.1,0,99,60,60,0.5,221
+81203,0.423890769,123.91,19.80230904,13.18653584,PA,12,Mediterranean scrub,Canary Islands dry woodlands and forests,5.1,0,99,75,25,1,221
+81204,1.462324858,110.45,15.71794605,3.675246239,PA,12,Mediterranean scrub,Corsican montane broadleaf and mixed forests,5.1,0,99,60,60,1,221
+81205,1.055994272,119.77,20.97292137,8.795521736,PA,12,Mediterranean scrub,Crete Mediterranean forests,5.1,0,99,60,60,1,221
+81206,0.439765066,131.35,24.51704216,11.25991726,PA,12,Mediterranean scrub,Cyprus Mediterranean forests,5.1,0,99,60,60,1,221
+81207,0.700720578,156.39,24.67186642,6.900471687,PA,12,Mediterranean scrub,Eastern Mediterranean conifer-sclerophyllous-broadleaf forests,5.1,0,99,60,60,1,221
+81208,0.611808419,122.90,19.07997513,4.198049068,PA,12,Mediterranean scrub,Iberian conifer forests,5.1,0,99,60,60,1,221
+81209,0.616870761,145.40,20.27663803,6.101686001,PA,12,Mediterranean scrub,Iberian sclerophyllous and semi-deciduous forests,5.1,0,99,60,60,0.7,221
+81210,1.820992172,190.98,17.89392185,4.127470374,PA,12,Mediterranean scrub,Illyrian deciduous forests,5.1,0,99,60,60,0,221
+81211,1.12272054,158.35,19.80998039,6.593071461,PA,12,Mediterranean scrub,Italian sclerophyllous and semi-deciduous forests,5.1,0,99,60,60,0.7,221
+81212,0.224937305,99.40,21.94393349,11.00656605,PA,12,Mediterranean scrub,Mediterranean acacia-argania dry woodlands and succulent thickets,5.1,0,99,75,25,1,221
+81213,0.237522513,80.84,22.24945831,5.463066101,PA,12,Mediterranean scrub,Mediterranean dry woodlands and steppe,5.1,0,99,75,25,1,221
+81214,0.45391342,134.79,21.45435238,6.921905994,PA,12,Mediterranean scrub,Mediterranean woodlands and forests,5.1,0,99,75,25,1,221
+81215,1.142249584,181.08,18.26526833,5.373645306,PA,12,Mediterranean scrub,Northeastern Spain & Southern France Mediterranean forests,5.1,0,99,60,60,1,221
+81216,1.309967875,171.19,16.54361343,4.715690136,PA,12,Mediterranean scrub,Northwest Iberian montane forests,5.1,0,99,60,60,1,221
+81217,1.390089571,160.23,16.83828735,3.130608082,PA,12,Mediterranean scrub,Pindus Mountains mixed forests,5.1,0,99,60,60,1,221
+81218,1.634074926,125.70,16.0719471,3.467548966,PA,12,Mediterranean scrub,South Appenine mixed montane forests,5.1,0,99,60,60,1,221
+81219,0.363372862,104.57,22.10661125,10.34704781,PA,12,Mediterranean scrub,Southeastern Iberian shrubs and woodlands,5.1,0,99,75,25,1,221
+81220,0.779129565,104.99,16.0298233,-1.041423798,PA,12,Mediterranean scrub,Southern Anatolian montane conifer and deciduous forests,5.1,0,99,60,60,0.5,221
+81221,0.741420567,143.34,21.41940498,10.43014717,PA,12,Mediterranean scrub,Southwest Iberian Mediterranean sclerophyllous and mixed forests,5.1,0,99,75,25,1,221
+81222,0.682807982,124.41,21.18456078,8.76099205,PA,12,Mediterranean scrub,Tyrrhenian-Adriatic Sclerophyllous and mixed forests,5.1,0,99,75,25,1,221
+81301,0.422505796,76.66,13.63962841,-15.09204102,PA,13,Deserts and xeric shrublands,Afghan Mountains semi-desert,5.2,0,25,25,0,,520
+81302,0.104142774,50.00,17.9638443,-19.93237114,PA,13,Deserts and xeric shrublands,Alashan Plateau semi-desert,7.1,0,25,25,0,,520
+81303,0.048019854,53.60,33.20360184,17.26551914,PA,13,Deserts and xeric shrublands,Arabian Desert and East Sahero-Arabian xeric shrublands,7.3,0,25,25,0,,520
+81304,0.031222422,24.75,25.27712536,19.06512928,PA,13,Deserts and xeric shrublands,Atlantic coastal desert,7.3,0,25,25,0,,520
+81305,0.457749248,123.25,22.1024332,3.097625852,PA,13,Deserts and xeric shrublands,Azerbaijan shrub desert and steppe,5.2,0,60,10,0,,530
+81306,0.214917429,115.17,25.9620657,1.357325077,PA,13,Deserts and xeric shrublands,Badghyz and Karabil semi-desert,7.2,0,25,25,0,,520
+81307,0.17330122,137.50,29.42444134,8.390295506,PA,13,Deserts and xeric shrublands,Baluchistan xeric woodlands,7.2,0,25,25,10,,520
+81308,0.247076295,50.15,19.58244228,-10.89908028,PA,13,Deserts and xeric shrublands,Caspian lowland desert,7.1,0,25,25,0,,520
+81309,0.318383515,68.75,17.85604668,-11.02522659,PA,13,Deserts and xeric shrublands,Central Afghan Mountains xeric woodlands,5.2,0,25,25,10,,520
+81310,0.1794094,41.70,20.21562958,-12.32632446,PA,13,Deserts and xeric shrublands,Central Asian northern desert,7.1,0,25,25,0,,520
+81311,0.138791457,48.30,21.22465515,-6.929653168,PA,13,Deserts and xeric shrublands,Central Asian riparian woodlands,7.1,0,25,25,10,,520
+81312,0.148043051,63.50,24.36906433,-1.892230988,PA,13,Deserts and xeric shrublands,Central Asian southern desert,7.1,0,25,25,0,,520
+81313,0.121188112,81.20,24.95221138,1.440553665,PA,13,Deserts and xeric shrublands,Central Persian desert basins,7.2,0,25,25,0,,520
+81314,0.246104628,102.75,15.14254189,-24.61790276,PA,13,Deserts and xeric shrublands,Eastern Gobi desert steppe,7.1,0,60,10,0,,530
+81315,0.202751838,83.65,14.74988556,-28.66125107,PA,13,Deserts and xeric shrublands,Gobi Lakes Valley desert steppe,7.1,0,60,10,0,,530
+81316,0.290181443,89.40,12.75224876,-39.4044857,PA,13,Deserts and xeric shrublands,Great Lakes Basin desert steppe,7.1,0,60,10,0,,530
+81317,0.214694634,52.00,18.26303291,-25.81247139,PA,13,Deserts and xeric shrublands,Junggar Basin semi-desert,7.1,0,25,25,0,,520
+81318,0.287437856,53.70,18.06361008,-18.55583191,PA,13,Deserts and xeric shrublands,Kazakh semi-desert,7.1,0,25,25,0,,520
+81319,0.221982062,99.90,25.14140129,2.409823418,PA,13,Deserts and xeric shrublands,Kopet Dag semi-desert,7.2,0,25,25,0,,520
+81320,0.107267454,75.60,30.56631851,8.458847046,PA,13,Deserts and xeric shrublands,Mesopotamian shrub desert,7.2,0,25,25,0,,520
+81321,0.028770545,22.10,28.32277203,9.360173941,PA,13,Deserts and xeric shrublands,North Saharan steppe and woodlands,7.2,0,60,10,10,,520
+81322,0.4462457,108.53,20.64863777,-3.869506836,PA,13,Deserts and xeric shrublands,Paropamisus xeric woodlands,5.2,0,25,25,10,,520
+81323,0.062777117,52.70,33.24991226,13.25789261,PA,13,Deserts and xeric shrublands,Persian Gulf desert and semi-desert,7.3,0,25,25,0,,520
+81324,0.203539819,48.80,9.057531357,-23.89831543,PA,13,Deserts and xeric shrublands,Qaidam Basin semi-desert,7.1,0,25,25,0,,520
+81325,0.05733064,43.80,31.48791122,17.35512352,PA,13,Deserts and xeric shrublands,Red Sea Nubo-Sindian tropical desert and semi-desert,7.3,0,25,25,0,,520
+81326,0.047200393,49.60,29.95774841,5.276374817,PA,13,Deserts and xeric shrublands,Registan-North Pakistan sandy desert,7.2,0,25,25,0,,520
+81327,0.003556017,4.65,29.81861401,12.47930562,PA,13,Deserts and xeric shrublands,Sahara desert,7.3,0,25,25,0,,520
+81328,0.111759923,102.50,31.69346714,12.16680336,PA,13,Deserts and xeric shrublands,South Iran Nubo-Sindian desert and semi-desert,7.3,0,25,25,0,,520
+81329,0.034446845,57.80,31.52153969,17.9799124,PA,13,Deserts and xeric shrublands,South Saharan steppe and woodlands,7.3,0,60,10,10,,520
+81330,0.034007404,22.20,21.09029388,-17.4667511,PA,13,Deserts and xeric shrublands,Taklimakan desert,7.1,0,25,25,0,,530
+81331,0.077887133,73.90,27.31778717,13.43470454,PA,13,Deserts and xeric shrublands,Tibesti-Jebel Uweinat montane xeric woodlands,7.3,0,25,25,10,,520
+81332,0.022212058,13.65,29.44246292,11.80843294,PA,13,Deserts and xeric shrublands,West Saharan montane xeric woodlands,7.2,0,25,25,10,,520
