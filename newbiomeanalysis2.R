@@ -34,12 +34,25 @@ sealevel <- rast('output/sealevel.tif'); names(sealevel)<-'sealevel'
 sea <- rast('output/sea.tif'); names(sea)<-'sea'
 chm <- rast('data/chm/chm.tif'); names(chm) <- 'chm'
 slope <- rast("output/slope5km.tif"); names(slope)<-'slope'
-rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+md <- (e-d)/(e+0.0001); names(md)<-'md'; #writeRaster(md,paste0(path, 'md.tif'))
+rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m, md, s,d,e,p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
 
+# ms <- ifel(m >= 1 & md >= 0.667,ifel(m >= 2,9,8), 
+#            ifel(m >= 0.25 | p3AET >= 180,
+#                 ifel(m >=1, ifel(p3AET < 180, 6,7),
+#                      ifel(m >=0.5, ifel(p3AET < 180, 4,5),
+#                           ifel(p3AET < 180, 2,3))),1))
+# writeRaster(ms,'output/ms.tif', overwrite=T)
+# ms2 <- ifel(m >= 1 & d < 150,ifel(m >= 2,9,8), 
+#            ifel(m >= 0.25 | p3AET >= 180,
+#                 ifel(m >=1, ifel(p3AET < 180, 6,7),
+#                      ifel(m >=0.5, ifel(p3AET < 180, 4,5),
+#                           ifel(p3AET < 180, 2,3))),1))
+# writeRaster(ms2,'output/ms2.tif', overwrite=T)
 
 eco <- st_read('data/ecoregions.shp')
 ecoalt <- read.csv('data/wwfeco.types.cover2.csv')
-biome2023 <- read.csv('data/biome2023.csv',  na.strings = FALSE, fileEncoding = 'latin1')
+biome2023 <- read.csv('data/biome2023.csv',  na.strings = FALSE, fileEncoding = 'latin1') |> subset(select=c(ECO_ID, altbiom2023)) |> unique()
 eco <- eco %>% subset(!BIOME %in% c(98))
 ecoids <- eco$ECO_ID %>% unique()
 
@@ -160,9 +173,9 @@ ecopts.repro <- ecopts.repro %>% st_as_sf() %>%  left_join(biome2023) |>  subset
 ecopts1 <- rastbrick %>% extract(ecopts.repro)
 ecopts2 <- ecopts.repro %>% st_drop_geometry()
 ecopts4 <- cbind(ecopts2, ecopts1)
-ecopts3 <- subset(ecopts3, select=c(altbiom2023,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,
+ecopts3 <- subset(ecopts3, select=c(altbiom2023,Tw,Twh,Tg,Tc,Tclx,m, md,s,d,e,p3AET,
                                     slope,hydric,sealevel,clay,sand,marine,soilpH,bedrock))
-ecopts4 <- subset(ecopts4, select=c(altbiom2023,Tw,Twh,Tg,Tc,Tclx,m,s,d,e,p3AET,
+ecopts4 <- subset(ecopts4, select=c(altbiom2023,Tw,Twh,Tg,Tc,Tclx,m, md,s,d,e,p3AET,
                                     slope,hydric,sealevel,clay,sand,marine,soilpH,bedrock))
 
 
@@ -174,8 +187,8 @@ ecopts5 <-  subset(ecopts5, !is.na(altbiom2023) & !is.na(Tw) & !is.na(m) & !is.n
                    & !(Tclx < -2 & altbiom2023 %in% c(9.1))
                    & !(Tclx > 5 & altbiom2023 %in% c(1.1,1.2,2.1,2.2,3.1)))
 rf <- ranger(altbiom2023 ~ 
-               Tw+Twh+Tg+Tc+Tclx+m+s+d+e+p3AET+
-               slope+hydric+sealevel+clay+sand+marine+soilpH+bedrock
+               Tw+Twh+Tg+Tc+Tclx+m+p3AET+md+
+               slope+hydric+sealevel+clay+sand+soilpH+bedrock
              ,
              data=ecopts5, num.trees=50, sample.fraction = 0.1, max.depth = 18, importance = 'impurity',
              classification=TRUE,  write.forest = TRUE)
@@ -223,7 +236,7 @@ ecopts6 <- subset(ecopts6, altbiom2023 %in% c(1.1, 1.2, 1.3, 2.1, 2.2, 3.1, 4.1,
 
 
 biomeclass <- rpart(key1 ~ 
-                      m+p3AET+d+
+                      m+p3AET+md+
                       Tg+Tc+Tclx 
                     #+Tw+Twh
                     # +s+slope
@@ -232,7 +245,7 @@ biomeclass <- rpart(key1 ~
                     data = ecopts6, method="class", control = list(maxdepth = 6, cp=0.002, minsplit=100))
 # Make plot
 
-png(filename="biome2023.png",width = 10, height = 3, units = 'in', res = 600)
+png(filename="biome2023c.png",width = 10, height = 3, units = 'in', res = 600)
 
 rpart.plot(biomeclass, extra=108,legend.cex=0.5, digits=3) # Make plot
 
