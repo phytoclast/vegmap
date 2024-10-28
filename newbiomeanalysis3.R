@@ -1,0 +1,504 @@
+library(sf)
+library(terra)
+library(ranger)
+library(rpart)
+library(rpart.plot)
+library(dplyr)
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+path = 'C:/workspace2/processclimategrids/output/'
+MAAT <- rast(paste0(path, 'MAAT.tif')); names(MAAT)<-'MAAT'
+bt <- rast(paste0(path, 'bt.tif')); names(bt)<-'bt'
+Tw <- rast(paste0(path, 'Tw.tif')); names(Tw)<-'Tw'
+Twh <- rast(paste0(path, 'Twh.tif')); names(Twh)<-'Twh'
+Tclx <- rast(paste0(path, 'Tclx.tif')); names(Tclx)<-'Tclx'
+Tcl <- rast(paste0(path, 'Tcl.tif')); names(Tcl)<-'Tcl'
+Tg <- rast(paste0(path, 'Bts.tif')); names(Tg)<-'Tg'
+Tc <- rast(paste0(path, 'Tc.tif')); names(Tc)<-'Tc'
+e <- rast(paste0(path, 'e.tif')); names(e)<-'e'
+m <- rast(paste0(path, 'm.tif')); names(m)<-'m'
+p <- rast(paste0(path, 'p.tif')); names(p)<-'p'
+d <- rast(paste0(path, 'deficit.tif')); names(d)<-'d'
+s <- rast(paste0(path, 'surplus.tif')); names(s)<-'s'
+pAET <- rast(paste0(path, 'pAET.tif')); names(pAET)<-'pAET'
+p3AET <- rast(paste0(path, 'p3AET.tif')); names(p3AET)<-'p3AET'
+Elev5km = rast(paste0(path, 'Elev5km.tif'))
+elev = rast(paste0(path, 'Elev5km.tif')) %>% project(Tw); names(elev)<-'elev'
+Elev1km = rast(paste0(path, 'Elev1km.tif'))
+#see 'newbiomanalysis.R' remarks for derivation of following layers.
+hydric <- rast("output/hydric5km.tif"); names(hydric)<-'hydric'
+sand <- rast("output/sand5km.tif"); names(sand)<-'sand'
+clay <- rast("output/clay5km.tif"); names(clay)<-'clay'
+soilpH <- rast("output/soilpH5km.tif"); names(soilpH)<-'soilpH'
+bedrock <- rast("output/bedrock5km.tif"); names(bedrock)<-'bedrock'
+marine <- rast('output/marine.tif'); names(marine)<-'marine'
+sealevel <- rast('output/sealevel.tif'); names(sealevel)<-'sealevel'
+sea <- rast('output/sea.tif'); names(sea)<-'sea'
+chm <- rast('data/chm/chm.tif'); names(chm) <- 'chm'
+slope <- rast("output/slope5km.tif"); names(slope)<-'slope'
+md <- (e-d)/(e+0.0001); names(md)<-'md'; #writeRaster(md,paste0(path, 'md.tif'))
+mholdridge <- p/(bt*58.93+0.001); names(mholdridge) <- 'mholdridge'
+rastbrick <- c(Tw,Twh,Tg,Tc,Tclx,m, md, bt, mholdridge, s,d,e,p,MAAT, p3AET,slope, hydric, elev, sealevel,clay, sand,marine,soilpH,bedrock)
+
+# pcabrick <- rastbrick[[c('Tw', 'Twh', 'Tg', 'Tc', 'Tclx', 'm', 'p3AET', 'md', 
+#                          'slope', 'hydric', 'sealevel', 'clay', 'sand', 'soilpH', 'bedrock')]]
+# pcabrick <- terra::princomp(pcabrick)
+
+eco <- st_read('data/ecoregions.shp')
+ecoalt <- read.csv('data/wwfeco.types.cover2.csv')
+biome2023 <- read.csv('data/biome2023.csv',  na.strings = FALSE, fileEncoding = 'latin1') |> subset(select=c(ECO_ID, altbiom2023)) |> unique()
+eco <- eco %>% subset(!BIOME %in% c(98))
+ecoids <- eco$ECO_ID %>% unique()
+
+
+#----
+
+
+
+
+for(i in 1:length(ecoids)){#i=326
+  eco0 <- eco %>% subset(ECO_ID %in% ecoids[i]) %>% vect()
+  ecopts0 <- spatSample(eco0, size=10, "random", strata=NULL)
+  while(nrow(ecopts0) == 0){ecopts0 <- spatSample(eco0, size=10, "random", strata=NULL)}
+  if(i==1){ecopts <- ecopts0}else{
+    ecopts <- rbind(ecopts, ecopts0)} 
+}
+ecopts0 <- terra::spatSample(vect(eco), size=60000, "random", strata=NULL)
+ecopts1 <- terra::spatSample(vect(subset(eco, REALM %in% 'NA' )), size=10000, "random", strata=NULL)
+ecopts <- rbind(ecopts,ecopts0, ecopts1)
+ecopts.repro <- ecopts %>% project(Tw)
+ecopts.repro <- ecopts.repro %>% st_as_sf() %>%  left_join(biome2023) |>  subset(select='altbiom2023')
+
+
+ecopts1 <- rastbrick %>% extract(ecopts.repro)
+ecopts2 <- ecopts.repro #%>% st_drop_geometry()
+ecopts4 <- cbind(ecopts2, ecopts1)
+ecopts4 <- subset(ecopts4, select=c(altbiom2023,Tw,Twh,Tg,Tc,Tclx,m, md, MAAT, bt, mholdridge, s,d,e,p, p3AET,
+                                    slope,hydric,sealevel,clay,sand,marine,soilpH,bedrock))
+
+
+ecopts5 <- ecopts4
+ecopts5 <-  subset(ecopts5, !is.na(altbiom2023) & !is.na(Tw) & !is.na(m) & !is.na(Tclx) & !is.na(Tg) &!is.na(p3AET) &!is.na(slope) &!is.na(hydric) &!is.na(sand))
+
+
+ecopts5 <-  subset(ecopts5, !(Tg > 9 & altbiom2023 %in% c(1.1,1.2,1.3))
+                   & !(Tg < 3 & !altbiom2023 %in% c(1.1,1.2,1.3))
+                   & !(m > 1 & altbiom2023 %in% c(7.1,7.2,7.3))
+                   & !(m < 0.5 & altbiom2023 %in% c(2.1,2.2,3.1,4.1,4.2,4.3,9.1))
+                   & !(Tclx < -2 & altbiom2023 %in% c(9.1))
+                   & !(Tclx > 5 & altbiom2023 %in% c(1.1,1.2,2.1,2.2,3.1)))
+
+saveRDS(ecopts5, 'ecopts5.RDS')
+
+writeRaster(rastbrick, 'rastbrick.tif', overwrite =T)
+
+
+
+
+
+
+#### ----
+#start
+library(sf)
+library(terra)
+library(ranger)
+library(rpart)
+library(rpart.plot)
+library(dplyr)
+# library(mgcv)
+library(gam)
+library(maxnet)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+maxKappa <- function(actual, predicted){ for(i in 1:99){
+  k <- i/100
+  Kappa0 <- ModelMetrics::kappa(actual=actual, predicted=predicted, cutoff = k)
+  if(i == 1){ maxkappa = k}else{maxkappa = max(Kappa0, maxkappa)}
+}
+  return(maxkappa)}
+
+ecopts5 <- readRDS('ecopts5.RDS')
+rastbrick <- rast('rastbrick.tif')
+
+ecopts6 <- ecopts5
+biomes <- unique(ecopts5$altbiom2023) 
+# biomes <- biomes |> subset(biomes %in% c(7.3));i = 1
+for (i in 1:length(biomes)){
+
+  
+  eco0 <- ecopts5 |> mutate(pos = ifelse(altbiom2023 %in% biomes[i],1,0)) |> st_drop_geometry()
+  # eco0 <- ecopts5 |> mutate(pos = ifelse(m > 0.5 & Tg >=12 & Tc >= 0 & Tclx >= -15 & Tclx < 0 & md >= 0.5,1,0))
+  # eco0 <- eco0 |> group_by(pos) |> mutate(wts = 100/length(pos)) |> ungroup()
+  ecopos <- subset(eco0, pos %in% 1) 
+  econeg <- subset(eco0, pos %in% 0)
+  ecopos <- ecopos[sample(1:nrow(ecopos), size=1200, replace=T),] 
+  econeg <- econeg[sample(1:nrow(econeg), size=1200, replace=T),]
+  takeout.p <- sample(1:nrow(ecopos), size=200, replace=F)
+  takeout.n <- sample(1:nrow(econeg), size=200, replace=F)
+  trainpos <- ecopos[-takeout.p,] 
+  trainneg <- econeg[-takeout.n,] 
+  testpos <- ecopos[takeout.p,] 
+  testneg <- econeg[takeout.n,] 
+  train <- rbind(trainpos, trainneg)
+  test <- rbind(testpos, testneg)
+  
+  
+  smoothvars <- c('Tw', 'Twh', 'Tg', 'Tc', 'Tclx', 'm', 'p3AET', 'md', 
+                  'slope', 'hydric', 'sealevel', 'clay', 'sand', 'soilpH', 'bedrock')
+
+
+  # climvars <- c('Tw', 'Twh', 'Tg', 'Tc', 'Tclx', 'm', 'p3AET', 'md')
+  # soilvars <- c('slope', 'hydric', 'sealevel', 'clay', 'sand', 'soilpH', 'bedrock')
+  
+  
+  formular.gam <- as.formula(paste(paste("pos",paste(paste("s(",smoothvars,")", collapse = " + ", sep = ""),""), sep = " ~ ")
+  ))
+  
+  # formular.glm <- as.formula(paste(paste("pos",paste(paste("I(",smoothvars,"^2)", collapse = " + ", sep = ""),""), sep = " ~ ")
+  # ))
+  # 
+  # formular.rf <- as.formula(paste(paste("pos",paste(paste(smoothvars, collapse = " + ", sep = ""),""), sep = " ~ ")
+  # ))
+ 
+  
+  # rf <- ranger(formular.rf,
+  #              
+  #              data=train)
+  # 
+  gm <- gam(formular.gam,
+               family='binomial',
+               data=train)
+  summary(gm)
+  # gl <- glm(formular.glm,
+  #           family='binomial',
+  #           data=train)
+  # summary(gl)
+  # 
+  # mxnt <- maxnet(p=train$pos, data= train[,smoothvars])
+  # 
+
+  # train.gam <- train |> mutate(prediction = predict(gm, train, na.rm=T, type = "response"))
+  # test.gam <- test |> mutate(prediction = predict(gm, test, na.rm=T, type = "response"))
+  # train.glm <- train |> mutate(prediction = predict(gl, train, na.rm=T, type = "response"))
+  # test.glm <- test |> mutate(prediction = predict(gl, test, na.rm=T, type = "response"))
+  # train.rf <- train |> mutate(prediction = predictions(predict(rf, train, na.rm=T)))
+  # test.rf <- test |> mutate(prediction = predictions(predict(rf, test, na.rm=T)))
+  # train.mxnt <- train |> mutate(prediction = predict(mxnt, as.data.frame(train), na.rm=T, type='logistic'))
+  # test.mxnt <- test |> mutate(prediction = predict(mxnt, as.data.frame(test), na.rm=T, type='logistic'))
+  # 
+  # modmets <- data.frame(model = c("GAM", "RF","MAXNET","GLM"),
+  #                       AUCtrain = c(Metrics::auc(actual=train.gam$pos, predicted=train.gam$prediction),
+  #                                    Metrics::auc(actual=train.rf$pos, predicted=train.rf$prediction),
+  #                                    Metrics::auc(actual=train.mxnt$pos, predicted=train.mxnt$prediction),
+  #                                    Metrics::auc(actual=train.glm$pos, predicted=train.glm$prediction)),
+  #                       AUCtest = c(Metrics::auc(actual=test.gam$pos, predicted=test.gam$prediction),
+  #                                   Metrics::auc(actual=test.rf$pos, predicted=test.rf$prediction),
+  #                                   Metrics::auc(actual=test.mxnt$pos, predicted=test.mxnt$prediction),
+  #                                   Metrics::auc(actual=test.glm$pos, predicted=test.glm$prediction)),
+  #                       maxKappatrain = c(maxKappa(actual=train.gam$pos, predicted=train.gam$prediction),
+  #                                         maxKappa(actual=train.rf$pos, predicted=train.rf$prediction),
+  #                                         maxKappa(actual=train.mxnt$pos, predicted=train.mxnt$prediction),
+  #                                         maxKappa(actual=train.glm$pos, predicted=train.glm$prediction)),
+  #                       maxKappatest = c(maxKappa(actual=test.gam$pos, predicted=test.gam$prediction),
+  #                                        maxKappa(actual=test.rf$pos, predicted=test.rf$prediction),
+  #                                        maxKappa(actual=test.mxnt$pos, predicted=test.mxnt$prediction),
+  #                                        maxKappa(actual=test.glm$pos, predicted=test.glm$prediction)))
+  # 
+  # 
+  # TimeA <- Sys.time()
+  # gl.prediction <-  predict(rastbrick, gl, na.rm=T, type = "response");  names(gl.prediction) <- paste0('biome',biomes[i])
+  # writeRaster(gl.prediction, paste0('biomes3/','biome',biomes[i],'_glm_fake.tif'), overwrite=T)
+  # Sys.time() - TimeA
+  # 
+  TimeA <- Sys.time()
+  gm.prediction <-  predict(rastbrick, gm, na.rm=T, type = "response");  names(gm.prediction) <- paste0('biome',biomes[i])
+  writeRaster(gm.prediction, paste0('biomes2/','biome',biomes[i],'.tif'), overwrite=T)
+  Sys.time() - TimeA
+  # 
+  # TimeA <- Sys.time()
+  # rf.prediction <-  predict(rastbrick, rf, na.rm=T);  names(rf.prediction) <- paste0('biome',biomes[i])
+  # writeRaster(rf.prediction, paste0('biomes3/','biome',biomes[i],'_rf_fake.tif'), overwrite=T)
+  # Sys.time() - TimeA
+  # 
+  # TimeA <- Sys.time()
+  # mxnt.prediction <-  predict(rastbrick, mxnt, na.rm=T, type='logistic');  names(mxnt.prediction) <- paste0('biome',biomes[i])
+  # writeRaster(mxnt.prediction, paste0('biomes3/','biome',biomes[i],'_mxnt_fake.tif'), overwrite=T)
+  # Sys.time() - TimeA
+  
+}
+
+TimeA <- Sys.time()
+eco0$var <- eco0$Tg
+  gm <- glm(pos ~ I(var^2),
+            family='binomial',
+            data=eco0)
+  summary(gm)
+Sys.time() - TimeA
+    ecox <-  eco0 |> arrange(var)
+    ecox <- ecox |> mutate(pre =  predict(gm, ecox, na.rm=T, type = "response"))
+
+  plot(ecox$pos ~ ecox$var); lines(ecox$pre ~ ecox$var, col='red')
+
+
+# TimeA <- Sys.time()
+# Sys.time() - TimeA
+
+
+
+
+library(vegan)
+set.seed(0)
+
+library(sf)
+library(terra)
+library(dplyr)
+library(ggplot2)
+library(ranger)
+library(vegan)
+library(cluster)
+Species <- c("biome1.1","biome2.1","biome2.2","biome6.1","biome4.1","biome4.2","biome3.1","biome6.2","biome1.2",
+             "biome7.1","biome5.2","biome5.1","biome7.2","biome7.3","biome4.3","biome8.2",
+             "biome8.1","biome9.1","biome1.3","biome5.3")
+for(i in 1:length(Species)){
+  x <- rast(paste0('biomes2/',Species[i],'.tif'))
+  assign(Species[i], x)         };rm(x)
+
+ttt <- rast(mget(Species))
+
+
+secopts <- ecopts6[sample(1:nrow(ecopts6), size=1500),]
+secopts.biomes <- ttt %>% extract(secopts)
+secopts1 <- secopts |> cbind(secopts.biomes) |> st_drop_geometry()
+secopts1$ID <- rownames(secopts1) |> as.numeric()
+Species <- c("biome1.1","biome2.1","biome2.2","biome6.1","biome4.1","biome4.2","biome3.1","biome6.2","biome1.2",
+             "biome7.1","biome5.2","biome5.1","biome7.2","biome7.3","biome4.3","biome8.2",
+             "biome8.1","biome9.1","biome1.3","biome5.3")
+biome.spp <- secopts1[,Species]
+biome.env <- secopts1[,c("Tw","Twh","Tg","Tc","Tclx","m","md","MAAT",
+                        "bt","mholdridge","s","d","e","p","p3AET","slope","hydric",
+                        "sealevel","clay","sand","marine","soilpH","bedrock")]
+biome.dist <- vegan::vegdist(biome.spp, method = 'bray', binary = F)
+
+ndim <- 4
+nmds <- metaMDS(biome.spp, k=ndim)
+en <- envfit(nmds, biome.env, na.rm = TRUE, choices=c(1:ndim))
+
+scores(nmds)
+
+pt.df <- scores(nmds, display='sites') |> as_tibble(rownames='sites') |> mutate(sites=as.numeric(sites)) |> inner_join(secopts1, by=join_by(sites==ID))
+sp.df <- scores(nmds, display='species') |> as_tibble(rownames='species')
+en.df <- scores(en, display='vectors')|> as_tibble(rownames='vectors')
+print(en.df, n=nrow(en.df))
+
+#clustering ----
+mtx <- pt.df[,2:(ndim+1)]
+dst <- dist(mtx)
+htree1 <- dst |> agnes(method = 'ward')
+for(i in 2:21){#i=2
+  set.seed(0)
+  nclust <- i
+  
+kc0 <- mtx |> kmeans(nclust) 
+kc0 <- kc0$cluster
+silscor <- cluster::silhouette(kc0, dist = dst)
+msilscor0 <- mean(silscor[,3])
+
+hc1 <- cutree(htree1, nclust)
+hsilscor <- cluster::silhouette(hc1, dist = dst)
+hmsilscor1 <- mean(hsilscor[,3])
+
+
+scdf0 <- data.frame(nclust = nclust, 
+                    kmeans = msilscor0, 
+                    ward = hmsilscor1 
+                    )
+if(i==2){scdf <- scdf0}else{scdf <- rbind(scdf,scdf0)}
+};rm(scdf0)
+ggplot(scdf)+
+  geom_line(aes(x=nclust, y=kmeans, color='kmeans'))+
+  # geom_line(aes(x=nclust, y=kmeansraw, color='kmeansraw'))+
+  geom_line(aes(x=nclust, y=ward, color='ward'))+
+  # geom_line(aes(x=nclust, y=wardraw, color='wardraw'))+
+  # geom_line(aes(x=nclust, y=upgma, color='upgma'))+
+  # geom_line(aes(x=nclust, y=diana, color='diana'))+
+  # geom_point(aes(x=nclust, y=kmeans, color='kmeans'))+
+  # geom_point(aes(x=nclust, y=kmeansraw, color='kmeansraw'))+
+  # geom_point(aes(x=nclust, y=ward, color='ward'))+
+  # geom_point(aes(x=nclust, y=wardraw, color='wardraw'))+
+  # geom_point(aes(x=nclust, y=upgma, color='upgma'))+
+  # geom_point(aes(x=nclust, y=diana, color='diana'))+
+  scale_y_continuous(name='mean silhouette')+
+  scale_x_continuous(name='number of clusters', breaks = c(1:22), minor_breaks = NULL)+
+  scale_color_manual(name='method',
+                     labels =c('kmeans','ward','kmeansraw','wardraw','upgma','diana'), 
+                     values =c('black','green','orange','magenta','red','blue'))
+
+
+
+nclust <- 5
+set.seed(0)
+kc1 <- pt.df[,2:(ndim+1)] |> kmeans(nclust)
+kc1 <- kc1$cluster
+pt.df <- pt.df |> mutate(kc = as.factor(paste0('cluster',kc1)))
+htree <- vegdist(pt.df[,2:(ndim+1)], method='euclidean') |> agnes(method = 'ward')
+plot(as.hclust(htree))
+hc1 <- cutree(htree, nclust)
+pt.df <- pt.df |> mutate(hc = as.factor(paste0('cluster',hc1)))
+
+clustersummary <- pt.df |> group_by(kc) |> summarise(across(.fns=mean))
+groups <- unique(pt.df$kc) |> as.character()
+clustercorr <- pt.df
+for(i in 1:length(groups)){
+  clustercorr <- clustercorr |> mutate(x = ifelse(kc %in% groups[i],1,0))
+  colnames(clustercorr)[colnames(clustercorr) %in% 'x'] <- groups[i]
+}
+clustercorr <- clustercorr |> select_if(is.numeric) |>  cor(use = 'pairwise.complete.obs') |> as.data.frame()
+clustercorr <- clustercorr[,(ncol(clustercorr)-nclust+1):ncol(clustercorr)]
+
+clusttrans <- t(clustersummary)
+colnames(clusttrans) <- clustersummary$kc
+clusttrans <- clusttrans[rownames(clusttrans) %in% names(Species),] |> as.data.frame()
+clusttrans <- clusttrans |> mutate(across(.fns = as.numeric))
+clusttrans <- clusttrans |> mutate(across(1:5,\(x).fns = round(x, 3)))
+
+gp <- ggplot() +
+  geom_point(data=pt.df, aes(x=NMDS1,y=NMDS2, color=kc), alpha=0.5, size=2)+
+  geom_point(data=sp.df, aes(x=NMDS1,y=NMDS2), color='blue')+
+  geom_text(data=sp.df, aes(label=species, x=NMDS1,y=NMDS2), vjust = 0, nudge_y = 0.02, nudge_x = 0.05, color='blue')+
+  geom_segment(data=en.df, aes(x=0,y=0,xend=NMDS1,yend=NMDS2), arrow = arrow(length = unit(0.03, "npc")), color='red')+
+  geom_text(data=en.df, aes(label=vectors, x=NMDS1,y=NMDS2), vjust = 0, nudge_y = 0.02, nudge_x = 0.05, color='red')
+
+gp
+
+
+gp2 <- ggplot() +
+  geom_point(data=pt.df, aes(x=NMDS3,y=NMDS4, color=kc), alpha=0.5, size=2)+
+  geom_point(data=sp.df, aes(x=NMDS3,y=NMDS4), color='blue')+
+  geom_text(data=sp.df, aes(label=species, x=NMDS3,y=NMDS4), vjust = 0, nudge_y = 0.02, nudge_x = 0.05, color='blue')+
+  geom_segment(data=en.df, aes(x=0,y=0,xend=NMDS3,yend=NMDS4), arrow = arrow(length = unit(0.03, "npc")), color='red')+
+  geom_text(data=en.df, aes(label=vectors, x=NMDS3,y=NMDS4), vjust = 0, nudge_y = 0.02, nudge_x = 0.05, color='red')
+
+gp2
+
+
+
+#model
+
+
+#make species raster stack ----
+Species <- c("biome1.1","biome2.1","biome2.2","biome6.1","biome4.1","biome4.2","biome3.1","biome6.2","biome1.2",
+             "biome7.1","biome5.2","biome5.1","biome7.2","biome7.3","biome4.3","biome8.2",
+             "biome8.1","biome9.1","biome1.3","biome5.3")
+for(i in 1:length(Species)){
+  x <- rast(paste0('biomes2/',Species[i],'.tif'))
+  assign(Species[i], x)         };rm(x)
+
+ttt <- rast(mget(Species))
+
+
+pt.df$kc2 <- as.numeric(pt.df$kc)
+pt.df <- pt.df |> group_by(kc2) |> mutate(wts = nrow(pt.df)/(length(kc2)+1)) |> ungroup()
+
+
+formular <- as.formula(paste("kc2",paste(names(ttt), collapse = " + ", sep = ""), sep = " ~ "))
+
+rf <-  ranger(formular, data = pt.df, classification = T, case.weights = pt.df$wts)
+named <- 'biomeclusters5'
+rf.prediction <-  predict(ttt, rf, na.rm=T);  names(rf.prediction) <- named
+plot(rf.prediction)
+writeRaster(rf.prediction, paste0('output/',named,'.tif'), overwrite=T)
+
+
+
+
+
+
+
+
+
+
+v <- 'chm'
+size = 20
+seg <- 10
+x <- chmdata0 |> st_drop_geometry()
+dsample <- function(x, v, size, seg = 10){
+  x <- data.frame(v = x[,v])
+  vmax <- max(x$v, na.rm = TRUE)
+  vmin <- min(x$v, na.rm = TRUE)
+  n <- nrow(x)
+  ssize <- size/seg
+  x$v1 <- floor((x$v-vmin)/(vmax-vmin)*(seg*(n-1))/n)
+  x <- x |> group_by(v1) |> mutate(l = length(v1)) |> ungroup() 
+  cases <- unique(x$v1)
+  for(i in 1:length(cases)){
+    b <- which(x$v1 %in% cases[i])
+    s0 <- sample(b, size=ssize, replace = TRUE)
+    if(i==1){s=s0}else{s=c(s,s0)}
+  }
+  return(s)}
+
+
+
+#CHM
+
+chmdata <- chm %>% extract(ecopts5)
+chmdata <- cbind(ecopts5, chmdata)
+chmdata <- chmdata |> mutate(chm =  ifelse(is.na(chm) & 
+                    ((altbiom2023 %in% c(7.3, 7.2, 7.1) & hydric < 5) | altbiom2023 %in% c(1.1,1.2,1.3)), 0,chm))
+
+chmdata0 <- subset(chmdata, !is.na(chm)) |> mutate(chm=chm/55)
+selected <- dsample(x=st_drop_geometry(chmdata0), v='chm',size=1011.2)
+chmdata0 <- chmdata0[]
+
+smoothvars <- c('Tw', 'Twh', 'Tg', 'Tc', 'Tclx', 'm', 'p3AET', 'md', 
+                'slope', 'hydric', 'sealevel', 'clay', 'sand', 'soilpH', 'bedrock')
+
+
+formular.gam <- as.formula(paste(paste("chm",paste(paste("s(",smoothvars,")", collapse = " + ", sep = ""),""), sep = " ~ ")
+))
+
+gm <- gam(formular.gam,
+          family='binomial',
+          data=chmdata0)
+summary(gm)
+
+TimeA <- Sys.time()
+gm.prediction <-  predict(rastbrick, gm, na.rm=T, type = "response")*55;  names(gm.prediction) <- 'chm'
+writeRaster(gm.prediction, paste0('biomes2/','gamchm','.tif'), overwrite=T)
+Sys.time() - TimeA
+
+
+chmdata0 <- chmdata0 |> mutate(mtrans = m/(m+1))
+chmdata0 <- chmdata0 |> mutate(fake = pmin(1,pmin(mtrans,ifelse(Tg < 10, Tg/10,1),ifelse(Tc < -10,0.5,ifelse(Tc > 0, 1, (Tc--10)/20)),(slope/(slope+5)*0.5+0.5)))) |> subset(!is.na(fake))
+
+chmdata0$var <- chmdata0$Tg
+gm <- gam(chm ~ s(var),
+          family='binomial',
+          data=chmdata0)
+summary(gm)
+
+ecox <-  chmdata0 |> arrange(var)
+ecox <- ecox |> mutate(pre =  predict(gm, ecox, na.rm=T, type = "response"))
+
+plot(ecox$chm ~ ecox$var); lines(ecox$pre ~ ecox$var, col='red')
+
+formular.gam <- as.formula(paste(paste("fake",paste(paste("s(",smoothvars,")", collapse = " + ", sep = ""),""), sep = " ~ ")
+)) 
+
+gm <- gam(formular.gam,
+          family='binomial',
+          data=chmdata0)
+summary(gm)
+
+gm.prediction <-  predict(rastbrick, gm, na.rm=T, type = "response")*100;  names(gm.prediction) <- 'chm'
+writeRaster(gm.prediction, paste0('biomes2/','fakechm','.tif'), overwrite=T)
+
+formular.rf <- as.formula(paste(paste("fake",paste(paste(smoothvars, collapse = " + ", sep = ""),""), sep = " ~ ")
+))
+
+
+rf <- ranger(formular.rf,
+
+             data=as.data.frame(chmdata0))
+rf.prediction <-  predict(rastbrick, rf, na.rm=T)*100;  names(rf.prediction) <- 'chm'
+writeRaster(rf.prediction, paste0('biomes2/','fakechmrf','.tif'), overwrite=T)
+
