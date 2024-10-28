@@ -420,7 +420,8 @@ v <- 'chm'
 size = 20
 seg <- 10
 x <- chmdata0 |> st_drop_geometry()
-dsample <- function(x, v, size, seg = 10){
+dsample <- function(x, v, size){
+  seg = 10
   x <- data.frame(v = x[,v])
   vmax <- max(x$v, na.rm = TRUE)
   vmin <- min(x$v, na.rm = TRUE)
@@ -428,6 +429,24 @@ dsample <- function(x, v, size, seg = 10){
   ssize <- size/seg
   x$v1 <- floor((x$v-vmin)/(vmax-vmin)*(seg*(n-1))/n)
   x <- x |> group_by(v1) |> mutate(l = length(v1)) |> ungroup() 
+  if(min(x$l) < 5){
+    seg = 9
+    ssize <- size/seg
+    x$v1 <- floor((x$v-vmin)/(vmax-vmin)*(seg*(n-1))/n)
+    x <- x |> group_by(v1) |> mutate(l = length(v1)) |> ungroup() 
+  }
+  if(min(x$l) < 5){
+    seg = 7
+    ssize <- size/seg
+    x$v1 <- floor((x$v-vmin)/(vmax-vmin)*(seg*(n-1))/n)
+    x <- x |> group_by(v1) |> mutate(l = length(v1)) |> ungroup() 
+  }
+  if(min(x$l) < 5){
+    seg = 5
+    ssize <- size/seg
+    x$v1 <- floor((x$v-vmin)/(vmax-vmin)*(seg*(n-1))/n)
+    x <- x |> group_by(v1) |> mutate(l = length(v1)) |> ungroup() 
+  }
   cases <- unique(x$v1)
   for(i in 1:length(cases)){
     b <- which(x$v1 %in% cases[i])
@@ -443,11 +462,11 @@ dsample <- function(x, v, size, seg = 10){
 chmdata <- chm %>% extract(ecopts5)
 chmdata <- cbind(ecopts5, chmdata)
 chmdata <- chmdata |> mutate(chm =  ifelse(is.na(chm) & 
-                    ((altbiom2023 %in% c(7.3, 7.2, 7.1) & hydric < 5) | altbiom2023 %in% c(1.1,1.2,1.3)), 0,chm))
+                    ((altbiom2023 %in% c(7.3, 7.2, 7.1) & hydric < 5 & m < 0.2) | (altbiom2023 %in% c(1.1,1.2,1.3) & Tg < 3)), 0,chm))
 
 chmdata0 <- subset(chmdata, !is.na(chm)) |> mutate(chm=chm/55)
-selected <- dsample(x=st_drop_geometry(chmdata0), v='chm',size=1011.2)
-chmdata0 <- chmdata0[]
+selected <- dsample(x=st_drop_geometry(chmdata0), v='chm',size=5000)
+chmdata0 <- chmdata0[selected,]
 
 smoothvars <- c('Tw', 'Twh', 'Tg', 'Tc', 'Tclx', 'm', 'p3AET', 'md', 
                 'slope', 'hydric', 'sealevel', 'clay', 'sand', 'soilpH', 'bedrock')
@@ -463,7 +482,7 @@ summary(gm)
 
 TimeA <- Sys.time()
 gm.prediction <-  predict(rastbrick, gm, na.rm=T, type = "response")*55;  names(gm.prediction) <- 'chm'
-writeRaster(gm.prediction, paste0('biomes2/','gamchm','.tif'), overwrite=T)
+writeRaster(gm.prediction, paste0('biomes2/','gamchmdsample','.tif'), overwrite=T)
 Sys.time() - TimeA
 
 
