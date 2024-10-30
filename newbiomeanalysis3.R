@@ -255,6 +255,55 @@ library(ggplot2)
 library(ranger)
 library(vegan)
 library(cluster)
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+maxKappa <- function(actual, predicted){ for(i in 1:99){
+  k <- i/100
+  Kappa0 <- ModelMetrics::kappa(actual=actual, predicted=predicted, cutoff = k)
+  if(i == 1){ maxkappa = k}else{maxkappa = max(Kappa0, maxkappa)}
+}
+  return(maxkappa)}
+x <- cbind(biome.spp,biome.env)
+
+v1 <- biome.env[,'Tclx']
+g1 <- biome.spp[,'biome4.2']
+g2 <- biome.spp[,'biome9.1']
+vmax = max(v1)
+vmin = min(v1)
+thr <- .85*(vmax-vmin)+vmin
+df <- data.frame(v1=v1,g1=g2,g2=g1)
+df <- df |> mutate(grp = ifelse(v1 >= thr,1,0), g1 = g1/mean(g1),g2 = g2/mean(g2))
+dsum <- df |> group_by(grp) |> summarise(g1 = mean(g1), g2=mean(g2)) |> as.data.frame()
+a = dsum[1,2]
+d = dsum[2,3]
+c = dsum[2,2]
+b = dsum[1,3]
+po <- (a+d)/(a+b+c+d)
+py <- ((a+b)/(a+b+c+d))*((a+c)/(a+b+c+d))
+pn <- ((c+d)/(a+b+c+d))*((b+d)/(a+b+c+d))
+pe = py+pn
+k = (po-pe)/(1-pe)
+if(k < 0){
+  a = dsum[2,2]
+  d = dsum[1,3]
+  c = dsum[1,2]
+  b = dsum[2,3]
+  po <- (a+d)/(a+b+c+d)
+  py <- ((a+b)/(a+b+c+d))*((a+c)/(a+b+c+d))
+  pn <- ((c+d)/(a+b+c+d))*((b+d)/(a+b+c+d))
+  pe = py+pn
+  k = (po-pe)/(1-pe)
+}
+k
+thr
+
+
+
+ecopts5 <- readRDS('ecopts5.RDS')
+rastbrick <- rast('rastbrick.tif')
+
+ecopts6 <- ecopts5
+biomes <- unique(ecopts5$altbiom2023) 
+
 Species <- c("biome1.1","biome2.1","biome2.2","biome6.1","biome4.1","biome4.2","biome3.1","biome6.2","biome1.2",
              "biome7.1","biome5.2","biome5.1","biome7.2","biome7.3","biome4.3","biome8.2",
              "biome8.1","biome9.1","biome1.3","biome5.3")
