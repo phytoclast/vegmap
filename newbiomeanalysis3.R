@@ -109,12 +109,6 @@ library(dplyr)
 library(gam)
 library(maxnet)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-maxKappa <- function(actual, predicted){ for(i in 1:99){
-  k <- i/100
-  Kappa0 <- ModelMetrics::kappa(actual=actual, predicted=predicted, cutoff = k)
-  if(i == 1){ maxkappa = k}else{maxkappa = max(Kappa0, maxkappa)}
-}
-  return(maxkappa)}
 
 ecopts5 <- readRDS('ecopts5.RDS')
 rastbrick <- rast('rastbrick.tif')
@@ -255,18 +249,10 @@ library(ggplot2)
 library(ranger)
 library(vegan)
 library(cluster)
+library(climatools)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-maxKappa <- function(actual, predicted){ for(i in 1:99){
-  k <- i/100
-  Kappa0 <- ModelMetrics::kappa(actual=actual, predicted=predicted, cutoff = k)
-  if(i == 1){ maxkappa = k}else{maxkappa = max(Kappa0, maxkappa)}
-}
-  return(maxkappa)}
-x <- cbind(biome.spp,biome.env)
 
-v1 <- biome.env[,'Tclx']
-g1 <- biome.spp[,'biome4.2']
-g2 <- biome.spp[,'biome9.1']
+
 vmax = max(v1)
 vmin = min(v1)
 thr <- .85*(vmax-vmin)+vmin
@@ -326,6 +312,40 @@ biome.env <- secopts1[,c("Tw","Twh","Tg","Tc","Tclx","m","md","MAAT",
                         "bt","mholdridge","s","d","e","p","p3AET","slope","hydric",
                         "sealevel","clay","sand","marine","soilpH","bedrock")]
 biome.dist <- vegan::vegdist(biome.spp, method = 'bray', binary = F)
+x <- cbind(biome.spp,biome.env)
+
+v1 <- c("Tw","Twh","Tg","Tc","Tclx","m","md","MAAT",
+                   "bt","mholdridge","s","d","e","p","p3AET","slope","hydric",
+                   "sealevel","clay","sand","marine","soilpH","bedrock")
+
+x <- x |> mutate(maple = biome3.1/sum(biome3.1)*100, laurel = biome4.1/sum(biome4.1)*100)
+x <- x |> mutate(boreal = biome2.1/sum(biome2.1)*100)
+x <- x |> mutate(chaparral = biome5.1/sum(biome5.1)*100)
+x <- x |> mutate(savanna = biome8.2/sum(biome8.2)*100)
+x <- x |> mutate(prairie = biome6.1/sum(biome6.1)*100)
+x <- x |> mutate(steppe = biome6.2/sum(biome6.2)*100)
+x <- x |> mutate(sage = biome5.2/sum(biome5.2)*100)
+x <- x |> mutate(spruce = (biome2.1+biome2.2)/sum(biome2.1+biome2.2)*100)
+x <- x |> mutate(cloud = biome4.3/sum(biome4.3)*100, selva = biome9.1/sum(biome9.1)*100, oceanic = biome4.2/sum(biome4.2)*100)
+x <- x |> mutate(tropical = (cloud+selva)/sum(cloud+selva)*100, temperate = (maple+oceanic+laurel)/sum(maple+oceanic+laurel)*100)
+x <- x |> mutate(microthermic = maple, mesothermic = (oceanic+laurel)/sum(oceanic+laurel)*100)
+
+vartable <- climatools::find.multithreshold(x, 'chaparral', 'biome5.3',v1)
+
+ggplot(data=vartable, aes(x=infogain,y=reorder(variable, infogain)))+
+  geom_bar(stat="identity")+
+  scale_y_discrete(name='Variable')+
+  scale_x_continuous(name=paste('Information Gain separating', vartable$class1[1], 'versus', vartable$class2[1]))
+
+ggplot(data=vartable, aes(x=class1cor,y=reorder(variable, infogain)))+
+  geom_bar(stat="identity")+
+  scale_y_discrete(name='Variable')+
+  scale_x_continuous(name=paste('Correlation with', vartable$class1[1], 'relative to', vartable$class2[1]))
+
+
+vartable2 <- climatools::find.multithreshold(x, 'biome4.1', 'biome9.1',v1)
+
+vartable3 <- climatools::find.multithreshold(x, 'biome4.3', 'biome9.1',v1)
 
 ndim <- 4
 nmds <- metaMDS(biome.spp, k=ndim)
