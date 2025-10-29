@@ -3,7 +3,7 @@ library(sf)
 library(climatools)
 library(gstat)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
+#build covariate rasters for climate ----
 elev <- rast("C:/scripts/processclimategrids/output/Elev1km.tif")
 elev <- ifel(is.na(elev),0,elev)
 names(elev)<-'elev'
@@ -30,9 +30,11 @@ writeRaster(br2,'ghcn/br.tif', overwrite=T)
 
 
 
-#start
+#start loading data to play with
 br2 <- rast('ghcn/br.tif')
-tsdata <- readRDS('ghcn/tsdata.RDS') |> subset(!is.na(YEAR) & !ID %in% c('CA002402051','CA002300551'))
+#load point data excluding potentially bad records
+tsdata <- readRDS('ghcn/tsdata.RDS') |> subset(!is.na(YEAR) & !ID %in% c('CA002402051','CA002300551')) 
+#create weights for sampling equally distributed records on a global basis
 tsdata <- tsdata |> mutate(elevzone = floor(((elev/5000)+0.1)^0.5*5), 
                            lzone = floor((LONGITUDE/180+1)*5)*10+floor((LATITUDE/90+1)*5)*10)
 tsdata <- tsdata |> group_by(elevzone, lzone, YEAR) |> mutate(wts = 100/(length(NAME)+1)) |> ungroup()
@@ -46,12 +48,13 @@ tsdata <- tsdata |>mutate(x=LONGITUDE,y=LATITUDE, lat=y, coslon = cos(x/360*2*pi
 
 
 tsdata <- st_as_sf(tsdata, coords = c(x='LONGITUDE', y='LATITUDE'), crs=crs(br2))
+#generate equally distributed rareified training layer for global model
 tdat <- tsdata[sample(1:nrow(tsdata), size=1000, prob=tsdata$wts), ]
 
 
 
 
-###
+### test models on rasters
 smoothvars <- c("lat","sinlon","coslon","elev","w50","w500","w5000","YEAR")
 train <- tdat |> mutate(z=t01) |> subset(!is.na(z))
 train <- train |> subset(!is.na(z))
@@ -73,12 +76,33 @@ pr <- predict(br2, rf, na.rm=T);
 
 plot(pr)
 
-
+#how to interpolate
 train1 <- st_drop_geometry(train) |> subset(!is.na(y) & !is.na(x))
 gs <- gstat(formula=t01~1, locations=~x+y, data=train1)
 idw <- interpolate(br2, gs, debug.level=0)
 plot(idw)
-#kriging too slow (10 hours and never completing despite small dataset and coarse rasters)
+#thin spline interpolation
+library(fields)
+xy <- df2[,c('x','y')] |> st_drop_geometry() |> as.data.frame()
+v <- df2$res1
+elev = df2$elev
+xyz <- cbind(xy, elev)
+
+timeA <- Sys.time()
+#elevation covary
+tps <- Tps(xyz, v, lon.lat = TRUE)
+res1 <- interpolate(c(br3$elev), tps, xyOnly=FALSE)#
+Sys.time() - timeA
+# timeA <- Sys.time()
+# plot(res1)
+#xy only
+tps <- Tps(xy, v, lon.lat = TRUE)
+res1 <- interpolate(rast(br3$elev), tps)#, xyOnly=TRUE
+Sys.time() - timeA
+plot(res1)
+
+#Also tried MARS with earth package, but it only does what gam does but with broken lines, and does not interpolate.
+#Kriging too slow (10 hours and never completing despite small dataset and coarse rasters)
 # gs <- gstat(formula=t01~1, locations=~x+y, data=train1)
 # v <- variogram(gs, width=2)
 # fve <- fit.variogram(v, vgm(85, "Exp", 75, 20))
@@ -92,51 +116,9 @@ plot(idw)
 # kp <- interpolate(br2, k, debug.level=0)
 # plot(kp)
 
-library(terra)
-
-# example data
-xy <- train[,c('x','y')] |> st_drop_geometry()
-v <- train$t01
-z = train$elev
-m = train$w500
-# Thin plate spline model
-library(fields)
-xyzm <- cbind(xy, z,m)
-tps2 <- Tps(xyzm, v)
-p2 <- interpolate(c(br2$elev,br2$w500), tps2, xyOnly=FALSE)
-plot(p2)
-
-#segmentation 
-
-train2 <- tsdata |> subset(x >-180 & x< -50  & y > 10 & y < 80 & !is.na(t01))|> mutate(w5550=(1-w50)*(1-w500)*(1-w5000))
-train2 <- train2[sample(1:nrow(train2), size=2000, prob=train2$wts, replace = T),]
-br3 <- crop(br2, ext(-180, -50, 10, 80)) 
-
-gm <- gam(t01 ~ lat+elev+w50+w500+w5000+YEAR+coslon+sinlon, data=tsdata)
-summary(gm)
-pr <-predict(br3, gm, na.rm=T)
-plot(pr)
-points(st_geometry(train2))
 
 
-oldrec <- tsdata |> subset(YEAR <= 1950)
-plot(br2$elev)+ points(st_geometry(oldrec))
-train2 <- df2
-# example data
-xy <- train2[,c('res1','x','y','elev')] |> st_drop_geometry() |> unique()
-v <- xy$res1
-xy <- xy[,2:4]
-# z = train2$elev
-# m = train2$YEAR
-# Thin plate spline model
-library(fields)
-# xyzm <- cbind(xy, z,m)
-tps2 <- Tps(xy, v)
-p2 <- interpolate(c(br3$elev), tps2, xyOnly=FALSE)
-plot(p2)
-
-
-#segmentation2----
+#Interpolate missing values for 1961-2010 segmented geography----
 library(terra)
 library(sf)
 library(climatools)
@@ -152,64 +134,88 @@ br2$YEAR <- yr
 #narrow raster model to that of specific geography
 newext <- ext(-95, -75, 30, 40)
 br3 <- crop(br2, newext)
-
-tsdata <- readRDS('ghcn/tsdata.RDS') |> subset(!is.na(YEAR) & !ID %in% c('CA002402051','CA002300551'))
+#load point data and create covariates, potential weights for evenly distrubuted sampling, and covert to a sf spatial data frame.
+tsdata <- readRDS('ghcn/tsdata.RDS') |> subset(!is.na(YEAR) & !ID %in% c('CA002402051','CA002300551','CA006092920'))
 tsdata <- tsdata |> mutate(elevzone = floor(((elev/5000)+0.1)^0.5*5), 
                            lzone = floor((LONGITUDE/180+1)*5)*10+floor((LATITUDE/90+1)*5)*10)
 tsdata <- tsdata |> group_by(elevzone, lzone, YEAR) |> mutate(wts = 100/(length(NAME)+1)) |> ungroup()
 tsdata <- tsdata |>mutate(x=LONGITUDE,y=LATITUDE, lat=y, coslon = cos(x/360*2*pi), sinlon = sin(x/360*2*pi))
 tsdata <- st_as_sf(tsdata, coords = c(x='LONGITUDE', y='LATITUDE'), crs=crs(br2))
 
+#narrow all records down to just 1961-2010
+yrs <- c(1700,2030)
+df <- tsdata |> subset(YEAR >= yrs[1] & YEAR <= yrs[2]) |> mutate(z=NA,pr1=NA,res1=NA,pr2=NA,newz=NA)
 
-
+#create missing years for all records.
+dfs <- df |> st_drop_geometry()|> group_by(ID,NAME, elev, x,y) |> 
+  summarise(YEARS=length(YEAR), yfirst=min(YEAR),ylast=max(YEAR), meanT01 = mean(t01, na.rm=T),meanT07 = mean(t07, na.rm=T))
 
 
 # ggplot()+
 #   geom_density(data=df, aes(x=YEAR))+
 #   scale_x_continuous(breaks = seq(1700,2030, 20))
+ys <- seq(-90,90,10)
+xs <- seq(-180,180,15)
+yrs <- seq(1961,2010,1)
+zvars <- c('t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')
 
-
-
-
-yrs <- c(1961,2010)
-newext <- ext(-95, -75, 30, 40)
-zvar <- 't01'
-#narrow all records down to just 1961-2010
-df <- tsdata |> subset(YEAR >= yrs[1] & YEAR <= yrs[2]) |> mutate(z=NA,pr1=NA,res1=NA,pr2=NA)
-
-#index to apply values to a given geography
-index1 <- df$x >= newext[1] & df$x <= newext[2] & df$y >= newext[3] & df$y <= newext[4]
-
+yi=14
+xi=8
+zi=1
+yri=30
 
 #set dependent variable
-z0 = df[index1,zvar] |> st_drop_geometry() |> as.data.frame() 
+for(zi in 1:12){
+zvar <- zvars[zi]
+z0 = df[,zvar] |> st_drop_geometry() |> as.data.frame() 
 z0 <- z0[,1]
-df[index1,] <- df[index1,] |> mutate(z = z0)
+df[,] <- df[,] |> mutate(z = z0)
+#index to apply values to a given geography
+for(yi in 1:(length(ys)-1)){
+  for(yi in 1:(length(ys)-1)){
+predext <- ext(xs[xi ], xs[xi+1], ys[yi], ys[yi+1])
+trainext <- ext(xs[xi ]-7.5, xs[xi+1]+7.5, ys[yi]-5, ys[yi+1]+5)
+index1 <- df$x >= trainext[1] & df$x <= trainext[2] & df$y >= trainext[3] & df$y <= trainext[4]
+
 
 #index for training gam with non missing z
 index2 <- !is.na(df$z) & index1
 
-#index for training tps on residuals for specific year
-index3 <- df$YEAR == yr & index2
-
-#index for interpolating residuals only on missing records
-index4 <- df$YEAR == yr & index1 & is.na(df$z) 
-
-#gam model
+#gam
 train.gam <- df[index2,]
 m <- gam(z ~ s(lat)+s(elev)+w50+w500+w5000+s(YEAR,4)+s(coslon)+s(sinlon), data = train.gam)
 df[index1,] <- df[index1,]  |> mutate(pr1 = predict(m, df[index1,]), res1 = z-pr1)
 
 #need to focus on one year at a time
-yr=1990
-train.tps <- df[index2,]
-xyz <- train.tps[,c('x','y','elev')] |> st_drop_geometry() |> as.data.frame()
+for(yri in 1:length(yrs)){
+yr=yrs[yri]
+#index for training tps on residuals for specific year
+index3 <- df$YEAR == yr & index2
+
+#index for interpolating residuals only on missing records for focal extent
+index4 <- df$YEAR == yr & index1 & is.na(df$z) & 
+  df$x >= predext[1] & df$x <= predext[2] & df$y >= predext[3] & df$y <= predext[4]
+
+
+train.tps <- df[index3,] |> st_drop_geometry() |> as.data.frame()
+xyz <- train.tps[,c('x','y','elev')] 
 v <- train.tps$res1
 tps <- Tps(xyz, v, lon.lat = TRUE)
-tps.unk <- df[df$YEAR %in% yr,c('x','y','elev')] |> st_drop_geometry() |> as.data.frame() #is.na(df$z) & 
-pr3 <- predict(object=tps, x=tps.unk)[,1]
-df[ df$YEAR %in% yr,]$pr3 <- pr3 #is.na(df$z) &
-df <- df |> mutate(newz = pr3+pr1)
+tps.unk <- df[index4,c('x','y','elev')] |> st_drop_geometry() |> as.data.frame()
+pr0 <- predict(object=tps, x=tps.unk)[,1]
+df[index4,]$pr2 <- pr0
+df[index4,] <- df[index4,] |> mutate(newz = pr2+pr1)
+
+#end year
+}
+
+#end geography
+  }}
+#end zvar
+}
+#----------------
+
+
 
 summary(m)
 pr <-predict(br3, m, na.rm=T)
@@ -218,24 +224,6 @@ plot(pr)
 # points(gg)
 df2 <- df |> mutate(res1 = t01-pr1) |> subset(!is.na(res1))
 
-library(fields)
-xy <- df2[,c('x','y')] |> st_drop_geometry() |> as.data.frame()
-v <- df2$res1
-elev = df2$elev
-xyz <- cbind(xy, elev)
-
-timeA <- Sys.time()
-#elevation covary
-tps <- Tps(xyz, v, lon.lat = TRUE)
-res1 <- interpolate(c(br3$elev), tps, xyOnly=FALSE)#
-Sys.time() - timeA
-# timeA <- Sys.time()
-# # plot(res1)
-# #xy only
-# tps <- Tps(xy, v, lon.lat = TRUE)
-# res1 <- interpolate(rast(br3$elev), tps)#, xyOnly=TRUE
-# Sys.time() - timeA
-plot(res1)
 
 
 prres1 <- res1+pr
@@ -262,29 +250,3 @@ ggplot()+
   geom_point(data=subset(df, grepl('MI GRAND RAP',NAME)), aes(x=YEAR, y=pr1), color='red')
 
 
-
-
-library(earth)
-train2 <- tsdata |> mutate(x=LONGITUDE,y=LATITUDE) |> subset(x >-180 & x< -130  & y > 55 & y < 80 & !is.na(t01))
-train2 <- st_as_sf(train2, coords = c(x='LONGITUDE', y='LATITUDE'), crs=crs(br2))
-br3 <- crop(br2, ext(-180, -130, 55, 80)) 
-mars <- earth(t01 ~ lat+sinlon+coslon+elev+w50+w500+w5000+YEAR, degree=5, penalty=0, data=train2)
-summary(mars)
-pr <-predict(br3, mars, na.rm=T)
-plot(pr)+points(st_geometry(train2))
-
-
-train2 <- tsdata |> mutate(x=LONGITUDE,y=LATITUDE) |> subset(!is.na(t01))
-
-mars <- earth(t01 ~ lat+sinlon+coslon+elev+w50+w500+w5000+YEAR, degree=5, data=train2)
-summary(mars)
-pr <-predict(br3, mars, na.rm=T)
-plot(pr)
-clat<- 43
-clon<- -86
-
-train2 <- train2 |> mutate(wt = 100/((((x-clon)*0.75)^2+(y-clat)^2)^0.5+3))
-
-mars <- earth(t01 ~ lat+sinlon+coslon+elev+w50+w500+w5000+YEAR, degree=5, data=train2, weights=wt)
-summary(mars)
-pr <-predict(br3, mars, na.rm=T)
