@@ -4,13 +4,79 @@ library(climatools)
 library(gstat)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 #build covariate rasters for climate ----
-elev <- rast("C:/scripts/processclimategrids/output/Elev1km.tif")
-elev <- ifel(is.na(elev),0,elev)
-names(elev)<-'elev'
+elev <- rast('C:/scripts/vegmap/global/elev.tif')
+# elev1 <- reproject(elev, rs= 9000, method = 'bilinear', prj=setProjection(prj='equaldistant.cylindrical', lat=0,lon=0))
+# names(elev1) <- 'elev'
+# writeRaster(elev1, 'C:/scripts/vegmap/global/elev9m.tif', overwrite=T)
+# elev1 <- rast("C:/scripts/processclimategrids/output/Elev1km.tif")
+# elev <- ifel(is.na(br2elev),0,br2elev)
+# names(elev)<-'elev'
+# writeRaster(elev,'C:/scripts/vegmap/global/elev.tif')
 w50 <- rast('C:/scripts/vegmap/global/w50.tif')
 w500 <- rast('C:/scripts/vegmap/global/w500.tif')
 w5000 <- rast('C:/scripts/vegmap/global/w5000.tif')
 br <- c(elev,w50,w500,w5000)
+#fix Caspian Sea anomaly
+# newext <- ext(47.9,53.1,36.9,45.1)
+# nelev <- elevx |> crop(newext)
+# plot(nelev)
+# newext1 <- ext(48,50,43,45)
+# newext2 <- ext(49,51,42,43)
+# newext3 <- ext(50,52,41,42)
+# newext4 <- ext(51,52,40,41)
+# newext5 <- ext(50,52,38,40)
+# newext6 <- ext(51,53,37,39)
+# nelev1 <- elev |> crop(newext1) 
+# nelev1 <- nelev1*0-29
+# nelev2 <- elev |> crop(newext2) 
+# nelev2 <- nelev2*0-29
+# nelev3 <- elev |> crop(newext3) 
+# nelev3 <- nelev3*0-29
+# nelev4 <- elev |> crop(newext4) 
+# nelev4 <- nelev4*0-29
+# nelev5 <- elev |> crop(newext5) 
+# nelev5 <- nelev5*0-29
+# nelev6 <- elev |> crop(newext6) 
+# nelev6 <- nelev6*0-29
+# elevx <- merge(nelev1,nelev2,nelev3,nelev4,nelev5,nelev6)
+# elevx <- merge(elevx, elev)
+# plot(elevx)
+# writeRaster(elevx,'global/elev.tif',overwrite=TRUE)
+# w=(w50+w500*10+w5000*2)/13
+# plot(w)
+# 
+# w9 <- reproject(w, rs= 9000, method = 'bilinear', prj=setProjection(prj='equaldistant.cylindrical', lat=0,lon=0))
+# names(w9) <- 'w'
+# writeRaster(w9, 'C:/scripts/vegmap/global/w9.tif', overwrite=T)
+# wind000 <- w9*0+0
+# wind045 <- w9*0+45
+# wind090 <- w9*0+90
+# wind135 <- w9*0+135
+# wind180 <- w9*0+180
+# wind225 <- w9*0+225
+# wind270 <- w9*0+270
+# wind315 <- w9*0+315
+# writeRaster(wind000, 'C:/scripts/vegmap/global/a000.tif', overwrite=T)
+# writeRaster(wind045, 'C:/scripts/vegmap/global/a045.tif', overwrite=T)
+# writeRaster(wind090, 'C:/scripts/vegmap/global/a090.tif', overwrite=T)
+# writeRaster(wind135, 'C:/scripts/vegmap/global/a135.tif', overwrite=T)
+# writeRaster(wind180, 'C:/scripts/vegmap/global/a180.tif', overwrite=T)
+# writeRaster(wind225, 'C:/scripts/vegmap/global/a225.tif', overwrite=T)
+# writeRaster(wind270, 'C:/scripts/vegmap/global/a270.tif', overwrite=T)
+# writeRaster(wind315, 'C:/scripts/vegmap/global/a315.tif', overwrite=T)
+#load SAGA Wind Effect (leeward/windward index) for 8 directions, limits of 300 km, acceleration of 1.5.
+# wind <- rast('global/Wind Effect.tif')
+# names(wind) <- c('wind180','wind225','wind270','wind315',
+#                  'wind000','wind045','wind090','wind135')
+# 
+# writeRaster(wind, 'global/wind.tif', overwrite=T)
+# br2 <- rast('ghcn/br.tif')
+# wind2 <- wind |> project(br2)
+# writeRaster(wind2, 'ghcn/wind.tif', overwrite=T)
+# plot(wind2$wind180)
+newext <- c(-180,-150,50,75)
+newwind <- wmean |> crop(newext)
+plot(newwind)
 
 br2 <- aggregate(br, fact=20, fun="mean", rm.na=T)
 x <- (-1800:1800)/10; y <- (-900:900)/10
@@ -68,7 +134,7 @@ gm <- gam(formular.gam,
 summary(gm)
 
 rf <- ranger(y~lat+sinlon+coslon+elev+w50+w500+w5000+YEAR,
-          data=st_drop_geometry(train))
+             data=st_drop_geometry(train))
 
 
 pr <- predict(br2, gm, na.rm=T, type = "response")
@@ -128,6 +194,7 @@ library(fields)
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 #load reduced resolution covariate rasters
 br2 <- rast('ghcn/br.tif')
+
 #create raster representing one year for use in a raster model
 yr = 1990
 br2$YEAR <- yr
@@ -147,7 +214,7 @@ yrs <- c(1700,2030)
 df <- tsdata |> subset(YEAR >= yrs[1] & YEAR <= yrs[2]) |> mutate(z=NA,pr1=NA,res1=NA,pr2=NA,newz=NA)
 
 #create missing years for all records.
-dfs <- df |> st_drop_geometry()|> group_by(ID,NAME, elev, x,y) |> 
+dfs <- df |> st_drop_geometry()|> group_by(ID,NAME, elev, x,y, w50) |> 
   summarise(YEARS=length(YEAR), yfirst=min(YEAR),ylast=max(YEAR), meanT01 = mean(t01, na.rm=T),meanT07 = mean(t07, na.rm=T))
 
 
@@ -159,63 +226,203 @@ xs <- seq(-180,180,15)
 yrs <- seq(1961,2010,1)
 zvars <- c('t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')
 
-yi=14
-xi=8
-zi=1
+yi=13
+xi=7
+zi=7
 yri=30
 
 #set dependent variable
 for(zi in 1:12){
-zvar <- zvars[zi]
-z0 = df[,zvar] |> st_drop_geometry() |> as.data.frame() 
-z0 <- z0[,1]
-df[,] <- df[,] |> mutate(z = z0)
-#index to apply values to a given geography
-for(yi in 1:(length(ys)-1)){
+  zvar <- zvars[zi]
+  z0 = df[,zvar] |> st_drop_geometry() |> as.data.frame() 
+  z0 <- z0[,1]
+  df[,] <- df[,] |> mutate(z = z0)
+  #index to apply values to a given geography
   for(yi in 1:(length(ys)-1)){
-predext <- ext(xs[xi ], xs[xi+1], ys[yi], ys[yi+1])
-trainext <- ext(xs[xi ]-7.5, xs[xi+1]+7.5, ys[yi]-5, ys[yi+1]+5)
-index1 <- df$x >= trainext[1] & df$x <= trainext[2] & df$y >= trainext[3] & df$y <= trainext[4]
-
-
-#index for training gam with non missing z
-index2 <- !is.na(df$z) & index1
-
-#gam
-train.gam <- df[index2,]
-m <- gam(z ~ s(lat)+s(elev)+w50+w500+w5000+s(YEAR,4)+s(coslon)+s(sinlon), data = train.gam)
-df[index1,] <- df[index1,]  |> mutate(pr1 = predict(m, df[index1,]), res1 = z-pr1)
-
-#need to focus on one year at a time
-for(yri in 1:length(yrs)){
-yr=yrs[yri]
-#index for training tps on residuals for specific year
-index3 <- df$YEAR == yr & index2
-
-#index for interpolating residuals only on missing records for focal extent
-index4 <- df$YEAR == yr & index1 & is.na(df$z) & 
-  df$x >= predext[1] & df$x <= predext[2] & df$y >= predext[3] & df$y <= predext[4]
-
-
-train.tps <- df[index3,] |> st_drop_geometry() |> as.data.frame()
-xyz <- train.tps[,c('x','y','elev')] 
-v <- train.tps$res1
-tps <- Tps(xyz, v, lon.lat = TRUE)
-tps.unk <- df[index4,c('x','y','elev')] |> st_drop_geometry() |> as.data.frame()
-pr0 <- predict(object=tps, x=tps.unk)[,1]
-df[index4,]$pr2 <- pr0
-df[index4,] <- df[index4,] |> mutate(newz = pr2+pr1)
-
-#end year
-}
-
-#end geography
-  }}
-#end zvar
+    for(yi in 1:(length(ys)-1)){
+      predext <- ext(xs[xi ], xs[xi+1], ys[yi], ys[yi+1])
+      trainext <- ext(xs[xi ]-7.5, xs[xi+1]+7.5, ys[yi]-5, ys[yi+1]+5)
+      index1 <- df$x >= trainext[1] & df$x <= trainext[2] & df$y >= trainext[3] & df$y <= trainext[4]
+      
+      
+      #index for training gam with non missing z
+      index2 <- !is.na(df$z) & index1
+      
+      #gam
+      train.gam <- df[index2,]|> st_drop_geometry()
+      m <- gam(z ~ s(lat)+s(elev)+w50+w500+w5000+s(YEAR,4)+s(coslon)+s(sinlon), data = train.gam)
+      df[index1,] <- df[index1,]  |> mutate(pr1 = predict(m, df[index1,]), res1 = z-pr1)
+      
+      #need to focus on one year at a time
+      for(yri in 1:length(yrs)){
+        yr = yrs[yri]
+        #index for training tps on residuals for specific year
+        index3 <- df$YEAR == yr & index2
+        
+        #index for interpolating residuals only on missing records for focal extent
+        index4 <- df$YEAR == yr & index1 & is.na(df$z) & 
+          df$x >= predext[1] & df$x <= predext[2] & df$y >= predext[3] & df$y <= predext[4]
+        
+        
+        train.tps <- df[index3,] |> st_drop_geometry() |> as.data.frame()
+        xyz <- train.tps[,c('x','y','elev')] 
+        v <- train.tps$res1
+        tps <- Tps(xyz, v, lon.lat = TRUE)
+        tps.unk <- df[index4,c('x','y','elev')] |> st_drop_geometry() |> as.data.frame()
+        pr0 <- predict(object=tps, x=tps.unk)[,1]
+        df[index4,]$pr2 <- pr0
+        df[index4,] <- df[index4,] |> mutate(newz = pr2+pr1)
+        
+        #end year
+      }
+      
+      #end geography
+    }}
+  #end zvar
 }
 #----------------
+#impute data ----
+clearNA <- function(x){
+  x=mean(x, na.rm=TRUE)
+  x=ifelse(is.nan(x), NA,x)
+  return(x)
+}
 
 
+zvars <- c('t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')
+trainext <- ext(-90, -70, 30, 50)
+index1 <- tsdata$x >= trainext[1] & tsdata$x <= trainext[2] & tsdata$y >= trainext[3] & tsdata$y <= trainext[4]
+df1 <-  tsdata[index1,] |> st_drop_geometry() |> as.data.frame()
+statcols <- c("ID","STNELEV","NAME","elev","w50","w500","w5000","ELEMENT","elevzone","lzone","x","y","lat","coslon","sinlon")
+dfblank <- df1 |> as.data.frame() |> select(statcols)|>unique()
+dfyears <- data.frame(YEAR=c(1961:2010), t01=NA, t02=NA, t03=NA, t04=NA, t05=NA, t06=NA, t07=NA, t08=NA, t09=NA, t10=NA, t11=NA, t12=NA)
+dfmerge <- dfblank |> merge(dfyears)
+comcol <- intersect(colnames(df1), colnames(dfmerge))
+dfmerge <- dfmerge[,comcol]
+df1 <-df1[,comcol]
+df1 <- df1 |> rbind(dfmerge)
+df1 <- df1 |> group_by(across(all_of(statcols)), YEAR) |> summarise(across(all_of(zvars), clearNA))
+df1 <- as.data.frame(df1)
+library(missForest)
+timeA <-  Sys.time()
+msf <- missForest::missForest(df1[,c('lat','elev','w50','w500','w5000','coslon','sinlon','YEAR',zvars[c(1,2,12)])], )
+msfximp <- msf$ximp
+Sys.time()-timeA
+
+df2 <- df1|>mutate(t01 = msfximp$t01,
+                   t02 = msfximp$t02,
+                   t12 = msfximp$t12)
+timeA <-  Sys.time()
+msf <- missForest::missForest(df1[,c('lat','elev','w50','w500','w5000','coslon','sinlon','YEAR',zvars[c(6,7,8)])], )
+msfximp <- msf$ximp
+Sys.time()-timeA
+
+df2 <- df2|>mutate(t06 = msfximp$t06,
+                   t07 = msfximp$t07,
+                   t08 = msfximp$t08)
+timeA <-  Sys.time()
+msf <- missForest::missForest(df1[,c('lat','elev','w50','w500','w5000','coslon','sinlon','YEAR',zvars[c(3,4,5)])], )
+msfximp <- msf$ximp
+Sys.time()-timeA
+
+df2 <- df2|>mutate(t03 = msfximp$t03,
+                   t04 = msfximp$t04,
+                   t05 = msfximp$t05)
+timeA <-  Sys.time()
+msf <- missForest::missForest(df1[,c('lat','elev','w50','w500','w5000','coslon','sinlon','YEAR',zvars[c(9,10,11)])], )
+msfximp <- msf$ximp
+Sys.time()-timeA
+
+df2 <- df2|>mutate(t09 = msfximp$t09,
+                   t10 = msfximp$t10,
+                   t11 = msfximp$t11)
+
+# saveRDS(df2,'ghcn/dffilled.RDS')
+dfs2 <- df2 |> st_drop_geometry() |> subset(YEAR %in% c(1961:1990)) |> group_by(ID,NAME, elev, x,y, w500, w50) |> 
+  summarise(YEARS=length(YEAR), yfirst=min(YEAR),ylast=max(YEAR), meanT01 = mean(t01, na.rm=T),meanT07 = mean(t07, na.rm=T)) |> as.data.frame()
+dfs2a <- df2 |> st_drop_geometry() |> subset(YEAR %in% c(1981:2010)) |> group_by(ID,NAME, elev, x,y, w500, w50) |> 
+  summarise(YEARS=length(YEAR), yfirst=min(YEAR),ylast=max(YEAR), meanT01 = mean(t01, na.rm=T),meanT07 = mean(t07, na.rm=T)) |> as.data.frame()
+meanT010 <- dfs2a$meanT01
+meanT070 <- dfs2a$meanT07
+dfs2 <- dfs2 |> mutate(meanT01a=meanT010,meanT07a=meanT070, t01dif=meanT01a-meanT01, t07dif=meanT07a-meanT07)
+
+
+
+# cext <- ext(-87, -86, 47, 48)
+# cutt <- crop(elev, cext)
+# cutt <- cutt*0+179
+# plot(cutt)
+# br2elev <- elev
+# br2elev <- merge(cutt,br2elev)
+# cext <- ext(-88, -85, 46, 49)
+# cutt <- crop(br2elev, cext)
+# plot(br2elev)
+
+
+
+trainext2 <- ext(-80, -70, 40, 50)
+br3 <- br2 |> crop(trainext2)
+index1 <- dfs2$x >= trainext2[1] & dfs2$x <= trainext2[2] & dfs2$y >= trainext2[3] & dfs2$y <= trainext2[4]
+dfnewext <-  dfs2[index1,] |> st_drop_geometry() |> as.data.frame()
+xyz <- dfnewext[,c('x','y','elev','w500')] 
+v <- dfnewext$t01dif
+tps <- Tps(xyz, v, lon.lat = TRUE)
+t01difz <- interpolate(c(br3$elev,br3$w500), tps, xyOnly=F)#
+xyz <- dfnewext[,c('x','y','elev','w500')] 
+v <- dfnewext$t07dif
+tps <- Tps(xyz, v, lon.lat = TRUE)
+t07difz <- interpolate(c(br3$elev,br3$w500), tps, xyOnly=F)#
+
+xyz <- dfnewext[,c('x','y')] 
+v <- dfnewext$t01dif
+tps <- Tps(xyz, v, lon.lat = FALSE)
+t01difxy <- interpolate(rast(br3$elev), tps, xyOnly=F)#
+xyz <- dfnewext[,c('x','y')] 
+v <- dfnewext$t07dif
+tps <- Tps(xyz, v, lon.lat = FALSE)
+t07difxy <- interpolate(rast(br3$elev), tps, xyOnly=F)#
+
+plot(t01difz)
+plot(t01difxy)
+plot(t07difz)
+plot(t07difxy)
+
+
+st1 <- 'USW00094847' #det
+st2 <- 'CA006158350' #gr
+st1 <- 'USC00406328' #mtleconte
+st2 <- 'USC00315923' #mtmitch
+ggplot()+
+  geom_line(data=subset(df2, ID %in% st1), aes(x=YEAR,y=t01), color='orange')+
+  geom_line(data=subset(df2, ID %in% st2), aes(x=YEAR,y=t01), color='red')+
+  geom_line(data=subset(df, ID %in% st1), aes(x=YEAR,y=t01), color='green')+
+  geom_line(data=subset(df, ID %in% st2), aes(x=YEAR,y=t01), color='blue')+
+  
+  geom_point(data=subset(df2, ID %in% st1), aes(x=YEAR,y=t01), color='orange')+
+  geom_point(data=subset(df2, ID %in% st2), aes(x=YEAR,y=t01), color='red')+
+  geom_point(data=subset(df, ID %in% st1), aes(x=YEAR,y=t01), color='green')+
+  geom_point(data=subset(df, ID %in% st2), aes(x=YEAR,y=t01), color='blue')
+
+
+#for a dataset of 345285 records and 9 variables with on containing missing data, it took 1.513873 mins using the missForest package, while it took 1.239086 hours for the missForestPredict package.
+# library(missForestPredict)
+# timeA <-  Sys.time()
+# msf <- missForest(df1[,c('z','lat','elev','w50','w500','w5000','YEAR','coslon','sinlon')], )
+# msfximp <- msf$ximp
+# df1 <- df1|>mutate(msd1 = msfximp$z)
+# Sys.time()-timeA
+
+timeA <-  Sys.time()
+msf <- missForest(df1[,c('lat','elev','w50','w500','w5000','YEAR','coslon','sinlon','t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')], )
+msfximp <- msf$ximp
+Sys.time()-timeA
+
+
+
+
+
+
+df1<- df[index1,]
 
 summary(m)
 pr <-predict(br3, m, na.rm=T)
@@ -249,4 +456,38 @@ ggplot()+
   geom_point(data=subset(df, grepl('MI GRAND RAP',NAME)), aes(x=YEAR, y=t01))+
   geom_point(data=subset(df, grepl('MI GRAND RAP',NAME)), aes(x=YEAR, y=pr1), color='red')
 
+####
 
+newext <- ext(-90,-60,25,50)
+
+tdat <- tsdata[sample(1:nrow(tsdata), size=5000, prob=tsdata$wts), ]
+tsdat2 <- tsdata |> subset(x >= newext[1] & x <= newext[2] & y >= newext[3] & y <= newext[4])
+tdat2 <- tsdat2[sample(1:nrow(tsdat2), size=1000, prob=tsdat2$wts), ]
+
+train <- tdat |> mutate(z=t01) |> subset(!is.na(z))
+gm <- gam(z ~ s(lat)+s(elev)+w50+w500+w5000+s(YEAR,4)+s(coslon)+s(sinlon)+s(elev):s(lat)+s(elev):w500+YEAR:lat+s(lat):s(coslon)+w500:s(coslon)+s(lat):s(sinlon)+s(lat):w500+s(lat):w50, data=train)
+
+summary(gm)
+
+r <- predict(br2, gm, na.rm=T, type = "response")
+# plot(r)
+
+names(r) <- 'gamod'
+newext <- ext(-180,-130,50,75)
+dcrop <- r |> crop(newext)
+plot(dcrop)
+# br3 <- c(br2,r)
+# train <- train |> mutate(gamod=predict(gm, train, na.rm=T, type = "response"))
+# gm2 <- gam(z ~ s(lat)+s(elev)+w50+w500+w5000+s(YEAR,4)+s(coslon)+s(sinlon)+elev:lat+elev:w500+YEAR:lat+lat:coslon+lat:sinlon+gamod, data=train)
+# 
+# summary(gm2)
+# 
+# r2 <- predict(br3, gm2, na.rm=T, type = "response")
+# dcrop <- r |> crop(newext)
+# plot(dcrop)
+
+# rf <- ranger(z~lat+sinlon+coslon+elev+w50+w500+w5000+YEAR+gamod,
+#              data=st_drop_geometry(train))
+# pr <- predict(br3, rf, na.rm=T);
+# dcrop <- pr |> crop(newext)
+# plot(dcrop)
