@@ -445,9 +445,7 @@ x <- (r4)*0+1+0
 y <- (r2)+0.1
 y <- (r1)*0+2+0
 
-x <- rast(xmin=-110, xmax=-60, ymin=40, ymax=70, res=1, vals=12)
-
-r1 <- rast(xmin=20, xmax=80, ymin=0, ymax=100, res=1, vals=1)
+r1 <- rast(xmin=20, xmax=80, ymin=0, ymax=80, res=1, vals=1)
 r2 <- rast(xmin=0, xmax=100, ymin=0, ymax=100, res=1, vals=2)
 plot(mosaic(r1,r2))
 
@@ -487,6 +485,8 @@ ydirpos2 <- er2[4]-ext(r1i)[4]
 
 
 #This section determines cases where either x or y extents are completely within other raster to perform as a patch to override the values of the larger raster
+mskinx <- mskin*0+1
+mskiny <- mskin*0+1
 #xinternal
 r2insideX <- er1[1]  < er2[1] & er1[2]  > er2[2]
 r1insideX <- er2[1]  < er1[1] & er2[2]  > er1[2]
@@ -509,28 +509,60 @@ if(r1insideX){
 r2insideY <- er1[3]  < er2[3] & er1[4]  > er2[4]
 r1insideY <- er2[3]  < er1[3] & er2[4]  > er1[4]
 if(r1insideY | r2insideY){
-bbrk <- ei[3] + (ei[4]-ei[3])/4
-tbrk <- ei[3] + (ei[4]-ei[3])*3/4
-bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
-ycore <- crop(mskin, ext(ei[1],ei[2],bbrk,tbrk))
-tflank <- crop(mskin, ext(ei[1],ei[2],tbrk,ei[4]))
-values(bflank) <- rep(seq(0, 1, length.out = nrow(bflank)), each = ncol(bflank))
-values(ycore) <- 0
-values(tflank) <- rep(seq(1, 0, length.out = nrow(tflank)), each = ncol(tflank))
-mskiny <- merge(bflank,ycore,tflank)
+  bbrk <- ei[3] + (ei[4]-ei[3])/4
+  tbrk <- ei[3] + (ei[4]-ei[3])*3/4
+  bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
+  ycore <- crop(mskin, ext(ei[1],ei[2],bbrk,tbrk))
+  tflank <- crop(mskin, ext(ei[1],ei[2],tbrk,ei[4]))
+  values(bflank) <- rep(seq(0, 1, length.out = nrow(bflank)), each = ncol(bflank))
+  values(ycore) <- 0
+  values(tflank) <- rep(seq(1, 0, length.out = nrow(tflank)), each = ncol(tflank))
+  mskiny <- merge(bflank,ycore,tflank)
+  
+  if(r1insideY){
+    mskiny <- 1-mskiny
+  }
+  }else if(er2[4] != er1[4]){ 
+#tops differ but not bottoms
 
-if(r1insideY){
-  mskiny <- 1-mskiny
-}}
-
-#masks for different x vs y overlap scenarios
-if((r1insideY | r2insideY) & (r1insideX | r2insideX)){
-  msk <- min(mskiny,mskinx)
-}else if((r1insideY | r2insideY)){
-  msk <- mskiny
-}else if((r1insideX | r2insideX)){
-  msk <- mskinx
+  bbrk <- ei[3] + (ei[4]-ei[3])/4
+  tbrk <- ei[3] + (ei[4]-ei[3])*3/4
+  bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
+  ycore <- crop(mskin, ext(ei[1],ei[2],bbrk,tbrk))
+  tflank <- crop(mskin, ext(ei[1],ei[2],tbrk,ei[4]))
+  values(bflank) <- rep(seq(0, 1, length.out = nrow(bflank)), each = ncol(bflank))
+  values(ycore) <- 0
+  values(tflank) <- 0
+  mskiny <- merge(bflank,ycore,tflank)
+  if(er2[4]  > er1[4]){
+    mskiny <- 1-mskiny
+  }
+}else if(er2[3] != er1[3]){
+  #bottoms differ but not tops
+  
+  bbrk <- ei[3] + (ei[4]-ei[3])/4
+  tbrk <- ei[3] + (ei[4]-ei[3])*3/4
+  bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
+  ycore <- crop(mskin, ext(ei[1],ei[2],bbrk,tbrk))
+  tflank <- crop(mskin, ext(ei[1],ei[2],tbrk,ei[4]))
+  values(bflank) <- 0
+  values(ycore) <- 0
+  values(tflank) <- rep(seq(1, 0, length.out = nrow(tflank)), each = ncol(tflank))
+  mskiny <- merge(bflank,ycore,tflank)
+  if(er2[3]  > er1[3]){
+    mskiny <- 1-mskiny
+  }
 }
+
+msk <- min(mskiny,mskinx)
+# #masks for different x vs y overlap scenarios
+# if((r1insideY | r2insideY) & (r1insideX | r2insideX)){
+#   msk <- min(mskiny,mskinx)
+# }else if((r1insideY | r2insideY)){
+#   msk <- mskiny
+# }else if((r1insideX | r2insideX)){
+#   msk <- mskinx
+# }
 
 #assemble masks for patch output
 if((r1insideY | r2insideY) | (r1insideX | r2insideX)){
