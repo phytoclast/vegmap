@@ -454,17 +454,19 @@ plot(mosaic(r1,r2))
 #perform intersect
 er1 <- ext(r1)
 er2 <- ext(r2)
+
+
+
+overlap <- (er1[1]  < er2[2]|er2[1]  < er1[2])&(er1[3]  < er2[4]|er2[3]  < er1[4])
+if(!overlap){
+  r <- merge(r1,r2)
+  return(r)
+}
+
 ei <- terra::intersect(ext(r1),ext(r2))
-
-
-  overlap <- (er1[1]  < er2[2]|er2[1]  < er1[2])&(er1[3]  < er2[4]|er2[3]  < er1[4])
-  overlap
-    
-
 r1i <- r1 |> crop(ei)
 r2i <- r2 |> crop(ei)
-plot(r1i)
-plot(r2i)
+
 
 #blank masks
 mskleft <- r1i*0+1
@@ -483,10 +485,12 @@ xdirpos2 <- er2[2]-ext(r1i)[2]
 ydirneg2 <- er2[3]-ext(r1i)[3]
 ydirpos2 <- er2[4]-ext(r1i)[4]
 
+
+#This section determines cases where either x or y extents are completely within other raster to perform as a patch to override the values of the larger raster
 #xinternal
 r2insideX <- er1[1]  < er2[1] & er1[2]  > er2[2]
 r1insideX <- er2[1]  < er1[1] & er2[2]  > er1[2]
-
+if(r1insideX | r2insideX){
 lbrk <- ei[1] + (ei[2]-ei[1])/4
 rbrk <- ei[1] + (ei[2]-ei[1])*3/4
 lflank <- crop(mskin, ext(ei[1],lbrk,ei[3],ei[4]))
@@ -499,11 +503,12 @@ mskinx <- merge(lflank,xcore,rflank)
 
 if(r1insideX){
   mskinx <- 1-mskinx
-}
+}}
+
 #yinternal
 r2insideY <- er1[3]  < er2[3] & er1[4]  > er2[4]
 r1insideY <- er2[3]  < er1[3] & er2[4]  > er1[4]
-
+if(r1insideY | r2insideY){
 bbrk <- ei[3] + (ei[4]-ei[3])/4
 tbrk <- ei[3] + (ei[4]-ei[3])*3/4
 bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
@@ -516,16 +521,27 @@ mskiny <- merge(bflank,ycore,tflank)
 
 if(r1insideY){
   mskiny <- 1-mskiny
+}}
+
+#masks for different x vs y overlap scenarios
+if((r1insideY | r2insideY) & (r1insideX | r2insideX)){
+  msk <- min(mskiny,mskinx)
+}else if((r1insideY | r2insideY)){
+  msk <- mskiny
+}else if((r1insideX | r2insideX)){
+  msk <- mskinx
 }
-plot(mskiny)
 
-plot(min(mskiny,mskinx))
+#assemble masks for patch output
+if((r1insideY | r2insideY) | (r1insideX | r2insideX)){
+  msk1 <- msk
+  msk2 <- 1-msk
+  gmsk <- r1i*msk1+r2i*msk2
+  r <- merge(gmsk, r1,r2,na.rm=TRUE)
+  plot(r)
+}
 
 
-
-mskinr2 <- (2*mskinr2^0.5)^0.5
-plot(mskinr2)
-if(r2insideX){}
 
 if(xdirneg1 < 0){
   values(mskleft) <- rep(seq(1, 0, length.out = ncol(mskleft)), times = nrow(mskleft))
