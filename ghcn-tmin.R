@@ -445,16 +445,27 @@ x <- (r4)*0+1+0
 y <- (r2)+0.1
 y <- (r1)*0+2+0
 
-r1 <- rast(xmin=20, xmax=80, ymin=0, ymax=100, res=1, vals=1)
-r2 <- rast(xmin=0, xmax=100, ymin=20, ymax=100, res=1, vals=2)
-plot(mosaic(r1,r2))
+r2 <- rast(xmin=20, xmax=80, ymin=0, ymax=100, res=1, vals=1)
+r1 <- rast(xmin=0, xmax=100, ymin=20, ymax=100, res=1, vals=2)
+
+r1 <- rast(xmin=50, xmax=150, ymin=20, ymax=80, res=1, vals=1)
+r2 <- rast(xmin=0, xmax=100, ymin=0, ymax=100, res=1, vals=2)
+
+if(ex)
+o1 <- 
+
+m <- mosaic(r1,r2)
+
+plot(m)
+
+m1 <- terra::trans(m)
+plot(m1)
+m2 <- terra::trans(m1)
+plot(m2)
 
 #perform intersect
 er1 <- ext(r1)
 er2 <- ext(r2)
-
-
-
 overlap <- (er1[1]  < er2[2]|er2[1]  < er1[2])&(er1[3]  < er2[4]|er2[3]  < er1[4])
 if(!overlap){
   r <- merge(r1,r2)
@@ -524,6 +535,8 @@ if(r1insideY | r2insideY){
     mskiny <- 1-mskiny
   }}
 
+msk <- min(mskiny,mskinx)
+
 #x inside top inside  
  if((er2[4] < er1[4] & r2insideX)|(er1[4] < er2[4] & r1insideX)){ 
   bbrk <- ei[3] + (ei[4]-ei[3])/4
@@ -564,27 +577,12 @@ if((er2[3] <= er1[3] & r2insideX)|(er1[3] <= er2[3] & r1insideX)){
   values(ycore) <- 0
   values(tflank) <- 0
   mskiny <- merge(bflank,ycore,tflank)
+  msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
   if(er2[3] <= er1[3]){
-    mskiny <- 1-mskiny
+    mskinx <- 1-mskinx
+    msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
+    msk <- 1-msk
   }}
-
-plot(mskiny)
-
-
-pmsk1 <- mskiny*mskinx
-pmsk2 <- 1-(1-mskiny)*(1-mskinx)
-plot(max(pmsk1,pmsk2))
-rst1 <- r1i*0+1
-rst2 <- r1i*0
-msk1 <- (rst1*pmsk1+rst2*pmsk2+0.01)/(pmsk1+pmsk2+0.02)
-msk2 <- 1-msk1
-gmsk <- r1i*msk1+r2i*msk2
-plot(msk)
-msk1 <- msk
-msk2 <- 1-msk
-gmsk <- r1i*msk1+r2i*msk2
-r <- merge(gmsk, r1,r2,na.rm=TRUE)
-plot(r)
 
 
 
@@ -604,7 +602,11 @@ if((er2[4] >= er1[4] & r2insideX)|(er1[4] >= er2[4] & r1insideX)){
   }}  
 
 
-msk <- min(mskiny,mskinx)
+
+ plot(msk)
+ 
+ 
+ 
 # #masks for different x vs y overlap scenarios
 # if((r1insideY | r2insideY) & (r1insideX | r2insideX)){
 #   msk <- min(mskiny,mskinx)
