@@ -445,23 +445,16 @@ x <- (r4)*0+1+0
 y <- (r2)+0.1
 y <- (r1)*0+2+0
 
-r2 <- rast(xmin=20, xmax=80, ymin=0, ymax=100, res=1, vals=1)
-r1 <- rast(xmin=0, xmax=100, ymin=20, ymax=100, res=1, vals=2)
-
-r1 <- rast(xmin=0, xmax=100, ymin=0, ymax=100, res=1, vals=1)
-r2 <- rast(xmin=-20, xmax=100, ymin=20, ymax=80, res=1, vals=2)
-r2 <- rast(xmin=0, xmax=100, ymin=0, ymax=100, res=1, vals=2)
-r1 <- rast(xmin=-20, xmax=100, ymin=20, ymax=80, res=1, vals=1)
-
-
-
-m <- mosaic(r1,r2)
-
-plot(m)
+r1 <- rast(xmin=20, xmax=80, ymin=0, ymax=100, res=1, vals=1)
+r2 <- rast(xmin=0, xmax=100, ymin=20, ymax=100, res=1, vals=2)
+plot(mosaic(r1,r2))
 
 #perform intersect
 er1 <- ext(r1)
 er2 <- ext(r2)
+
+
+
 overlap <- (er1[1]  < er2[2]|er2[1]  < er1[2])&(er1[3]  < er2[4]|er2[3]  < er1[4])
 if(!overlap){
   r <- merge(r1,r2)
@@ -531,10 +524,8 @@ if(r1insideY | r2insideY){
     mskiny <- 1-mskiny
   }}
 
-msk <- min(mskiny,mskinx)
-
-#1 x inside top inside  
-if((er2[4] < er1[4] & r2insideX)|(er1[4] < er2[4] & r1insideX)){ 
+#x inside top inside  
+ if((er2[4] < er1[4] & r2insideX)|(er1[4] < er2[4] & r1insideX)){ 
   bbrk <- ei[3] + (ei[4]-ei[3])/4
   tbrk <- ei[3] + (ei[4]-ei[3])*3/4
   bflank <- crop(mskin, ext(ei[1],ei[2],ei[3],bbrk))
@@ -548,7 +539,7 @@ if((er2[4] < er1[4] & r2insideX)|(er1[4] < er2[4] & r1insideX)){
     mskiny <- 1-mskiny
   }}  
 
-#2 x inside bottom inside  
+#x inside bottom inside  
 if((er2[3] > er1[3] & r2insideX)|(er1[3] > er2[3] & r1insideX)){
   bbrk <- ei[3] + (ei[4]-ei[3])/4
   tbrk <- ei[3] + (ei[4]-ei[3])*3/4
@@ -562,38 +553,7 @@ if((er2[3] > er1[3] & r2insideX)|(er1[3] > er2[3] & r1insideX)){
   if(er2[3]  > er1[3]){
     mskiny <- 1-mskiny
   }}
-
-#3 y inside right inside  
-if((er2[2] < er1[2] & r2insideY)|(er1[2] < er2[2] & r1insideY)){ 
-  lbrk <- ei[1] + (ei[2]-ei[1])/4
-  rbrk <- ei[1] + (ei[2]-ei[1])*3/4
-  lflank <- crop(mskin, ext(ei[1],lbrk,ei[3],ei[4]))
-  xcore <- crop(mskin, ext(lbrk,rbrk,ei[3],ei[4]))
-  rflank <- crop(mskin, ext(rbrk,ei[2],ei[3],ei[4]))
-  values(lflank) <- 0
-  values(xcore) <- 0
-  values(rflank) <- rep(seq(1, 0, length.out = nrow(rflank)), each = ncol(rflank))
-  mskinx <- merge(lflank,xcore,rflank)
-  if(er2[2]  > er1[2]){
-    mskinx <- 1-mskinx
-  }}  
-
-#4 y inside left inside  
-if((er2[1] > er1[1] & r2insideY)|(er1[1] > er2[1] & r1insideY)){
-  lbrk <- ei[1] + (ei[2]-ei[1])/4
-  rbrk <- ei[1] + (ei[2]-ei[1])*3/4
-  lflank <- crop(mskin, ext(ei[1],lbrk,ei[3],ei[4]))
-  xcore <- crop(mskin, ext(lbrk,rbrk,ei[3],ei[4]))
-  rflank <- crop(mskin, ext(rbrk,ei[2],ei[3],ei[4]))
-  values(lflank) <- rep(seq(0, 1, length.out = nrow(lflank)), each = ncol(lflank))
-  values(xcore) <- 0
-  values(rflank) <- 0
-  mskinx <- merge(lflank,xcore,rflank)
-  if(er2[1]  > er1[1]){
-    mskinx <- 1-mskinx
-  }}
-
-#5 x inside bottom outside  
+#x inside bottom outside  
 if((er2[3] <= er1[3] & r2insideX)|(er1[3] <= er2[3] & r1insideX)){
   bbrk <- ei[3] + (ei[4]-ei[3])/4
   tbrk <- ei[3] + (ei[4]-ei[3])*3/4
@@ -604,14 +564,38 @@ if((er2[3] <= er1[3] & r2insideX)|(er1[3] <= er2[3] & r1insideX)){
   values(ycore) <- 0
   values(tflank) <- 0
   mskiny <- merge(bflank,ycore,tflank)
-  msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
   if(er2[3] <= er1[3]){
-    mskinx <- 1-mskinx
-    msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
-    msk <- 1-msk
+    mskiny <- 1-mskiny
   }}
 
-#6 x inside top outside  
+x <- c(1:ncol(bsq))
+y <- c(1:nrow(bsq))
+
+nr <- rast(matrix(c(0,1,1,1), nrow = 2, ncol = 2), ext=ext(lsq))
+nr1 <- resample(nr,lsq,method='bilinear')
+plot(nr1)
+bbrk <- ei[3] + (ei[4]-ei[3])/4
+lbrk <- ei[1] + (ei[2]-ei[1])/4
+lsq <- crop(mskinx, ext(ei[1],lbrk,ei[3],bbrk))
+bsq <- crop(mskiny, ext(ei[1],lbrk,ei[3],bbrk))
+pmsk1 <- bsq*lsq
+pmsk2 <- (1-bsq)*(1-lsq)
+rst1 <- lbrk*0+1
+rst2 <- lbrk*0
+msk1 <- (rst1*pmsk1+rst2*pmsk2+0.01)/(pmsk1+pmsk2+0.02)
+
+rr1 <- ifel(lsq==1,1,NA)
+plot(rr1)
+rr2 <- ifel(bsq==0,0,NA)
+plot(rr2)
+terra::fillHoles(merge(rr1,rr2))
+
+x[1,nrow(x)/2+1.5]
+
+plot(pmsk2+lsq)
+
+
+#x inside top outside  
 if((er2[4] >= er1[4] & r2insideX)|(er1[4] >= er2[4] & r1insideX)){ 
   bbrk <- ei[3] + (ei[4]-ei[3])/4
   tbrk <- ei[3] + (ei[4]-ei[3])*3/4
@@ -622,54 +606,12 @@ if((er2[4] >= er1[4] & r2insideX)|(er1[4] >= er2[4] & r1insideX)){
   values(ycore) <- 0
   values(tflank) <- rep(seq(1, 0, length.out = nrow(tflank)), each = ncol(tflank))
   mskiny <- merge(bflank,ycore,tflank)
-  msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
   if(er2[4] >= er1[4]){
-    mskinx <- 1-mskinx
-    msk <- min((mskinx+0.01)/(1-mskiny+0.01),1)
-    msk <- 1-msk
+    mskiny <- 1-mskiny
   }}  
 
-#7 y inside left outside  
-if((er2[1] <= er1[1] & r2insideY)|(er1[1] <= er2[1] & r1insideY)){
-  lbrk <- ei[1] + (ei[2]-ei[1])/4
-  rbrk <- ei[1] + (ei[2]-ei[1])*3/4
-  lflank <- crop(mskin, ext(ei[1],lbrk,ei[3],ei[4]))
-  xcore <- crop(mskin, ext(lbrk,rbrk,ei[3],ei[4]))
-  rflank <- crop(mskin, ext(rbrk,ei[2],ei[3],ei[4]))
-  values(lflank) <- rep(seq(1, 0, length.out = ncol(lflank)), times = nrow(lflank))
-  values(xcore) <- 0
-  values(rflank) <- 0
-  mskinx <- merge(lflank,xcore,rflank)
-  msk <- min((mskiny+0.01)/(1-mskinx+0.01),1)
-  if(er2[1] <= er1[1]){
-    mskiny <- 1-mskiny
-    msk <- min((mskiny+0.01)/(1-mskinx+0.01),1)
-    msk <- 1-msk
-  }}
 
-#8 y inside right outside  
-if((er2[2] >= er1[2] & r2insideY)|(er1[2] >= er2[2] & r1insideY)){
-  lbrk <- ei[1] + (ei[2]-ei[1])/4
-  rbrk <- ei[1] + (ei[2]-ei[1])*3/4
-  lflank <- crop(mskin, ext(ei[1],lbrk,ei[3],ei[4]))
-  xcore <- crop(mskin, ext(lbrk,rbrk,ei[3],ei[4]))
-  rflank <- crop(mskin, ext(rbrk,ei[2],ei[3],ei[4]))
-  values(lflank) <- 0
-  values(xcore) <- 0
-  values(rflank) <- rep(seq(0, 1, length.out = ncol(rflank)), times = nrow(rflank))
-  mskinx <- merge(lflank,xcore,rflank)
-  msk <- min((mskiny+0.01)/(1-mskinx+0.01),1)
-  mskiny <- 1-mskiny
-  if(er2[2] >= er1[2]){
-    msk <- 1-msk
-  }}
- plot(mskinx)
- msk1 <- msk
- msk2 <- 1-msk
-gmsk <- r1i*msk1+r2i*msk2
-r <- merge(gmsk, r1,r2)
-plot(r)
-  
+msk <- min(mskiny,mskinx)
 # #masks for different x vs y overlap scenarios
 # if((r1insideY | r2insideY) & (r1insideX | r2insideX)){
 #   msk <- min(mskiny,mskinx)

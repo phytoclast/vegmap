@@ -133,9 +133,10 @@ stations.p <- stations.p |> mutate(elev = newelev$elev)
 # fst <- stations.p |> mutate(edif=((elev+1000)^0.5-(STNELEV+1000)^0.5)/((500+1000)^0.5-(0+1000)^0.5))
 # fst <- fst |> left_join(pdata)
 
-stations.p <- stations.p |> mutate(STNELEV = case_when(STNELEV %in% -999 ~ elev,
-                                                       STNELEV == 0 ~ elev, 
-                                                       TRUE ~ STNELEV))
+stations.p <- stations.p |>
+  mutate(STNELEV = case_when(STNELEV %in% c(-999,-999.9) ~ elev,
+                             STNELEV == 0 ~ elev, 
+                             TRUE ~ STNELEV))
 stations.p <- stations.p |> mutate(elev = STNELEV,
                                    lat = y, 
                                    sinlon = sin(x/360*2*pi), 
@@ -153,7 +154,7 @@ stations.p <- stations.p |> mutate(elev = STNELEV,
                                    wind315=newwind$wind315)
 
 pdata <- stations.p |> left_join(pdata)
-
+saveRDS(stations.p, 'ghcn/stations.p2.RDS')
 #####
 library(gam)
 br2 <- rast('ghcn/br.tif')
