@@ -42,13 +42,13 @@ tdata2 <- dfhead |> left_join(tdata2)
 
 
 tprocess <- subset(tdata2, y >= 30 & y <= 50 & x >= -90 & x <= -60) |> mutate(z = t01) |> 
-  mutate(llgrp = paste('ll',floor(x/5),floor(y/5)), ycat = factor(YEAR))
+  mutate(llgrp = paste('ll',floor(x/3),floor(y/3)), ycat = factor(YEAR))
 train0 <- tprocess |> subset(!is.na(z))
 ntest <- sample(1:nrow(train0), size = 0.1*nrow(train0))
 test <- train0[ntest,]
 train <- train0[-ntest,]
 
-#Linear model incorporating unique geographic (xy grouped by 5 degrees) year interactions (very time consuming, error: test 2.53, train 1.17, vs gam model without interactions at test 2.72, train 2.71, for resids grouped by station then resids grouped by geography and year train 1.34, test 0.74)
+#Linear model incorporating unique geographic (xy grouped by 5 degrees) year interactions (very time consuming, error: test 2.53, train 1.17, vs gam model without interactions at test 2.72, train 2.71, for resids grouped by station then resids grouped by geography and year train 0.74, test 1.34)
 # lmod = lm(z~x+y+elev+YEAR+llgrp:ycat,data=train)
 # summary(lmod)
 # test <- test |> mutate(pred = predict(lmod, test))
@@ -64,6 +64,7 @@ mean((test$pred - test$z)^2)^0.5
 train <- train |> mutate(pred = predict(lmod, train, type='response'))
 mean((train$pred - train$z)^2)^0.5
 
+
 trsd <- train |> mutate(pred = predict(lmod, train, type='response'))
 trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
 trsd <- trsd |> group_by(llgrp,YEAR) |> mutate(res2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
@@ -71,21 +72,29 @@ trsd <- trsd |> mutate(pred2 = pred+res1+res2)
 mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
 resids <- subset(trsd, select=c(llgrp,YEAR, res1, res2)) |> unique()
 trsd <- test |> left_join(resids)
-trsd <- trsd |> mutate(pred = predict(lmod, trsd, type='response'))
+trsd <- trsd |> mutate(pred  = predict(lmod, trsd, type='response'))
+trsd <- trsd |> mutate(pred2 = pred+res1+res2)
+mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
+
+#full data
+lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+y:x+y:elev+y:YEAR,data=tprocess)
+trsd <- tprocess |> mutate(pred = predict(lmod, tprocess, type='response'))
+trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
+trsd <- trsd |> group_by(llgrp,YEAR) |> mutate(res2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
 trsd <- trsd |> mutate(pred2 = pred+res1+res2)
 mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
 
 library(ggplot2)
 #'USC00406328''USC00315923''USC00403420''USW00003812'
 ggplot()+
-  geom_point(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=t01))+
-  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=t01))+
-  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=t01), color='red')+
-  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=t01), color='red')+
-  geom_point(data=subset (trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred), color='green')+
-  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred), color='green')+
-  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred), color='blue')+
-  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred), color='blue')
+  geom_point(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=z))+
+  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=z))+
+  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=z), color='red')+
+  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=z), color='red')+
+  geom_point(data=subset (trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred2), color='green')+
+  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred2), color='green')+
+  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred2), color='blue')+
+  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred2), color='blue')
 
 library(mice)
 imp <- mice(tprocess)
