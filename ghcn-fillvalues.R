@@ -12,7 +12,7 @@ pdata <- stations.p |> left_join(pdata)
 tdata <- stations.t |> left_join(tdata)
 trdata <- stations.tr |> left_join(trdata)
 
-library(missForest)
+# library(missForest)
 
 t1  <- tdata |> st_drop_geometry()
 databyyear <- subset(t1, YEAR >1950 & YEAR <=2010 & !is.na(t01) & !is.na(t07), select=c(ID, YEAR)) |> unique() |> group_by(ID) |> summarise(nYEAR = length(YEAR)) |> subset(nYEAR >= 15)
@@ -40,24 +40,35 @@ tdata2 <- tdata2 |> group_by(ID, YEAR) |>
 tdata2 <- tdata2 |> mutate(across(all_of(datcols), remNAN))
 tdata2 <- dfhead |> left_join(tdata2)
 
+(180+180)/20
+(90+90)/10
+tprocess <- subset(tdata2, YEAR %in% c(1961:1990) & !is.na(t01) & !is.na(t07), select=c(ID, x,y,elev)) |> unique()|> mutate(llgrp=paste('ll',floor(y/15)*15,floor(x/15)*15)) |> group_by(llgrp) |> summarise(n=length(ID), xmin=min(x), xmax=max(x), ymin=min(y), ymax=max(y)) 
 
-tprocess <- subset(tdata2, y >= 30 & y <= 50 & x >= -90 & x <= -60) |> mutate(z = t01) |> 
-  mutate(llgrp = paste('ll',floor(x/3),floor(y/3)), ycat = factor(YEAR))
+#75-90 lat one zone
+#60-75 90 deg lon
+#45-60 30 deg lon
+#-15-45 15 deg lon  west of -45lon
+
+#test models -----
+ex <- c(-90,-60,30,60)
+ex <- c(-180,-150,30,60)
+addthis <- c(-5,5,-5,5)
+exa <- ex+addthis
+
+degf <- 7
+tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) |> mutate(z = t01) |> 
+  mutate(llgrp0 = paste('ll',floor(x/degf),floor(y/degf)),
+         llgrp1 = paste('ll',floor((x+degf/2)/degf),floor(y/degf)),
+         llgrp2 = paste('ll',floor(x/degf),floor((y+degf/2)/degf)),
+         llgrp3 = paste('ll',floor((x+degf/2)/degf),floor((y+degf/2)/degf)), ycat = factor(YEAR))
 train0 <- tprocess |> subset(!is.na(z))
 ntest <- sample(1:nrow(train0), size = 0.1*nrow(train0))
 test <- train0[ntest,]
 train <- train0[-ntest,]
-
-#Linear model incorporating unique geographic (xy grouped by 5 degrees) year interactions (very time consuming, error: test 2.53, train 1.17, vs gam model without interactions at test 2.72, train 2.71, for resids grouped by station then resids grouped by geography and year train 0.74, test 1.34)
-# lmod = lm(z~x+y+elev+YEAR+llgrp:ycat,data=train)
-# summary(lmod)
-# test <- test |> mutate(pred = predict(lmod, test))
-# mean((test$pred - test$z)^2)^0.5
-# train <- train |> mutate(pred = predict(lmod, train))
-# mean((train$pred - train$z)^2)^0.5
-
 library(gam)
-lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR),data=train)
+lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+w50+w500+w5000+
+             wind000+wind090+wind180+wind270+
+             wind045+wind135+wind225+wind315,data=train)
 summary(lmod)
 test <- test |> mutate(pred = predict(lmod, test, type='response'))
 mean((test$pred - test$z)^2)^0.5
@@ -67,39 +78,81 @@ mean((train$pred - train$z)^2)^0.5
 
 trsd <- train |> mutate(pred = predict(lmod, train, type='response'))
 trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
-trsd <- trsd |> group_by(llgrp,YEAR) |> mutate(res2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp0,YEAR) |> mutate(res2.0 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp1,YEAR) |> mutate(res2.1 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp2,YEAR) |> mutate(res2.2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp3,YEAR) |> mutate(res2.3 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd$res2 <- rowMeans(trsd[,c('res2.0','res2.1','res2.2','res2.3')],na.rm = T)
 trsd <- trsd |> mutate(pred2 = pred+res1+res2)
 mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
-resids <- subset(trsd, select=c(llgrp,YEAR, res1, res2)) |> unique()
+resids <- subset(trsd, select=c(llgrp0,llgrp1,llgrp2,llgrp3,YEAR, res1, res2)) |> unique()
 trsd <- test |> left_join(resids)
 trsd <- trsd |> mutate(pred  = predict(lmod, trsd, type='response'))
 trsd <- trsd |> mutate(pred2 = pred+res1+res2)
 mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
 
-#full data
-lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+y:x+y:elev+y:YEAR,data=tprocess)
+#full data----
+library(gam)
+ex <- c(-90,-60,30,60)
+ex <- c(-180,-150,30,60)
+ex <- c(-180,-150,-60,-30)
+bufs <- c(5,10,20)
+degf0 <- c(3,10,30,100)
+
+precount <- subset(tdata2, x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4], select=c(ID,x,y)) |> unique() |> nrow()
+if(precount<=0){next}
+for(i.b in 1:3){#i.b=1
+buf <- bufs[i.b]
+addthis <- c(-1*buf,buf,-1*buf,buf)
+exa <- ex+addthis
+tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) |> mutate(z = t01)
+count1990 <- subset(tprocess, !is.na(z) & YEAR %in% c(1961:1990)) |> group_by(ID) |> summarise(nz = length(z)) |> subset(nz >= 30) |> nrow()
+
+if(count1990 >=3){break}}
+
+lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+w50+w500+w5000+
+             wind000+wind090+wind180+wind270+
+             wind045+wind135+wind225+wind315,data=tprocess)
 trsd <- tprocess |> mutate(pred = predict(lmod, tprocess, type='response'))
 trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
-trsd <- trsd |> group_by(llgrp,YEAR) |> mutate(res2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
-trsd <- trsd |> mutate(pred2 = pred+res1+res2)
-mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
+trsd$pred2 <- NA
+for(i.d in 1:4){#i.d=1
+degf <- degf0[i.d]
+trsd <- trsd |> 
+  mutate(llgrp0 = paste('ll',floor(x/degf),floor(y/degf)),
+         llgrp1 = paste('ll',floor((x+degf/2)/degf),floor(y/degf)),
+         llgrp2 = paste('ll',floor(x/degf),floor((y+degf/2)/degf)),
+         llgrp3 = paste('ll',floor((x+degf/2)/degf),floor((y+degf/2)/degf)), ycat = factor(YEAR))
+
+trsd <- trsd |> group_by(llgrp0,YEAR) |> mutate(res2.0 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp1,YEAR) |> mutate(res2.1 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp2,YEAR) |> mutate(res2.2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd <- trsd |> group_by(llgrp3,YEAR) |> mutate(res2.3 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+trsd$res2 <- rowMeans(trsd[,c('res2.0','res2.1','res2.2','res2.3')],na.rm = T)
+trsd <- trsd |> mutate(pred2 = ifelse(is.na(pred2),pred+res1+res2,pred2))
+nna <- subset(trsd, is.na(pred2)) |> nrow()
+if(nna <= 0){
+  break
+}
+}
+
 
 library(ggplot2)
 #'USC00406328''USC00315923''USC00403420''USW00003812'
+#'USW00026451  USC00500275 USW00025628
 ggplot()+
-  geom_point(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=z))+
-  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=z))+
-  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=z), color='red')+
-  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=z), color='red')+
-  geom_point(data=subset (trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred2), color='green')+
-  geom_line(data=subset(trsd,ID %in% 'USC00403420'), aes(x=YEAR, y=pred2), color='green')+
-  geom_point(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred2), color='blue')+
-  geom_line(data=subset(trsd,ID %in% 'USC00406328'), aes(x=YEAR, y=pred2), color='blue')
+  geom_point(data=subset(trsd,ID %in% 'USC00500272'), aes(x=YEAR, y=z))+
+  geom_line(data=subset(trsd,ID %in% 'USC00500272'), aes(x=YEAR, y=z))+
+  geom_point(data=subset(trsd,ID %in% 'USW00025628'), aes(x=YEAR, y=z), color='red')+
+  geom_line(data=subset(trsd,ID %in% 'USW00025628'), aes(x=YEAR, y=z), color='red')+
+  geom_point(data=subset (trsd,ID %in% 'USC00500272'), aes(x=YEAR, y=pred2), color='green')+
+  geom_line(data=subset(trsd,ID %in% 'USC00500272'), aes(x=YEAR, y=pred2), color='green')+
+  geom_point(data=subset(trsd,ID %in% 'USW00025628'), aes(x=YEAR, y=pred2), color='blue')+
+  geom_line(data=subset(trsd,ID %in% 'USW00025628'), aes(x=YEAR, y=pred2), color='blue')
 
-library(mice)
-imp <- mice(tprocess)
 
-train <- train <- train |> mutate(preds = predictions(predict(rf,train)))
+
+train <- train |> mutate(preds = predictions(predict(rf,train)))
 micetest <- mice.mids(imp, newdata = tprocess)
 mtest <- complete(micetest)
 
