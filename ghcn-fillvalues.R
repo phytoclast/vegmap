@@ -98,14 +98,20 @@ ex <- c(-180,-150,30,60)
 ex <- c(-180,-150,-60,-30)
 bufs <- c(5,10,20)
 degf0 <- c(3,10,30,100)
-
+allmonths <- c('t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')
+headercols <- c('ID','NAME','y','x','elev','YEAR')
 precount <- subset(tdata2, x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4], select=c(ID,x,y)) |> unique() |> nrow()
 if(precount<=0){next}
+
+for(i.m in 1:12){#i.m=1
+thismonth <- allmonths[i.m]
 for(i.b in 1:3){#i.b=1
 buf <- bufs[i.b]
 addthis <- c(-1*buf,buf,-1*buf,buf)
 exa <- ex+addthis
-tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) |> mutate(z = t01)
+tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) 
+
+tprocess$z <- unlist(tprocess[,thismonth])
 count1990 <- subset(tprocess, !is.na(z) & YEAR %in% c(1961:1990)) |> group_by(ID) |> summarise(nz = length(z)) |> subset(nz >= 30) |> nrow()
 
 if(count1990 >=3){break}}
@@ -135,6 +141,16 @@ if(nna <= 0){
   break
 }
 }
+trsd <- trsd |> subset(x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4]) |> as.data.frame()
+thisz <- trsd$z
+preds <- trsd$pred2
+thisz <- ifelse(is.na(thisz),preds,thisz)
+newdata0 <- trsd[,headercols]
+newdata0$z <- thisz
+colnames(newdata0) <- c(headercols, thismonth)
+if(i.m == 1){newdata <- newdata0}else{newdata <- newdata |> left_join(newdata0)}
+}
+
 
 
 library(ggplot2)
