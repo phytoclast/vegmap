@@ -21,13 +21,13 @@ thesecols <- c("ID","NAME","y","x","elev","lat","sinlon","coslon","w50","w500","
                "wind045","wind090","wind135","wind180","wind225","wind270","wind315","YEAR",
                "t01","t02","t03","t04","t05","t06","t07","t08","t09","t10","t11","t12")
 headcols <- c("ID","NAME","y","x","elev","lat","sinlon","coslon","w50","w500","w5000","wind000",
-               "wind045","wind090","wind135","wind180","wind225","wind270","wind315")
+              "wind045","wind090","wind135","wind180","wind225","wind270","wind315")
 datcols <- c("t01","t02","t03","t04","t05","t06","t07","t08","t09","t10","t11","t12")
 numcols <- c("elev","lat","sinlon","coslon","w50","w500","w5000","wind000",
              "wind045","wind090","wind135","wind180","wind225","wind270","wind315","YEAR",
              "t01","t02","t03","t04","t05","t06","t07","t08","t09","t10","t11","t12")
 ndatcols <- c("x","y","elev","lat","sinlon","coslon","w50","w500","w5000","wind000",
-             "wind045","wind090","wind135","wind180","wind225","wind270","wind315","YEAR")
+              "wind045","wind090","wind135","wind180","wind225","wind270","wind315","YEAR")
 
 tdata2 <- subset(tdata,YEAR > 1950 & YEAR <=2010 & ID %in% databyyear$ID, select=thesecols) |> st_drop_geometry() 
 dfhead <- subset(tdata2,select=headcols) |> unique()
@@ -91,66 +91,84 @@ trsd <- trsd |> mutate(pred  = predict(lmod, trsd, type='response'))
 trsd <- trsd |> mutate(pred2 = pred+res1+res2)
 mean((trsd$pred2 - trsd$z)^2, na.rm=T)^0.5
 
+
+
+
+
+
 #full data----
 library(gam)
-ex <- c(-90,-60,30,60)
-ex <- c(-180,-150,30,60)
-ex <- c(-180,-150,-60,-30)
-bufs <- c(5,10,20)
+bufs <- c(5,10,20,30)
 degf0 <- c(3,10,30,100)
 allmonths <- c('t01','t02','t03','t04','t05','t06','t07','t08','t09','t10','t11','t12')
 headercols <- c('ID','NAME','y','x','elev','YEAR')
-precount <- subset(tdata2, x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4], select=c(ID,x,y)) |> unique() |> nrow()
-if(precount<=0){next}
-
-for(i.m in 1:12){#i.m=1
-thismonth <- allmonths[i.m]
-for(i.b in 1:3){#i.b=1
-buf <- bufs[i.b]
-addthis <- c(-1*buf,buf,-1*buf,buf)
-exa <- ex+addthis
-tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) 
-
-tprocess$z <- unlist(tprocess[,thismonth])
-count1990 <- subset(tprocess, !is.na(z) & YEAR %in% c(1961:1990)) |> group_by(ID) |> summarise(nz = length(z)) |> subset(nz >= 30) |> nrow()
-
-if(count1990 >=3){break}}
-
-lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+w50+w500+w5000+
-             wind000+wind090+wind180+wind270+
-             wind045+wind135+wind225+wind315,data=tprocess)
-trsd <- tprocess |> mutate(pred = predict(lmod, tprocess, type='response'))
-trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
-trsd$pred2 <- NA
-for(i.d in 1:4){#i.d=1
-degf <- degf0[i.d]
-trsd <- trsd |> 
-  mutate(llgrp0 = paste('ll',floor(x/degf),floor(y/degf)),
-         llgrp1 = paste('ll',floor((x+degf/2)/degf),floor(y/degf)),
-         llgrp2 = paste('ll',floor(x/degf),floor((y+degf/2)/degf)),
-         llgrp3 = paste('ll',floor((x+degf/2)/degf),floor((y+degf/2)/degf)), ycat = factor(YEAR))
-
-trsd <- trsd |> group_by(llgrp0,YEAR) |> mutate(res2.0 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
-trsd <- trsd |> group_by(llgrp1,YEAR) |> mutate(res2.1 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
-trsd <- trsd |> group_by(llgrp2,YEAR) |> mutate(res2.2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
-trsd <- trsd |> group_by(llgrp3,YEAR) |> mutate(res2.3 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
-trsd$res2 <- rowMeans(trsd[,c('res2.0','res2.1','res2.2','res2.3')],na.rm = T)
-trsd <- trsd |> mutate(pred2 = ifelse(is.na(pred2),pred+res1+res2,pred2))
-nna <- subset(trsd, is.na(pred2)) |> nrow()
-if(nna <= 0){
-  break
-}
-}
-trsd <- trsd |> subset(x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4]) |> as.data.frame()
-thisz <- trsd$z
-preds <- trsd$pred2
-thisz <- ifelse(is.na(thisz),preds,thisz)
-newdata0 <- trsd[,headercols]
-newdata0$z <- thisz
-colnames(newdata0) <- c(headercols, thismonth)
-if(i.m == 1){newdata <- newdata0}else{newdata <- newdata |> left_join(newdata0)}
-}
-
+lat.R <- seq(-90,90,30)
+lon.R1 <- seq(-180,180,30)
+lon.R2 <- seq(-180,180,90)
+for(i.y in 1:(length(lat.R)-1)){#i.y=1
+  if(lat.R[i.y] < 60 & lat.R[i.y] > -60){
+    lon.R <- lon.R1
+  }else{
+    lon.R <- lon.R2
+  }
+  for(i.x in 1:(length(lon.R)-1)){#i.x=1
+    ex <- c(lon.R[i.x], lon.R[i.x+1], lat.R[i.y], lat.R[i.y+1])
+    
+    
+    precount <- subset(tdata2, x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4], select=c(ID,x,y)) |> unique() |> nrow()
+    if(precount<=0){next}
+    
+    
+    for(i.b in 1:4){#i.b=1
+      buf <- bufs[i.b]
+      addthis <- c(-1*buf,buf,-1*buf,buf)
+      exa <- ex+addthis
+      tprocess <- subset(tdata2, x >= exa[1] & x <= exa[2] & y >= exa[3] & y <= exa[4]) 
+      
+      count1990 <- tprocess |> mutate(z01 = unlist(tprocess[,allmonths[1]]),z07 = unlist(tprocess[,allmonths[7]]))
+      count1990 <- subset(count1990, !is.na(z01) & !is.na(z07) & YEAR %in% c(1961:1990)) |> group_by(ID) |> summarise(nz = length(z01)) |> subset(nz >= 30) |> nrow()
+      if(count1990 >=3){break}}
+    
+    for(i.m in 1:12){#i.m=1
+      thismonth <- allmonths[i.m]      
+      tprocess$z <- unlist(tprocess[,thismonth])      
+      lmod = gam(z~s(x)+s(y)+s(elev)+s(YEAR)+w50+w500+w5000+
+                   wind000+wind090+wind180+wind270+
+                   wind045+wind135+wind225+wind315,data=tprocess)
+      trsd <- tprocess |> mutate(pred = predict(lmod, tprocess, type='response'))
+      trsd <- trsd |> group_by(ID) |> mutate(res1 = mean(z-pred, na.rm=T))
+      trsd$pred2 <- NA
+      for(i.d in 1:4){#i.d=1
+        degf <- degf0[i.d]
+        trsd <- trsd |> 
+          mutate(llgrp0 = paste('ll',floor(x/degf),floor(y/degf)),
+                 llgrp1 = paste('ll',floor((x+degf/2)/degf),floor(y/degf)),
+                 llgrp2 = paste('ll',floor(x/degf),floor((y+degf/2)/degf)),
+                 llgrp3 = paste('ll',floor((x+degf/2)/degf),floor((y+degf/2)/degf)), ycat = factor(YEAR))
+        
+        trsd <- trsd |> group_by(llgrp0,YEAR) |> mutate(res2.0 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+        trsd <- trsd |> group_by(llgrp1,YEAR) |> mutate(res2.1 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+        trsd <- trsd |> group_by(llgrp2,YEAR) |> mutate(res2.2 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+        trsd <- trsd |> group_by(llgrp3,YEAR) |> mutate(res2.3 = mean(z-(pred+res1), na.rm=T)) |>ungroup()
+        trsd$res2 <- rowMeans(trsd[,c('res2.0','res2.1','res2.2','res2.3')],na.rm = T)
+        trsd <- trsd |> mutate(pred2 = ifelse(is.na(pred2),pred+res1+res2,pred2))
+        nna <- subset(trsd, is.na(pred2)) |> nrow()
+        if(nna <= 0){
+          break
+        }
+      }
+      trsd <- trsd |> subset(x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4]) |> as.data.frame()
+      thisz <- trsd$z
+      preds <- trsd$pred2
+      thisz <- ifelse(is.na(thisz),preds,thisz)
+      newdata00 <- trsd[,headercols]
+      newdata00$z <- thisz
+      colnames(newdata00) <- c(headercols, thismonth)
+      if(i.m == 1){newdata0 <- newdata00}else{newdata0 <- newdata0 |> left_join(newdata00)}
+    }
+    if(i.y == 1 & i.x == 1){newdata <- newdata0}else{newdata <- rbind(newdata,newdata0)}
+    write.csv(newdata, 'tdata.filled.csv', row.names = F)
+  }}
 
 
 library(ggplot2)
