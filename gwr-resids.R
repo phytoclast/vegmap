@@ -34,9 +34,12 @@ elevmin <- rast('global/elevmin.tif')
 br1 <- rast('global/br5000.tif')
 belts <- rast('global/belts.tif')
 bsns <- rast('ghcn/bsns.tif')
-
+pchelsa <- rast('global/pchelsa.tif')
+pchelsa <- pchelsa |> project(br1)
+tchelsa <- rast('global/tchelsa.tif')
+tchelsa <- tchelsa |> project(br1)
 # belts <- belts |> project(br1)
-br1 <- c(br1,belts)
+br1 <- c(br1,belts, pchelsa, tchelsa)
 br1$tropical <- br1$monsoonE+br1$monsoonW+br1$tradeN+br1$tradeS
 psummer <- rast('global/psummer.tif')
 trsummer <- rast('global/trsummer.tif')
@@ -57,6 +60,9 @@ stations.tr <- readRDS('ghcn/stations.tr2.RDS')
 stations.p <- stations.p |> cbind(elevmin=extract(elevmin,vect(stations.p))$elevmin)
 stations.t <- stations.t |> cbind(elevmin=extract(elevmin,vect(stations.t))$elevmin) 
 stations.tr <- stations.tr |> cbind(elevmin=extract(elevmin,vect(stations.tr))$elevmin)
+stations.p <- stations.p |> cbind(extract(pchelsa,vect(stations.p)))
+stations.t <- stations.t |> cbind(extract(tchelsa,vect(stations.t)))
+stations.tr <- stations.tr |> cbind(extract(tchelsa,vect(stations.tr)))
 stations.p <- stations.p |> cbind(extract(belts,vect(stations.p)))
 stations.t <- stations.t |> cbind(extract(belts,vect(stations.t)))
 stations.tr <- stations.tr |> cbind(extract(belts,vect(stations.tr)))
@@ -94,12 +100,22 @@ trdata. <- trdata. |>
 tdata <- tdata |>
   mutate(geotile2 = paste('ll',floor(x/15)*100,floor(y/15)), wtriple = (w50/10+w500+w5000/10)/1.2) |> group_by(geotile2) |> mutate(minwater = min(wtriple), maxwater = max(wtriple), mexelev = max(elev)) |>  ungroup() |>   mutate(keep = ifelse(wtriple == minwater | wtriple == maxwater| elev == mexelev, 1,0), minwater=NULL, maxwater=NULL, maxelev=NULL, geotile2=NULL)
 
+
+
+pseudopoints <- st_read('ghcn/dummy.shp') 
+pseudopoints <- pseudopoints |> cbind(extract(br1, vect(pseudopoints))) 
+pseudopoints <- pseudopoints |> mutate(x=st_coordinates(pseudopoints)[,1],y=st_coordinates(pseudopoints)[,2],z=NA, wts0=0.1, keep=1) 
+pseudopoints <- subset(pseudopoints, y < 84)
+
+
+
 #######################
 library(GWmodel)
 ex <- c(-180, -10, 0, 90)
+# ex <- c(-180, -10, -90, 20)
 
-parm = 't'
-mo = 7
+parm = 'p'
+mo = 1
 mos <- c("01","02","03","04","05","06","07","08","09","10","11","12")
 
 br2 <- crop(br1, y=ext(ex))
@@ -107,27 +123,34 @@ br10 <- br2|> aggregate(10)
 newpts <- br10$elev |> as.points()
 plot(br2$elev)
 
-for(mo in 10:12){#i.m=5
+for(mo in c(1:12)){#mo=8
   
   nameofpar <- paste0(parm,mos[mo])
-  filnam <- paste0('clim1990/',nameofpar,'.tif')
+  filnam <- paste0('clim1990/northamerica.',nameofpar,'.tif')
   
   if(parm %in% 't'){
-    globl <- tdata |> subset(!ID %in% c('ACW00011604','CA002402051', 'CA002402332'))
+    globl <- tdata |> subset(!ID %in% c('ACW00011604','CA002402051', 'CA002402332','CA002300551'))
     globl$z <- globl |> select(tdatcols[mo]) |> st_drop_geometry() |> as.vector() |> unlist()
-    globl <- globl |> subset(!is.na(z))
+    globl <- subset(globl, !is.na(tchelsa1))
+    # globl <- globl |> subset(!is.na(z))
   }
   if(parm %in% 'tr'){
-    globl <- trdata.
+    globl <- trdata. |> subset(!ID %in% c('63512160000', '63512120000', '63512510000', '64112650000', '63512135000', '63512200000', '63512205000', '63512330000', '63512375000', '63512105000', '63512115000', '63512100000', '63512280000', '63512295000', '63512385000', '63512497000', '63512566000', '63512424000', '63512185000', '63512235000', '63512400000', '63512272000', '63512300000', '63512695000', '63512600000', '63512585000', '63512215000', '63512210000', '63512125000', '63512550000', '63512195000', '63512345000', '63512690000', '63512360000', '63512495000', '63512625000', '63512575000', '63512465000', '63512399000', '63512270000', '63512285000', '63512469000', '63512520000', '63512560000', '63512250000', '63512415000', '63512580000', '63512570000', '63512418000', '63512595000', '63512660000', '63512230000', '63512310000', '63512500000', '21135229000', '22223891000', '22229282000', '63826781000'))
     globl$z <- globl |> select(trdatcols[mo]) |> st_drop_geometry() |> as.vector() |> unlist()
-    globl <- globl |> subset(!is.na(z))
+    globl <- subset(globl, !is.na(trchelsa1))
+    # globl <- globl |> subset(!is.na(z))
     # globl <- subset(globl, !(x > 10 & x < 30 & y > 45 & y < 60 & tr01 > 1.1))
   }
   if(parm %in% 'p'){
     globl <- pdata.
     globl$z <- globl |> select(pdatcols[mo]) |> st_drop_geometry() |> as.vector() |> unlist()
-    globl <- globl |> subset(!is.na(z))
+    globl <- subset(globl, !is.na(pchelsa1))
+    # globl <- globl |> subset(!is.na(z))
   }
+  comcol <- intersect(colnames(globl),colnames(pseudopoints))
+  pspts <- pseudopoints[,comcol]
+  globl <- globl[,comcol] |> rbind(pspts)
+  
   
   
   if(parm %in% c('t')){
@@ -135,52 +158,64 @@ for(mo in 10:12){#i.m=5
                   relev+
                   elev+
                   elev:w5000+
-                  (w500)+(w5000)+(w50)
+                  tchelsa1+tchelsa2+tchelsa3+tchelsa4+
+                  (w5000)+(w500)+(w50)
                 ,data=globl, weights = globl$wts0)
   }else if(parm %in% c('tr')){
     globm = gam(z~s(coslon)+s(sinlon)+s(lat)+
                   relev+
                   elev+
                   elev:w5000+
-                  (w500)+(w5000)+(w50)
+                  trchelsa1+trchelsa2+trchelsa3+trchelsa4+
+                  (w5000)+(w500)+(w50)
                 ,data=globl, weights = globl$wts0)
   }else{
     globm = gam(z~s(coslon)+s(sinlon)+s(lat)+
-                  relev+
-                  elev+
-                  elev:w5000+
-                  windmax+windmin+windmean+
-                  (w500)+(w5000)+
-                  wind270:westerlyS+
-                  wind270:westerlyN+
-                  wind090:tradeN+
-                  wind090:tradeS+
-                  wind180:monsoonW+
-                  wind180:monsoonE+
-                  wind045:tradeN+
-                  wind135:tradeS+
-                  wind315:westerlyS+
-                  wind225:westerlyN+
-                  wind225:monsoonW+
-                  wind135:monsoonE+
-                  wind180:polarN+
-                  wind000:polarS
+                  # relev+
+                  # elev+
+                  # elev:w5000+
+                  pchelsa1+pchelsa2+pchelsa3+pchelsa4#+
+                  # windmax+windmin+windmean+
+                  # (w500)+(w5000)+
+                  # wind270:westerlyS+
+                  # wind270:westerlyN+
+                  # wind090:tradeN+
+                  # wind090:tradeS+
+                  # wind180:monsoonW+
+                  # wind180:monsoonE+
+                  # wind045:tradeN+
+                  # wind135:tradeS+
+                  # wind315:westerlyS+
+                  # wind225:westerlyN+
+                  # wind225:monsoonW+
+                  # wind135:monsoonE+
+                  # wind180:polarN+
+                  # wind000:polarS
                 ,data=globl, weights = globl$wts0)
   }
   
   smry <- summary(globm)
   smry$aic
   train <- globl |> subset(x >= ex[1] & x <= ex[2] & y >= ex[3] & y <= ex[4]) #|> st_drop_geometry
-  train <- train |> mutate(pred = predict(globm, train, na.rm=T, type = "response"), resid = z-pred)
-  
+  train <- train |> mutate(pred = predict(globm, train, na.rm=T, type = "response"), z=ifelse(is.na(z),pred,z), resid = z-pred) |> subset(!is.na(z))
+    
   
   trainpts <- vect(train[,NULL])
   combpts <- rbind(newpts,trainpts)
   # summary(globm)
-  if(parm %in% c('t','tr')){
+  if(parm %in% c('t')){
     gw <- gwr.basic(resid ~ lat+coslon+sinlon+
                       relev+
                       elev+
+                      tchelsa1+tchelsa2+tchelsa3+tchelsa4+
+                      w500+w50+w5000
+                    , data = train, regression.points = geom(combpts)[,c("x", "y")], 
+                    adaptive=F, bw=10,kernel = "gaussian", longlat=F)
+  }else if(parm %in% c('tr')){
+    gw <- gwr.basic(resid ~ lat+coslon+sinlon+
+                      relev+
+                      elev+
+                      trchelsa1+trchelsa2+trchelsa3+trchelsa4+
                       w500+w50+w5000
                     , data = train, regression.points = geom(combpts)[,c("x", "y")], 
                     adaptive=F, bw=10,kernel = "gaussian", longlat=F)
@@ -189,14 +224,16 @@ for(mo in 10:12){#i.m=5
                       relev+
                       elev+
                       w500+w5000+windmean+
+                      pchelsa1+pchelsa2+pchelsa3+pchelsa4+
                       (wind000)+(wind090)+(wind180)+(wind270)+
                       (wind045)+(wind135)+(wind225)+(wind315)
                     , data = train, 
                     regression.points = geom(combpts)[,c("x", "y")], 
                     adaptive=F, bw=10,kernel = "gaussian", longlat=F)
+
   }
   
-  
+
   
   #extract gwr model covariates
   inames = intersect(names(gw$SDF),names(br10))
@@ -207,7 +244,7 @@ for(mo in 10:12){#i.m=5
   mod.2 <- train.cov*train.term0[,inames]
   mod.2 <- apply(mod.2, 1, sum) + train.term0[,'Intercept']
   train <- train |> mutate(resid2=z-(pred+mod.2))
-  
+
   
   br.term <- rasterize(br.term0, y=br10, field=inames)
   Intercept <- rasterize(br.term0, y=br10, field='Intercept')
@@ -235,7 +272,7 @@ for(mo in 10:12){#i.m=5
   
   xyz <-train[,c('x','y','resid2')] |> st_drop_geometry()
   gs <- gstat(formula=resid2~1, locations=~x+y, data=xyz, nmax=32, set=list(idp = 2))
-  res1 <- interpolate(br10, gs, debug.level=0)[[1]] |> focalmed(r=25000, p='high')
+  res1 <- interpolate(br10, gs, debug.level=0)[[1]] |> focalmed(r=50000, p='high')
   res1 <- res1 |> project(br2)
   plot(res1)
   z1 <- res1+z
@@ -247,7 +284,6 @@ for(mo in 10:12){#i.m=5
   writeRaster(z2, filnam, overwrite=T)
   
 }
-
 
 
 
