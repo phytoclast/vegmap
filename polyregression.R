@@ -55,24 +55,38 @@ mo = 1
 if(parm %in% 't'){
   globl <- readRDS('ghcn/t.globl.RDS') |> subset(!ID %in% c('CA002202750', 'CA006092920', 'CA007080452', 'ACW00011604','CA002402051', 'CA002402332','CA002300551'))
   
-  vars = c("coslon","sinlon","lat","relev","elev","w5000","w500","w50")
+  vars = c("lat","relev","elev","w50")
   
-  formular.gm <- as.formula(paste(paste("z",paste(paste(vars, collapse = " + ", sep = ""),""), sep = " ~ ")))
+  formular.gm <- as.formula(paste(paste("resid",paste(paste(vars, collapse = " + ", sep = ""),""), sep = " ~ ")))
+
 }
 
-xsr <- seq(ex[1],ex[2],10)
-ysr <- seq(ex[3],ex[4],10)
+#select dependent variable
+globl$z <- globl |> select(paste0(parm,mos[mo])) |> st_drop_geometry() |> as.vector() |> unlist()
+globl <- globl |> mutate(geotile = paste('ll',floor(x/5)*100,floor(y/5)), elzone = floor(((elev/500)+0.1)^1*1))|> group_by(geotile, elzone) |> mutate(wts=100/length(ID)) |> ungroup()
+
+glbm <- gam(z ~ s(lat)+coslon+sinlon+elev+w5000*s(lat)+w500*s(lat)+w50, data=globl, weights = globl$wts)
+summary(glbm)
+br3 <- br2
+br3$elev <- 0
+br3$w50 <- 0
+
+premod <- predict(br3, glbm, na.rm=T, type = "response")
+plot(premod)
+globl <- globl |> mutate(w50.0 = w50, elev0 = elev, elev=0, w50=0,pred = predict(glbm, globl, na.rm=T, type = "response"), resid = z-pred, elev=elev0, elev0=NULL, w50=w50.0, w50.0=NULL)
+ywd <- 10
+xwd <- 10
+xsr <- seq(ex[1],ex[2],xwd)
+ysr <- seq(ex[3],ex[4],ywd)
 cef=NULL
 for(i in 1:length(xsr)){
   for(j in 1:length(ysr)){
 # i=7;j=5
 x0 = xsr[i]
 y0 = ysr[j]
+#fex = c(-90,-80,40,50)
+fex = c(x0-xwd,x0+xwd,y0-ywd,y0+ywd)
 
-fex = c(x0-5,x0+5,y0-5,y0+5)
-
-#select dependent variable
-globl$z <- globl |> select(paste0(parm,mos[mo])) |> st_drop_geometry() |> as.vector() |> unlist()
 
 globl <- globl |> mutate(e3n = ifelse(elev >= 2500 & y >= (fex[4]*3+fex[3])/4,1,0),
                          e3s = ifelse(elev >= 2500 & y <= (fex[3]*3+fex[4])/4,1,0),
@@ -124,9 +138,10 @@ gselect <- subset(globl, x >= fex[1] & x <= fex[2] & y >= fex[3] & y <= fex[4] |
                     e2n ==1| e2s ==1| e2e ==1| e2w ==1 |
                     e1n ==1| e1s ==1| e1e ==1| e1w ==1 |
                     w1n ==1| w1s ==1| w1e ==1| w1w ==1 |
-                    w0n ==1| w0s ==1| w0e ==1| w0w ==1 | drank <= 100)
+                    w0n ==1| w0s ==1| w0e ==1| w0w ==1 |
+                    drank <= 100)
 
-gselect <- gselect |> mutate(geotile = paste('ll',floor(x/5)*100,floor(y/5)), elzone = floor(((elev/500)+0.1)^1*1))|> group_by(geotile, elzone) |> mutate(wts=100/length(ID))
+gselect <- gselect |> mutate(geotile = paste('ll',floor(x/5)*100,floor(y/5)), elzone = floor(((elev/500)+0.1)^1*1))|> group_by(geotile, elzone) |> mutate(wts=100/length(ID)) |> ungroup() |> mutate(wtnorth = ifelse(y >= y0,'n','s'),wteast = ifelse(x >= x0,'e','w'))|> group_by(wtnorth,wteast) |> mutate(wts=100*wts/length(ID)) |> ungroup()
 
 # gselect <- subset(globl, x >= fex[1] & x <= fex[2] & y >= fex[3] & y <= fex[4] |
 #                     drank <= 100)
@@ -137,7 +152,7 @@ gselect <- gselect |> mutate(geotile = paste('ll',floor(x/5)*100,floor(y/5)), el
 
 gm = glm(formular.gm
             ,data=gselect, weights = gselect$wts)
-
+#...get residuals of internal zone to normalize ...
 # summary(gm)
 # plot(vect(globl), cex=0.01, col='black', alpha=0.05)
 # points(vect(gselect), cex=0.1, col='red')
@@ -148,9 +163,11 @@ cef0$y = y0
 if(is.null(cef)){cef <- cef0}else{cef <- rbind(cef,cef0)}
   }}
 
+gselect <- gselect |> subset(select=c("ID","STNELEV","NAME","y","x","relev","elev","w50","z","pred","resid"))
+
 cefv <- vect(cef, geom=c("x", "y"), crs=crs(elev10))
-cefr <- rasterize(cefv, y=rast(res=c(10,10), ext=ext(cefv)), field=vars)
-cefi <- rasterize(cefv, y=rast(res=c(10,10), ext=ext(cefv)), field='X.Intercept.')
+cefr <- rasterize(cefv, y=rast(res=c(xwd,ywd), ext=ext(cefv)), field=vars)
+cefi <- rasterize(cefv, y=rast(res=c(xwd,ywd), ext=ext(cefv)), field='X.Intercept.')
 cefr <- cefr |> project(br2)
 cefi <- cefi |> project(br2)
 plot(cefr$elev)
@@ -158,4 +175,9 @@ plot(cefr$elev)
 points(vect(globl), cex=0.01, col='black', alpha=0.05)
 
 preds <- sum(cefr*br2[[vars]])+cefi
-plot(preds)
+plot(preds+premod)
+
+
+ggplot(gselect, aes(x=elev, y=pred))+
+  geom_point()+
+  geom_smooth()
