@@ -37,7 +37,13 @@ cropto0 <- cropto + c(-5,5,-5,5)
 grd <- crop(altlayer, cropto0)
 xy0 <- climatools::makexyrast(grd[[1]],3)
 grdall <- c(grd, xy0)
-pts <- data.frame(x=pts0$x,y=pts0$y, z=pts0$t07)
+grdall.1 <- aggregate(grdall,fact=3,fun="mean")
+u <- terra::linearUnits(grd)
+u <- ifelse(u == 0, 10000000/90, u)
+rs <- (terra::res(grd)*u)[1]
+
+pts <- data.frame(x=pts0$x,y=pts0$y, z=pts0$t01)
+
 pts <- pts |> subset(x >= cropto0[1] & x <= cropto0[2] &
                        y >= cropto0[3] & y <= cropto0[4])
 vts <- vect(pts, geom=c("x", "y"),crs=crs('epsg:4326'))
@@ -46,43 +52,92 @@ vtsgrd <- terra::extract(grdall,vts)
 pts <- cbind(pts,vtsgrd)
 depvar <- names(pts)[3]
 covars1 <- c(names(grd),names(xy0)[1:2])
+covars2 <- c(names(grd),names(xy0))
 f.glm <- stats::as.formula(paste(paste(depvar,paste(paste(covars1, collapse = " + ", sep = ""),""), sep = " ~ ")
 ))
-segs <- 5 
-spanx <- (cropto[2]-cropto[1])/segs
-spany <- (cropto[4]-cropto[3])/segs
+covdevs <- sapply(pts[,covars1], sd)
+segx <- 5
+segy <- 5
+spanx <- (cropto[2]-cropto[1])/segx
+spany <- (cropto[4]-cropto[3])/segy
+pts$inner <- NA
+pts$outer <- NA
+pts$coeffs0 <- NA
 for(i.x in 1:segs){
   for(i.y in 1:segs){#i.x=1;i.y=3
+    addtoy <- spany/.5
+    addtox <- spanx/.5
     crop0 <- c(cropto[1]+(i.x-1)*spanx,cropto[1]+i.x*spanx,
                cropto[3]+(i.y-1)*spany,cropto[3]+i.y*spany)
-    pts.i <- subset(pts, x >= crop0[1] & x <= crop0[2] &
-                      y >= crop0[3] & y <= crop0[4])
+    pts <- pts |> mutate(inner = ifelse(x >= crop0[1] & x <= crop0[2] &
+                                          y >= crop0[3] & y <= crop0[4], 1, 0),
+                         outer = ifelse(x >= (crop0[1]-addtox) & x <= (crop0[2]+addtox) &
+                                          y >= (crop0[3]-addtoy) & y <= (crop0[4]+addtoy), 1, 0))
+    pts.i <- pts |> subset(outer ==1)
     
+    covdevs.i <- sapply(pts.i[,covars1], sd)
+    rdevs.i <- covdevs.i/covdevs
+    mean(rdevs.i[1:(length(covdevs)-2)])
+ gm <- stats::glm(f.glm,
+                 family='gaussian',
+                 data=pts.i)
+    summary(gm)
+    cofs <- list(gm$coefficients)
+        pts <- pts |> mutate(coeffs0 = ifelse(inner %in% 1, cofs,coeffs0))
     # if(nrow(pts.i) > 5 & max(pts.i[,'elev'])-min(pts.i[,'elev']) > 500){
     #   
     # }
     
-    gm <- stats::glm(f.glm,
-                 family='gaussian',
-                 data=pts.i)
-    summary(gm)
-    cofs <- gm$coefficients
-    pts <- 
-  }
+  }}
+cflist <-t(as.data.frame(pts$coeffs0))
+nc <- ncol(cflist)
+grdall.0 <- rast(resolution=res(grdall.1), crs=crs(grdall.1), extent=ext(grdall.1), nlyrs=nc)
+
+for(i in 1:nc){
+  pts$coeffs <- cflist[,i]
+
+f.rf <- stats::as.formula(paste(paste("coeffs",paste(paste(covars2, collapse = " + ", sep = ""),""), sep = " ~ ")
+))
+rf <- ranger::ranger(f.rf,
+                     # split.select.weights=wts,
+                     #num.trees = 1500,
+                     data=pts[!is.na(pts$coeffs),])
+
+cofffs <- terra::predict(grdall.1, rf)
+
+cofffs <- focalmed(cofffs, segy*u/3); 
+names(cofffs)  <- paste0("coef.",i)
+grdall.0[[i]] <- cofffs
+
 }
 
-summary(gm)
-plot(grd)
-points(vts)
+grdall.0 <- project(grdall.0, grdall)
+pts2 <- pts |> cbind(extract(grdall.0,vts))
+grdall2 <- c(grdall, grdall.0)
+covarc1 <- names(grdall.0)[2:nc]
+intcp <- names(grdall.0)[1]
+f.glm2 <- stats::as.formula(paste(depvar,paste(intcp, paste(covars1,"*",covarc1, collapse = " + ", sep = ""), sep = " + "), sep = " ~ "))
+
+gm2 <- stats::glm(f.glm2,
+                 family='gaussian',
+                 data=pts2)
+summary(gm2)
+
+pred <- terra::predict(grdall2, gm2)
+pts2$pred <- predict(gm2,pts2)
+pts2$resid <- pts2$z-pts2$pred
+
+f.rf2 <- stats::as.formula(paste(paste("resid",paste(paste(covars2, collapse = " + ", sep = ""),""), sep = " ~ ")
+))
+rf2 <- ranger::ranger(f.rf2,
+                     # split.select.weights=wts,
+                     #num.trees = 1500,
+                     data=pts2[!is.na(pts2$resid),])
+
+resid <- terra::predict(grdall, rf2)
 
 
-
-
-
-
-
-
-
+plot(pred+resid)
 
 
 
