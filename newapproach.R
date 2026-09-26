@@ -28,14 +28,16 @@ alogtr <- function(x){
 # elev1 <- rast("C:/scripts/vegmap/chelsa2.1/dem1km.tif")
 # elev <- rast("C:/scripts/vegmap/global/br5000.tif")[[1]]
 # w50 <- rast("C:/scripts/vegmap/global/br5000.tif")[[2]]
-altlayer <- rast("C:/scripts/vegmap/global/br5000.tif")[[c(1,2,8,9:16)]]
-altlayer <- altlayer[[1:3]]
+altlayer <- rast("C:/scripts/vegmap/global/br5000.tif")[[c(1,2:4,8,9:16)]]
+altlayer <- altlayer[[(1:5)]]
 # ch<- rast("C:/scripts/vegmap/chelsa2.1/chelsa.tif")
 
-cropto <- c(-95, -75, 40, 50)
+cropto <- c(-95, -70, 40, 55)
+covrange <- 500
+minrow <- 50
 cropto0 <- cropto + c(-5,5,-5,5)
 grd <- crop(altlayer, cropto0)
-xy0 <- climatools::makexyrast(grd[[1]],3)
+xy0 <- climatools::makexyrast(grd[[1]],6)
 grdall <- c(grd, xy0)
 grdall.1 <- aggregate(grdall,fact=3,fun="mean")
 u <- terra::linearUnits(grd)
@@ -55,60 +57,68 @@ covars1 <- c(names(grd),names(xy0)[1:2])
 covars2 <- c(names(grd),names(xy0))
 f.glm <- stats::as.formula(paste(paste(depvar,paste(paste(covars1, collapse = " + ", sep = ""),""), sep = " ~ ")
 ))
-covdevs <- sapply(pts[,covars1], sd)
-segx <- 5
-segy <- 5
+
+segx <- 10
+segy <- 10
+exfactors <- c(0,0.5,1,2,5,10)
 spanx <- (cropto[2]-cropto[1])/segx
 spany <- (cropto[4]-cropto[3])/segy
 pts$inner <- NA
 pts$outer <- NA
 pts$coeffs0 <- NA
-for(i.x in 1:segs){
-  for(i.y in 1:segs){#i.x=1;i.y=3
-    addtoy <- spany/.5
-    addtox <- spanx/.5
-    crop0 <- c(cropto[1]+(i.x-1)*spanx,cropto[1]+i.x*spanx,
-               cropto[3]+(i.y-1)*spany,cropto[3]+i.y*spany)
-    pts <- pts |> mutate(inner = ifelse(x >= crop0[1] & x <= crop0[2] &
-                                          y >= crop0[3] & y <= crop0[4], 1, 0),
-                         outer = ifelse(x >= (crop0[1]-addtox) & x <= (crop0[2]+addtox) &
-                                          y >= (crop0[3]-addtoy) & y <= (crop0[4]+addtoy), 1, 0))
-    pts.i <- pts |> subset(outer ==1)
-    
-    covdevs.i <- sapply(pts.i[,covars1], sd)
-    rdevs.i <- covdevs.i/covdevs
-    mean(rdevs.i[1:(length(covdevs)-2)])
- gm <- stats::glm(f.glm,
-                 family='gaussian',
-                 data=pts.i)
-    summary(gm)
-    cofs <- list(gm$coefficients)
-        pts <- pts |> mutate(coeffs0 = ifelse(inner %in% 1, cofs,coeffs0))
-    # if(nrow(pts.i) > 5 & max(pts.i[,'elev'])-min(pts.i[,'elev']) > 500){
-    #   
-    # }
-    
+pts$erange <- NA
+for(i.x in 1:segx){
+  for(i.y in 1:segy){
+    success <- FALSE
+    for(i.f in 1:length(exfactors)){
+      #i.x=3;i.y=4;i.f=1
+      if(!success){
+        exfact <- exfactors[i.f]
+        addtoy <- spany*exfact
+        addtox <- spanx*exfact
+        crop0 <- c(cropto[1]+(i.x-1)*spanx,cropto[1]+i.x*spanx,
+                   cropto[3]+(i.y-1)*spany,cropto[3]+i.y*spany)
+        pts <- pts |> mutate(inner = ifelse(x >= crop0[1] & x <= crop0[2] &
+                                              y >= crop0[3] & y <= crop0[4], 1, 0),
+                             outer = ifelse(x >= (crop0[1]-addtox) & x <= (crop0[2]+addtox) &
+                                              y >= (crop0[3]-addtoy) & y <= (crop0[4]+addtoy), 1, 0))
+        pts.i <- pts |> subset(outer ==1)
+        if(nrow(pts.i) > minrow){ 
+          erange0 <- max(pts.i[,5])-min(pts.i[,5])
+          if(erange0 >= covrange){
+
+          gm <- stats::glm(f.glm,
+                           family='gaussian',
+                           data=pts.i)
+          summary(gm)
+          cofs <- list(gm$coefficients)
+          pts <- pts |> mutate(coeffs0 = ifelse(inner %in% 1, cofs,coeffs0),
+                               erange = ifelse(inner %in% 1, erange0,erange))
+          success <- TRUE}
+          
+        }}}
   }}
+
 cflist <-t(as.data.frame(pts$coeffs0))
 nc <- ncol(cflist)
 grdall.0 <- rast(resolution=res(grdall.1), crs=crs(grdall.1), extent=ext(grdall.1), nlyrs=nc)
 
 for(i in 1:nc){
   pts$coeffs <- cflist[,i]
-
-f.rf <- stats::as.formula(paste(paste("coeffs",paste(paste(covars2, collapse = " + ", sep = ""),""), sep = " ~ ")
-))
-rf <- ranger::ranger(f.rf,
-                     # split.select.weights=wts,
-                     #num.trees = 1500,
-                     data=pts[!is.na(pts$coeffs),])
-
-cofffs <- terra::predict(grdall.1, rf)
-
-cofffs <- focalmed(cofffs, segy*u/3); 
-names(cofffs)  <- paste0("coef.",i)
-grdall.0[[i]] <- cofffs
-
+  
+  f.rf <- stats::as.formula(paste(paste("coeffs",paste(paste(covars2, collapse = " + ", sep = ""),""), sep = " ~ ")
+  ))
+  rf <- ranger::ranger(f.rf,
+                       # split.select.weights=wts,
+                       #num.trees = 1500,
+                       data=pts[!is.na(pts$coeffs),])
+  
+  cofffs <- terra::predict(grdall.1, rf)
+  
+  cofffs <- focalmed(cofffs, segy*u/3); 
+  names(cofffs)  <- paste0("coef.",i)
+  grdall.0[[i]] <- cofffs
+  
 }
 
 grdall.0 <- project(grdall.0, grdall)
@@ -119,10 +129,10 @@ intcp <- names(grdall.0)[1]
 f.glm2 <- stats::as.formula(paste(depvar,paste(intcp, paste(covars1,"*",covarc1, collapse = " + ", sep = ""), sep = " + "), sep = " ~ "))
 
 gm2 <- stats::glm(f.glm2,
-                 family='gaussian',
-                 data=pts2)
+                  family='gaussian',
+                  data=pts2)
 summary(gm2)
-
+1-gm2$deviance/gm2$null.deviance
 pred <- terra::predict(grdall2, gm2)
 pts2$pred <- predict(gm2,pts2)
 pts2$resid <- pts2$z-pts2$pred
@@ -130,17 +140,19 @@ pts2$resid <- pts2$z-pts2$pred
 f.rf2 <- stats::as.formula(paste(paste("resid",paste(paste(covars2, collapse = " + ", sep = ""),""), sep = " ~ ")
 ))
 rf2 <- ranger::ranger(f.rf2,
-                     # split.select.weights=wts,
-                     #num.trees = 1500,
-                     data=pts2[!is.na(pts2$resid),])
+                      # split.select.weights=wts,
+                      #num.trees = 1500,
+                      data=pts2[!is.na(pts2$resid),])
 
-resid <- terra::predict(grdall, rf2)
+resid <- terra::predict(grdall.1, rf2)
+resid <- resid |> focalmed(50000)  |> project(grdall) 
+plot(resid)
+plot(pred)
 
+plot(resid+pred)
 
-plot(pred+resid)
-
-
-
+plot(grdall.0[[2]])
+points(vts)
 
 
 
@@ -206,8 +218,8 @@ for(cti in 1:length(pwd)){
                         y >= ct[2]-wd[2]  & y <= ct[2]+wd[2] & 
                         !is.na(z) & !is.na(v1) & !is.na(v2))
   
-
-
+  
+  
   
   if(nrow(df1)>1){
     xsd <- sd(df1$x)
@@ -290,11 +302,11 @@ pars$r2 = 0
 df1 <- df1 |> mutate(w = 0*v2+0*v3+0*v4)
 for(i in 1:nrow(pars)){
   df1 <- df1 |> mutate(w = pars[i,1]*v2+pars[i,2]*v3+pars[i,3]*v4)
-gm <- glm(z ~ y+v1+w, data=df1)
-r2 <- 1-gm$deviance/gm$null.deviance
-pars$r2[i] <- r2
+  gm <- glm(z ~ y+v1+w, data=df1)
+  r2 <- 1-gm$deviance/gm$null.deviance
+  pars$r2[i] <- r2
 }
-  
+
 df1 <- df1 |> mutate(w = 2*v2+5*v3+1*v4)
 
 summary(gm)
